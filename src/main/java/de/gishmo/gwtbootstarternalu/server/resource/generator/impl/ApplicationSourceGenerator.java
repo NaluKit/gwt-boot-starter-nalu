@@ -1,0 +1,138 @@
+/*
+ * Copyright (c) 2018 - Frank Hossfeld
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ *  use this file except in compliance with the License. You may obtain a copy of
+ *  the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ *  License for the specific language governing permissions and limitations under
+ *  the License.
+ *
+ */
+
+package de.gishmo.gwtbootstarternalu.server.resource.generator.impl;
+
+import com.github.mvp4g.nalu.client.application.IsApplication;
+import com.github.mvp4g.nalu.client.application.annotation.Application;
+import com.github.mvp4g.nalu.client.application.annotation.Debug;
+import com.github.mvp4g.nalu.plugin.elemental2.client.DefaultElemental2Logger;
+import com.github.mvp4g.nalu.plugin.gwt.client.DefaultGWTLogger;
+import com.squareup.javapoet.*;
+import de.gishmo.gwt.gwtbootstarternalu.shared.model.GeneratorException;
+import de.gishmo.gwt.gwtbootstarternalu.shared.model.NaluGeneraterParms;
+import de.gishmo.gwtbootstarternalu.server.resource.generator.GeneratorConstants;
+import de.gishmo.gwtbootstarternalu.server.resource.generator.GeneratorUtils;
+
+import javax.lang.model.element.Modifier;
+import java.io.File;
+import java.io.IOException;
+
+public class ApplicationSourceGenerator
+  extends AbstractSourceGenerator {
+
+  private ApplicationSourceGenerator(Builder builder) {
+    super();
+
+    this.naluGeneraterParms = builder.naluGeneraterParms;
+    this.directoryJava = builder.directoryJava;
+    this.clientPackageJavaConform = builder.clientPackageJavaConform;
+  }
+
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  public void generate()
+    throws GeneratorException {
+
+    AnnotationSpec.Builder annotation = AnnotationSpec.builder(Application.class)
+                                                      .addMember("shell",
+                                                                 "$T.class",
+                                                                 ClassName.get(this.clientPackageJavaConform + ".ui.shell",
+                                                                               "Shell"))
+                                                      .addMember("context",
+                                                                 GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId()) + GeneratorConstants.CONTEXT + ".class")
+                                                      .addMember("startRoute",
+                                                                 "$S",
+                                                                 "/" + this.naluGeneraterParms.getControllers()
+                                                                                              .get(0)
+                                                                                              .getRoute());
+    if (this.naluGeneraterParms.isApplicationLoader()) {
+      annotation.addMember("loader",
+                           GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId()) + GeneratorConstants.LOADER + ".class");
+    }
+
+    TypeSpec.Builder typeSpec = TypeSpec.interfaceBuilder(GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId()) + GeneratorConstants.APPLICAITON)
+                                        .addJavadoc(CodeBlock.builder()
+                                                             .add(GeneratorConstants.COPYRIGHT_JAVA)
+                                                             .build())
+                                        .addModifiers(Modifier.PUBLIC)
+                                        .addSuperinterface(ClassName.get(IsApplication.class))
+                                        .addAnnotation(annotation.build());
+
+    // add debugging logs ????
+    if (naluGeneraterParms.isDebug()) {
+      typeSpec.addAnnotation(AnnotationSpec.builder(Debug.class)
+                                           .addMember("logger",
+                                                      "$T.class",
+                                                      getLogger())
+                                           .addMember("logLevel",
+                                                      "$T.LogLevel.DETAILED",
+                                                      ClassName.get(Debug.class))
+                                           .build());
+    }
+
+    JavaFile javaFile = JavaFile.builder(this.clientPackageJavaConform,
+                                         typeSpec.build())
+                                .build();
+    try {
+      javaFile.writeTo(new File(directoryJava,
+                                ""));
+    } catch (IOException e) {
+      throw new GeneratorException("Unable to write generated file: >>" + GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId()) + GeneratorConstants.APPLICAITON + "<< -> exception: " + e.getMessage());
+    }
+  }
+
+  private ClassName getLogger() {
+    switch (this.naluGeneraterParms.getWidgetLibrary()) {
+      case DOMINO_UI:
+      case ELEMENTO:
+        return ClassName.get(DefaultElemental2Logger.class);
+      case GWT:
+      case GXT:
+        return ClassName.get(DefaultGWTLogger.class);
+    }
+    return null;
+  }
+
+  public static class Builder {
+
+    NaluGeneraterParms naluGeneraterParms;
+    File               directoryJava;
+    String             clientPackageJavaConform;
+
+    public Builder naluGeneraterParms(NaluGeneraterParms naluGeneraterParms) {
+      this.naluGeneraterParms = naluGeneraterParms;
+      return this;
+    }
+
+    public Builder directoryJava(File directoryJava) {
+      this.directoryJava = directoryJava;
+      return this;
+    }
+
+    public Builder clientPackageJavaConform(String clientPackageJavaConform) {
+      this.clientPackageJavaConform = clientPackageJavaConform;
+      return this;
+    }
+
+    public ApplicationSourceGenerator build() {
+      return new ApplicationSourceGenerator(this);
+    }
+  }
+}

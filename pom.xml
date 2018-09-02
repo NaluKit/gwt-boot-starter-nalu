@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2018 - Frank Hossfeld
+  ~
+  ~  Licensed under the Apache License, Version 2.0 (the "License"); you may not
+  ~  use this file except in compliance with the License. You may obtain a copy of
+  ~  the License at
+  ~
+  ~  http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~  Unless required by applicable law or agreed to in writing, software
+  ~  distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+  ~  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+  ~  License for the specific language governing permissions and limitations under
+  ~  the License.
+  ~
+  -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.github.mvp4g</groupId>
+  <artifactId>gwt-boot-starter-nalu</artifactId>
+  <version>1.0.0</version>
+
+  <packaging>war</packaging>
+
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.0.0.RELEASE</version>
+    <relativePath/> <!-- lookup parent from repository -->
+  </parent>
+
+  <properties>
+    <!-- Convenience property to set the GWT version -->
+    <gwtVersion>2.8.2</gwtVersion>
+    <!-- GXT GPL version without support -->
+    <gxt.version>4.0.0</gxt.version>
+    <!-- Domino version -->
+    <domino.version>1.0-SNAPSHOT</domino.version>
+    <!-- Elemento version -->
+    <elemento.version>0.8.1</elemento.version>
+    <!-- nalu version -->
+    <nalu.version>1.0.0-SNAPSHOT</nalu.version>
+
+    <gwt-events.version>HEAD-SNAPSHOT</gwt-events.version>
+
+    <!-- GWT needs at least java 1.6 -->
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+
+    <!-- JavaPoet version -->
+    <javaPoet.version>1.10.0</javaPoet.version>
+
+    <junit.version>4.12</junit.version>
+    <org.mockito.version>1.10.19</org.mockito.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.build.outputEncoding>UTF-8</project.build.outputEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+    <gwt.resty.version>2.2.1</gwt.resty.version>
+
+    <serverPort>8080</serverPort>
+
+    <generated.source.directory>${project.build.directory}/generated-sources/annotations</generated.source.directory>
+  </properties>
+
+  <!--<dependencyManagement>-->
+    <!--<dependencies>-->
+      <!--<dependency>-->
+        <!--<groupId>com.google.gwt</groupId>-->
+        <!--<artifactId>gwt</artifactId>-->
+        <!--<version>${gwtVersion}</version>-->
+        <!--<type>pom</type>-->
+        <!--<scope>import</scope>-->
+      <!--</dependency>-->
+    <!--</dependencies>-->
+  <!--</dependencyManagement>-->
+
+  <dependencies>
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-user</artifactId>
+      <version>${gwtVersion}</version>
+      <!--<scope>provided</scope>-->
+    </dependency>
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-dev</artifactId>
+      <version>${gwtVersion}</version>
+      <!--<scope>provided</scope>-->
+    </dependency>
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-codeserver</artifactId>
+      <version>${gwtVersion}</version>
+      <!--<scope>provided</scope>-->
+    </dependency>
+    <dependency>
+      <groupId>com.github.mvp4g</groupId>
+      <artifactId>nalu</artifactId>
+      <version>${nalu.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.github.mvp4g</groupId>
+      <artifactId>nalu-processor</artifactId>
+      <version>${nalu.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.github.mvp4g</groupId>
+      <artifactId>nalu-plugin-gwt</artifactId>
+      <version>${nalu.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.github.mvp4g</groupId>
+      <artifactId>nalu-plugin-elemental2</artifactId>
+      <version>${nalu.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.github.mvp4g</groupId>
+      <artifactId>nalu-plugin-gwt-processor</artifactId>
+      <version>${nalu.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-tomcat</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <!-- new event project -->
+    <dependency>
+      <groupId>org.gwtproject.event</groupId>
+      <artifactId>gwt-event</artifactId>
+      <version>${gwt-events.version}</version>
+    </dependency>
+    <!-- RestyGWT -->
+    <dependency>
+      <groupId>org.fusesource.restygwt</groupId>
+      <artifactId>restygwt</artifactId>
+      <version>${gwt.resty.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.ws.rs</groupId>
+      <artifactId>jsr311-api</artifactId>
+      <version>1.1.1</version>
+      <scope>provided</scope>
+    </dependency>
+    <!-- GXT -->
+    <dependency>
+      <groupId>com.sencha.gxt</groupId>
+      <artifactId>gxt</artifactId>
+      <version>${gxt.version}</version>
+    </dependency>
+    <!-- GXT 3.1+ - Neptune Theme -->
+    <dependency>
+      <groupId>com.sencha.gxt</groupId>
+      <artifactId>gxt-theme-neptune</artifactId>
+      <version>${gxt.version}</version>
+    </dependency>
+    <!-- GXT 3.1+ - Triton Theme -->
+    <dependency>
+      <groupId>com.sencha.gxt</groupId>
+      <artifactId>gxt-theme-triton</artifactId>
+      <version>${gxt.version}</version>
+    </dependency>
+    <!-- Elemento -->
+    <dependency>
+      <groupId>org.jboss.gwt.elemento</groupId>
+      <artifactId>elemento-core</artifactId>
+      <version>${elemento.version}</version>
+    </dependency>
+    <!-- Domino -->
+    <dependency>
+      <groupId>org.dominokit</groupId>
+      <artifactId>domino-ui</artifactId>
+      <version>${domino.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.dominokit</groupId>
+      <artifactId>domino-ui</artifactId>
+      <version>${domino.version}</version>
+      <classifier>sources</classifier>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/com.squareup/javapoet -->
+    <dependency>
+      <groupId>com.squareup</groupId>
+      <artifactId>javapoet</artifactId>
+      <version>${javaPoet.version}</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/junit/junit -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+    </dependency>
+  </dependencies>
+
+  <repositories>
+    <repository>
+      <!-- ~/.m2/settings.xml add <server/> with the support portal credentials -->
+      <id>sencha-gxt-repository</id>
+      <name>Sencha GXT Repository</name>
+      <!-- GPL -->
+      <url>https://maven.sencha.com/repo/gxt-gpl-release</url>
+    </repository>
+  </repositories>
+
+  <build>
+    <finalName>${project.artifactId}</finalName>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+      </resource>
+    </resources>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <configuration>
+          <mainClass>de.gishmo.gwtbootstarternalu.server.GwtBootStarterNaluApplication</mainClass>
+          <jvmArguments>
+             -Dserver.port=${serverPort}
+          </jvmArguments>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>repackage</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>net.ltgt.gwt.maven</groupId>
+        <artifactId>gwt-maven-plugin</artifactId>
+        <version>1.0-rc-9</version>
+        <extensions>true</extensions>
+        <executions>
+          <execution>
+            <goals>
+              <goal>compile</goal>
+              <!--<goal>package-app</goal>-->
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <classpathScope>compile</classpathScope>
+          <moduleName>de.gishmo.gwt.gwtbootstarternalu.GwtBootStarterNalu</moduleName>
+          <moduleShortName>GwtBootStarterNalu</moduleShortName>
+          <modules>de.gishmo.gwt.gwtbootstarternalu.GwtBootStarterNalu</modules>
+          <failOnError>true</failOnError>
+          <!-- GWT 2.8 requires 1.8, hence define sourceLevel here if you use
+           a different source language for java compilation -->
+          <sourceLevel>1.8</sourceLevel>
+          <startupUrls>
+            <startupUrl>http://localhost:8080/GwtBootStarterNalu.html</startupUrl>
+          </startupUrls>
+          <!-- Compiler configuration -->
+          <compilerArgs>
+            <!--Ask GWT to create the Story of Your Compile (SOYC) (gwt:compile)-->
+            <arg>-compileReport</arg>
+            <arg>-XcompilerMetrics</arg>
+            <arg>-localWorkers</arg>
+            <arg>12</arg>
+          </compilerArgs>
+          <logLevel>TRACE</logLevel>
+          <!--<skipModule>true</skipModule>-->
+          <devmodeArgs>
+            <devmodeArg>-noserver</devmodeArg>
+            <devmodeArg>-port</devmodeArg>
+            <devmodeArg>${serverPort}</devmodeArg>
+          </devmodeArgs>
+          <jvmArgs>
+            <arg>-Xmx2G</arg>
+          </jvmArgs>
+          <devmodeWorkDir>${project.build.directory}/classes/static</devmodeWorkDir>
+          <launcherDir>${project.build.directory}/classes/static</launcherDir>
+          <warDir>${project.build.directory}/classes/static</warDir>
+          <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
+          <systemProperties>
+            <gwt.persistentunitcachedir>${project.build.directory}/gwt/unitCache/</gwt.persistentunitcachedir>
+            <gwt.war.directory>${project.build.directory}/classes/static</gwt.war.directory>
+          </systemProperties>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
