@@ -210,7 +210,7 @@ public class ContentComponent
                                                     "a - z, A - Z, 0 - 9, '-' and '.' allowed"));
 
     this.applicationLoader = new CheckBox();
-    this.applicationLoader.setBoxLabel("Generate Apllication Loader class");
+    this.applicationLoader.setBoxLabel("Generate Application Loader class");
 
     this.debug = new CheckBox();
     this.debug.setBoxLabel("Generate Debug support (in development mode)");

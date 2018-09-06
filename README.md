@@ -1,8 +1,5 @@
 <a title="Gitter" href="https://gitter.im/mvp4g/mvp4g"><img src="https://badges.gitter.im/Join%20Chat.svg"></a>
 
-**TODO: Update Bilder & description**
-
-
 # Nalu Project Generator
 
 ## Motivation
@@ -71,23 +68,22 @@ In this area the features of Nalu for generated the project are defined.
 ![Project Meta Data](https://github.com/mvp4g/gwt-boot-starter-nalu/blob/master/etc/images/ApplicationMetaData.png?raw=true)
 
 #### Application Loader
-**TODO: Link**
 If checked, a [application loader](https://github.com/mvp4g/nalu/wiki/02.-Application-Loader) will be added to the project source code.
-can be found [here].
+More information can be found [here](https://github.com/mvp4g/nalu/wiki/03.-Application-Loader).
 
 #### Debug Support
 **TODO: Link**
-If checked, the [Debug](https://github.com/mvp4g/nalu/wiki/03.-Defining-an-Event-Bus#logs) annotation will be
-generated inside the event bus.
+If checked, the [Debug](https://github.com/mvp4g/nalu/wiki/02.-Application#debug-annotation) annotation will be
+aded to the applicaiton interface.
 
 ### Screen Meta Data
 
-In this area the screens are defined. A screen in nalu is a combination of a presenter and a view. There are three
-predefined screens called screen01, screen02 and screen03. The generator needs at least one screen to generate a fully working project.
+In this area the screens are defined. A screen in Nalu is a combination of a controller and a component. There are five
+predefined screens called Screen01, Screen02, Screen03, Screen04 and screen05. The generator needs at least one screen to generate a fully working project.
 
 ![Project Meta Data](https://github.com/mvp4g/gwt-boot-starter-nalu/blob/master/etc/images/ScreenMetaData.png?raw=true)
 
-There are three buttons:
+Te function of the tool bar buttons:
 
 - the first buttons adds another screen
 
@@ -99,15 +95,10 @@ In case you add or edit a screen, a window will open:
 
 ![Add or edit screen data](https://github.com/mvp4g/gwt-boot-starter-nalu/blob/master/etc/images/ScreenWindowMetaData.png?raw=true)
 
-**TODO: udpate text**
-
 Using this window, you can:
 
-* name the screen: this name will be used as package name, the goto event, the presenter- and view-name, etc
-* history name (optional): if entered, this name will be used as token instead the event name
-* view creation method:
-  * view is created by framework: the instance of the view will be created by the framwork (using 'new')
-  * view is created by presenter: the instance of the view has to be created by the developer
+* name of the component: this name will be used as package name, the controller- and component-name, etc
+* route: this route is the url token binded to a controller
 * use this screen as start screen of the application (if there is no history token, this will be the screen, that will
   be shown at start of the application)
-* enable navigation confirmation
+* enable confirmation in case the controller will be stopped
