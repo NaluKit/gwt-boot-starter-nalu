@@ -81,7 +81,9 @@ aded to the applicaiton interface.
 In this area the screens are defined. A screen in Nalu is a combination of a controller and a component. There are five
 predefined screens called Screen01, Screen02, Screen03, Screen04 and screen05. The generator needs at least one screen to generate a fully working project.
 
-![Project Meta Data](https://github.com/mvp4g/gwt-boot-starter-nalu/blob/master/etc/images/ScreenMetaData.png?raw=true)The function of the tool bar buttons:
+![Project Meta Data](https://github.com/mvp4g/gwt-boot-starter-nalu/blob/master/etc/images/ScreenMetaData.png?raw=true)
+
+The function of the tool bar buttons:
 
 - the first buttons adds another screen
 
