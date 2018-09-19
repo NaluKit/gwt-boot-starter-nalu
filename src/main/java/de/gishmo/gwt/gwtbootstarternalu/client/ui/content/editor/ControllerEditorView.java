@@ -99,7 +99,7 @@ public class ControllerEditorView
                        new VerticalLayoutContainer.VerticalLayoutData(1,
                                                                       -1));
     FieldLabel fl02 = new FieldLabel(this.route,
-                                     "Route Name");
+                                     "Component Name");
     fl02.setLabelAlign(FormPanel.LabelAlign.TOP);
     this.container.add(fl02,
                        new VerticalLayoutContainer.VerticalLayoutData(1,
@@ -158,7 +158,7 @@ public class ControllerEditorView
     boolean routeIsValid = this.route.isValid();
     if (routeIsValid) {
       if (getPresenter().doIsRouteAlreadyUsed(driver.flush())) {
-        this.route.markInvalid("Route Name must be unique!");
+        this.route.markInvalid("Component Name must be unique!");
         return false;
       }
     }

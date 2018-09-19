@@ -70,8 +70,7 @@ public class ShellDominoSourceGenerator
                                    "          .getFooter()\n" +
                                    "          .asElement().style.minHeight = $T.MinHeightUnionType.of(\"42px\")",
                                    ClassName.get(CSSProperties.class))
-                     .addStatement("layout.getFooter()\n" +
-                                   "          .asElement().setId(\"footer\")")
+                     .addStatement("layout.getFooter().setId(\"footer\")")
                      .addStatement("layout.getLeftPanel().setId(\"navigation\")")
                      .addStatement("layout.getContentPanel().setId(\"content\")")
                      .build();
