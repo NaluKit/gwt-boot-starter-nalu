@@ -216,6 +216,7 @@ public class Shell
     this.southContainer.add(widget);
   }
 
+  @Selector("content")
   public void setContent(Widget widget) {
     this.centerContainer.add(widget);
   }
