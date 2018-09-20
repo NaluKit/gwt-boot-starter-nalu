@@ -44,12 +44,9 @@ public class Shell
 
   private static ThemeDetails themeDetails = GWT.create(ThemeDetails.class);
 
-  @Selector("north")
-  ContentPanel    northContainer;
-  @Selector("south")
-  ContentPanel    southContainer;
-  @Selector("content")
-  SimpleContainer centerContainer;
+  private ContentPanel    northContainer;
+  private ContentPanel    southContainer;
+  private SimpleContainer centerContainer;
 
   private VerticalLayoutContainer shell;
   private BorderLayoutContainer   container;
@@ -207,5 +204,19 @@ public class Shell
     // create the sleecgtor provider so set Nalu works!
     IsSelectorProvider<Shell> provider = new ShellSelectorProviderImpl();
     provider.initialize(this);
+  }
+
+  @Selector("north")
+  public void setNorth(Widget widget) {
+    this.northContainer.add(widget);
+  }
+
+  @Selector("south")
+  public void setSouth(Widget widget) {
+    this.southContainer.add(widget);
+  }
+
+  public void setContent(Widget widget) {
+    this.centerContainer.add(widget);
   }
 }
