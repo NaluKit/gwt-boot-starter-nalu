@@ -1,6 +1,6 @@
-package de.gishmo.gwt.gwtbootstarternalu.client.ui.header;
+package com.github.nalukit.gwtbootstarternalu.client.ui.header;
 
-import com.github.mvp4g.nalu.client.component.IsComponent;
+import com.github.nalukit.nalu.client.component.IsComponent;
 import com.google.gwt.user.client.ui.Widget;
 
 public interface IHeaderComponent

@@ -1,4 +1,4 @@
-package de.gishmo.gwt.gwtbootstarternalu.client.event;
+package com.github.nalukit.gwtbootstarternalu.client.event;
 
 import org.gwtproject.event.shared.Event;
 

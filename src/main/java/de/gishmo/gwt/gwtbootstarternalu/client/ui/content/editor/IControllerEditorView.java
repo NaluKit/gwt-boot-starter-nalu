@@ -15,9 +15,9 @@
  *
  */
 
-package de.gishmo.gwt.gwtbootstarternalu.client.ui.content.editor;
+package com.github.nalukit.gwtbootstarternalu.client.ui.content.editor;
 
-import de.gishmo.gwt.gwtbootstarternalu.shared.model.ControllerData;
+import com.github.nalukit.gwtbootstarternalu.shared.model.ControllerData;
 
 public interface IControllerEditorView {
 

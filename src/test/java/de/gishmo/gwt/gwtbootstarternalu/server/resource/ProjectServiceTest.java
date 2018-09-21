@@ -15,14 +15,14 @@
  *
  */
 
-package de.gishmo.gwt.gwtbootstarternalu.server.resource;
+package com.github.nalukit.gwtbootstarternalu.server.resource;
 
 
-import de.gishmo.gwt.gwtbootstarternalu.shared.model.ControllerData;
-import de.gishmo.gwt.gwtbootstarternalu.shared.model.DataConstants;
-import de.gishmo.gwt.gwtbootstarternalu.shared.model.NaluGeneraterParms;
-import de.gishmo.gwt.gwtbootstarternalu.shared.model.WidgetLibrary;
-import de.gishmo.gwtbootstarternalu.server.resource.ProjectService;
+import com.github.nalukit.gwtbootstarternalu.shared.model.ControllerData;
+import com.github.nalukit.gwtbootstarternalu.shared.model.DataConstants;
+import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
+import com.github.nalukit.gwtbootstarternalu.shared.model.WidgetLibrary;
+import com.github.nalukitbootstarternalu.server.resource.ProjectService;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -55,7 +55,7 @@ public class ProjectServiceTest {
 
     NaluGeneraterParms naluGeneraterParms = new NaluGeneraterParms();
 
-    naluGeneraterParms.setGroupId("com.github.mvp4g.hokulani.example");
+    naluGeneraterParms.setGroupId("com.github.nalukit.hokulani.example");
     naluGeneraterParms.setArtefactId("hokulani-example");
     naluGeneraterParms.setApplicationLoader(true);
     naluGeneraterParms.setDebug(true);
@@ -96,7 +96,7 @@ public class ProjectServiceTest {
 
     NaluGeneraterParms naluGeneraterParms = new NaluGeneraterParms();
 
-    naluGeneraterParms.setGroupId("com.github.mvp4g.hokulani.example");
+    naluGeneraterParms.setGroupId("com.github.nalukit.hokulani.example");
     naluGeneraterParms.setArtefactId("hokulani-example");
     naluGeneraterParms.setApplicationLoader(true);
     naluGeneraterParms.setDebug(true);
@@ -137,7 +137,7 @@ public class ProjectServiceTest {
 
     NaluGeneraterParms naluGeneraterParms = new NaluGeneraterParms();
 
-    naluGeneraterParms.setGroupId("com.github.mvp4g.hokulani.example");
+    naluGeneraterParms.setGroupId("com.github.nalukit.hokulani.example");
     naluGeneraterParms.setArtefactId("hokulani-example");
     naluGeneraterParms.setApplicationLoader(true);
     naluGeneraterParms.setDebug(true);
@@ -179,7 +179,7 @@ public class ProjectServiceTest {
 
     NaluGeneraterParms naluGeneraterParms = new NaluGeneraterParms();
 
-    naluGeneraterParms.setGroupId("com.github.mvp4g.hokulani.example");
+    naluGeneraterParms.setGroupId("com.github.nalukit.hokulani.example");
     naluGeneraterParms.setArtefactId("hokulani-example");
     naluGeneraterParms.setApplicationLoader(true);
     naluGeneraterParms.setDebug(true);

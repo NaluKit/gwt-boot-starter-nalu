@@ -15,7 +15,7 @@
  *
  */
 
-package de.gishmo.gwt.gwtbootstarternalu.client.ui;
+package com.github.nalukit.gwtbootstarternalu.client.ui;
 
 public class Constants {
 

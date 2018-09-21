@@ -15,11 +15,11 @@
  *
  */
 
-package de.gishmo.gwtbootstarternalu.server.resource.generator.impl.gwt;
+package com.github.nalukitbootstarternalu.server.resource.generator.impl.gwt;
 
-import de.gishmo.gwt.gwtbootstarternalu.shared.model.GeneratorException;
-import de.gishmo.gwt.gwtbootstarternalu.shared.model.NaluGeneraterParms;
-import de.gishmo.gwtbootstarternalu.server.resource.generator.GeneratorUtils;
+import com.github.nalukit.gwtbootstarternalu.shared.model.GeneratorException;
+import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
+import com.github.nalukitbootstarternalu.server.resource.generator.GeneratorUtils;
 
 import java.io.File;
 import java.io.IOException;

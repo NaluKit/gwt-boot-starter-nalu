@@ -15,13 +15,13 @@
  *
  */
 
-package de.gishmo.gwt.gwtbootstarternalu.client.model;
+package com.github.nalukit.gwtbootstarternalu.client.model;
 
 import com.google.gwt.editor.client.Editor;
 import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.data.shared.ModelKeyProvider;
 import com.sencha.gxt.data.shared.PropertyAccess;
-import de.gishmo.gwt.gwtbootstarternalu.shared.model.ControllerData;
+import com.github.nalukit.gwtbootstarternalu.shared.model.ControllerData;
 
 public interface ControllerDataProps
   extends PropertyAccess<ControllerData> {

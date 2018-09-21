@@ -1,4 +1,4 @@
-package de.gishmo.gwt.gwtbootstarternalu.client.ui;
+package com.github.nalukit.gwtbootstarternalu.client.ui;
 
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.ui.Widget;

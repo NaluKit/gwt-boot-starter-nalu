@@ -15,7 +15,7 @@
  *
  */
 
-package de.gishmo.gwtbootstarternalu.server;
+package com.github.nalukitbootstarternalu.server;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,7 +26,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.core.env.Environment;
 
-@SpringBootApplication(scanBasePackages = "de.gishmo.gwtbootstarternalu.server.resource")
+@SpringBootApplication(scanBasePackages = "com.github.nalukitbootstarternalu.server.resource")
 public class GwtBootStarterNaluApplication
   extends SpringBootServletInitializer {
 

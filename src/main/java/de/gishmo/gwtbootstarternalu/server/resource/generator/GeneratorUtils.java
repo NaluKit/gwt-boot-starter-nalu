@@ -15,7 +15,7 @@
  *
  */
 
-package de.gishmo.gwtbootstarternalu.server.resource.generator;
+package com.github.nalukitbootstarternalu.server.resource.generator;
 
 public class GeneratorUtils {
 

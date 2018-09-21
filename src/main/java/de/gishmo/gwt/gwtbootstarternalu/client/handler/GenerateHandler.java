@@ -15,10 +15,10 @@
  *
  */
 
-package de.gishmo.gwt.gwtbootstarternalu.client.handler;
+package com.github.nalukit.gwtbootstarternalu.client.handler;
 
-import com.github.mvp4g.nalu.client.handler.AbstractHandler;
-import com.github.mvp4g.nalu.client.handler.annotation.Handler;
+import com.github.nalukit.nalu.client.handler.AbstractHandler;
+import com.github.nalukit.nalu.client.handler.annotation.Handler;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.user.client.Window;
@@ -28,9 +28,9 @@ import com.sencha.gxt.widget.core.client.Dialog;
 import com.sencha.gxt.widget.core.client.ProgressBar;
 import com.sencha.gxt.widget.core.client.container.BoxLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer;
-import de.gishmo.gwt.gwtbootstarternalu.client.ApplicationContext;
-import de.gishmo.gwt.gwtbootstarternalu.client.event.GenerateProjectEvent;
-import de.gishmo.gwt.gwtbootstarternalu.client.service.ProjectService;
+import com.github.nalukit.gwtbootstarternalu.client.ApplicationContext;
+import com.github.nalukit.gwtbootstarternalu.client.event.GenerateProjectEvent;
+import com.github.nalukit.gwtbootstarternalu.client.service.ProjectService;
 import org.fusesource.restygwt.client.Method;
 import org.fusesource.restygwt.client.Resource;
 import org.fusesource.restygwt.client.RestServiceProxy;

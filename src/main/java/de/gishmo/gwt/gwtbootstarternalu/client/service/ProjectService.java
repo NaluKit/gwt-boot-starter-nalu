@@ -15,9 +15,9 @@
  *
  */
 
-package de.gishmo.gwt.gwtbootstarternalu.client.service;
+package com.github.nalukit.gwtbootstarternalu.client.service;
 
-import de.gishmo.gwt.gwtbootstarternalu.shared.model.NaluGeneraterParms;
+import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
 import org.fusesource.restygwt.client.RestService;
 import org.fusesource.restygwt.client.TextCallback;
 

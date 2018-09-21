@@ -15,9 +15,9 @@
  *
  */
 
-package de.gishmo.gwt.gwtbootstarternalu.client;
+package com.github.nalukit.gwtbootstarternalu.client;
 
-import com.github.mvp4g.nalu.plugin.gwt.client.NaluPluginGWT;
+import com.github.nalikit.nalu.plugin.gwt.client.NaluPluginGWT;
 import com.google.gwt.core.client.EntryPoint;
 
 public class GwtBootStarterNalu

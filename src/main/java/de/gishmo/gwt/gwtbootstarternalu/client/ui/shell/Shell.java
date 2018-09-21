@@ -15,11 +15,11 @@
  *
  */
 
-package de.gishmo.gwt.gwtbootstarternalu.client.ui.shell;
+package com.github.nalukit.gwtbootstarternalu.client.ui.shell;
 
-import com.github.mvp4g.nalu.client.component.AbstractShell;
-import com.github.mvp4g.nalu.plugin.gwt.client.annotation.Selector;
-import com.github.mvp4g.nalu.plugin.gwt.client.selector.IsSelectorProvider;
+import com.github.nalukit.nalu.client.component.AbstractShell;
+import com.github.nalikit.nalu.plugin.gwt.client.annotation.Selector;
+import com.github.nalikit.nalu.plugin.gwt.client.selector.IsSelectorProvider;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.ui.Anchor;
@@ -31,9 +31,9 @@ import com.sencha.gxt.themebuilder.base.client.config.ThemeDetails;
 import com.sencha.gxt.widget.core.client.ContentPanel;
 import com.sencha.gxt.widget.core.client.box.AutoProgressMessageBox;
 import com.sencha.gxt.widget.core.client.container.*;
-import de.gishmo.gwt.gwtbootstarternalu.client.ApplicationContext;
-import de.gishmo.gwt.gwtbootstarternalu.client.Version;
-import de.gishmo.gwt.gwtbootstarternalu.client.ui.Constants;
+import com.github.nalukit.gwtbootstarternalu.client.ApplicationContext;
+import com.github.nalukit.gwtbootstarternalu.client.Version;
+import com.github.nalukit.gwtbootstarternalu.client.ui.Constants;
 
 /**
  * this is the presenter of the shell. The shell divides the browser in

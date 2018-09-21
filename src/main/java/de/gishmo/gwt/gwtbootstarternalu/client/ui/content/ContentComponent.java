@@ -15,9 +15,9 @@
  *
  */
 
-package de.gishmo.gwt.gwtbootstarternalu.client.ui.content;
+package com.github.nalukit.gwtbootstarternalu.client.ui.content;
 
-import com.github.mvp4g.nalu.client.component.AbstractComponent;
+import com.github.nalukit.nalu.client.component.AbstractComponent;
 import com.google.gwt.cell.client.AbstractCell;
 import com.google.gwt.cell.client.Cell;
 import com.google.gwt.core.client.GWT;
@@ -46,11 +46,11 @@ import com.sencha.gxt.widget.core.client.grid.Grid;
 import com.sencha.gxt.widget.core.client.toolbar.FillToolItem;
 import com.sencha.gxt.widget.core.client.toolbar.SeparatorToolItem;
 import com.sencha.gxt.widget.core.client.toolbar.ToolBar;
-import de.gishmo.gwt.gwtbootstarternalu.client.model.ControllerDataProps;
-import de.gishmo.gwt.gwtbootstarternalu.client.resources.ImageResources;
-import de.gishmo.gwt.gwtbootstarternalu.client.ui.Constants;
-import de.gishmo.gwt.gwtbootstarternalu.client.ui.UiUtils;
-import de.gishmo.gwt.gwtbootstarternalu.shared.model.*;
+import com.github.nalukit.gwtbootstarternalu.client.model.ControllerDataProps;
+import com.github.nalukit.gwtbootstarternalu.client.resources.ImageResources;
+import com.github.nalukit.gwtbootstarternalu.client.ui.Constants;
+import com.github.nalukit.gwtbootstarternalu.client.ui.UiUtils;
+import com.github.nalukit.gwtbootstarternalu.shared.model.*;
 
 import java.util.ArrayList;
 import java.util.List;

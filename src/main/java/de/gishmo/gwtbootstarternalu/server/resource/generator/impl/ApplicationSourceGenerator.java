@@ -15,18 +15,18 @@
  *
  */
 
-package de.gishmo.gwtbootstarternalu.server.resource.generator.impl;
+package com.github.nalukitbootstarternalu.server.resource.generator.impl;
 
-import com.github.mvp4g.nalu.client.application.IsApplication;
-import com.github.mvp4g.nalu.client.application.annotation.Application;
-import com.github.mvp4g.nalu.client.application.annotation.Debug;
-import com.github.mvp4g.nalu.plugin.elemental2.client.DefaultElemental2Logger;
-import com.github.mvp4g.nalu.plugin.gwt.client.DefaultGWTLogger;
+import com.github.nalukit.nalu.client.application.IsApplication;
+import com.github.nalukit.nalu.client.application.annotation.Application;
+import com.github.nalukit.nalu.client.application.annotation.Debug;
+import com.github.nalikit.nalu.plugin.elemental2.client.DefaultElemental2Logger;
+import com.github.nalikit.nalu.plugin.gwt.client.DefaultGWTLogger;
 import com.squareup.javapoet.*;
-import de.gishmo.gwt.gwtbootstarternalu.shared.model.GeneratorException;
-import de.gishmo.gwt.gwtbootstarternalu.shared.model.NaluGeneraterParms;
-import de.gishmo.gwtbootstarternalu.server.resource.generator.GeneratorConstants;
-import de.gishmo.gwtbootstarternalu.server.resource.generator.GeneratorUtils;
+import com.github.nalukit.gwtbootstarternalu.shared.model.GeneratorException;
+import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
+import com.github.nalukitbootstarternalu.server.resource.generator.GeneratorConstants;
+import com.github.nalukitbootstarternalu.server.resource.generator.GeneratorUtils;
 
 import javax.lang.model.element.Modifier;
 import java.io.File;

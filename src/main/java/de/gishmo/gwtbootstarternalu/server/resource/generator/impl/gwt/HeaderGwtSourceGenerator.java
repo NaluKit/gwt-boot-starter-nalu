@@ -15,7 +15,7 @@
  *
  */
 
-package de.gishmo.gwtbootstarternalu.server.resource.generator.impl.gwt;
+package com.github.nalukitbootstarternalu.server.resource.generator.impl.gwt;
 
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.ui.Label;
@@ -24,8 +24,8 @@ import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.FieldSpec;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeSpec;
-import de.gishmo.gwt.gwtbootstarternalu.shared.model.NaluGeneraterParms;
-import de.gishmo.gwtbootstarternalu.server.resource.generator.impl.AbstractHeaderSourceGenerator;
+import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
+import com.github.nalukitbootstarternalu.server.resource.generator.impl.AbstractHeaderSourceGenerator;
 
 import javax.lang.model.element.Modifier;
 import java.io.File;

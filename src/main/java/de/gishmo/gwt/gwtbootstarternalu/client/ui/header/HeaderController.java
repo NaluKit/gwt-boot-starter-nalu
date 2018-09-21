@@ -15,12 +15,12 @@
  *
  */
 
-package de.gishmo.gwt.gwtbootstarternalu.client.ui.header;
+package com.github.nalukit.gwtbootstarternalu.client.ui.header;
 
-import com.github.mvp4g.nalu.client.component.AbstractComponentController;
-import com.github.mvp4g.nalu.client.component.annotation.Controller;
+import com.github.nalukit.nalu.client.component.AbstractComponentController;
+import com.github.nalukit.nalu.client.component.annotation.Controller;
 import com.google.gwt.user.client.ui.Widget;
-import de.gishmo.gwt.gwtbootstarternalu.client.ApplicationContext;
+import com.github.nalukit.gwtbootstarternalu.client.ApplicationContext;
 
 @Controller(route = "/",
   selector = "north",

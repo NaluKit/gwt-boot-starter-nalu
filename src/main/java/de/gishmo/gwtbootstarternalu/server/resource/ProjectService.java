@@ -15,14 +15,14 @@
  *
  */
 
-package de.gishmo.gwtbootstarternalu.server.resource;
+package com.github.nalukitbootstarternalu.server.resource;
 
-import de.gishmo.gwt.gwtbootstarternalu.shared.model.GeneratorException;
-import de.gishmo.gwt.gwtbootstarternalu.shared.model.NaluGeneraterParms;
-import de.gishmo.gwtbootstarternalu.server.resource.generator.ModuleDescriptorGenerator;
-import de.gishmo.gwtbootstarternalu.server.resource.generator.PomGenerator;
-import de.gishmo.gwtbootstarternalu.server.resource.generator.SourceGenerator;
-import de.gishmo.gwtbootstarternalu.server.resource.model.ProjectZip;
+import com.github.nalukit.gwtbootstarternalu.shared.model.GeneratorException;
+import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
+import com.github.nalukitbootstarternalu.server.resource.generator.ModuleDescriptorGenerator;
+import com.github.nalukitbootstarternalu.server.resource.generator.PomGenerator;
+import com.github.nalukitbootstarternalu.server.resource.generator.SourceGenerator;
+import com.github.nalukitbootstarternalu.server.resource.model.ProjectZip;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

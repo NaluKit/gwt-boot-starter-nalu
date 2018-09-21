@@ -15,10 +15,10 @@
  *
  */
 
-package de.gishmo.gwtbootstarternalu.server.resource.generator;
+package com.github.nalukitbootstarternalu.server.resource.generator;
 
-import de.gishmo.gwt.gwtbootstarternalu.shared.model.GeneratorException;
-import de.gishmo.gwt.gwtbootstarternalu.shared.model.NaluGeneraterParms;
+import com.github.nalukit.gwtbootstarternalu.shared.model.GeneratorException;
+import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -593,7 +593,7 @@ public class PomGenerator {
       //      .append(GeneratorConstants.LINE_BREAK)
       //      .append(this.addAddrLine(16,
       //                               "annotationProcessor",
-      //                               "com.github.mvp4g.mvp4g2.processor.NaluProcessor"))
+      //                               "com.github.nalukit.mvp4g2.processor.NaluProcessor"))
       //      .append("              </annotationProcessors>")
       //      .append(GeneratorConstants.LINE_BREAK)
       .append("        </configuration>")
@@ -679,7 +679,7 @@ public class PomGenerator {
                                GeneratorUtils.removeBadChracters(this.naluGeneraterParms.getArtefactId())))
       .append(this.addAddrLine(2,
                                "version",
-                               "1.0.0-SNAPSHOT"))
+                               "1.0.0-RC-1"))
       .append(GeneratorConstants.LINE_BREAK)
       .append(this.addAddrLine(2,
                                "packaging",
@@ -713,7 +713,7 @@ public class PomGenerator {
                                   "nalu version"))
       .append(this.addAddrLine(4,
                                "nalu.version",
-                               "1.0.0-SNAPSHOT"))
+                               "1.0.0-RC-1"))
       .append(GeneratorConstants.LINE_BREAK)
       .append(this.addAddrLine(4,
                                "gwt.events",
@@ -811,17 +811,17 @@ public class PomGenerator {
                                  "provided",
                                  null))
       .append(this.addDependency(4,
-                                 "com.github.mvp4g",
+                                 "com.github.nalukit",
                                  "nalu",
                                  "${nalu.version}"))
       .append(this.addDependency(4,
-                                 "com.github.mvp4g",
+                                 "com.github.nalukit",
                                  "nalu-processor",
                                  "${nalu.version}"));
     switch (this.naluGeneraterParms.getWidgetLibrary()) {
       case DOMINO_UI:
         sb.append(this.addDependency(4,
-                                     "com.github.mvp4g",
+                                     "com.github.nalukit",
                                      "nalu-plugin-elemental2",
                                      "${nalu.version}"))
           .append(this.addDependency(4,
@@ -839,7 +839,7 @@ public class PomGenerator {
         break;
       case ELEMENTO:
         sb.append(this.addDependency(4,
-                                     "com.github.mvp4g",
+                                     "com.github.nalukit",
                                      "nalu-plugin-elemental2",
                                      "${nalu.version}"))
           .append(this.addDependency(4,
@@ -849,11 +849,11 @@ public class PomGenerator {
         break;
       case GWT:
         sb.append(this.addDependency(4,
-                                     "com.github.mvp4g",
+                                     "com.github.nalukit",
                                      "nalu-plugin-gwt",
                                      "${nalu.version}"))
           .append(this.addDependency(4,
-                                     "com.github.mvp4g",
+                                     "com.github.nalukit",
                                      "nalu-plugin-gwt-processor",
                                      "${nalu.version}"));
         break;
@@ -863,11 +863,11 @@ public class PomGenerator {
                                      "gxt",
                                      "${gxt.version}"))
           .append(this.addDependency(4,
-                                     "com.github.mvp4g",
+                                     "com.github.nalukit",
                                      "nalu-plugin-gwt",
                                      "${nalu.version}"))
           .append(this.addDependency(4,
-                                     "com.github.mvp4g",
+                                     "com.github.nalukit",
                                      "nalu-plugin-gwt-processor",
                                      "${nalu.version}"))
           .append(this.addDependency(4,

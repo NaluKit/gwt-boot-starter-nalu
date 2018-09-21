@@ -15,7 +15,7 @@
  *
  */
 
-package de.gishmo.gwt.gwtbootstarternalu.shared.model;
+package com.github.nalukit.gwtbootstarternalu.shared.model;
 
 public class DataConstants {
 

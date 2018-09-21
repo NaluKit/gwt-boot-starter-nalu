@@ -15,13 +15,13 @@
  *
  */
 
-package de.gishmo.gwtbootstarternalu.server.resource.generator.impl.domino;
+package com.github.nalukitbootstarternalu.server.resource.generator.impl.domino;
 
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeSpec;
-import de.gishmo.gwt.gwtbootstarternalu.shared.model.NaluGeneraterParms;
-import de.gishmo.gwtbootstarternalu.server.resource.generator.impl.AbstractShellSourceGenerator;
+import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
+import com.github.nalukitbootstarternalu.server.resource.generator.impl.AbstractShellSourceGenerator;
 import elemental2.dom.CSSProperties;
 import org.dominokit.domino.ui.layout.Layout;
 import org.dominokit.domino.ui.style.ColorScheme;

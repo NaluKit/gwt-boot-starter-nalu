@@ -30,15 +30,15 @@
   <inherits name="com.sencha.gxt.ui.GXT"/>
   <!--<inherits name="com.sencha.gxt.theme.neptune.Theme"/>-->
   <inherits name="com.sencha.gxt.theme.triton.Theme"/>
-  <inherits name="com.github.mvp4g.nalu.Nalu"/>
-  <inherits name='com.github.mvp4g.nalu.plugin.gwt.NaluPluginGWT'/>
+  <inherits name="com.github.nalukit.nalu.Nalu"/>
+  <inherits name='com.github.nalukit.nalu.plugin.gwt.NaluPluginGWT'/>
   <inherits name="org.fusesource.restygwt.RestyGWT"/>
 
   <!-- GXT Stylesheet -->
   <stylesheet src="reset.css"/>
 
   <!-- Specify the app entry point class.                         -->
-  <entry-point class='de.gishmo.gwt.gwtbootstarternalu.client.GwtBootStarterNalu'/>
+  <entry-point class='com.github.nalukit.gwtbootstarternalu.client.GwtBootStarterNalu'/>
 
   <!-- Specify the paths for translatable code                    -->
   <source path='client'/>

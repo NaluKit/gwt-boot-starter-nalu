@@ -15,7 +15,7 @@
  *
  */
 
-package de.gishmo.gwt.gwtbootstarternalu.client.resources;
+package com.github.nalukit.gwtbootstarternalu.client.resources;
 
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.resources.client.ClientBundle;
