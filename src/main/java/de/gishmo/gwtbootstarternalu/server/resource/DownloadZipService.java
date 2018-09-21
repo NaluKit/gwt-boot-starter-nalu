@@ -15,9 +15,9 @@
  *
  */
 
-package de.gishmo.gwtbootstarternalu.server.resource;
+package com.github.nalukitbootstarternalu.server.resource;
 
-import de.gishmo.gwtbootstarternalu.server.resource.model.ProjectZip;
+import com.github.nalukitbootstarternalu.server.resource.model.ProjectZip;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

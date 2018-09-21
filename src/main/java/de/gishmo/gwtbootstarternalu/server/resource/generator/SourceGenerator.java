@@ -15,19 +15,19 @@
  *
  */
 
-package de.gishmo.gwtbootstarternalu.server.resource.generator;
+package com.github.nalukitbootstarternalu.server.resource.generator;
 
-import de.gishmo.gwt.gwtbootstarternalu.shared.model.ControllerData;
-import de.gishmo.gwt.gwtbootstarternalu.shared.model.GeneratorException;
-import de.gishmo.gwt.gwtbootstarternalu.shared.model.NaluGeneraterParms;
-import de.gishmo.gwtbootstarternalu.server.resource.generator.impl.*;
-import de.gishmo.gwtbootstarternalu.server.resource.generator.impl.domino.ControllerComponentDominoSourceGenerator;
-import de.gishmo.gwtbootstarternalu.server.resource.generator.impl.domino.NavigationDominoSourceGenerator;
-import de.gishmo.gwtbootstarternalu.server.resource.generator.impl.domino.ShellDominoSourceGenerator;
-import de.gishmo.gwtbootstarternalu.server.resource.generator.impl.domino.StatusBarDominoSourceGenerator;
-import de.gishmo.gwtbootstarternalu.server.resource.generator.impl.elemento.*;
-import de.gishmo.gwtbootstarternalu.server.resource.generator.impl.gwt.*;
-import de.gishmo.gwtbootstarternalu.server.resource.generator.impl.gxt.*;
+import com.github.nalukit.gwtbootstarternalu.shared.model.ControllerData;
+import com.github.nalukit.gwtbootstarternalu.shared.model.GeneratorException;
+import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
+import com.github.nalukitbootstarternalu.server.resource.generator.impl.*;
+import com.github.nalukitbootstarternalu.server.resource.generator.impl.domino.ControllerComponentDominoSourceGenerator;
+import com.github.nalukitbootstarternalu.server.resource.generator.impl.domino.NavigationDominoSourceGenerator;
+import com.github.nalukitbootstarternalu.server.resource.generator.impl.domino.ShellDominoSourceGenerator;
+import com.github.nalukitbootstarternalu.server.resource.generator.impl.domino.StatusBarDominoSourceGenerator;
+import com.github.nalukitbootstarternalu.server.resource.generator.impl.elemento.*;
+import com.github.nalukitbootstarternalu.server.resource.generator.impl.gwt.*;
+import com.github.nalukitbootstarternalu.server.resource.generator.impl.gxt.*;
 
 import java.io.File;
 

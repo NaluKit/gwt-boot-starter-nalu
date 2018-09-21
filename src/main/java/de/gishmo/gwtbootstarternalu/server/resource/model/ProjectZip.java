@@ -15,7 +15,7 @@
  *
  */
 
-package de.gishmo.gwtbootstarternalu.server.resource.model;
+package com.github.nalukitbootstarternalu.server.resource.model;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;

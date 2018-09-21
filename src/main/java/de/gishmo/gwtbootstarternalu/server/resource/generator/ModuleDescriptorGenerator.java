@@ -15,11 +15,11 @@
  *
  */
 
-package de.gishmo.gwtbootstarternalu.server.resource.generator;
+package com.github.nalukitbootstarternalu.server.resource.generator;
 
-import de.gishmo.gwt.gwtbootstarternalu.shared.model.GeneratorException;
-import de.gishmo.gwt.gwtbootstarternalu.shared.model.NaluGeneraterParms;
-import de.gishmo.gwt.gwtbootstarternalu.shared.model.WidgetLibrary;
+import com.github.nalukit.gwtbootstarternalu.shared.model.GeneratorException;
+import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
+import com.github.nalukit.gwtbootstarternalu.shared.model.WidgetLibrary;
 
 import java.io.File;
 import java.io.IOException;
@@ -92,31 +92,31 @@ public class ModuleDescriptorGenerator {
     }
     sb.append("  <!-- Other module inherits                                      -->")
       .append(GeneratorConstants.LINE_BREAK)
-      .append("  <inherits name='com.github.mvp4g.nalu.Nalu'/>")
+      .append("  <inherits name='com.github.nalukit.nalu.Nalu'/>")
       .append(GeneratorConstants.LINE_BREAK);
     switch (this.naluGeneraterParms.getWidgetLibrary()) {
       case DOMINO_UI:
-        sb.append("  <inherits name='com.github.mvp4g.nalu.plugin.elemental2.NaluPluginElemental2'/>")
+        sb.append("  <inherits name='com.github.nalukit.nalu.plugin.elemental2.NaluPluginElemental2'/>")
           .append(GeneratorConstants.LINE_BREAK)
           .append("  <inherits name='org.dominokit.domino.ui.DominoUI'/> ")
           .append(GeneratorConstants.LINE_BREAK);
         break;
       case ELEMENTO:
-        sb.append("  <inherits name='com.github.mvp4g.nalu.plugin.elemental2.NaluPluginElemental2'/>")
+        sb.append("  <inherits name='com.github.nalukit.nalu.plugin.elemental2.NaluPluginElemental2'/>")
           .append(GeneratorConstants.LINE_BREAK)
           .append("  <inherits name='org.jboss.gwt.elemento.Core'/>")
           .append(GeneratorConstants.LINE_BREAK);
         break;
       case GWT:
-        sb.append("  <inherits name='com.github.mvp4g.nalu.Nalu'/>")
+        sb.append("  <inherits name='com.github.nalukit.nalu.Nalu'/>")
           .append(GeneratorConstants.LINE_BREAK)
-          .append("  <inherits name='com.github.mvp4g.nalu.plugin.gwt.NaluPluginGWT'/>")
+          .append("  <inherits name='com.github.nalukit.nalu.plugin.gwt.NaluPluginGWT'/>")
           .append(GeneratorConstants.LINE_BREAK);
         break;
       case GXT:
-        sb.append("  <inherits name='com.github.mvp4g.nalu.Nalu'/>")
+        sb.append("  <inherits name='com.github.nalukit.nalu.Nalu'/>")
           .append(GeneratorConstants.LINE_BREAK)
-          .append("  <inherits name='com.github.mvp4g.nalu.plugin.gwt.NaluPluginGWT'/>")
+          .append("  <inherits name='com.github.nalukit.nalu.plugin.gwt.NaluPluginGWT'/>")
           .append(GeneratorConstants.LINE_BREAK)
           .append("  <inherits name='com.sencha.gxt.ui.GXT'/>")
           .append(GeneratorConstants.LINE_BREAK)

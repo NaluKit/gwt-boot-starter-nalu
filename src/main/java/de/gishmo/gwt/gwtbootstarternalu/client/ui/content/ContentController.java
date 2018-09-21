@@ -15,16 +15,16 @@
  *
  */
 
-package de.gishmo.gwt.gwtbootstarternalu.client.ui.content;
+package com.github.nalukit.gwtbootstarternalu.client.ui.content;
 
-import com.github.mvp4g.nalu.client.component.AbstractComponentController;
-import com.github.mvp4g.nalu.client.component.annotation.Controller;
+import com.github.nalukit.nalu.client.component.AbstractComponentController;
+import com.github.nalukit.nalu.client.component.annotation.Controller;
 import com.google.gwt.user.client.ui.Widget;
-import de.gishmo.gwt.gwtbootstarternalu.client.ApplicationContext;
-import de.gishmo.gwt.gwtbootstarternalu.client.event.FlushProjectEvent;
-import de.gishmo.gwt.gwtbootstarternalu.client.event.GenerateProjectEvent;
-import de.gishmo.gwt.gwtbootstarternalu.client.ui.content.editor.ControllerEditor;
-import de.gishmo.gwt.gwtbootstarternalu.shared.model.ControllerData;
+import com.github.nalukit.gwtbootstarternalu.client.ApplicationContext;
+import com.github.nalukit.gwtbootstarternalu.client.event.FlushProjectEvent;
+import com.github.nalukit.gwtbootstarternalu.client.event.GenerateProjectEvent;
+import com.github.nalukit.gwtbootstarternalu.client.ui.content.editor.ControllerEditor;
+import com.github.nalukit.gwtbootstarternalu.shared.model.ControllerData;
 
 import java.util.stream.IntStream;
 

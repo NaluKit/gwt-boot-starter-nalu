@@ -15,7 +15,7 @@
  *
  */
 
-package de.gishmo.gwtbootstarternalu.server.resource.generator.impl.gxt;
+package com.github.nalukitbootstarternalu.server.resource.generator.impl.gxt;
 
 import com.sencha.gxt.core.client.util.Margins;
 import com.sencha.gxt.widget.core.client.button.TextButton;
@@ -24,8 +24,8 @@ import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeSpec;
-import de.gishmo.gwt.gwtbootstarternalu.shared.model.NaluGeneraterParms;
-import de.gishmo.gwtbootstarternalu.server.resource.generator.impl.AbstractNavigationSourceGenerator;
+import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
+import com.github.nalukitbootstarternalu.server.resource.generator.impl.AbstractNavigationSourceGenerator;
 
 import javax.lang.model.element.Modifier;
 import java.io.File;

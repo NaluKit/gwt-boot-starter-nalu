@@ -15,7 +15,7 @@
  *
  */
 
-package de.gishmo.gwtbootstarternalu.server.resource.generator.impl;
+package com.github.nalukitbootstarternalu.server.resource.generator.impl;
 
 public class Comments {
 

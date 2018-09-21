@@ -15,9 +15,9 @@
  *
  */
 
-package de.gishmo.gwt.gwtbootstarternalu.client.ui.header;
+package com.github.nalukit.gwtbootstarternalu.client.ui.header;
 
-import com.github.mvp4g.nalu.client.component.AbstractComponent;
+import com.github.nalukit.nalu.client.component.AbstractComponent;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.ui.Label;
@@ -26,7 +26,7 @@ import com.sencha.gxt.core.client.util.Margins;
 import com.sencha.gxt.themebuilder.base.client.config.ThemeDetails;
 import com.sencha.gxt.widget.core.client.container.CenterLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
-import de.gishmo.gwt.gwtbootstarternalu.client.ui.Constants;
+import com.github.nalukit.gwtbootstarternalu.client.ui.Constants;
 
 public class HeaderComponent
   extends AbstractComponent<IHeaderComponent.Controller, Widget>

@@ -1,9 +1,9 @@
-package de.gishmo.gwt.gwtbootstarternalu.client.ui.content;
+package com.github.nalukit.gwtbootstarternalu.client.ui.content;
 
-import com.github.mvp4g.nalu.client.component.IsComponent;
+import com.github.nalukit.nalu.client.component.IsComponent;
 import com.google.gwt.user.client.ui.Widget;
-import de.gishmo.gwt.gwtbootstarternalu.shared.model.NaluGeneraterParms;
-import de.gishmo.gwt.gwtbootstarternalu.shared.model.ControllerData;
+import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
+import com.github.nalukit.gwtbootstarternalu.shared.model.ControllerData;
 
 public interface IContentComponent
   extends IsComponent<IContentComponent.Controller, Widget> {

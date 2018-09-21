@@ -15,9 +15,9 @@
  *
  */
 
-package de.gishmo.gwt.gwtbootstarternalu.server.resource.generator;
+package com.github.nalukit.gwtbootstarternalu.server.resource.generator;
 
-import de.gishmo.gwt.gwtbootstarternalu.shared.model.*;
+import com.github.nalukit.gwtbootstarternalu.shared.model.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

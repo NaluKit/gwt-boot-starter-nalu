@@ -21,7 +21,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.github.mvp4g</groupId>
+  <groupId>com.github.nalukit</groupId>
   <artifactId>gwt-boot-starter-nalu</artifactId>
   <version>1.0.0</version>
 
@@ -44,7 +44,7 @@
     <!-- Elemento version -->
     <elemento.version>0.8.1</elemento.version>
     <!-- nalu version -->
-    <nalu.version>1.0.0-SNAPSHOT</nalu.version>
+    <nalu.version>1.0.0-RC-1</nalu.version>
 
     <gwt-events.version>HEAD-SNAPSHOT</gwt-events.version>
 
@@ -100,28 +100,28 @@
       <!--<scope>provided</scope>-->
     </dependency>
     <dependency>
-      <groupId>com.github.mvp4g</groupId>
+      <groupId>com.github.nalukit</groupId>
       <artifactId>nalu</artifactId>
       <version>${nalu.version}</version>
     </dependency>
     <dependency>
-      <groupId>com.github.mvp4g</groupId>
+      <groupId>com.github.nalukit</groupId>
       <artifactId>nalu-processor</artifactId>
       <version>${nalu.version}</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>com.github.mvp4g</groupId>
+      <groupId>com.github.nalukit</groupId>
       <artifactId>nalu-plugin-gwt</artifactId>
       <version>${nalu.version}</version>
     </dependency>
     <dependency>
-      <groupId>com.github.mvp4g</groupId>
+      <groupId>com.github.nalukit</groupId>
       <artifactId>nalu-plugin-elemental2</artifactId>
       <version>${nalu.version}</version>
     </dependency>
     <dependency>
-      <groupId>com.github.mvp4g</groupId>
+      <groupId>com.github.nalukit</groupId>
       <artifactId>nalu-plugin-gwt-processor</artifactId>
       <version>${nalu.version}</version>
       <scope>provided</scope>
@@ -231,7 +231,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
         <configuration>
-          <mainClass>de.gishmo.gwtbootstarternalu.server.GwtBootStarterNaluApplication</mainClass>
+          <mainClass>com.github.nalukitbootstarternalu.server.GwtBootStarterNaluApplication</mainClass>
           <jvmArguments>
              -Dserver.port=${serverPort}
           </jvmArguments>
@@ -259,9 +259,9 @@
         </executions>
         <configuration>
           <classpathScope>compile</classpathScope>
-          <moduleName>de.gishmo.gwt.gwtbootstarternalu.GwtBootStarterNalu</moduleName>
+          <moduleName>com.github.nalukit.gwtbootstarternalu.GwtBootStarterNalu</moduleName>
           <moduleShortName>GwtBootStarterNalu</moduleShortName>
-          <modules>de.gishmo.gwt.gwtbootstarternalu.GwtBootStarterNalu</modules>
+          <modules>com.github.nalukit.gwtbootstarternalu.GwtBootStarterNalu</modules>
           <failOnError>true</failOnError>
           <!-- GWT 2.8 requires 1.8, hence define sourceLevel here if you use
            a different source language for java compilation -->

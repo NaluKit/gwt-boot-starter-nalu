@@ -15,7 +15,7 @@
  *
  */
 
-package de.gishmo.gwtbootstarternalu.server.resource;
+package com.github.nalukitbootstarternalu.server.resource;
 
 import org.springframework.http.MediaType;
 

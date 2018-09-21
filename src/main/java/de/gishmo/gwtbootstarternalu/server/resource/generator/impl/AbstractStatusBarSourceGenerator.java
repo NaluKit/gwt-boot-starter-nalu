@@ -15,16 +15,16 @@
  *
  */
 
-package de.gishmo.gwtbootstarternalu.server.resource.generator.impl;
+package com.github.nalukitbootstarternalu.server.resource.generator.impl;
 
-import com.github.mvp4g.nalu.client.component.AbstractComponent;
-import com.github.mvp4g.nalu.client.component.AbstractComponentController;
-import com.github.mvp4g.nalu.client.component.IsComponent;
-import com.github.mvp4g.nalu.client.component.annotation.Controller;
+import com.github.nalukit.nalu.client.component.AbstractComponent;
+import com.github.nalukit.nalu.client.component.AbstractComponentController;
+import com.github.nalukit.nalu.client.component.IsComponent;
+import com.github.nalukit.nalu.client.component.annotation.Controller;
 import com.squareup.javapoet.*;
-import de.gishmo.gwt.gwtbootstarternalu.shared.model.GeneratorException;
-import de.gishmo.gwtbootstarternalu.server.resource.generator.GeneratorConstants;
-import de.gishmo.gwtbootstarternalu.server.resource.generator.GeneratorUtils;
+import com.github.nalukit.gwtbootstarternalu.shared.model.GeneratorException;
+import com.github.nalukitbootstarternalu.server.resource.generator.GeneratorConstants;
+import com.github.nalukitbootstarternalu.server.resource.generator.GeneratorUtils;
 import org.gwtproject.event.shared.HandlerRegistration;
 
 import javax.lang.model.element.Modifier;

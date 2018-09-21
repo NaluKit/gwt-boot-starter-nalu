@@ -15,11 +15,11 @@
  *
  */
 
-package de.gishmo.gwt.gwtbootstarternalu.client;
+package com.github.nalukit.gwtbootstarternalu.client;
 
-import com.github.mvp4g.nalu.client.application.IsApplication;
-import com.github.mvp4g.nalu.client.application.annotation.Application;
-import de.gishmo.gwt.gwtbootstarternalu.client.ui.shell.Shell;
+import com.github.nalukit.nalu.client.application.IsApplication;
+import com.github.nalukit.nalu.client.application.annotation.Application;
+import com.github.nalukit.gwtbootstarternalu.client.ui.shell.Shell;
 
 @Application(shell = Shell.class,
   startRoute = "/setUp",

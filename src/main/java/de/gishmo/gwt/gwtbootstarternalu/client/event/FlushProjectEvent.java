@@ -1,6 +1,6 @@
-package de.gishmo.gwt.gwtbootstarternalu.client.event;
+package com.github.nalukit.gwtbootstarternalu.client.event;
 
-import de.gishmo.gwt.gwtbootstarternalu.shared.model.NaluGeneraterParms;
+import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
 import org.gwtproject.event.shared.Event;
 
 public class FlushProjectEvent

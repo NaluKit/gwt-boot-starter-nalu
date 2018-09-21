@@ -15,17 +15,17 @@
  *
  */
 
-package de.gishmo.gwtbootstarternalu.server.resource.generator.impl.gwt;
+package com.github.nalukitbootstarternalu.server.resource.generator.impl.gwt;
 
-import com.github.mvp4g.nalu.plugin.gwt.client.annotation.Selector;
-import com.github.mvp4g.nalu.plugin.gwt.client.selector.IsSelectorProvider;
+import com.github.nalikit.nalu.plugin.gwt.client.annotation.Selector;
+import com.github.nalikit.nalu.plugin.gwt.client.selector.IsSelectorProvider;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.event.logical.shared.ResizeEvent;
 import com.google.gwt.event.logical.shared.ResizeHandler;
 import com.google.gwt.user.client.ui.*;
 import com.squareup.javapoet.*;
-import de.gishmo.gwt.gwtbootstarternalu.shared.model.NaluGeneraterParms;
-import de.gishmo.gwtbootstarternalu.server.resource.generator.impl.AbstractShellSourceGenerator;
+import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
+import com.github.nalukitbootstarternalu.server.resource.generator.impl.AbstractShellSourceGenerator;
 
 import javax.lang.model.element.Modifier;
 import java.io.File;

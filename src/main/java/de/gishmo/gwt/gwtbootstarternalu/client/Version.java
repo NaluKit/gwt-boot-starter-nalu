@@ -1,4 +1,4 @@
-package de.gishmo.gwt.gwtbootstarternalu.client;
+package com.github.nalukit.gwtbootstarternalu.client;
 
 public class Version {
 

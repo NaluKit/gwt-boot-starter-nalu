@@ -15,13 +15,13 @@
  *
  */
 
-package de.gishmo.gwt.gwtbootstarternalu.client;
+package com.github.nalukit.gwtbootstarternalu.client;
 
-import com.github.mvp4g.nalu.client.application.IsContext;
-import de.gishmo.gwt.gwtbootstarternalu.shared.model.ControllerData;
-import de.gishmo.gwt.gwtbootstarternalu.shared.model.DataConstants;
-import de.gishmo.gwt.gwtbootstarternalu.shared.model.NaluGeneraterParms;
-import de.gishmo.gwt.gwtbootstarternalu.shared.model.WidgetLibrary;
+import com.github.nalukit.nalu.client.application.IsContext;
+import com.github.nalukit.gwtbootstarternalu.shared.model.ControllerData;
+import com.github.nalukit.gwtbootstarternalu.shared.model.DataConstants;
+import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
+import com.github.nalukit.gwtbootstarternalu.shared.model.WidgetLibrary;
 
 public class ApplicationContext
     implements IsContext {

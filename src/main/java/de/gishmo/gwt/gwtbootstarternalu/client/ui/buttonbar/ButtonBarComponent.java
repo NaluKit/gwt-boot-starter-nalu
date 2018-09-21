@@ -15,9 +15,9 @@
  *
  */
 
-package de.gishmo.gwt.gwtbootstarternalu.client.ui.buttonbar;
+package com.github.nalukit.gwtbootstarternalu.client.ui.buttonbar;
 
-import com.github.mvp4g.nalu.client.component.AbstractComponent;
+import com.github.nalukit.nalu.client.component.AbstractComponent;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.cell.core.client.ButtonCell;
 import com.sencha.gxt.widget.core.client.button.TextButton;

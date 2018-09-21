@@ -15,7 +15,7 @@
  *
  */
 
-package de.gishmo.gwt.gwtbootstarternalu.client.ui.content.editor;
+package com.github.nalukit.gwtbootstarternalu.client.ui.content.editor;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.Editor;
@@ -29,8 +29,8 @@ import com.sencha.gxt.widget.core.client.form.FieldLabel;
 import com.sencha.gxt.widget.core.client.form.FormPanel;
 import com.sencha.gxt.widget.core.client.form.TextField;
 import com.sencha.gxt.widget.core.client.form.validator.RegExValidator;
-import de.gishmo.gwt.gwtbootstarternalu.client.ui.UiUtils;
-import de.gishmo.gwt.gwtbootstarternalu.shared.model.ControllerData;
+import com.github.nalukit.gwtbootstarternalu.client.ui.UiUtils;
+import com.github.nalukit.gwtbootstarternalu.shared.model.ControllerData;
 
 public class ControllerEditorView
   extends Dialog

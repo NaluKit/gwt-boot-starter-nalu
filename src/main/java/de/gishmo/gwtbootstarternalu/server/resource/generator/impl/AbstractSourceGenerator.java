@@ -15,11 +15,11 @@
  *
  */
 
-package de.gishmo.gwtbootstarternalu.server.resource.generator.impl;
+package com.github.nalukitbootstarternalu.server.resource.generator.impl;
 
 import com.google.gwt.user.client.ui.Widget;
 import com.squareup.javapoet.ClassName;
-import de.gishmo.gwt.gwtbootstarternalu.shared.model.NaluGeneraterParms;
+import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
 import elemental2.dom.HTMLElement;
 
 import java.io.File;

@@ -15,7 +15,7 @@
  *
  */
 
-package de.gishmo.gwt.gwtbootstarternalu.shared.model;
+package com.github.nalukit.gwtbootstarternalu.shared.model;
 
 import java.util.ArrayList;
 import java.util.List;

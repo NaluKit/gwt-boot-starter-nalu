@@ -15,15 +15,15 @@
  *
  */
 
-package de.gishmo.gwtbootstarternalu.server.resource.generator.impl.domino;
+package com.github.nalukitbootstarternalu.server.resource.generator.impl.domino;
 
 import com.google.gwt.dom.client.SpanElement;
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.FieldSpec;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeSpec;
-import de.gishmo.gwt.gwtbootstarternalu.shared.model.NaluGeneraterParms;
-import de.gishmo.gwtbootstarternalu.server.resource.generator.impl.AbstractNavigationSourceGenerator;
+import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
+import com.github.nalukitbootstarternalu.server.resource.generator.impl.AbstractNavigationSourceGenerator;
 import org.dominokit.domino.ui.icons.Icons;
 import org.dominokit.domino.ui.tree.Tree;
 import org.dominokit.domino.ui.tree.TreeItem;

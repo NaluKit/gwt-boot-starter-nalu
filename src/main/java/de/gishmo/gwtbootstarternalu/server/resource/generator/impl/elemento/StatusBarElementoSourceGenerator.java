@@ -15,14 +15,14 @@
  *
  */
 
-package de.gishmo.gwtbootstarternalu.server.resource.generator.impl.elemento;
+package com.github.nalukitbootstarternalu.server.resource.generator.impl.elemento;
 
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.FieldSpec;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeSpec;
-import de.gishmo.gwt.gwtbootstarternalu.shared.model.NaluGeneraterParms;
-import de.gishmo.gwtbootstarternalu.server.resource.generator.impl.AbstractStatusBarSourceGenerator;
+import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
+import com.github.nalukitbootstarternalu.server.resource.generator.impl.AbstractStatusBarSourceGenerator;
 import elemental2.dom.HTMLElement;
 import org.jboss.gwt.elemento.core.Elements;
 
