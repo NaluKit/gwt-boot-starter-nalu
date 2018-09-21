@@ -1,0 +1,45 @@
+.header-title {
+    line-height: 120px;
+    margin-top: 10px;
+    color: #FFF;
+    text-align: right;
+}
+
+.sub-title {
+    line-height: 120px;
+    margin-top: 16px;
+    color: #cecece;
+}
+
+[class*="theme-"] .navbar {
+    height: 130px;
+    background-color: rgb(40, 57, 73);
+}
+
+.footer {
+    height: 128px;
+}
+
+.footer .top {
+    background-color: rgb(93, 93, 93);
+    padding-top: 15px;
+    height: 64px;
+    padding-right: 10%;
+    padding-left: 10%;
+}
+
+.footer .bottom {
+    background-color: rgb(40, 57, 73);
+    min-height: 64px;
+    padding-top: 20px;
+    padding-right: 10%;
+    padding-left: 10%;
+}
+
+.footer .grid-col {
+    text-align: center;
+}
+
+.footer .grid-col a {
+    color: #FFFFFF;
+}

@@ -112,7 +112,7 @@
     </dependency>
     <dependency>
       <groupId>com.github.nalukit</groupId>
-      <artifactId>nalu-plugin-gwt</artifactId>
+      <artifactId>nalu-plugin-elemental2</artifactId>
       <version>${nalu.version}</version>
     </dependency>
     <dependency>
@@ -231,7 +231,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
         <configuration>
-          <mainClass>com.github.nalukitbootstarternalu.server.GwtBootStarterNaluApplication</mainClass>
+          <mainClass>com.github.nalukit.bootstarternalu.server.GwtBootStarterNaluApplication</mainClass>
           <jvmArguments>
              -Dserver.port=${serverPort}
           </jvmArguments>
