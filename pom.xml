@@ -159,18 +159,24 @@
       <groupId>com.sencha.gxt</groupId>
       <artifactId>gxt</artifactId>
       <version>${gxt.version}</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/etc/lib/gxt.jar</systemPath>
     </dependency>
     <!-- GXT 3.1+ - Neptune Theme -->
     <dependency>
       <groupId>com.sencha.gxt</groupId>
       <artifactId>gxt-theme-neptune</artifactId>
       <version>${gxt.version}</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/etc/lib/gxt-theme-neptune.jar</systemPath>
     </dependency>
     <!-- GXT 3.1+ - Triton Theme -->
     <dependency>
       <groupId>com.sencha.gxt</groupId>
       <artifactId>gxt-theme-triton</artifactId>
       <version>${gxt.version}</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/etc/lib/gxt-theme-triton.jar</systemPath>
     </dependency>
     <!-- Elemento -->
     <dependency>
@@ -209,15 +215,27 @@
     </dependency>
   </dependencies>
 
+
   <repositories>
     <repository>
-      <!-- ~/.m2/settings.xml add <server/> with the support portal credentials -->
-      <id>sencha-gxt-repository</id>
-      <name>Sencha GXT Repository</name>
-      <!-- GPL -->
-      <url>https://maven.sencha.com/repo/gxt-gpl-release</url>
+      <id>sonatype-snapshots-repo</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+      <snapshots>
+        <enabled>true</enabled>
+        <updatePolicy>always</updatePolicy>
+        <checksumPolicy>fail</checksumPolicy>
+      </snapshots>
     </repository>
   </repositories>
+ <!--<repositories>-->
+    <!--<repository>-->
+      <!--&lt;!&ndash; ~/.m2/settings.xml add <server/> with the support portal credentials &ndash;&gt;-->
+      <!--<id>sencha-gxt-repository</id>-->
+      <!--<name>Sencha GXT Repository</name>-->
+      <!--&lt;!&ndash; GPL &ndash;&gt;-->
+      <!--<url>https://maven.sencha.com/repo/gxt-gpl-release</url>-->
+    <!--</repository>-->
+  <!--</repositories>-->
 
   <build>
     <finalName>${project.artifactId}</finalName>
