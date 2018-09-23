@@ -26,64 +26,67 @@ import org.dominokit.domino.ui.forms.CheckBox;
 import org.dominokit.domino.ui.grid.Column;
 import org.dominokit.domino.ui.grid.Row;
 import org.dominokit.domino.ui.header.BlockHeader;
+import org.dominokit.domino.ui.style.Color;
 
 import static org.jboss.gwt.elemento.core.Elements.div;
 
 public class ApplicationComponent
-  extends AbstractComponent<IApplicationComponent.Controller, HTMLElement>
-  implements IApplicationComponent {
+        extends AbstractComponent<IApplicationComponent.Controller, HTMLElement>
+        implements IApplicationComponent {
 
-  private HTMLDivElement element;
+    private HTMLDivElement element;
 
-  private CheckBox cbApplicationLoader;
-  private CheckBox cbDebugSupport;
+    private CheckBox cbApplicationLoader;
+    private CheckBox cbDebugSupport;
 
-  public ApplicationComponent() {
-  }
+    public ApplicationComponent() {
+    }
 
-  @Override
-  public void render() {
-    this.cbApplicationLoader = CheckBox.create("Generate Application Loader class")
-                                       .check()
-                                       .filledIn();
-    this.cbDebugSupport = CheckBox.create("Generate Debug support (in development mode")
-                                  .check()
-                                  .filledIn()
-                                  .styler(style -> style.setMarginBottom("0px"));
+    @Override
+    public void render() {
+        this.cbApplicationLoader = CheckBox.create("Generate Application Loader class")
+                .check()
+                .setColor(Color.BLUE_GREY)
+                .filledIn()
+                .styler(style -> style.setMarginBottom("0px"));
+        this.cbDebugSupport = CheckBox.create("Generate Debug support (in development mode")
+                .check()
+                .setColor(Color.BLUE_GREY)
+                .filledIn()
+                .styler(style -> style.setMarginBottom("0px"));
 
-    this.element = div().asElement();
-    this.element = Row.create()
-                      .appendChild(Column.span10()
-                                         .offset1()
-                                         .appendChild(BlockHeader.create("Project Meta Data"))
-                                         .appendChild(Card.create()
-                                                          .appendChild(Row.create()
-                                                                          .appendChild(Column
-                                                                                         .span6()
-                                                                                         .condenced()
-                                                                                         .appendChild(this.cbApplicationLoader))
-                                                                          .appendChild(Column
-                                                                                         .span6()
-                                                                                         .condenced()
-                                                                                         .appendChild(this.cbDebugSupport))))
-                                         .style()
-                                         .setMarginTop("20px")
-                      )
-//                      .style().setMarginTop("60px")
-                      .asElement();
-    initElement(this.element);
-  }
+        this.element = div().asElement();
+        this.element = Row.create()
+                .appendChild(Column.span6()
+                        .offset3()
+                        .appendChild(BlockHeader.create("Project Meta Data"))
+                        .appendChild(Card.create()
+                                .appendChild(Row.create()
+                                        .appendChild(Column
+                                                .span6()
+                                                .condenced()
+                                                .appendChild(this.cbApplicationLoader))
+                                        .appendChild(Column
+                                                .span6()
+                                                .condenced()
+                                                .appendChild(this.cbDebugSupport))))
+                        .style()
+                        .setMarginTop("20px")
+                )
+                .asElement();
+        initElement(this.element);
+    }
 
-  @Override
-  public void edit(NaluGeneraterParms naluGeneraterParms) {
-    this.cbApplicationLoader.setValue(naluGeneraterParms.isApplicationLoader());
-    this.cbDebugSupport.setValue(naluGeneraterParms.isDebug());
-  }
+    @Override
+    public void edit(NaluGeneraterParms naluGeneraterParms) {
+        this.cbApplicationLoader.setValue(naluGeneraterParms.isApplicationLoader());
+        this.cbDebugSupport.setValue(naluGeneraterParms.isDebug());
+    }
 
-  @Override
-  public NaluGeneraterParms flush(NaluGeneraterParms naluGeneraterParms) {
-    naluGeneraterParms.setApplicationLoader(cbApplicationLoader.getValue());
-    naluGeneraterParms.setDebug(cbDebugSupport.getValue());
-    return naluGeneraterParms;
-  }
+    @Override
+    public NaluGeneraterParms flush(NaluGeneraterParms naluGeneraterParms) {
+        naluGeneraterParms.setApplicationLoader(cbApplicationLoader.getValue());
+        naluGeneraterParms.setDebug(cbDebugSupport.getValue());
+        return naluGeneraterParms;
+    }
 }

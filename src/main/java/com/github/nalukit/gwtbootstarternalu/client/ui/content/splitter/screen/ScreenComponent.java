@@ -34,182 +34,186 @@ import org.dominokit.domino.ui.forms.TextBox;
 import org.dominokit.domino.ui.grid.Column;
 import org.dominokit.domino.ui.grid.Row;
 import org.dominokit.domino.ui.icons.Icons;
+import org.dominokit.domino.ui.style.Color;
 import org.dominokit.domino.ui.utils.ElementUtil;
 
 import static org.jboss.gwt.elemento.core.Elements.div;
 
 public class ScreenComponent
-  extends AbstractComponent<IScreenComponent.Controller, HTMLElement>
-  implements IScreenComponent {
+        extends AbstractComponent<IScreenComponent.Controller, HTMLElement>
+        implements IScreenComponent {
 
-  private TableConfig<ControllerData>        screenMetaDataTableConfig;
-  private DataTable<ControllerData>          dataDataTable;
-  private HTMLDivElement                     element = div().asElement();
-  private LocalListDataStore<ControllerData> dataStore;
-  private Button                             addButton;
+    private TableConfig<ControllerData> screenMetaDataTableConfig;
+    private DataTable<ControllerData> dataDataTable;
+    private HTMLDivElement element = div().asElement();
+    private LocalListDataStore<ControllerData> dataStore;
+    private Button addButton;
 
-  public ScreenComponent() {
-  }
+    public ScreenComponent() {
+    }
 
-  @Override
-  public void render() {
-    Card card = Card.create("Screen meta data");
-    addButton = Button.createDefault(Icons.ALL.add());
+    @Override
+    public void render() {
+        Card card = Card.create("Screen meta data");
+        addButton = Button.createDefault(Icons.ALL.add());
 
-    dataStore = new LocalListDataStore<>();
+        dataStore = new LocalListDataStore<>();
 
-    screenMetaDataTableConfig = new TableConfig<>();
-    screenMetaDataTableConfig.addColumn(ColumnConfig.<ControllerData>create("name",
-                                                                            "Component name")
-                                          .setWidth("250px")
-                                          .setFixed(true)
-                                          .setCellRenderer(cellInfo -> {
-                                            TextBox textBox = TextBox.create();
-                                            textBox
-                                              .setValue(cellInfo.getRecord()
-                                                                .getComponentName())
-                                              .setReadOnly(true)
-                                              .setRequired(true)
-                                              .setAutoValidation(true)
-                                              .addClickListener(evt -> {
-                                                textBox.setReadOnly(false);
-                                                textBox.focus();
-                                                textBox.getInputElement()
-                                                       .asElement()
-                                                       .select();
-                                              })
-                                              .addChangeHandler(value -> {
-                                                if (textBox.validate()
-                                                           .isValid()) {
-                                                  cellInfo.getRecord()
-                                                          .setComponentName(value);
+        screenMetaDataTableConfig = new TableConfig<>();
+        screenMetaDataTableConfig.addColumn(ColumnConfig.<ControllerData>create("name",
+                "Component name")
+                .setWidth("250px")
+                .setFixed(true)
+                .setCellRenderer(cellInfo -> {
+                    TextBox textBox = TextBox.create();
+                    textBox
+                            .setValue(cellInfo.getRecord()
+                                    .getComponentName())
+                            .setReadOnly(true)
+                            .setRequired(true)
+                            .setAutoValidation(true)
+                            .addClickListener(evt -> {
+                                textBox.setReadOnly(false);
+                                textBox.focus();
+                                textBox.getInputElement()
+                                        .asElement()
+                                        .select();
+                            })
+                            .addChangeHandler(value -> {
+                                if (textBox.validate()
+                                        .isValid()) {
+                                    cellInfo.getRecord()
+                                            .setComponentName(value);
+                                }
+                            });
+                    textBox.getInputElement()
+                            .styler(style -> style.setPaddingLeft("3px"))
+                            .addEventListener("blur",
+                                    evt -> textBox.setReadOnly(true))
+                            .addEventListener("keypress",
+                                    evt -> {
+                                        if (ElementUtil.isEnterKey(Js.uncheckedCast(evt))) {
+                                            textBox.setReadOnly(true);
+                                        }
+                                    });
+                    return textBox.asElement();
+                }))
+                .addColumn(ColumnConfig.<ControllerData>create("token",
+                        "Route")
+                        .setWidth("250px")
+                        .setFixed(true)
+                        .setCellRenderer(cellInfo -> {
+                            TextBox textBox = TextBox.create();
+                            textBox
+                                    .setValue(cellInfo.getRecord()
+                                            .getRoute())
+                                    .setReadOnly(true)
+                                    .setRequired(true)
+                                    .setAutoValidation(true)
+                                    .addClickListener(evt -> {
+                                        textBox.setReadOnly(false);
+                                        textBox.focus();
+                                        textBox.getInputElement()
+                                                .asElement()
+                                                .select();
+                                    })
+                                    .addChangeHandler(value -> {
+                                        if (textBox.validate()
+                                                .isValid()) {
+                                            cellInfo.getRecord()
+                                                    .setRoute(value);
+                                        }
+                                    });
+                            textBox.getInputElement()
+                                    .styler(style -> style.setPaddingLeft("3px"))
+                                    .addEventListener("blur",
+                                            evt -> textBox.setReadOnly(true))
+                                    .addEventListener("keypress",
+                                            evt -> {
+                                                if (ElementUtil.isEnterKey(Js.uncheckedCast(evt))) {
+                                                    textBox.setReadOnly(true);
                                                 }
-                                              });
-                                            textBox.getInputElement()
-                                                   .styler(style -> style.setPaddingLeft("3px"))
-                                                   .addEventListener("blur",
-                                                                     evt -> textBox.setReadOnly(true))
-                                                   .addEventListener("keypress",
-                                                                     evt -> {
-                                                                       if (ElementUtil.isEnterKey(Js.uncheckedCast(evt))) {
-                                                                         textBox.setReadOnly(true);
-                                                                       }
-                                                                     });
-                                            return textBox.asElement();
-                                          }))
-                             .addColumn(ColumnConfig.<ControllerData>create("token",
-                                                                            "Route")
-                                          .setWidth("250px")
-                                          .setFixed(true)
-                                          .setCellRenderer(cellInfo -> {
-                                            TextBox textBox = TextBox.create();
-                                            textBox
-                                              .setValue(cellInfo.getRecord()
-                                                                .getRoute())
-                                              .setReadOnly(true)
-                                              .setRequired(true)
-                                              .setAutoValidation(true)
-                                              .addClickListener(evt -> {
-                                                textBox.setReadOnly(false);
-                                                textBox.focus();
-                                                textBox.getInputElement()
-                                                       .asElement()
-                                                       .select();
-                                              })
-                                              .addChangeHandler(value -> {
-                                                if (textBox.validate()
-                                                           .isValid()) {
-                                                  cellInfo.getRecord()
-                                                          .setRoute(value);
-                                                }
-                                              });
-                                            textBox.getInputElement()
-                                                   .styler(style -> style.setPaddingLeft("3px"))
-                                                   .addEventListener("blur",
-                                                                     evt -> textBox.setReadOnly(true))
-                                                   .addEventListener("keypress",
-                                                                     evt -> {
-                                                                       if (ElementUtil.isEnterKey(Js.uncheckedCast(evt))) {
-                                                                         textBox.setReadOnly(true);
-                                                                       }
-                                                                     });
-                                            return textBox.asElement();
-                                          }))
+                                            });
+                            return textBox.asElement();
+                        }))
 
-                             .addColumn(ColumnConfig.<ControllerData>create("name",
-                                                                            "Start screen")
-                                          .setCellRenderer(cellInfo -> SwitchButton.create()
-                                                                                   .setOnTitle("Yes")
-                                                                                   .setOffTitle("No")
-                                                                                   .setValue(cellInfo.getRecord()
-                                                                                                     .isShowControllerAtStart())
-                                                                                   .addChangeHandler(value -> cellInfo.getRecord()
-                                                                                                                      .setShowControllerAtStart(value))
-                                                                                   .asElement()))
+                .addColumn(ColumnConfig.<ControllerData>create("name",
+                        "Start screen")
+                        .setCellRenderer(cellInfo -> SwitchButton.create()
+                                .setOnTitle("Yes")
+                                .setOffTitle("No")
+                                .setColor(Color.BLUE_GREY)
+                                .setValue(cellInfo.getRecord()
+                                        .isShowControllerAtStart())
+                                .addChangeHandler(value -> cellInfo.getRecord()
+                                        .setShowControllerAtStart(value))
+                                .asElement()))
 
-                             .addColumn(ColumnConfig.<ControllerData>create("name",
-                                                                            "Confirmation")
-                                          .setCellRenderer(cellInfo -> SwitchButton.create()
-                                                                                   .setOnTitle("Yes")
-                                                                                   .setOffTitle("No")
-                                                                                   .setValue(cellInfo.getRecord()
-                                                                                                     .isConfirmation())
-                                                                                   .addChangeHandler(value -> cellInfo.getRecord()
-                                                                                                                      .setConfirmation(value))
-                                                                                   .asElement()))
+                .addColumn(ColumnConfig.<ControllerData>create("name",
+                        "Confirmation")
+                        .setCellRenderer(cellInfo -> SwitchButton.create()
+                                .setOnTitle("Yes")
+                                .setOffTitle("No")
+                                .setColor(Color.BLUE_GREY)
+                                .setValue(cellInfo.getRecord()
+                                        .isConfirmation())
+                                .addChangeHandler(value -> cellInfo.getRecord()
+                                        .setConfirmation(value))
+                                .asElement()))
 
-                             .addColumn(ColumnConfig.<ControllerData>create("remove",
-                                                                            "")
-                                          .setCellRenderer(cellInfo -> Icons.ALL.delete()
-                                                                                .styler(style -> style.setCursor("pointer"))
-                                                                                .addClickListener(evt -> dataStore.removeRecord(cellInfo.getRecord()))
-                                                                                .asElement()));
+                .addColumn(ColumnConfig.<ControllerData>create("remove",
+                        "")
+                        .setCellRenderer(cellInfo -> Icons.ALL.delete()
+                                .setColor(Color.BLUE_GREY)
+                                .styler(style -> style.setCursor("pointer"))
+                                .addClickListener(evt -> dataStore.removeRecord(cellInfo.getRecord()))
+                                .asElement()));
 
 
-    dataDataTable = new DataTable<>(screenMetaDataTableConfig,
-                                    dataStore);
-    dataDataTable.condense();
+        dataDataTable = new DataTable<>(screenMetaDataTableConfig,
+                dataStore);
+        dataDataTable.condense();
 
-    card.getHeaderBar()
-        .appendChild(addButton
-                       .setContent("ADD")
-                       .styler(style -> style.setMarginTop("-10px"))
-                       .linkify()
-                       .addClickListener(evt -> {
-                         dataStore.addRecord(new ControllerData("Scene" + Integer.toString(dataStore.getRecords()
-                                                                                                    .size() + 1),
-                                                                "scene" + Integer.toString(dataStore.getRecords()
-                                                                                                    .size() + 1),
-                                                                false,
-                                                                false,
-                                                                false,
-                                                                false));
-                       }));
+        card.getHeaderBar()
+                .appendChild(addButton
+                        .setContent("ADD")
+                        .styler(style -> style.setMarginTop("-10px"))
+                        .linkify()
+                        .addClickListener(evt -> {
+                            dataStore.addRecord(new ControllerData("Scene" + Integer.toString(dataStore.getRecords()
+                                    .size() + 1),
+                                    "scene" + Integer.toString(dataStore.getRecords()
+                                            .size() + 1),
+                                    false,
+                                    false,
+                                    false,
+                                    false));
+                        }));
 
 
-    this.element.appendChild(Row.create()
-                                .appendChild(Column.span10()
-                                                   .offset1()
-                                                   .appendChild(card
-                                                                  .appendChild(dataDataTable)
-                                                   )
-                                )
-                                .asElement());
-    dataDataTable.load();
-    initElement(element);
-  }
+        this.element.appendChild(Row.create()
+                .appendChild(Column.span6()
+                        .offset3()
+                        .appendChild(card
+                                .appendChild(dataDataTable)
+                        )
+                )
+                .asElement());
+        dataDataTable.load();
+        initElement(element);
+    }
 
-  @Override
-  public void edit(NaluGeneraterParms naluGeneraterParms) {
-    dataStore.setData(naluGeneraterParms.getControllers());
-    dataDataTable.load();
-  }
+    @Override
+    public void edit(NaluGeneraterParms naluGeneraterParms) {
+        dataStore.setData(naluGeneraterParms.getControllers());
+        dataDataTable.load();
+    }
 
-  @Override
-  public NaluGeneraterParms flush(NaluGeneraterParms naluGeneraterParms) {
-    naluGeneraterParms.getControllers()
-                      .clear();
-    naluGeneraterParms.setControllers(dataStore.getRecords());
-    return naluGeneraterParms;
-  }
+    @Override
+    public NaluGeneraterParms flush(NaluGeneraterParms naluGeneraterParms) {
+        naluGeneraterParms.getControllers()
+                .clear();
+        naluGeneraterParms.setControllers(dataStore.getRecords());
+        return naluGeneraterParms;
+    }
 }
