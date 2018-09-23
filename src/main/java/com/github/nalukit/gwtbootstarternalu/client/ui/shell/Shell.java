@@ -19,83 +19,95 @@ package com.github.nalukit.gwtbootstarternalu.client.ui.shell;
 
 import com.github.nalukit.gwtbootstarternalu.client.ApplicationContext;
 import com.github.nalukit.nalu.client.component.AbstractShell;
+import elemental2.dom.DomGlobal;
 import elemental2.dom.HTMLAnchorElement;
-import elemental2.dom.HTMLDivElement;
 import org.dominokit.domino.ui.grid.Column;
 import org.dominokit.domino.ui.grid.Row;
 import org.dominokit.domino.ui.layout.Footer;
 import org.dominokit.domino.ui.layout.Layout;
+import org.dominokit.domino.ui.style.Styles;
+import org.dominokit.domino.ui.utils.DominoElement;
+import org.dominokit.domino.ui.utils.ScreenMedia;
 import org.jboss.gwt.elemento.core.Elements;
+
+import static org.jboss.gwt.elemento.core.Elements.a;
+import static org.jboss.gwt.elemento.core.Elements.img;
 
 /**
  * this is the presenter of the shell. The shell divides the browser in
  * severeal areas.
  */
 public class Shell
-  extends AbstractShell<ApplicationContext> {
+        extends AbstractShell<ApplicationContext> {
 
-  public Shell() {
-    super();
-  }
+    public Shell() {
+        super();
+    }
 
-  /**
-   * The ShellPresenter has to implemented this method, because the framework
-   * can not do this. (It does not know, what to use).
-   * <p>
-   * We append the ShellView to the browser body.
-   */
-  @Override
-  public void attachShell() {
-    Layout layout = Layout.create("Nalu generator")
-                          .disableLeftPanel()
-                          .setHeaderHeight("130px");
+    /**
+     * The ShellPresenter has to implemented this method, because the framework
+     * can not do this. (It does not know, what to use).
+     * <p>
+     * We append the ShellView to the browser body.
+     */
+    @Override
+    public void attachShell() {
+        Layout layout = Layout.create("Nalu Initializer")
+                .disableLeftPanel();
 
+        layout.getNavigationBar()
+                .setId("header")
+                .appendChild(img("/img/Nalu_Schrift_128px.png").css(Styles.img_responsive, "logo"));
 
-    layout.getNavigationBar()
-          .clearElement();
+        layout.showFooter()
+                .fixFooter();
+        Footer footer = layout.getFooter();
 
-    HTMLDivElement headerDiv = Elements.div()
-                                       .asElement();
-    headerDiv.id = "header";
-    layout.getNavigationBar()
-          .appendChild(headerDiv);
+        footer.appendChild(Row.create()
+                .setId("buttonBar")
+                .addCss("top"))
+                .appendChild(Row.create()
+                        .addCss("bottom")
+                        .appendChild(Column.span2()
+                                .offset2()
+                                .appendChild(createAnchorElement("Nalu@Github",
+                                        "https://github.com/nalukit/nalu")))
+                        .appendChild(Column.span2()
+                                .appendChild(createAnchorElement("Nalu Documentation",
+                                        "https://github.com/nalukit/nalu/wiki")))
+                        .appendChild(Column.span2()
+                                .appendChild(createAnchorElement("Generator Documentation",
+                                        "https://github.com/nalukit/gwt-boot-starter-nalu")))
+                        .appendChild(Column.span2()
+                                .appendChild(createAnchorElement("Issues",
+                                        "https://github.com/nalukit/gwt-boot-starter-nalu/issues"))));
 
-    layout.showFooter()
-          .fixFooter();
-    Footer footer = layout.getFooter();
+        layout.getContentPanel()
+                .setId("content");
+        layout.show();
 
-    footer.appendChild(Row.create()
-                          .setId("buttonBar")
-                          .addCss("top"))
-          .appendChild(Row.create()
-                          .addCss("bottom")
-                          .appendChild(Column.span3()
-//                                             .offset2()
-                                             .appendChild(createAnchorElement("Nalu@Github",
-                                                                              "https://github.com/nalukit/nalu")))
-                          .appendChild(Column.span3()
-                                             .appendChild(createAnchorElement("Nalu Documentation",
-                                                                              "https://github.com/nalukit/nalu/wiki")))
-                          .appendChild(Column.span3()
-                                             .appendChild(createAnchorElement("Generator Documentation",
-                                                                              "https://github.com/nalukit/gwt-boot-starter-nalu")))
-                          .appendChild(Column.span3()
-                                             .appendChild(createAnchorElement("Issues",
-                                                                              "https://github.com/nalukit/gwt-boot-starter-nalu/issues"))));
+        /*
+            <a href="https://github.com/you">
+            <img style="position: absolute; top: 0; right: 0; border: 0;"
+                src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"
+                alt="Fork me on GitHub">
+            </a>
 
-    layout.getContentPanel()
-          .setId("content");
-    layout.show();
-  }
+         */
+        DomGlobal.document.body.appendChild(DominoElement.of(a().attr("href", "https://github.com/NaluKit/gwt-boot-starter-nalu")
+                .add(img("https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png")
+                        .style("position: fixed; top: 0; right: 0; border: 0; z-index: 99;")
+                        .attr("alt", "Fork me on GitHub"))).hideOn(ScreenMedia.MEDIUM_AND_DOWN)
+                .asElement());
+    }
 
-  private HTMLAnchorElement createAnchorElement(String label,
-                                                String url) {
-    HTMLAnchorElement anchor = Elements.a()
-                                       .textContent(label)
-                                       .asElement();
-    anchor.href = url;
-    anchor.target = "_blank";
-    anchor.className = "bottom";
-    return anchor;
-  }
+    private HTMLAnchorElement createAnchorElement(String label,
+                                                  String url) {
+        HTMLAnchorElement anchor = Elements.a()
+                .textContent(label)
+                .attr("url", url)
+                .attr("target", "_blank")
+                .asElement();
+        return anchor;
+    }
 }
