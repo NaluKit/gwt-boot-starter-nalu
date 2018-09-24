@@ -679,7 +679,7 @@ public class PomGenerator {
                                GeneratorUtils.removeBadChracters(this.naluGeneraterParms.getArtefactId())))
       .append(this.addAddrLine(2,
                                "version",
-                               "1.0.0-RC-1"))
+                               "1.0.0-rc-2-SNAPSHOT"))
       .append(GeneratorConstants.LINE_BREAK)
       .append(this.addAddrLine(2,
                                "packaging",
@@ -713,7 +713,7 @@ public class PomGenerator {
                                   "nalu version"))
       .append(this.addAddrLine(4,
                                "nalu.version",
-                               "1.0.0-RC-1"))
+                               "1.0.0-rc-2-SNAPSHOT"))
       .append(GeneratorConstants.LINE_BREAK)
       .append(this.addAddrLine(4,
                                "gwt.events",

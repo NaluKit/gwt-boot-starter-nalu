@@ -57,7 +57,7 @@ public class Shell
 
         layout.getNavigationBar()
                 .setId("header")
-                .appendChild(img("/gwt-boot-starter-nalu/img/Nalu_Schrift_128px.png").css(Styles.img_responsive, "logo"));
+                .appendChild(img("/gwt-boot-starter-nalu/img/Nalu_64px.png").css(Styles.img_responsive, "logo"));
 
         layout.showFooter()
                 .fixFooter();
