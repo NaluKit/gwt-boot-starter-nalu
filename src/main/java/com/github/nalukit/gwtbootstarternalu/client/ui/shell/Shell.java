@@ -105,7 +105,7 @@ public class Shell
                                                   String url) {
         HTMLAnchorElement anchor = Elements.a()
                 .textContent(label)
-                .attr("url", url)
+                .attr("href", url)
                 .attr("target", "_blank")
                 .asElement();
         return anchor;
