@@ -17,10 +17,11 @@
 
 package com.github.nalukit.bootstarternalu.server.resource.generator.impl.gwt;
 
+import com.github.nalukit.bootstarternalu.server.resource.generator.GeneratorUtils;
+import com.github.nalukit.bootstarternalu.server.resource.generator.impl.AbstractShellSourceGenerator;
 import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
 import com.github.nalukit.nalu.plugin.gwt.client.annotation.Selector;
 import com.github.nalukit.nalu.plugin.gwt.client.selector.IsSelectorProvider;
-import com.github.nalukit.bootstarternalu.server.resource.generator.impl.AbstractShellSourceGenerator;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.event.logical.shared.ResizeEvent;
 import com.google.gwt.event.logical.shared.ResizeHandler;
@@ -46,21 +47,26 @@ public class ShellGwtSourceGenerator
   }
 
   @Override
-  protected MethodSpec createBindMethod() {
-    return MethodSpec.methodBuilder("bind")
-                     .addModifiers(Modifier.PUBLIC)
-                     .addAnnotation(ClassName.get(Override.class))
-                     .addStatement("$T<Shell> provider = new ShellSelectorProviderImpl()",
-                                   ClassName.get(IsSelectorProvider.class))
-                     .addStatement("provider.initialize(this)")
-                     .build();
-  }
-
-  @Override
-  public MethodSpec createForceLayoutMethod() {
-    return MethodSpec.methodBuilder("forceLayout")
-                     .addModifiers(Modifier.PRIVATE)
-                     .build();
+  protected void createFieldSpecs(TypeSpec.Builder typeSpec) {
+    typeSpec.addField(FieldSpec.builder(ClassName.get(ResizeLayoutPanel.class),
+                                        "shell")
+                               .build());
+    typeSpec.addField(FieldSpec.builder(ClassName.get(SimpleLayoutPanel.class),
+                                        "headerWidget")
+                               .addModifiers(Modifier.PRIVATE)
+                               .build());
+    typeSpec.addField(FieldSpec.builder(ClassName.get(SimpleLayoutPanel.class),
+                                        "navigationWidget")
+                               .addModifiers(Modifier.PRIVATE)
+                               .build());
+    typeSpec.addField(FieldSpec.builder(ClassName.get(SimpleLayoutPanel.class),
+                                        "footerWidget")
+                               .addModifiers(Modifier.PRIVATE)
+                               .build());
+    typeSpec.addField(FieldSpec.builder(ClassName.get(SimpleLayoutPanel.class),
+                                        "contentWidget")
+                               .addModifiers(Modifier.PRIVATE)
+                               .build());
   }
 
   @Override
@@ -123,42 +129,52 @@ public class ShellGwtSourceGenerator
   }
 
   @Override
-  protected void createFieldSpecs(TypeSpec.Builder typeSpec) {
-    typeSpec.addField(FieldSpec.builder(ClassName.get(ResizeLayoutPanel.class),
-                                        "shell")
-                               .build());
-    typeSpec.addField(FieldSpec.builder(ClassName.get(SimpleLayoutPanel.class),
-                                        "headerWidget")
-                               .addAnnotation(AnnotationSpec.builder(Selector.class)
-                                                            .addMember("value",
-                                                                       "$S",
-                                                                       "header")
-                                                            .build())
-                               .build());
-    typeSpec.addField(FieldSpec.builder(ClassName.get(SimpleLayoutPanel.class),
-                                        "navigationWidget")
-                               .addAnnotation(AnnotationSpec.builder(Selector.class)
-                                                            .addMember("value",
-                                                                       "$S",
-                                                                       "navigation")
-                                                            .build())
-                               .build());
-    typeSpec.addField(FieldSpec.builder(ClassName.get(SimpleLayoutPanel.class),
-                                        "footerWidget")
-                               .addAnnotation(AnnotationSpec.builder(Selector.class)
-                                                            .addMember("value",
-                                                                       "$S",
-                                                                       "footer")
-                                                            .build())
-                               .build());
-    typeSpec.addField(FieldSpec.builder(ClassName.get(SimpleLayoutPanel.class),
-                                        "contentWidget")
-                               .addAnnotation(AnnotationSpec.builder(Selector.class)
-                                                            .addMember("value",
-                                                                       "$S",
-                                                                       "content")
-                                                            .build())
-                               .build());
+  public MethodSpec createForceLayoutMethod() {
+    return MethodSpec.methodBuilder("forceLayout")
+                     .addModifiers(Modifier.PRIVATE)
+                     .build();
+  }
+
+  @Override
+  protected MethodSpec createBindMethod() {
+    return MethodSpec.methodBuilder("bind")
+                     .addModifiers(Modifier.PUBLIC)
+                     .addAnnotation(ClassName.get(Override.class))
+                     .addStatement("$T<Shell> provider = new ShellSelectorProviderImpl()",
+                                   ClassName.get(IsSelectorProvider.class))
+                     .addStatement("provider.initialize(this)")
+                     .build();
+  }
+
+  @Override
+  protected void createAddMethods(TypeSpec.Builder typeSpec) {
+    typeSpec.addMethod(this.createAddMethod("header",
+                                            "headerWidget"));
+    typeSpec.addMethod(this.createAddMethod("navigation",
+                                            "navigationWidget"));
+    typeSpec.addMethod(this.createAddMethod("footer",
+                                            "footerWidget"));
+    typeSpec.addMethod(this.createAddMethod("content",
+                                            "contentWidget"));
+  }
+
+  private MethodSpec createAddMethod(String selector,
+                                     String fieldName) {
+    return MethodSpec.methodBuilder("add" + GeneratorUtils.setFirstCharacterToUpperCase(selector))
+                     .addModifiers(Modifier.PUBLIC)
+                     .addAnnotation(AnnotationSpec.builder(Selector.class)
+                                                  .addMember("value",
+                                                             "$S",
+                                                             selector)
+                                                  .build())
+                     .addParameter(ParameterSpec.builder(ClassName.get(Widget.class),
+                                                         "widget")
+                                                .build())
+                     .addStatement("this.$L.clear()",
+                                   fieldName)
+                     .addStatement("this.$L.add(widget)",
+                                   fieldName)
+                     .build();
   }
 
   public static class Builder {

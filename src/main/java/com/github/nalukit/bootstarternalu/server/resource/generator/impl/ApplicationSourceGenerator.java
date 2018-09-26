@@ -19,6 +19,7 @@ package com.github.nalukit.bootstarternalu.server.resource.generator.impl;
 
 import com.github.nalukit.bootstarternalu.server.resource.generator.GeneratorConstants;
 import com.github.nalukit.bootstarternalu.server.resource.generator.GeneratorUtils;
+import com.github.nalukit.gwtbootstarternalu.shared.model.ControllerData;
 import com.github.nalukit.gwtbootstarternalu.shared.model.GeneratorException;
 import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
 import com.github.nalukit.nalu.client.application.IsApplication;
@@ -31,6 +32,7 @@ import com.squareup.javapoet.*;
 import javax.lang.model.element.Modifier;
 import java.io.File;
 import java.io.IOException;
+import java.util.Optional;
 
 public class ApplicationSourceGenerator
   extends AbstractSourceGenerator {
@@ -59,9 +61,7 @@ public class ApplicationSourceGenerator
                                                                  GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId()) + GeneratorConstants.CONTEXT + ".class")
                                                       .addMember("startRoute",
                                                                  "$S",
-                                                                 "/" + this.naluGeneraterParms.getControllers()
-                                                                                              .get(0)
-                                                                                              .getRoute());
+                                                                 "/" + getStartRoute());
     if (this.naluGeneraterParms.isApplicationLoader()) {
       annotation.addMember("loader",
                            GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId()) + GeneratorConstants.LOADER + ".class");
@@ -95,6 +95,22 @@ public class ApplicationSourceGenerator
                                 ""));
     } catch (IOException e) {
       throw new GeneratorException("Unable to write generated file: >>" + GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId()) + GeneratorConstants.APPLICAITON + "<< -> exception: " + e.getMessage());
+    }
+  }
+
+  private String getStartRoute() {
+    Optional<ControllerData> optinalStartRoute = this.naluGeneraterParms.getControllers()
+                                                                        .stream()
+                                                                        .filter(c -> c.isShowControllerAtStart())
+                                                                        .findFirst();
+    if (optinalStartRoute.isPresent()) {
+      return optinalStartRoute.get()
+                              .getRoute();
+    } else {
+      return this.naluGeneraterParms.getControllers()
+                                    .size() > 0 ? this.naluGeneraterParms.getControllers()
+                                                                         .get(0)
+                                                                         .getRoute() : "";
     }
   }
 

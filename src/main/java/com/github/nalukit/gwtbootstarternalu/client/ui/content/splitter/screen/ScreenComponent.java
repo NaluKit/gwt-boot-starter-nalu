@@ -145,8 +145,13 @@ public class ScreenComponent
                                                                                    .setColor(Color.BLUE_GREY)
                                                                                    .setValue(cellInfo.getRecord()
                                                                                                      .isShowControllerAtStart())
-                                                                                   .addChangeHandler(value -> cellInfo.getRecord()
-                                                                                                                      .setShowControllerAtStart(value))
+                                                                                   .addChangeHandler(value -> {
+                                                                                     dataStore.getRecords()
+                                                                                              .forEach(r -> r.setShowControllerAtStart(false));
+                                                                                     cellInfo.getRecord()
+                                                                                             .setShowControllerAtStart(value);
+                                                                                     dataDataTable.load();
+                                                                                   })
                                                                                    .asElement()))
 
                              .addColumn(ColumnConfig.<ControllerData>create("name",

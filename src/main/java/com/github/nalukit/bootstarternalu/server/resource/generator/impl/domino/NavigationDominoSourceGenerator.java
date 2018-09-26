@@ -17,8 +17,8 @@
 
 package com.github.nalukit.bootstarternalu.server.resource.generator.impl.domino;
 
-import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
 import com.github.nalukit.bootstarternalu.server.resource.generator.impl.AbstractNavigationSourceGenerator;
+import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
 import com.google.gwt.dom.client.SpanElement;
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.FieldSpec;

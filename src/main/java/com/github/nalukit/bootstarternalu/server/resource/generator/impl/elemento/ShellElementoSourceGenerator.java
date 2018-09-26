@@ -17,8 +17,8 @@
 
 package com.github.nalukit.bootstarternalu.server.resource.generator.impl.elemento;
 
-import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
 import com.github.nalukit.bootstarternalu.server.resource.generator.impl.AbstractShellSourceGenerator;
+import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeSpec;
@@ -45,18 +45,7 @@ public class ShellElementoSourceGenerator
   }
 
   @Override
-  protected MethodSpec createBindMethod() {
-    return MethodSpec.methodBuilder("bind")
-                     .addModifiers(Modifier.PUBLIC)
-                     .addAnnotation(ClassName.get(Override.class))
-                     .build();
-  }
-
-  @Override
-  public MethodSpec createForceLayoutMethod() {
-    return MethodSpec.methodBuilder("forceLayout")
-                     .addModifiers(Modifier.PRIVATE)
-                     .build();
+  protected void createFieldSpecs(TypeSpec.Builder typeSpec) {
   }
 
   @Override
@@ -89,7 +78,22 @@ public class ShellElementoSourceGenerator
   }
 
   @Override
-  protected void createFieldSpecs(TypeSpec.Builder typeSpec) {
+  public MethodSpec createForceLayoutMethod() {
+    return MethodSpec.methodBuilder("forceLayout")
+                     .addModifiers(Modifier.PRIVATE)
+                     .build();
+  }
+
+  @Override
+  protected MethodSpec createBindMethod() {
+    return MethodSpec.methodBuilder("bind")
+                     .addModifiers(Modifier.PUBLIC)
+                     .addAnnotation(ClassName.get(Override.class))
+                     .build();
+  }
+
+  @Override
+  protected void createAddMethods(TypeSpec.Builder typeSpec) {
   }
 
   public static class Builder {

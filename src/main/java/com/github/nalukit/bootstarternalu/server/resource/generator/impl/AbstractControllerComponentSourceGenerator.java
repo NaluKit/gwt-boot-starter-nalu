@@ -18,13 +18,13 @@
 package com.github.nalukit.bootstarternalu.server.resource.generator.impl;
 
 import com.github.nalukit.bootstarternalu.server.resource.generator.GeneratorConstants;
+import com.github.nalukit.bootstarternalu.server.resource.generator.GeneratorUtils;
 import com.github.nalukit.gwtbootstarternalu.shared.model.ControllerData;
 import com.github.nalukit.gwtbootstarternalu.shared.model.GeneratorException;
 import com.github.nalukit.nalu.client.component.AbstractComponent;
 import com.github.nalukit.nalu.client.component.AbstractComponentController;
 import com.github.nalukit.nalu.client.component.IsComponent;
 import com.github.nalukit.nalu.client.component.annotation.Controller;
-import com.github.nalukit.bootstarternalu.server.resource.generator.GeneratorUtils;
 import com.squareup.javapoet.*;
 
 import javax.lang.model.element.Modifier;

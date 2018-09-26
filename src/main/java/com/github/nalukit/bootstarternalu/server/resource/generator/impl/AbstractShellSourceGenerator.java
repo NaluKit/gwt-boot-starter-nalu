@@ -18,10 +18,10 @@
 package com.github.nalukit.bootstarternalu.server.resource.generator.impl;
 
 import com.github.nalukit.bootstarternalu.server.resource.generator.GeneratorConstants;
+import com.github.nalukit.bootstarternalu.server.resource.generator.GeneratorUtils;
 import com.github.nalukit.gwtbootstarternalu.shared.model.GeneratorException;
 import com.github.nalukit.gwtbootstarternalu.shared.model.WidgetLibrary;
 import com.github.nalukit.nalu.client.component.AbstractShell;
-import com.github.nalukit.bootstarternalu.server.resource.generator.GeneratorUtils;
 import com.squareup.javapoet.*;
 
 import javax.lang.model.element.Modifier;
@@ -69,6 +69,11 @@ public abstract class AbstractShellSourceGenerator
       // bind method
       typeSpec.addMethod(this.createBindMethod());
     }
+    if (!WidgetLibrary.DOMINO_UI.equals(this.naluGeneraterParms.getWidgetLibrary()) &&
+        !WidgetLibrary.ELEMENTO.equals(this.naluGeneraterParms.getWidgetLibrary())) {
+      // add methods to attach widgets
+      this.createAddMethods(typeSpec);
+    }
 
     JavaFile javaFile = JavaFile.builder(this.shellPackage,
                                          typeSpec.build())
@@ -90,4 +95,6 @@ public abstract class AbstractShellSourceGenerator
   protected abstract MethodSpec createForceLayoutMethod();
 
   protected abstract MethodSpec createBindMethod();
+
+  protected abstract void createAddMethods(TypeSpec.Builder typeSpec);
 }

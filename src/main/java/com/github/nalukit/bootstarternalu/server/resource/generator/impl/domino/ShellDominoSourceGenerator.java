@@ -17,8 +17,8 @@
 
 package com.github.nalukit.bootstarternalu.server.resource.generator.impl.domino;
 
-import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
 import com.github.nalukit.bootstarternalu.server.resource.generator.impl.AbstractShellSourceGenerator;
+import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeSpec;
@@ -45,13 +45,7 @@ public class ShellDominoSourceGenerator
   }
 
   @Override
-  protected MethodSpec createBindMethod() {
-    return null;
-  }
-
-  @Override
-  public MethodSpec createForceLayoutMethod() {
-    return null;
+  protected void createFieldSpecs(TypeSpec.Builder typeSpec) {
   }
 
   @Override
@@ -82,7 +76,17 @@ public class ShellDominoSourceGenerator
   }
 
   @Override
-  protected void createFieldSpecs(TypeSpec.Builder typeSpec) {
+  public MethodSpec createForceLayoutMethod() {
+    return null;
+  }
+
+  @Override
+  protected MethodSpec createBindMethod() {
+    return null;
+  }
+
+  @Override
+  protected void createAddMethods(TypeSpec.Builder typeSpec) {
   }
 
   public static class Builder {

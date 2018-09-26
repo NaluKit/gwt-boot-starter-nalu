@@ -17,10 +17,10 @@
 
 package com.github.nalukit.bootstarternalu.server.resource.generator.impl.elemento;
 
-import com.github.nalukit.gwtbootstarternalu.shared.model.ControllerData;
-import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
 import com.github.nalukit.bootstarternalu.server.resource.generator.impl.AbstractControllerComponentSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.resource.generator.impl.Comments;
+import com.github.nalukit.gwtbootstarternalu.shared.model.ControllerData;
+import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.FieldSpec;
 import com.squareup.javapoet.MethodSpec;

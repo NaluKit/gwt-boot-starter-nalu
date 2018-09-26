@@ -17,8 +17,8 @@
 
 package com.github.nalukit.bootstarternalu.server.resource.generator.impl.gxt;
 
-import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
 import com.github.nalukit.bootstarternalu.server.resource.generator.impl.AbstractHeaderSourceGenerator;
+import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.sencha.gxt.widget.core.client.container.SimpleContainer;

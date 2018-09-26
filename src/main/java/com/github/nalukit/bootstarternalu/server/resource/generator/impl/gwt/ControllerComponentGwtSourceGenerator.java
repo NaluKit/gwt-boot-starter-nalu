@@ -17,10 +17,10 @@
 
 package com.github.nalukit.bootstarternalu.server.resource.generator.impl.gwt;
 
-import com.github.nalukit.gwtbootstarternalu.shared.model.ControllerData;
-import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
 import com.github.nalukit.bootstarternalu.server.resource.generator.impl.AbstractControllerComponentSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.resource.generator.impl.Comments;
+import com.github.nalukit.gwtbootstarternalu.shared.model.ControllerData;
+import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Label;
