@@ -74,7 +74,7 @@ More information can be found [here](https://github.com/mvp4g/nalu/wiki/03.-Appl
 #### Debug Support
 **TODO: Link**
 If checked, the [Debug](https://github.com/mvp4g/nalu/wiki/02.-Application#debug-annotation) annotation will be
-aded to the applicaiton interface.
+aded to the application interface.
 
 ### Screen Meta Data
 
