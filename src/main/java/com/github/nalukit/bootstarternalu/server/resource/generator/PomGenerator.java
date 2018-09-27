@@ -679,7 +679,7 @@ public class PomGenerator {
                                GeneratorUtils.removeBadChracters(this.naluGeneraterParms.getArtefactId())))
       .append(this.addAddrLine(2,
                                "version",
-                               "1.0.0-rc-2-SNAPSHOT"))
+                               "1.0.0-SNAPSHOT"))
       .append(GeneratorConstants.LINE_BREAK)
       .append(this.addAddrLine(2,
                                "packaging",
