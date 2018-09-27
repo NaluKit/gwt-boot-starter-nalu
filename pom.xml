@@ -226,16 +226,14 @@
         <checksumPolicy>fail</checksumPolicy>
       </snapshots>
     </repository>
+    <repository>
+      <!-- ~/.m2/settings.xml add <server/> with the support portal credentials -->
+      <id>sencha-gxt-repository</id>
+      <name>Sencha GXT Repository</name>
+      <!-- GPL -->
+      <url>https://maven.sencha.com/repo/gxt-gpl-release</url>
+    </repository>
   </repositories>
- <!--<repositories>-->
-    <!--<repository>-->
-      <!--&lt;!&ndash; ~/.m2/settings.xml add <server/> with the support portal credentials &ndash;&gt;-->
-      <!--<id>sencha-gxt-repository</id>-->
-      <!--<name>Sencha GXT Repository</name>-->
-      <!--&lt;!&ndash; GPL &ndash;&gt;-->
-      <!--<url>https://maven.sencha.com/repo/gxt-gpl-release</url>-->
-    <!--</repository>-->
-  <!--</repositories>-->
 
   <build>
     <finalName>${project.artifactId}</finalName>
