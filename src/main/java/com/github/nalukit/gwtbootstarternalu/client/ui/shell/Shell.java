@@ -25,13 +25,14 @@ import org.dominokit.domino.ui.grid.Column;
 import org.dominokit.domino.ui.grid.Row;
 import org.dominokit.domino.ui.layout.Footer;
 import org.dominokit.domino.ui.layout.Layout;
+import org.dominokit.domino.ui.popover.PopupPosition;
 import org.dominokit.domino.ui.style.Styles;
 import org.dominokit.domino.ui.utils.DominoElement;
 import org.dominokit.domino.ui.utils.ScreenMedia;
+import org.dominokit.domino.ui.utils.TextNode;
 import org.jboss.gwt.elemento.core.Elements;
 
-import static org.jboss.gwt.elemento.core.Elements.a;
-import static org.jboss.gwt.elemento.core.Elements.img;
+import static org.jboss.gwt.elemento.core.Elements.*;
 
 /**
  * this is the presenter of the shell. The shell divides the browser in
@@ -52,12 +53,25 @@ public class Shell
      */
     @Override
     public void attachShell() {
-        Layout layout = Layout.create("Nalu Initializer")
+        Layout layout = Layout.create()
                 .disableLeftPanel();
 
         layout.getNavigationBar()
+                .getTitle()
+                .clearElement()
+                .appendChild(TextNode.of("Nalu Initializer"))
+                .appendChild(span()
+                        .css("version")
+                        .textContent("Version 1.0.0-RC1"));
+
+        layout.getNavigationBar()
                 .setId("header")
-                .appendChild(img("/gwt-boot-starter-nalu/img/Nalu_64px.png").css(Styles.img_responsive, "logo"));
+                .appendChild(img("./img/Nalu_64px.png").css(Styles.img_responsive, "logo"))
+                .getNavigationBar()
+                .appendChild(span().css(Styles.pull_right, "powered-by")
+                        .textContent("Powered by")
+                        .add(DominoElement.of(img("./img/domino-ui.png")
+                                .attr("alt","Domino UI")).setTooltip("Domino UI", PopupPosition.BOTTOM)));
 
         layout.showFooter()
                 .fixFooter();
@@ -86,17 +100,9 @@ public class Shell
                 .setId("content");
         layout.show();
 
-        /*
-            <a href="https://github.com/you">
-            <img style="position: absolute; top: 0; right: 0; border: 0;"
-                src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"
-                alt="Fork me on GitHub">
-            </a>
-
-         */
         DomGlobal.document.body.appendChild(DominoElement.of(a().attr("href", "https://github.com/NaluKit/gwt-boot-starter-nalu")
                 .add(img("https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png")
-                        .style("position: fixed; top: 0; right: 0; border: 0; z-index: 99;")
+                        .css("github-fork")
                         .attr("alt", "Fork me on GitHub"))).hideOn(ScreenMedia.MEDIUM_AND_DOWN)
                 .asElement());
     }

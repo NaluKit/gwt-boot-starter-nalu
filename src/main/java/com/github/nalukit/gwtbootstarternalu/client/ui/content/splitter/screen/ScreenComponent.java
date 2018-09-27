@@ -67,7 +67,7 @@ public class ScreenComponent
                                           .setCellRenderer(cellInfo -> {
                                             TextBox textBox = TextBox.create();
                                             textBox
-                                              .setValue(cellInfo.getRecord()
+                                              .value(cellInfo.getRecord()
                                                                 .getComponentName())
                                               .setReadOnly(true)
                                               .setRequired(true)
@@ -105,7 +105,7 @@ public class ScreenComponent
                                           .setCellRenderer(cellInfo -> {
                                             TextBox textBox = TextBox.create();
                                             textBox
-                                              .setValue(cellInfo.getRecord()
+                                              .value(cellInfo.getRecord()
                                                                 .getRoute())
                                               .setReadOnly(true)
                                               .setRequired(true)
@@ -143,7 +143,7 @@ public class ScreenComponent
                                                                                    .setOnTitle("Yes")
                                                                                    .setOffTitle("No")
                                                                                    .setColor(Color.BLUE_GREY)
-                                                                                   .setValue(cellInfo.getRecord()
+                                                                                   .value(cellInfo.getRecord()
                                                                                                      .isShowControllerAtStart())
                                                                                    .addChangeHandler(value -> {
                                                                                      dataStore.getRecords()
@@ -160,7 +160,7 @@ public class ScreenComponent
                                                                                    .setOnTitle("Yes")
                                                                                    .setOffTitle("No")
                                                                                    .setColor(Color.BLUE_GREY)
-                                                                                   .setValue(cellInfo.getRecord()
+                                                                                   .value(cellInfo.getRecord()
                                                                                                      .isConfirmation())
                                                                                    .addChangeHandler(value -> cellInfo.getRecord()
                                                                                                                       .setConfirmation(value))

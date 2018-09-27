@@ -54,7 +54,7 @@ public class ProjectComponent
 
         groupIdTextBox = TextBox.create("Group ID")
                 .setPlaceholder("com.example")
-                .setValue("com.example")
+                .value("com.example")
                 .floating()
                 .setRequired(true)
                 .setAutoValidation(true)
@@ -63,7 +63,7 @@ public class ProjectComponent
 
         artifactIdTextBox = TextBox.create("Artifact ID")
                 .setPlaceholder("MyTestProject")
-                .setValue("MyTestProject")
+                .value("MyTestProject")
                 .floating()
                 .setRequired(true)
                 .setAutoValidation(true)
