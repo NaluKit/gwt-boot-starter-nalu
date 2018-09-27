@@ -59,7 +59,7 @@ public class ApplicationComponent
         this.element = Row.create()
                 .appendChild(Column.span6()
                         .offset3()
-                        .appendChild(BlockHeader.create("Project Meta Data"))
+                        .appendChild(BlockHeader.create("Application Meta Data"))
                         .appendChild(Card.create()
                                 .appendChild(Row.create()
                                         .appendChild(Column
