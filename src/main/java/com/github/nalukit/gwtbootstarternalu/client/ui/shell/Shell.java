@@ -18,6 +18,7 @@
 package com.github.nalukit.gwtbootstarternalu.client.ui.shell;
 
 import com.github.nalukit.gwtbootstarternalu.client.ApplicationContext;
+import com.github.nalukit.gwtbootstarternalu.client.Version;
 import com.github.nalukit.nalu.client.component.AbstractShell;
 import elemental2.dom.DomGlobal;
 import elemental2.dom.HTMLAnchorElement;
@@ -62,7 +63,7 @@ public class Shell
                 .appendChild(TextNode.of("Nalu Initializer"))
                 .appendChild(span()
                         .css("version")
-                        .textContent("Version 1.0.0-RC1"));
+                        .textContent(Version.VERSION));
 
         layout.getNavigationBar()
                 .setId("header")
