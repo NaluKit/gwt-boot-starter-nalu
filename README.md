@@ -2,23 +2,24 @@
 
 # Nalu Project Generator
 
+Nalu is a routing based application framework for GWT 2, GWT 3 & J2CL. More informations about Nalu can be foud [here](https://github.com/nalukit/nalu).
+
 ## Motivation
 
 Setting up a Nalu project can be difficult, especially if you are not familiar with Nalu. There are a lot of things
 to do before it is possible to run the project and check wheather things are working or not.
 
-To improve the process of setting up a GWT project using Nalu, the
+To improve the process of setting up a project using Nalu, the
 [Nalu project generator](http://www.mvp4g.org/gwt-boot-starter-nalu/GwtBootStarterNalu.html) was created. Once you have configurated and generated the project, you will get a zip file containing the - ready to import - Nalu project.
 
 Keep in mind, Nalu helps you to structure your application. Navigation, dependencies and confirmation will be generated and
-work. It is not a widget library. So, the views are nearly empty. It is up to you to implement the views.
+work. It is not a widget library. So, the components are nearly empty. It is up to you to implement the components.
 
 **Important note:** Nalu requires Java 8!
 
 **Note:**
 
-The implementation of the generator uses Nalu, GXT and is based on GWT 2.8.2! The generated project requires in this
-version GWT 2.8.2 and Java 8. The generated Nalu source code will work with J2CL / GWT 3 once all dependies to GWT
+The implementation of the generator uses Nalu, [Domino-UI](https://github.com/DominoKit/domino-ui) and is based on GWT 2.8.2! The generated project requires GWT 2.8.2 and Java 8. The generated Nalu source code will work with J2CL / GWT 3 once all dependies to GWT
 2.8.2 are replaced. You have to choose a widget set, that will work with J2CL / GWT 3 to be compatible with J2CL / GWT 3!
 
 **The generator nor Nalu will make any existing source code compatible with J2CL / GWT 3. There is no magic to
@@ -44,20 +45,20 @@ can not be empty. You can enter letters [a - z, A - Z] and numbers [0 - 9].
 
 #### GWT Version
 
-The GWT version of the generated project. (This voersion of the generator supports only GWT 2.8.2.)
+The GWT version of the generated project. (This version of the generator supports only GWT 2.8.2.)
 
 #### Widget Set
 
 The widget library that will be used for the code generation.
 At the moment the Nalu Example generator supports:
 
-- Domino-UI
+- [Domino-UI](https://github.com/DominoKit/domino-ui)
 
-- Elemento
+- [Elemento](https://github.com/hal/elemento)
 
-- native GWT widgets
+- [native GWT widgets](http://www.gwtproject.org/)
 
-- GXT GPL 4.0.0
+- [GXT GPL 4.0.0](https://www.sencha.com/products/gxt/#overview)
 
 **Note:** The native GWT and the GXT GPL 4.0.0 widget sets will not work with J2CL / GWT 3!
 
@@ -68,13 +69,12 @@ In this area the features of Nalu for generated the project are defined.
 ![Project Meta Data](https://github.com/mvp4g/gwt-boot-starter-nalu/blob/master/etc/images/ApplicationMetaData.png?raw=true)
 
 #### Application Loader
-If checked, a [application loader](https://github.com/mvp4g/nalu/wiki/02.-Application-Loader) will be added to the project source code.
-More information can be found [here](https://github.com/mvp4g/nalu/wiki/03.-Application-Loader).
+If checked, a application loader will be added to the project source code.
+More information can be found [here](https://github.com/NaluKit/nalu/wiki/05.-Application-Loader).
 
 #### Debug Support
-**TODO: Link**
-If checked, the [Debug](https://github.com/mvp4g/nalu/wiki/02.-Application#debug-annotation) annotation will be
-aded to the application interface.
+If checked, the [Debug](https://github.com/NaluKit/nalu/wiki/04.-Application#debug-annotation) annotation will be
+added to the application interface.
 
 ### Screen Meta Data
 
@@ -83,22 +83,14 @@ predefined screens called Screen01, Screen02, Screen03, Screen04 and screen05. T
 
 ![Project Meta Data](https://github.com/mvp4g/gwt-boot-starter-nalu/blob/master/etc/images/ScreenMetaData.png?raw=true)
 
-The function of the tool bar buttons:
+* To add a new screen, press the ADD button on the top right side of the Screen Meta Data Card.
 
-- the first buttons adds another screen
+* To delete a screen, press the trash can icon on the right side of the row.
 
-- the second button edits the selected screen
+* To change a component name, click in the component name cell and edit the value
 
-- the third button removes the selected screen.
+* To cahnge the route, click in the route cell of the row and edit the value
 
-In case you add or edit a screen, a window will open:
+* To change the start screen, press 'Yes' in the start screen cell of the row, that shuld be start screen
 
-![Add or edit screen data](https://github.com/mvp4g/gwt-boot-starter-nalu/blob/master/etc/images/ScreenWindowMetaData.png?raw=true)
-
-Using this window, you can:
-
-* name of the component: this name will be used as package name, the controller- and component-name, etc
-* route: this route is the url token binded to a controller
-* use this screen as start screen of the application (if there is no history token, this will be the screen, that will
-  be shown at start of the application)
-* enable confirmation in case the controller will be stopped
+* To generate confirmation code, click 'yes' inside the confimation row.
