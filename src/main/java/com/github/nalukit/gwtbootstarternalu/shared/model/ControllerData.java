@@ -200,4 +200,18 @@ public class ControllerData {
   public void setComponentName(String componentName) {
     this.componentName = componentName;
   }
+
+  @Override
+  public String toString() {
+    return "ControllerData{" +
+            "id='" + id + '\'' +
+            ", componentName='" + componentName + '\'' +
+            ", route='" + route + '\'' +
+            ", confirmation=" + confirmation +
+            ", showControllerAtStart=" + showControllerAtStart +
+            ", deletable=" + deletable +
+            ", editable=" + editable +
+            ", parameters=" + parameters +
+            '}';
+  }
 }
