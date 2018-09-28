@@ -39,7 +39,7 @@ public class ApplicationContext
     this.naluGeneraterParms.setApplicationLoader(true);
     this.naluGeneraterParms.setDebug(true);
     this.naluGeneraterParms.setGwtVersion(DataConstants.GWT_VERSION_2_8_2);
-    this.naluGeneraterParms.setWidgetLibrary(WidgetLibrary.GWT);
+    this.naluGeneraterParms.setWidgetLibrary(WidgetLibrary.DOMINO_UI);
     this.naluGeneraterParms.getControllers()
                            .add(new ControllerData("Screen01",
                                                    "screen01",
