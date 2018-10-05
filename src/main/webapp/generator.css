@@ -63,10 +63,10 @@
 }
 
 .powered-by{
-    margin-top: 20px;
     color: #fff;
-    margin-right: 120px;
-    margin-bottom: 20px;
+    position: absolute;
+    right: 140px;
+    top: 10px;
 }
 
 .powered-by img{

@@ -40,95 +40,97 @@ import static org.jboss.gwt.elemento.core.Elements.*;
  * severeal areas.
  */
 public class Shell
-  extends AbstractShell<ApplicationContext> {
+        extends AbstractShell<ApplicationContext> {
 
-  public Shell() {
-    super();
-  }
+    public Shell() {
+        super();
+    }
 
-  /**
-   * The ShellPresenter has to implemented this method, because the framework
-   * can not do this. (It does not know, what to use).
-   * <p>
-   * We append the ShellView to the browser body.
-   */
-  @Override
-  public void attachShell() {
-    Layout layout = Layout.create()
-                          .disableLeftPanel();
+    /**
+     * The ShellPresenter has to implemented this method, because the framework
+     * can not do this. (It does not know, what to use).
+     * <p>
+     * We append the ShellView to the browser body.
+     */
+    @Override
+    public void attachShell() {
+        Layout layout = Layout.create()
+                .disableLeftPanel();
 
-    layout.getNavigationBar()
-          .getTitle()
-          .clearElement()
-          .appendChild(TextNode.of("Nalu Initializer"))
-          .appendChild(span()
-                         .css("version")
-                         .textContent(Version.VERSION))
-          .addClickListener(e -> DomGlobal.window.open("https://github.com/nalukit/nalu",
-                                                       "_blank"));
+        layout.getNavigationBar()
+                .getTitle()
+                .clearElement()
+                .appendChild(TextNode.of("Nalu Initializer"))
+                .appendChild(span()
+                        .css("version")
+                        .textContent(Version.VERSION))
+                .addClickListener(e -> DomGlobal.window.open("https://github.com/nalukit/nalu",
+                        "_blank"));
 
-    layout.getNavigationBar()
-          .setId("header")
-          .appendChild(img("./img/Nalu_64px.png").css(Styles.img_responsive,
-                                                      "logo"))
-          .getNavigationBar()
-          .appendChild(span().css(Styles.pull_right,
-                                  "powered-by")
-                             .textContent("Powered by")
-                             .add(DominoElement.of(img("./img/domino-ui.png")
-                                                     .attr("alt",
-                                                           "Domino UI"))
-                                               .setTooltip("Domino UI",
-                                                           PopupPosition.BOTTOM)))
-          .addClickListener(e -> DomGlobal.window.open("https://github.com/DominoKit/domino-ui",
-                                                       "_blank"));
+        layout
+                .setLogo(img("./img/Nalu_64px.png").style("width: 48px; height:48px;"))
+                .getNavigationBar()
+                .setId("header")
+                .getNavigationBar()
+                .appendChild(span().css(Styles.pull_right).css(
+                        "powered-by")
+                        .textContent("Powered by")
+                        .add(DominoElement.of(img("./img/domino-ui.png")
+                                .style("width: 48px; height:48px;")
+                                .attr("alt",
+                                        "Domino UI"))
+                                .setTooltip("Domino UI",
+                                        PopupPosition.BOTTOM)))
+                .addClickListener(e -> DomGlobal.window.open("https://github.com/DominoKit/domino-ui",
+                        "_blank"));
 
-    layout.showFooter()
-          .fixFooter();
-    Footer footer = layout.getFooter();
 
-    footer.appendChild(Row.create()
-                          .setId("buttonBar")
-                          .addCss("top"))
-          .appendChild(Row.create()
-                          .addCss("bottom")
-                          .appendChild(Column.span2()
-                                             .offset2()
-                                             .appendChild(createAnchorElement("Nalu@Github",
-                                                                              "https://github.com/nalukit/nalu")))
-                          .appendChild(Column.span2()
-                                             .appendChild(createAnchorElement("Nalu Documentation",
-                                                                              "https://github.com/nalukit/nalu/wiki")))
-                          .appendChild(Column.span2()
-                                             .appendChild(createAnchorElement("Generator Documentation",
-                                                                              "https://github.com/nalukit/gwt-boot-starter-nalu")))
-                          .appendChild(Column.span2()
-                                             .appendChild(createAnchorElement("Issues",
-                                                                              "https://github.com/nalukit/gwt-boot-starter-nalu/issues"))));
+        layout.showFooter()
+                .fixFooter();
+        Footer footer = layout.getFooter();
 
-    layout.getContentPanel()
-          .setId("content");
-    layout.show();
+        footer.appendChild(Row.create()
+                .setId("buttonBar")
+                .addCss("top"))
+                .appendChild(Row.create()
+                        .addCss("bottom")
+                        .appendChild(Column.span2()
+                                .offset2()
+                                .appendChild(createAnchorElement("Nalu@Github",
+                                        "https://github.com/nalukit/nalu")))
+                        .appendChild(Column.span2()
+                                .appendChild(createAnchorElement("Nalu Documentation",
+                                        "https://github.com/nalukit/nalu/wiki")))
+                        .appendChild(Column.span2()
+                                .appendChild(createAnchorElement("Generator Documentation",
+                                        "https://github.com/nalukit/gwt-boot-starter-nalu")))
+                        .appendChild(Column.span2()
+                                .appendChild(createAnchorElement("Issues",
+                                        "https://github.com/nalukit/gwt-boot-starter-nalu/issues"))));
 
-    DomGlobal.document.body.appendChild(DominoElement.of(a().attr("href",
-                                                                  "https://github.com/NaluKit/gwt-boot-starter-nalu")
-                                                            .add(img("https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png")
-                                                                   .css("github-fork")
-                                                                   .attr("alt",
-                                                                         "Fork me on GitHub")))
-                                                     .hideOn(ScreenMedia.MEDIUM_AND_DOWN)
-                                                     .asElement());
-  }
+        layout.getContentPanel()
+                .setId("content");
+        layout.show();
 
-  private HTMLAnchorElement createAnchorElement(String label,
-                                                String url) {
-    HTMLAnchorElement anchor = Elements.a()
-                                       .textContent(label)
-                                       .attr("href",
-                                             url)
-                                       .attr("target",
-                                             "_blank")
-                                       .asElement();
-    return anchor;
-  }
+        DomGlobal.document.body.appendChild(DominoElement.of(a().attr("href",
+                "https://github.com/NaluKit/gwt-boot-starter-nalu")
+                .add(img("https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png")
+                        .css("github-fork")
+                        .attr("alt",
+                                "Fork me on GitHub")))
+                .hideOn(ScreenMedia.MEDIUM_AND_DOWN)
+                .asElement());
+    }
+
+    private HTMLAnchorElement createAnchorElement(String label,
+                                                  String url) {
+        HTMLAnchorElement anchor = Elements.a()
+                .textContent(label)
+                .attr("href",
+                        url)
+                .attr("target",
+                        "_blank")
+                .asElement();
+        return anchor;
+    }
 }
