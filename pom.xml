@@ -297,8 +297,8 @@
           <!--<skipModule>true</skipModule>-->
           <devmodeArgs>
             <devmodeArg>-noserver</devmodeArg>
-            <devmodeArg>-bindAddress</devmodeArg>
-            <devmodeArg>192.168.1.9</devmodeArg>
+            <!--<devmodeArg>-bindAddress</devmodeArg>-->
+            <!--<devmodeArg>192.168.1.9</devmodeArg>-->
             <devmodeArg>-port</devmodeArg>
             <devmodeArg>${serverPort}</devmodeArg>
           </devmodeArgs>
