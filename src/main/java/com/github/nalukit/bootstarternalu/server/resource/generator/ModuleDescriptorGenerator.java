@@ -146,9 +146,6 @@ public class ModuleDescriptorGenerator {
       .append(GeneratorConstants.LINE_BREAK)
       .append("  <source path='client'/>\n")
       .append(GeneratorConstants.LINE_BREAK)
-//      .append(GeneratorConstants.LINE_BREAK)
-//      .append("  <set-configuration-property name=\"mvp4g2.logging\" value=\"true\"/>")
-//      .append(GeneratorConstants.LINE_BREAK)
       .append("</module>");
 
     String moduleDescriptorContent = sb.toString();

@@ -713,11 +713,7 @@ public class PomGenerator {
                                   "nalu version"))
       .append(this.addAddrLine(4,
                                "nalu.version",
-                               "1.0.0-rc-2-SNAPSHOT"))
-      .append(GeneratorConstants.LINE_BREAK)
-      .append(this.addAddrLine(4,
-                               "gwt.events",
-                               "HEAD-SNAPSHOT"))
+                               "1.0.0-rc-3-SNAPSHOT"))
       .append(GeneratorConstants.LINE_BREAK);
     switch (this.naluGeneraterParms.getWidgetLibrary()) {
       case DOMINO_UI:

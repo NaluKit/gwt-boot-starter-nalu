@@ -28,13 +28,4 @@ public class Comments {
                                        "this is a good place to validate the entered data and\n" +
                                        "move it into the model.\n";
 
-//  public final static String CREATE_VIEW = "Because we have told mvp4g2, that this presenter will create it's view\n" +
-//                                           "(viewCreator = Presenter.VIEW_CREATION_METHOD.PRESENTER), we have to\n" +
-//                                           "implement this method.\n" +
-//                                           "\n" +
-//                                           "This enables use, to use GWT.create or something else instead of new (what the framework is doing!)\n" +
-//                                           "Because this implementation does not know 'GWT.create()' we will do a simple new ... \n" +
-//                                           "\n" +
-//                                           "@return a new instance of the view.\n";
-
 }
