@@ -713,7 +713,7 @@ public class PomGenerator {
                                   "nalu version"))
       .append(this.addAddrLine(4,
                                "nalu.version",
-                               "1.0.0-rc-4"))
+                               "1.0.0-rc-5"))
       .append(GeneratorConstants.LINE_BREAK);
     switch (this.naluGeneraterParms.getWidgetLibrary()) {
       case DOMINO_UI:

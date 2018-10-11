@@ -18,14 +18,14 @@
 package com.github.nalukit.gwtbootstarternalu.client.ui.content.splitter.application;
 
 import com.github.nalukit.gwtbootstarternalu.client.ApplicationContext;
-import com.github.nalukit.nalu.client.component.AbstractSplitterController;
-import com.github.nalukit.nalu.client.component.annotation.SplitterController;
+import com.github.nalukit.nalu.client.component.AbstractCompositeController;
+import com.github.nalukit.nalu.client.component.annotation.CompositeController;
 import elemental2.dom.HTMLElement;
 
-@SplitterController(componentInterface = IApplicationComponent.class,
-  component = ApplicationComponent.class)
+@CompositeController(componentInterface = IApplicationComponent.class,
+                     component = ApplicationComponent.class)
 public class ApplicationSplitter
-  extends AbstractSplitterController<ApplicationContext, IApplicationComponent, HTMLElement>
+    extends AbstractCompositeController<ApplicationContext, IApplicationComponent, HTMLElement>
   implements IApplicationComponent.Controller {
 
   public ApplicationSplitter() {

@@ -44,7 +44,7 @@
     <!-- Elemento version -->
     <elemento.version>0.8.1</elemento.version>
     <!-- nalu version -->
-    <nalu.version>1.0.0-rc-4</nalu.version>
+    <nalu.version>1.0.0-rc-5</nalu.version>
 
     <gwt-events.version>HEAD-SNAPSHOT</gwt-events.version>
 
@@ -159,24 +159,24 @@
       <groupId>com.sencha.gxt</groupId>
       <artifactId>gxt</artifactId>
       <version>${gxt.version}</version>
-      <scope>system</scope>
-      <systemPath>${project.basedir}/etc/lib/gxt.jar</systemPath>
+      <!--<scope>system</scope>-->
+      <!--<systemPath>${project.basedir}/etc/lib/gxt.jar</systemPath>-->
     </dependency>
     <!-- GXT 3.1+ - Neptune Theme -->
     <dependency>
       <groupId>com.sencha.gxt</groupId>
       <artifactId>gxt-theme-neptune</artifactId>
       <version>${gxt.version}</version>
-      <scope>system</scope>
-      <systemPath>${project.basedir}/etc/lib/gxt-theme-neptune.jar</systemPath>
+      <!--<scope>system</scope>-->
+      <!--<systemPath>${project.basedir}/etc/lib/gxt-theme-neptune.jar</systemPath>-->
     </dependency>
     <!-- GXT 3.1+ - Triton Theme -->
     <dependency>
       <groupId>com.sencha.gxt</groupId>
       <artifactId>gxt-theme-triton</artifactId>
       <version>${gxt.version}</version>
-      <scope>system</scope>
-      <systemPath>${project.basedir}/etc/lib/gxt-theme-triton.jar</systemPath>
+      <!--<scope>system</scope>-->
+      <!--<systemPath>${project.basedir}/etc/lib/gxt-theme-triton.jar</systemPath>-->
     </dependency>
     <!-- Elemento -->
     <dependency>
