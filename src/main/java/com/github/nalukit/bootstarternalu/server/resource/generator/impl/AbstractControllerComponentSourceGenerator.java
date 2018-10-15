@@ -137,10 +137,10 @@ public abstract class AbstractControllerComponentSourceGenerator
                                                                                    "MyModel"),
                                                                      "model")
                                                             .build())
-                                 .addComment("that's a good place to move your data out of the model into wth widgets")
+                                 .addComment("That's a good place to move your data out of the model into the widgets.")
                                  .addComment("")
-                                 .addComment("Using GWT 2.x you can use the editor framewok and in this case")
-                                 .addComment("it is a good idea to edit and flush ths data inside the presenter.")
+                                 .addComment("Using GWT 2.x you can use the editor framework and in this case")
+                                 .addComment("it is a good idea to edit and flush the data inside the presenter.")
                                  .addStatement(createEditStatement())
                                  .build());
     // createComponent method
