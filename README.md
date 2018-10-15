@@ -2,15 +2,15 @@
 
 # Nalu Project Generator
 
-Nalu is a routing based application framework for GWT 2, GWT 3 & J2CL. More informations about Nalu can be foud [here](https://github.com/nalukit/nalu).
+Nalu is a routing based application framework for GWT 2, GWT 3 & J2CL. More informations about Nalu can be found [here](https://github.com/nalukit/nalu).
 
 ## Motivation
 
 Setting up a Nalu project can be difficult, especially if you are not familiar with Nalu. There are a lot of things
-to do before it is possible to run the project and check wheather things are working or not.
+to do before it is possible to run the project and check whether things are working or not.
 
 To improve the process of setting up a project using Nalu, the
-[Nalu project generator](http://www.mvp4g.org/gwt-boot-starter-nalu/GwtBootStarterNalu.html) was created. Once you have configurated and generated the project, you will get a zip file containing the - ready to import - Nalu project.
+[Nalu project generator](http://www.mvp4g.org/gwt-boot-starter-nalu/GwtBootStarterNalu.html) was created. Once you have configured and generated the project, you will get a zip file containing the - ready to import - Nalu project.
 
 Keep in mind, Nalu helps you to structure your application. Navigation, dependencies and confirmation will be generated and
 work. It is not a widget library. So, the components are nearly empty. It is up to you to implement the components.
@@ -40,7 +40,7 @@ not be empty. You can enter letters [a - z], numbers [0 - 9] and dots [.].
 
 #### Artifact Id
 
-The artifact id is used as the artifact id inside the POM. It is also used as the name of the GWT module. The group id
+The artifact id is used as the artifact id inside the POM. It is also used as the name of the GWT module. The artifact id
 can not be empty. You can enter letters [a - z, A - Z] and numbers [0 - 9].
 
 #### GWT Version
@@ -79,7 +79,7 @@ added to the application interface.
 ### Screen Meta Data
 
 In this area the screens are defined. A screen in Nalu is a combination of a controller and a component. There are five
-predefined screens called Screen01, Screen02, Screen03, Screen04 and screen05. The generator needs at least one screen to generate a fully working project.
+predefined screens called Screen01, Screen02, Screen03, Screen04 and Screen05. The generator needs at least one screen to generate a fully working project.
 
 ![Project Meta Data](https://github.com/nalukit/gwt-boot-starter-nalu/blob/master/etc/images/ScreenMetaData.png?raw=true)
 
@@ -89,8 +89,8 @@ predefined screens called Screen01, Screen02, Screen03, Screen04 and screen05. T
 
 * To change a component name, click in the component name cell and edit the value
 
-* To cahnge the route, click in the route cell of the row and edit the value
+* To change the route, click in the route cell of the row and edit the value
 
-* To change the start screen, press 'Yes' in the start screen cell of the row, that shuld be start screen
+* To change the start screen, press 'Yes' in the start screen cell of the row, that should be the start screen
 
-* To generate confirmation code, click 'yes' inside the confimation row.
+* To generate confirmation code, click 'yes' inside the confirmation row.
