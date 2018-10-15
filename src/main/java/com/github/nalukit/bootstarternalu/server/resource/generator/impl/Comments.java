@@ -22,7 +22,7 @@ public class Comments {
   public final static String CONFIRM = "The mayStop method will be called by the framework in\n" +
                                        "case a navigation event occured.\n" +
                                        "\n" +
-                                       "It is up tp this method to decide if the navigation event\n" +
+                                       "It is up to this method to decide if the navigation event\n" +
                                        "will be executed or not.\n" +
                                        "\n" +
                                        "this is a good place to validate the entered data and\n" +
