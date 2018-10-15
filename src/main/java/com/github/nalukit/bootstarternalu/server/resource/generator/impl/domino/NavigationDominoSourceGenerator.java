@@ -78,7 +78,7 @@ public class NavigationDominoSourceGenerator
     method.addStatement("$T tree = $T.create(\"Navigation\")",
                         ClassName.get(Tree.class),
                         ClassName.get(Tree.class));
-    variableNames.forEach(n -> method.addStatement("tree.addTreeItem($L)",
+    variableNames.forEach(n -> method.addStatement("tree.appendChild($L)",
                                                    n));
     method.addStatement("initElement(tree.asElement())");
 
