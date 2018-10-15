@@ -74,7 +74,7 @@ public class StatusBarDominoSourceGenerator
                                                         "              .get()\n" +
                                                         "              .addColumn($T.of($T.span6())\n" +
                                                         "              .get()\n" +
-                                                        "              .addElement($T.h(4).textContent(\"Nalu example application using Domnio-UI\")))\n" +
+                                                        "              .addElement($T.h(4).textContent(\"Nalu example application using Domino-UI\")))\n" +
                                                         "              .addColumn($T.of($T.span6())\n" +
                                                         "                                 .setTextAlign(\"right\")\n" +
                                                         "                                 .get()\n" +
