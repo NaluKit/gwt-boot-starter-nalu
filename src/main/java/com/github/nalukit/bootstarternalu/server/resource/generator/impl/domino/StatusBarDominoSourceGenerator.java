@@ -24,8 +24,8 @@ import com.squareup.javapoet.FieldSpec;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeSpec;
 import elemental2.dom.HTMLDivElement;
-import org.dominokit.domino.ui.column.Column;
-import org.dominokit.domino.ui.row.Row;
+import org.dominokit.domino.ui.grid.Column;
+import org.dominokit.domino.ui.grid.Row;
 import org.dominokit.domino.ui.style.Style;
 import org.jboss.gwt.elemento.core.Elements;
 
@@ -70,15 +70,15 @@ public class StatusBarDominoSourceGenerator
                                           .addStatement("initElement($T.create()\n" +
                                                         "              .style()\n" +
                                                         "              .setMargin(\"0px\")\n" +
-                                                        "              .css(\"demo-footer\")\n" +
+                                                        "              .add(\"demo-footer\")\n" +
                                                         "              .get()\n" +
                                                         "              .addColumn($T.of($T.span6())\n" +
                                                         "              .get()\n" +
-                                                        "              .addElement($T.h(4).textContent(\"Nalu example application using Domino-UI\")))\n" +
+                                                        "              .appendChild($T.h(4).textContent(\"Nalu example application using Domino-UI\")))\n" +
                                                         "              .addColumn($T.of($T.span6())\n" +
                                                         "                                 .setTextAlign(\"right\")\n" +
                                                         "                                 .get()\n" +
-                                                        "                                 .addElement(this.messageInfo))\n" +
+                                                        "                                 .appendChild(this.messageInfo))\n" +
                                                         "                   .asElement())",
                                                         ClassName.get(Row.class),
                                                         ClassName.get(Style.class),
