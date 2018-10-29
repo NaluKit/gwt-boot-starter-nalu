@@ -144,7 +144,7 @@ public class ModelSourceGenerator
                                         .addMethod(MethodSpec.methodBuilder("setActiveScreen")
                                                              .addModifiers(Modifier.PUBLIC)
                                                              .addParameter(ParameterSpec.builder(String.class,
-                                                                                                 "uuid")
+                                                                                                 "activeScreen")
                                                                                         .build())
                                                              .addStatement("this.activeScreen = activeScreen")
                                                              .build());
