@@ -94,3 +94,12 @@ predefined screens called Screen01, Screen02, Screen03, Screen04 and Screen05. T
 * To change the start screen, press 'Yes' in the start screen cell of the row, that should be the start screen
 
 * To generate confirmation code, click 'yes' inside the confirmation row.
+
+## Development
+
+#### Build application
+`mvn package`
+#### Run application
+`mvn gwt:codeserver` (for devmode)
+
+`mvn spring-boot:run`
