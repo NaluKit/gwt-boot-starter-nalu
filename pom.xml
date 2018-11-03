@@ -117,11 +117,6 @@
     </dependency>
     <dependency>
       <groupId>com.github.nalukit</groupId>
-      <artifactId>nalu-plugin-elemental2</artifactId>
-      <version>${nalu.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>com.github.nalukit</groupId>
       <artifactId>nalu-plugin-gwt-processor</artifactId>
       <version>${nalu.version}</version>
       <scope>provided</scope>
@@ -208,10 +203,6 @@
       <artifactId>junit</artifactId>
       <version>${junit.version}</version>
       <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
     </dependency>
   </dependencies>
 
