@@ -49,7 +49,7 @@ public class ApplicationComponent
                 .setColor(Color.BLUE_GREY)
                 .filledIn()
                 .styler(style -> style.setMarginBottom("0px"));
-        this.cbDebugSupport = CheckBox.create("Generate Debug support (in development mode")
+        this.cbDebugSupport = CheckBox.create("Generate Debug support (in development mode)")
                 .check()
                 .setColor(Color.BLUE_GREY)
                 .filledIn()
