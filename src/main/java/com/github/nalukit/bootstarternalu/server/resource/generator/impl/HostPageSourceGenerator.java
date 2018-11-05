@@ -109,7 +109,15 @@ public class HostPageSourceGenerator {
         .append(GeneratorConstants.LINE_BREAK)
         .append("    <link type=\"text/css\" rel=\"stylesheet\" href=\"")
         .append(GeneratorUtils.removeBadChracters(this.naluGeneraterParms.getArtefactId()))
-        .append("/css/themes/all-themes.css\">");
+        .append("/css/themes/all-themes.css\">")
+        .append(GeneratorConstants.LINE_BREAK)
+        .append(GeneratorConstants.LINE_BREAK)
+        .append("    <!-- This script is for IE11-support only. -->")
+        .append(GeneratorConstants.LINE_BREAK)
+        .append("    <script type=\"text/javascript\" language=\"javascript\" src=\"")
+        .append(GeneratorUtils.removeBadChracters(this.naluGeneraterParms.getArtefactId()))
+        .append("/polyfill/polyfill-ie11.js")
+        .append("\"></script>");
     } else {
       sb.append("    <!-- Consider inlining CSS to reduce the number of requested files -->")
         .append(GeneratorConstants.LINE_BREAK)
