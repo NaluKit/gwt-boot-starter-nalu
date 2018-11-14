@@ -17,16 +17,21 @@
 
 package com.github.nalukit.gwtbootstarternalu.client;
 
-import com.github.nalukit.gwtbootstarternalu.client.ui.shell.Shell;
+import com.github.nalukit.gwtbootstarternalu.client.ui.shell.ShellApplication;
 import com.github.nalukit.nalu.client.application.IsApplication;
 import com.github.nalukit.nalu.client.application.annotation.Application;
 import com.github.nalukit.nalu.client.application.annotation.Debug;
+import com.github.nalukit.nalu.client.application.annotation.Shell;
+import com.github.nalukit.nalu.client.application.annotation.Shells;
 import com.github.nalukit.nalu.plugin.elemental2.client.DefaultElemental2Logger;
 
-@Application(shell = Shell.class,
-  startRoute = "/setUp",
-  context = ApplicationContext.class)
-@Debug(logLevel = Debug.LogLevel.DETAILED, logger = DefaultElemental2Logger.class)
+@Application(startRoute = "/application/setUp",
+             context = ApplicationContext.class,
+             routeError = "/application/setUp")
+@Shells(@Shell(name = "application",
+               shell = ShellApplication.class))
+@Debug(logLevel = Debug.LogLevel.DETAILED,
+       logger = DefaultElemental2Logger.class)
 interface GwtBootStarterNaluApplication
-  extends IsApplication {
+    extends IsApplication {
 }

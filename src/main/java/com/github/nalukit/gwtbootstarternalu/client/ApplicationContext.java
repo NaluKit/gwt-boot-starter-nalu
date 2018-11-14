@@ -17,10 +17,7 @@
 
 package com.github.nalukit.gwtbootstarternalu.client;
 
-import com.github.nalukit.gwtbootstarternalu.shared.model.ControllerData;
-import com.github.nalukit.gwtbootstarternalu.shared.model.DataConstants;
-import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
-import com.github.nalukit.gwtbootstarternalu.shared.model.WidgetLibrary;
+import com.github.nalukit.gwtbootstarternalu.shared.model.*;
 import com.github.nalukit.nalu.client.application.IsContext;
 
 public class ApplicationContext
@@ -34,10 +31,13 @@ public class ApplicationContext
     this.version = Version.VERSION;
 
     this.naluGeneraterParms = new NaluGeneraterParms();
+    this.naluGeneraterParms.setMavenSettings(MavenModule.SINGLE_MAVEN_MODULE);
     this.naluGeneraterParms.setGroupId("com.example");
     this.naluGeneraterParms.setArtefactId("MyTestProject");
     this.naluGeneraterParms.setApplicationLoader(true);
     this.naluGeneraterParms.setDebug(true);
+    this.naluGeneraterParms.setLoginScreen(true);
+    this.naluGeneraterParms.setErrorScreen(true);
     this.naluGeneraterParms.setGwtVersion(DataConstants.GWT_VERSION_2_8_2);
     this.naluGeneraterParms.setWidgetLibrary(WidgetLibrary.DOMINO_UI);
     this.naluGeneraterParms.getControllers()

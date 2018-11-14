@@ -62,6 +62,10 @@ At the moment the Nalu Example generator supports:
 
 **Note:** The native GWT and the GXT GPL 4.0.0 widget sets will not work with J2CL / GWT 3!
 
+#### Maven
+
+The project generator supports a single Maven project and a multi module Maven project (based on Thomas Broyer's artifact).
+
 ### Application Meta Data
 
 In this area the features of Nalu for generated the project are defined.
@@ -75,6 +79,12 @@ More information can be found [here](https://github.com/NaluKit/nalu/wiki/05.-Ap
 #### Debug Support
 If checked, the [Debug](https://github.com/NaluKit/nalu/wiki/04.-Application#debug-annotation) annotation will be
 added to the application interface.
+
+#### Generate Login Screen
+Generates a login screen and a filter, that checks, if the user is logged in. In case of relaoding, the project will always route to the login screen.
+
+#### Generate Error Screen
+Generates a error screen. Entering a illigal route in the URL will make the error screen visible.
 
 ### Screen Meta Data
 

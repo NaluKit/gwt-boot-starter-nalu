@@ -31,12 +31,12 @@ import java.io.File;
 import java.io.IOException;
 
 public abstract class AbstractHeaderSourceGenerator
-  extends AbstractSourceGenerator {
+    extends AbstractSourceGenerator {
 
   private String controllerPackage;
 
   public void generate()
-    throws GeneratorException {
+      throws GeneratorException {
     this.controllerPackage = this.clientPackageJavaConform + ".ui.header";
 
     this.generateIComponentClass();
@@ -45,7 +45,7 @@ public abstract class AbstractHeaderSourceGenerator
   }
 
   private void generateIComponentClass()
-    throws GeneratorException {
+      throws GeneratorException {
     TypeSpec.Builder typeSpec = TypeSpec.interfaceBuilder("IHeaderComponent")
                                         .addJavadoc(CodeBlock.builder()
                                                              .add(GeneratorConstants.COPYRIGHT_JAVA)
@@ -74,7 +74,7 @@ public abstract class AbstractHeaderSourceGenerator
   }
 
   private void generateComponentClass()
-    throws GeneratorException {
+      throws GeneratorException {
     TypeSpec.Builder typeSpec = TypeSpec.classBuilder("HeaderComponent")
                                         .addJavadoc(CodeBlock.builder()
                                                              .add(GeneratorConstants.COPYRIGHT_JAVA)
@@ -107,7 +107,7 @@ public abstract class AbstractHeaderSourceGenerator
   }
 
   private void generateControllerClass()
-    throws GeneratorException {
+      throws GeneratorException {
     TypeSpec.Builder typeSpec = TypeSpec.classBuilder("HeaderController")
                                         .addJavadoc(CodeBlock.builder()
                                                              .add(GeneratorConstants.COPYRIGHT_JAVA)
@@ -116,7 +116,7 @@ public abstract class AbstractHeaderSourceGenerator
                                         .addAnnotation(AnnotationSpec.builder(Controller.class)
                                                                      .addMember("route",
                                                                                 "$S",
-                                                                                "/")
+                                                                                "/application/")
                                                                      .addMember("selector",
                                                                                 "$S",
                                                                                 "header")
@@ -131,7 +131,8 @@ public abstract class AbstractHeaderSourceGenerator
                                                                      .build())
                                         .superclass(ParameterizedTypeName.get(ClassName.get(AbstractComponentController.class),
                                                                               ClassName.get(this.clientPackageJavaConform,
-                                                                                            GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId()) + GeneratorConstants.CONTEXT),
+                                                                                            GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId()) +
+                                                                                            GeneratorConstants.CONTEXT),
                                                                               ClassName.get(this.clientPackageJavaConform + ".ui.header",
                                                                                             "IHeaderComponent"),
                                                                               super.getClassNameWidget()))

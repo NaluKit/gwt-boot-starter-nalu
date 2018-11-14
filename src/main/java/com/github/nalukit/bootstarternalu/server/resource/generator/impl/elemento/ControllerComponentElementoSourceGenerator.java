@@ -18,7 +18,7 @@
 package com.github.nalukit.bootstarternalu.server.resource.generator.impl.elemento;
 
 import com.github.nalukit.bootstarternalu.server.resource.generator.impl.AbstractControllerComponentSourceGenerator;
-import com.github.nalukit.bootstarternalu.server.resource.generator.impl.Comments;
+import com.github.nalukit.bootstarternalu.server.resource.generator.impl.common.Comments;
 import com.github.nalukit.gwtbootstarternalu.shared.model.ControllerData;
 import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
 import com.squareup.javapoet.ClassName;
@@ -33,7 +33,7 @@ import javax.lang.model.element.Modifier;
 import java.io.File;
 
 public class ControllerComponentElementoSourceGenerator
-  extends AbstractControllerComponentSourceGenerator {
+    extends AbstractControllerComponentSourceGenerator {
 
   private ControllerComponentElementoSourceGenerator(Builder builder) {
     super();

@@ -18,17 +18,26 @@
 package com.github.nalukit.bootstarternalu.server.resource.generator.impl.gwt;
 
 import com.github.nalukit.bootstarternalu.server.resource.generator.GeneratorUtils;
+import com.github.nalukit.bootstarternalu.server.resource.generator.impl.elemento.CssPageElementoSourceGenerator;
 import com.github.nalukit.gwtbootstarternalu.shared.model.GeneratorException;
 import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
+import freemarker.template.Configuration;
+import freemarker.template.Template;
+import freemarker.template.TemplateException;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.StringWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
 
+// TODO use FreeMarker
 public class CssPageGwtSourceGenerator {
 
   private NaluGeneraterParms naluGeneraterParms;
+
   private File               directoryWebapp;
 
   private CssPageGwtSourceGenerator(Builder builder) {
@@ -43,28 +52,50 @@ public class CssPageGwtSourceGenerator {
   }
 
   public void generate()
-    throws GeneratorException {
+      throws GeneratorException {
     this.generateCssFile();
   }
 
   private void generateCssFile()
-    throws GeneratorException {
+      throws GeneratorException {
 
-    StringBuilder sb = new StringBuilder();
+    Configuration freeMarkerConfiguration = new Configuration();
 
-    String fileContent = sb.toString();
+    freeMarkerConfiguration.setClassForTemplateLoading(CssPageElementoSourceGenerator.class,
+                                                       "/templates/css");
+    freeMarkerConfiguration.setDefaultEncoding("UTF-8");
 
+    Template template;
     try {
-      Files.write(Paths.get(directoryWebapp.getPath() + File.separator + GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId()) + ".css"),
-                  fileContent.getBytes());
+      template = freeMarkerConfiguration.getTemplate("HostPageCss.ftl");
     } catch (IOException e) {
-      throw new GeneratorException("Unable to write generated file: >>" + Paths.get(directoryWebapp.getPath() + GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId()) + ".css") + "<< -> exception: " + e.getMessage());
+      throw new GeneratorException("Unable to get >>HostPageCss.ftl<< -> exception: " + e.getMessage());
+    }
+
+    Map<String, Object> templateData = new HashMap<>();
+
+    try (StringWriter out = new StringWriter()) {
+      template.process(templateData,
+                       out);
+      Files.write(Paths.get(this.directoryWebapp.getPath() + File.separator + GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId()) + ".css"),
+                  out.toString()
+                     .getBytes());
+      out.flush();
+    } catch (IOException | TemplateException e) {
+      throw new GeneratorException("Unable to write generated file: >>" +
+                                   this.directoryWebapp.getPath() +
+                                   File.separator +
+                                   GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId()) +
+                                   ".css" +
+                                   "<< -> exception: " +
+                                   e.getMessage());
     }
   }
 
   public static class Builder {
 
     NaluGeneraterParms naluGeneraterParms;
+
     File               directoryWebapp;
 
     public Builder naluGeneraterParms(NaluGeneraterParms naluGeneraterParms) {

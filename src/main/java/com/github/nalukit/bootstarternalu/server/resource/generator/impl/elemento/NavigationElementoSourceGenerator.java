@@ -30,7 +30,7 @@ import javax.lang.model.element.Modifier;
 import java.io.File;
 
 public class NavigationElementoSourceGenerator
-  extends AbstractNavigationSourceGenerator {
+    extends AbstractNavigationSourceGenerator {
 
   private NavigationElementoSourceGenerator(Builder builder) {
     super();

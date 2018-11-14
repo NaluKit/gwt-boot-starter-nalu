@@ -27,9 +27,10 @@ import java.io.File;
 public abstract class AbstractSourceGenerator {
 
   protected NaluGeneraterParms naluGeneraterParms;
-  protected File               directoryJava;
-  protected String             clientPackageJavaConform;
 
+  protected File               directoryJava;
+
+  protected String             clientPackageJavaConform;
 
   protected ClassName getClassNameWidget() {
     switch (this.naluGeneraterParms.getWidgetLibrary()) {

@@ -31,7 +31,7 @@ import javax.lang.model.element.Modifier;
 import java.io.File;
 
 public class NavigationGxtSourceGenerator
-  extends AbstractNavigationSourceGenerator {
+    extends AbstractNavigationSourceGenerator {
 
   private NavigationGxtSourceGenerator(Builder builder) {
     super();

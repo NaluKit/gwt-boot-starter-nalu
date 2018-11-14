@@ -32,12 +32,12 @@ import java.io.File;
 import java.io.IOException;
 
 public abstract class AbstractStatusBarSourceGenerator
-  extends AbstractSourceGenerator {
+    extends AbstractSourceGenerator {
 
   protected String controllerPackage;
 
   public void generate()
-    throws GeneratorException {
+      throws GeneratorException {
     this.controllerPackage = this.clientPackageJavaConform + ".ui.statusbar";
 
     this.generateIComponentClass();
@@ -46,7 +46,7 @@ public abstract class AbstractStatusBarSourceGenerator
   }
 
   private void generateIComponentClass()
-    throws GeneratorException {
+      throws GeneratorException {
     TypeSpec.Builder typeSpec = TypeSpec.interfaceBuilder("IStatusbarComponent")
                                         .addJavadoc(CodeBlock.builder()
                                                              .add(GeneratorConstants.COPYRIGHT_JAVA)
@@ -82,7 +82,7 @@ public abstract class AbstractStatusBarSourceGenerator
   }
 
   private void generateComponentClass()
-    throws GeneratorException {
+      throws GeneratorException {
     TypeSpec.Builder typeSpec = TypeSpec.classBuilder("StatusbarComponent")
                                         .addJavadoc(CodeBlock.builder()
                                                              .add(GeneratorConstants.COPYRIGHT_JAVA)
@@ -124,7 +124,7 @@ public abstract class AbstractStatusBarSourceGenerator
   }
 
   private void generateControllerClass()
-    throws GeneratorException {
+      throws GeneratorException {
     TypeSpec.Builder typeSpec = TypeSpec.classBuilder("StatusbarController")
                                         .addJavadoc(CodeBlock.builder()
                                                              .add(GeneratorConstants.COPYRIGHT_JAVA)
@@ -133,7 +133,7 @@ public abstract class AbstractStatusBarSourceGenerator
                                         .addAnnotation(AnnotationSpec.builder(Controller.class)
                                                                      .addMember("route",
                                                                                 "$S",
-                                                                                "/")
+                                                                                "/application/")
                                                                      .addMember("selector",
                                                                                 "$S",
                                                                                 "footer")
@@ -148,7 +148,8 @@ public abstract class AbstractStatusBarSourceGenerator
                                                                      .build())
                                         .superclass(ParameterizedTypeName.get(ClassName.get(AbstractComponentController.class),
                                                                               ClassName.get(this.clientPackageJavaConform,
-                                                                                            GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId()) + GeneratorConstants.CONTEXT),
+                                                                                            GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId()) +
+                                                                                            GeneratorConstants.CONTEXT),
                                                                               ClassName.get(this.controllerPackage,
                                                                                             "IStatusbarComponent"),
                                                                               super.getClassNameWidget()))

@@ -18,7 +18,7 @@
 package com.github.nalukit.bootstarternalu.server.resource.generator.impl.gxt;
 
 import com.github.nalukit.bootstarternalu.server.resource.generator.impl.AbstractControllerComponentSourceGenerator;
-import com.github.nalukit.bootstarternalu.server.resource.generator.impl.Comments;
+import com.github.nalukit.bootstarternalu.server.resource.generator.impl.common.Comments;
 import com.github.nalukit.gwtbootstarternalu.shared.model.ControllerData;
 import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
 import com.google.gwt.dom.client.Style;
@@ -34,7 +34,7 @@ import javax.lang.model.element.Modifier;
 import java.io.File;
 
 public class ControllerComponentGxtSourceGenerator
-  extends AbstractControllerComponentSourceGenerator {
+    extends AbstractControllerComponentSourceGenerator {
 
   private ControllerComponentGxtSourceGenerator(Builder builder) {
     super();

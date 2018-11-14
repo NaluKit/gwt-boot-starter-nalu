@@ -44,7 +44,7 @@
     <!-- Elemento version -->
     <elemento.version>0.8.1</elemento.version>
     <!-- nalu version -->
-    <nalu.version>1.0.0-rc-7</nalu.version>
+    <nalu.version>1.0.0-rc-12</nalu.version>
 
     <gwt-events.version>HEAD-SNAPSHOT</gwt-events.version>
 
@@ -64,6 +64,8 @@
     <gwt.resty.version>2.2.1</gwt.resty.version>
 
     <serverPort>8080</serverPort>
+
+    <freemarker.version>2.3.9</freemarker.version>
 
     <generated.source.directory>${project.build.directory}/generated-sources/annotations</generated.source.directory>
   </properties>
@@ -203,6 +205,12 @@
       <artifactId>junit</artifactId>
       <version>${junit.version}</version>
       <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.freemarker</groupId>
+      <artifactId>freemarker</artifactId>
+      <version>${freemarker.version}</version>
     </dependency>
   </dependencies>
 

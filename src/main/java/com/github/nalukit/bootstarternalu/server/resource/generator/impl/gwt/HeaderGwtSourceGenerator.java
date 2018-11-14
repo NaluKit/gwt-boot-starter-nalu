@@ -31,7 +31,7 @@ import javax.lang.model.element.Modifier;
 import java.io.File;
 
 public class HeaderGwtSourceGenerator
-  extends AbstractHeaderSourceGenerator {
+    extends AbstractHeaderSourceGenerator {
 
   private HeaderGwtSourceGenerator(Builder builder) {
     super();

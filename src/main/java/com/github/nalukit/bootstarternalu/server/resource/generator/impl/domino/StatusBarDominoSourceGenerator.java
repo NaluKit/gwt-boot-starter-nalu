@@ -33,7 +33,7 @@ import javax.lang.model.element.Modifier;
 import java.io.File;
 
 public class StatusBarDominoSourceGenerator
-  extends AbstractStatusBarSourceGenerator {
+    extends AbstractStatusBarSourceGenerator {
 
   private StatusBarDominoSourceGenerator(Builder builder) {
     super();

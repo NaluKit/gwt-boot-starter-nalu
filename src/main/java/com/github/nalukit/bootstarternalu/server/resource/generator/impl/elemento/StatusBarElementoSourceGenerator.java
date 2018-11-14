@@ -30,7 +30,7 @@ import javax.lang.model.element.Modifier;
 import java.io.File;
 
 public class StatusBarElementoSourceGenerator
-  extends AbstractStatusBarSourceGenerator {
+    extends AbstractStatusBarSourceGenerator {
 
   private StatusBarElementoSourceGenerator(Builder builder) {
     super();

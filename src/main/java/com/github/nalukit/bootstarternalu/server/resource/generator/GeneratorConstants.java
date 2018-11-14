@@ -20,7 +20,9 @@ package com.github.nalukit.bootstarternalu.server.resource.generator;
 public class GeneratorConstants {
 
   public static final String APPLICAITON = "Application";
+
   public static final String CONTEXT     = "Context";
+
   public static final String LOADER      = "Loader";
 
   public final static String COPYRIGHT_HTML = String.format("<!--\n" +
@@ -56,10 +58,10 @@ public class GeneratorConstants {
 
   public static final String LINE_BREAK = "\n";
 
-//  public static final String AS_WIDGET_TEXT = "Nalu does not know Widget-, Element- or any other GWT specific class. So, the\n" +
-//                                              "presenter have to manage the widget by themselves. The method will\n" +
-//                                              "enable the presenter to get the view. (In our case it is a\n" +
-//                                              "GWT widget)\n" +
-//                                              "\n" +
-//                                              "@return The shell widget\n";
+  //  public static final String AS_WIDGET_TEXT = "Nalu does not know Widget-, Element- or any other GWT specific class. So, the\n" +
+  //                                              "presenter have to manage the widget by themselves. The method will\n" +
+  //                                              "enable the presenter to get the view. (In our case it is a\n" +
+  //                                              "GWT widget)\n" +
+  //                                              "\n" +
+  //                                              "@return The shell widget\n";
 }

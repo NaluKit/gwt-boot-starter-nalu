@@ -32,17 +32,19 @@ import java.io.File;
 import java.io.IOException;
 
 public abstract class AbstractControllerComponentSourceGenerator
-  extends AbstractSourceGenerator {
+    extends AbstractSourceGenerator {
 
   protected ControllerData controllerData;
 
   private String controllerPackage;
 
   public void generate()
-    throws GeneratorException {
+      throws GeneratorException {
 
-    this.controllerPackage = this.clientPackageJavaConform + ".ui." + controllerData.getComponentName()
-                                                                                    .toLowerCase();
+    this.controllerPackage = this.clientPackageJavaConform +
+                             ".ui." +
+                             controllerData.getComponentName()
+                                           .toLowerCase();
 
     this.generateIComponentClass();
     this.generateComponentClass();
@@ -50,16 +52,20 @@ public abstract class AbstractControllerComponentSourceGenerator
   }
 
   private void generateIComponentClass()
-    throws GeneratorException {
+      throws GeneratorException {
     TypeSpec.Builder typeSpec = TypeSpec.interfaceBuilder("I" + GeneratorUtils.setFirstCharacterToUpperCase(this.controllerData.getComponentName()) + "Component")
                                         .addJavadoc(CodeBlock.builder()
                                                              .add(GeneratorConstants.COPYRIGHT_JAVA)
                                                              .build())
                                         .addModifiers(Modifier.PUBLIC)
                                         .addSuperinterface(ParameterizedTypeName.get(ClassName.get(IsComponent.class),
-                                                                                     ClassName.get(this.clientPackageJavaConform + ".ui." + controllerData.getComponentName()
-                                                                                                                                                          .toLowerCase(),
-                                                                                                   "I" + GeneratorUtils.setFirstCharacterToUpperCase(this.controllerData.getComponentName()) + "Component.Controller"),
+                                                                                     ClassName.get(this.clientPackageJavaConform +
+                                                                                                   ".ui." +
+                                                                                                   controllerData.getComponentName()
+                                                                                                                 .toLowerCase(),
+                                                                                                   "I" +
+                                                                                                   GeneratorUtils.setFirstCharacterToUpperCase(this.controllerData.getComponentName()) +
+                                                                                                   "Component.Controller"),
                                                                                      super.getClassNameWidget()))
                                         .addMethod(MethodSpec.methodBuilder("edit")
                                                              .addModifiers(Modifier.PUBLIC,
@@ -103,24 +109,35 @@ public abstract class AbstractControllerComponentSourceGenerator
       javaFile.writeTo(new File(directoryJava,
                                 ""));
     } catch (IOException e) {
-      throw new GeneratorException("Unable to write generated file: >>I" + GeneratorUtils.setFirstCharacterToUpperCase(this.controllerData.getComponentName()) + "Component" + "<< -> " + "exception: " + e.getMessage());
+      throw new GeneratorException("Unable to write generated file: >>I" +
+                                   GeneratorUtils.setFirstCharacterToUpperCase(this.controllerData.getComponentName()) +
+                                   "Component" +
+                                   "<< -> " +
+                                   "exception: " +
+                                   e.getMessage());
     }
   }
 
   private void generateComponentClass()
-    throws GeneratorException {
+      throws GeneratorException {
     TypeSpec.Builder typeSpec = TypeSpec.classBuilder(GeneratorUtils.setFirstCharacterToUpperCase(this.controllerData.getComponentName()) + "Component")
                                         .addJavadoc(CodeBlock.builder()
                                                              .add(GeneratorConstants.COPYRIGHT_JAVA)
                                                              .build())
                                         .addModifiers(Modifier.PUBLIC)
                                         .superclass(ParameterizedTypeName.get(ClassName.get(AbstractComponent.class),
-                                                                              ClassName.get(this.clientPackageJavaConform + ".ui." + controllerData.getComponentName()
-                                                                                                                                                   .toLowerCase(),
-                                                                                            "I" + GeneratorUtils.setFirstCharacterToUpperCase(this.controllerData.getComponentName()) + "Component.Controller"),
+                                                                              ClassName.get(this.clientPackageJavaConform +
+                                                                                            ".ui." +
+                                                                                            controllerData.getComponentName()
+                                                                                                          .toLowerCase(),
+                                                                                            "I" +
+                                                                                            GeneratorUtils.setFirstCharacterToUpperCase(this.controllerData.getComponentName()) +
+                                                                                            "Component.Controller"),
                                                                               this.getClassNameWidget()))
-                                        .addSuperinterface(ClassName.get(this.clientPackageJavaConform + ".ui." + controllerData.getComponentName()
-                                                                                                                                .toLowerCase(),
+                                        .addSuperinterface(ClassName.get(this.clientPackageJavaConform +
+                                                                         ".ui." +
+                                                                         controllerData.getComponentName()
+                                                                                       .toLowerCase(),
                                                                          "I" + GeneratorUtils.setFirstCharacterToUpperCase(this.controllerData.getComponentName()) + "Component"));
 
     typeSpec.addField(getLabelFieldSpec());
@@ -145,7 +162,7 @@ public abstract class AbstractControllerComponentSourceGenerator
                                  .build());
     // createComponent method
     this.createRenderMethod(typeSpec);
-//
+
     if (controllerData.isConfirmation()) {
       typeSpec.addMethod(MethodSpec.methodBuilder("isDirty")
                                    .addModifiers(Modifier.PUBLIC)
@@ -183,14 +200,21 @@ public abstract class AbstractControllerComponentSourceGenerator
       javaFile.writeTo(new File(directoryJava,
                                 ""));
     } catch (IOException e) {
-      throw new GeneratorException("Unable to write generated file: >>" + GeneratorUtils.setFirstCharacterToUpperCase(this.controllerData.getComponentName()) + "Component" + "<< -> " + "exception: " + e.getMessage());
+      throw new GeneratorException("Unable to write generated file: >>" +
+                                   GeneratorUtils.setFirstCharacterToUpperCase(this.controllerData.getComponentName()) +
+                                   "Component" +
+                                   "<< -> " +
+                                   "exception: " +
+                                   e.getMessage());
     }
   }
 
   private void generateControllerClass()
-    throws GeneratorException {
-    TypeSpec.Builder typeSpec = TypeSpec.classBuilder(ClassName.get(this.clientPackageJavaConform + ".ui." + controllerData.getComponentName()
-                                                                                                                           .toLowerCase(),
+      throws GeneratorException {
+    TypeSpec.Builder typeSpec = TypeSpec.classBuilder(ClassName.get(this.clientPackageJavaConform +
+                                                                    ".ui." +
+                                                                    controllerData.getComponentName()
+                                                                                  .toLowerCase(),
                                                                     GeneratorUtils.setFirstCharacterToUpperCase(this.controllerData.getComponentName()) + "Controller"))
                                         .addJavadoc(CodeBlock.builder()
                                                              .add(GeneratorConstants.COPYRIGHT_JAVA)
@@ -199,30 +223,44 @@ public abstract class AbstractControllerComponentSourceGenerator
                                         .addAnnotation(AnnotationSpec.builder(Controller.class)
                                                                      .addMember("route",
                                                                                 "$S",
-                                                                                "/" + controllerData.getRoute())
+                                                                                "/application/" + controllerData.getRoute())
                                                                      .addMember("selector",
                                                                                 "$S",
                                                                                 "content")
                                                                      .addMember("componentInterface",
                                                                                 "$T.class",
-                                                                                ClassName.get(this.clientPackageJavaConform + ".ui." + controllerData.getComponentName()
-                                                                                                                                                     .toLowerCase(),
-                                                                                              "I" + GeneratorUtils.setFirstCharacterToUpperCase(this.controllerData.getComponentName()) + "Component"))
+                                                                                ClassName.get(this.clientPackageJavaConform +
+                                                                                              ".ui." +
+                                                                                              controllerData.getComponentName()
+                                                                                                            .toLowerCase(),
+                                                                                              "I" +
+                                                                                              GeneratorUtils.setFirstCharacterToUpperCase(this.controllerData.getComponentName()) +
+                                                                                              "Component"))
                                                                      .addMember("component",
                                                                                 "$T.class",
-                                                                                ClassName.get(this.clientPackageJavaConform + ".ui." + controllerData.getComponentName()
-                                                                                                                                                     .toLowerCase(),
-                                                                                              GeneratorUtils.setFirstCharacterToUpperCase(this.controllerData.getComponentName()) + "Component"))
+                                                                                ClassName.get(this.clientPackageJavaConform +
+                                                                                              ".ui." +
+                                                                                              controllerData.getComponentName()
+                                                                                                            .toLowerCase(),
+                                                                                              GeneratorUtils.setFirstCharacterToUpperCase(this.controllerData.getComponentName()) +
+                                                                                              "Component"))
                                                                      .build())
                                         .superclass(ParameterizedTypeName.get(ClassName.get(AbstractComponentController.class),
                                                                               ClassName.get(this.clientPackageJavaConform,
-                                                                                            GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId()) + GeneratorConstants.CONTEXT),
-                                                                              ClassName.get(this.clientPackageJavaConform + ".ui." + controllerData.getComponentName()
-                                                                                                                                                   .toLowerCase(),
-                                                                                            "I" + GeneratorUtils.setFirstCharacterToUpperCase(this.controllerData.getComponentName()) + "Component"),
+                                                                                            GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId()) +
+                                                                                            GeneratorConstants.CONTEXT),
+                                                                              ClassName.get(this.clientPackageJavaConform +
+                                                                                            ".ui." +
+                                                                                            controllerData.getComponentName()
+                                                                                                          .toLowerCase(),
+                                                                                            "I" +
+                                                                                            GeneratorUtils.setFirstCharacterToUpperCase(this.controllerData.getComponentName()) +
+                                                                                            "Component"),
                                                                               super.getClassNameWidget()))
-                                        .addSuperinterface(ClassName.get(this.clientPackageJavaConform + ".ui." + controllerData.getComponentName()
-                                                                                                                                .toLowerCase(),
+                                        .addSuperinterface(ClassName.get(this.clientPackageJavaConform +
+                                                                         ".ui." +
+                                                                         controllerData.getComponentName()
+                                                                                       .toLowerCase(),
                                                                          "I" + GeneratorUtils.setFirstCharacterToUpperCase(this.controllerData.getComponentName()) + "Component.Controller"))
                                         .addField(FieldSpec.builder(ClassName.get(this.clientPackageJavaConform + ".model",
                                                                                   "MyModel"),
@@ -260,10 +298,14 @@ public abstract class AbstractControllerComponentSourceGenerator
       javaFile.writeTo(new File(directoryJava,
                                 ""));
     } catch (IOException e) {
-      throw new GeneratorException("Unable to write generated file: >>" + GeneratorUtils.setFirstCharacterToUpperCase(this.controllerData.getComponentName()) + "Controller" + "<< -> " + "exception: " + e.getMessage());
+      throw new GeneratorException("Unable to write generated file: >>" +
+                                   GeneratorUtils.setFirstCharacterToUpperCase(this.controllerData.getComponentName()) +
+                                   "Controller" +
+                                   "<< -> " +
+                                   "exception: " +
+                                   e.getMessage());
     }
   }
-
 
   protected abstract FieldSpec getLabelFieldSpec();
 

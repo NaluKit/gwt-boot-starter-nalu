@@ -17,6 +17,9 @@
 
 package com.github.nalukit.bootstarternalu.server.resource.generator;
 
+import java.io.File;
+import java.util.Arrays;
+
 public class GeneratorUtils {
 
   public static String setFirstCharacterToUpperCase(String value) {
@@ -30,10 +33,36 @@ public class GeneratorUtils {
     String[] parts = value.split("-");
     String returnValue = parts[0];
     for (int i = 1; i < parts.length; i++) {
-      returnValue = returnValue + parts[i].substring(0,
-                                                     1)
-                                          .toUpperCase() + parts[i].substring(1);
+      returnValue = returnValue +
+                    parts[i].substring(0,
+                                       1)
+                            .toUpperCase() +
+                    parts[i].substring(1);
     }
     return returnValue;
+  }
+
+  public static boolean createDirectory(String directory) {
+    if ((new File(directory)).exists()) {
+      deleteFolder(new File(directory));
+    }
+    // create ...
+    File projectRootFolderFile = new File(directory);
+    return projectRootFolderFile.mkdirs();
+  }
+
+  private static void deleteFolder(File folder) {
+    File[] files = folder.listFiles();
+    if (files != null) { //some JVMs return null for empty dirs
+      Arrays.stream(files)
+            .forEach(file -> {
+              if (file.isDirectory()) {
+                deleteFolder(file);
+              } else {
+                file.delete();
+              }
+            });
+    }
+    folder.delete();
   }
 }

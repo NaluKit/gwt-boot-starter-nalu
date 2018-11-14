@@ -34,7 +34,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NavigationDominoSourceGenerator
-  extends AbstractNavigationSourceGenerator {
+    extends AbstractNavigationSourceGenerator {
 
   private NavigationDominoSourceGenerator(Builder builder) {
     super();
@@ -67,8 +67,7 @@ public class NavigationDominoSourceGenerator
                                                         .addModifiers(Modifier.PRIVATE)
                                                         .build());
 
-                             method.addStatement("this.$L = $T.create($S, $T.ALL.list())\n" +
-                                                 "            .addClickListener(e -> getController().doNavigateTo($S))",
+                             method.addStatement("this.$L = $T.create($S, $T.ALL.list())\n" + "            .addClickListener(e -> getController().doNavigateTo($S))",
                                                  variableName,
                                                  ClassName.get(TreeItem.class),
                                                  controllerData.getComponentName(),

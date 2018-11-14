@@ -17,20 +17,26 @@
 
 package com.github.nalukit.bootstarternalu.server.resource.generator.impl.elemento;
 
-import com.github.nalukit.bootstarternalu.server.resource.generator.GeneratorConstants;
 import com.github.nalukit.bootstarternalu.server.resource.generator.GeneratorUtils;
 import com.github.nalukit.gwtbootstarternalu.shared.model.GeneratorException;
 import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
+import freemarker.template.Configuration;
+import freemarker.template.Template;
+import freemarker.template.TemplateException;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.StringWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CssPageElementoSourceGenerator {
 
   private NaluGeneraterParms naluGeneraterParms;
-  private File               directoryWebapp;
+
+  private File directoryWebapp;
 
   private CssPageElementoSourceGenerator(Builder builder) {
     super();
@@ -44,150 +50,51 @@ public class CssPageElementoSourceGenerator {
   }
 
   public void generate()
-    throws GeneratorException {
+      throws GeneratorException {
     this.generateCssFile();
   }
 
   private void generateCssFile()
-    throws GeneratorException {
+      throws GeneratorException {
 
-    StringBuilder sb = new StringBuilder();
-    sb.append("@CHARSET \"UTF-8\";")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append(GeneratorConstants.LINE_BREAK)
+    Configuration freeMarkerConfiguration = new Configuration();
 
-      .append("body {")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append("      font-family: Arial Unicode MS, Arial, sans-serif;\n")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append("      font-size: small;")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append("      color: black;")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append("      margin: 0;")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append("      padding: 0;")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append("}")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append(GeneratorConstants.LINE_BREAK)
+    freeMarkerConfiguration.setClassForTemplateLoading(CssPageElementoSourceGenerator.class,
+                                                       "/templates/css");
+    freeMarkerConfiguration.setDefaultEncoding("UTF-8");
 
-      .append(".shell {")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append("      height: auto;\n")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append("      width: 100%;")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append("      margin: 0;")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append("      background-color: white;")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append("}")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append(GeneratorConstants.LINE_BREAK)
-
-      .append(".shellHeader {")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append("      position: absolute;\n")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append("      overflow: hidden;")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append("      height: 104px;")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append("      top: 0;")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append("      right: 0;")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append("      left: 0;")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append("      width: 100%;")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append("      padding: 12px;")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append("      background-color: whitesmoke;")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append("}")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append(GeneratorConstants.LINE_BREAK)
-
-      .append(".shellNavigation {")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append("      position: absolute;\n")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append("      overflow: hidden;")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append("      top: 128px;")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append("      bottom: 0px;")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append("      left: 0;")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append("      width: 212px;")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append("      padding: 12px;")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append("      background-color: snow;")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append("}")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append(GeneratorConstants.LINE_BREAK)
-
-      .append(".shellContent {")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append("      position: absolute;\n")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append("      overflow: hidden;")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append("      top: 128px;")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append("      bottom: 42px;")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append("      left: 224px;")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append("      right: 0px;")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append("      padding: 12px;")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append("}")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append(GeneratorConstants.LINE_BREAK)
-
-      .append(".shellFooter {")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append("      position: absolute;\n")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append("      overflow: hidden;")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append("      height: 42px;")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append("      bottom: 0px;")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append("      left: 224px;")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append("      right: 0px;")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append("      background-color: whitesmoke;")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append("      padding: 12px;")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append("}")
-      .append(GeneratorConstants.LINE_BREAK)
-      .append(GeneratorConstants.LINE_BREAK);
-
-    String fileContent = sb.toString();
-
+    Template template;
     try {
-      Files.write(Paths.get(directoryWebapp.getPath() + File.separator + GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId()) + ".css"),
-                  fileContent.getBytes());
+      template = freeMarkerConfiguration.getTemplate("HostPageCss.ftl");
     } catch (IOException e) {
-      throw new GeneratorException("Unable to write generated file: >>" + Paths.get(directoryWebapp.getPath() + GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId()) + ".css") + "<< -> exception: " + e.getMessage());
+      throw new GeneratorException("Unable to get >>HostPageCss.ftl<< -> exception: " + e.getMessage());
+    }
+
+    Map<String, Object> templateData = new HashMap<>();
+
+    try (StringWriter out = new StringWriter()) {
+      template.process(templateData,
+                       out);
+      Files.write(Paths.get(this.directoryWebapp.getPath() + File.separator + GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId()) + ".css"),
+                  out.toString()
+                     .getBytes());
+      out.flush();
+    } catch (IOException | TemplateException e) {
+      throw new GeneratorException("Unable to write generated file: >>" +
+                                   this.directoryWebapp.getPath() +
+                                   File.separator +
+                                   GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId()) +
+                                   ".css" +
+                                   "<< -> exception: " +
+                                   e.getMessage());
     }
   }
 
   public static class Builder {
 
     NaluGeneraterParms naluGeneraterParms;
-    File               directoryWebapp;
+
+    File directoryWebapp;
 
     public Builder naluGeneraterParms(NaluGeneraterParms naluGeneraterParms) {
       this.naluGeneraterParms = naluGeneraterParms;

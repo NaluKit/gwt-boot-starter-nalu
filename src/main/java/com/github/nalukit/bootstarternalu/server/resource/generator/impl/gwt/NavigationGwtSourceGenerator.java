@@ -33,7 +33,7 @@ import javax.lang.model.element.Modifier;
 import java.io.File;
 
 public class NavigationGwtSourceGenerator
-  extends AbstractNavigationSourceGenerator {
+    extends AbstractNavigationSourceGenerator {
 
   private NavigationGwtSourceGenerator(Builder builder) {
     super();

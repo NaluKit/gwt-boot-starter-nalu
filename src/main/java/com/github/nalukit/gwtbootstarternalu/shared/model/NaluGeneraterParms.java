@@ -22,7 +22,10 @@ import java.util.List;
 
 public class NaluGeneraterParms {
 
+  private MavenModule mavenSettings;
+
   private String groupId;
+
   private String artefactId;
 
   private String gwtVersion;
@@ -31,12 +34,24 @@ public class NaluGeneraterParms {
 
   private boolean debug;
 
+  private boolean errorScreen;
+
+  private boolean loginScreen;
+
   private WidgetLibrary widgetLibrary;
 
   private List<ControllerData> controllers;
 
   public NaluGeneraterParms() {
     this.controllers = new ArrayList<>();
+  }
+
+  public MavenModule getMavenSettings() {
+    return mavenSettings;
+  }
+
+  public void setMavenSettings(MavenModule mavenSettings) {
+    this.mavenSettings = mavenSettings;
   }
 
   public String getGroupId() {
@@ -93,6 +108,22 @@ public class NaluGeneraterParms {
 
   public void setWidgetLibrary(WidgetLibrary widgetLibrary) {
     this.widgetLibrary = widgetLibrary;
+  }
+
+  public boolean hasErrorScreen() {
+    return errorScreen;
+  }
+
+  public void setErrorScreen(boolean errorScreen) {
+    this.errorScreen = errorScreen;
+  }
+
+  public boolean hasLoginScreen() {
+    return loginScreen;
+  }
+
+  public void setLoginScreen(boolean loginScreen) {
+    this.loginScreen = loginScreen;
   }
 
   public boolean hasNavigationConfirmation() {

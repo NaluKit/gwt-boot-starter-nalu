@@ -31,7 +31,7 @@ import javax.lang.model.element.Modifier;
 import java.io.File;
 
 public class StatusBarGxtSourceGenerator
-  extends AbstractStatusBarSourceGenerator {
+    extends AbstractStatusBarSourceGenerator {
 
   private StatusBarGxtSourceGenerator(Builder builder) {
     super();

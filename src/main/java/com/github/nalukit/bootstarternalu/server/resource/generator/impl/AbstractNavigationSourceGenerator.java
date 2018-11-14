@@ -31,12 +31,12 @@ import java.io.File;
 import java.io.IOException;
 
 public abstract class AbstractNavigationSourceGenerator
-  extends AbstractSourceGenerator {
+    extends AbstractSourceGenerator {
 
   private String controllerPackage;
 
   public void generate()
-    throws GeneratorException {
+      throws GeneratorException {
 
     this.controllerPackage = this.clientPackageJavaConform + ".ui.navigation";
 
@@ -46,7 +46,7 @@ public abstract class AbstractNavigationSourceGenerator
   }
 
   private void generateIComponentClass()
-    throws GeneratorException {
+      throws GeneratorException {
     TypeSpec.Builder typeSpec = TypeSpec.interfaceBuilder("INavigationComponent")
                                         .addJavadoc(CodeBlock.builder()
                                                              .add(GeneratorConstants.COPYRIGHT_JAVA)
@@ -82,7 +82,7 @@ public abstract class AbstractNavigationSourceGenerator
   }
 
   private void generateComponentClass()
-    throws GeneratorException {
+      throws GeneratorException {
     TypeSpec.Builder typeSpec = TypeSpec.classBuilder("NavigationComponent")
                                         .addJavadoc(CodeBlock.builder()
                                                              .add(GeneratorConstants.COPYRIGHT_JAVA)
@@ -114,7 +114,7 @@ public abstract class AbstractNavigationSourceGenerator
   }
 
   private void generateControllerClass()
-    throws GeneratorException {
+      throws GeneratorException {
     TypeSpec.Builder typeSpec = TypeSpec.classBuilder("NavigationController")
                                         .addJavadoc(CodeBlock.builder()
                                                              .add(GeneratorConstants.COPYRIGHT_JAVA)
@@ -123,7 +123,7 @@ public abstract class AbstractNavigationSourceGenerator
                                         .addAnnotation(AnnotationSpec.builder(Controller.class)
                                                                      .addMember("route",
                                                                                 "$S",
-                                                                                "/")
+                                                                                "/application/")
                                                                      .addMember("selector",
                                                                                 "$S",
                                                                                 "navigation")
@@ -138,7 +138,8 @@ public abstract class AbstractNavigationSourceGenerator
                                                                      .build())
                                         .superclass(ParameterizedTypeName.get(ClassName.get(AbstractComponentController.class),
                                                                               ClassName.get(this.clientPackageJavaConform,
-                                                                                            GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId()) + GeneratorConstants.CONTEXT),
+                                                                                            GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId()) +
+                                                                                            GeneratorConstants.CONTEXT),
                                                                               ClassName.get(this.clientPackageJavaConform + ".ui.navigation",
                                                                                             "INavigationComponent"),
                                                                               super.getClassNameWidget()))
@@ -159,7 +160,7 @@ public abstract class AbstractNavigationSourceGenerator
                            .forEach(controllerData -> doNavigateToMethod.addCode("case $S:\n",
                                                                                  controllerData.getRoute())
                                                                         .addStatement("router.route($S)",
-                                                                                      "/" + controllerData.getRoute())
+                                                                                      "/application/" + controllerData.getRoute())
                                                                         .addStatement("break"));
     doNavigateToMethod.endControlFlow();
     typeSpec.addMethod(doNavigateToMethod.build());

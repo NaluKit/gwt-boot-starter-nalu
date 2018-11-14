@@ -20,6 +20,7 @@ package com.github.nalukit.gwtbootstarternalu.client.handler;
 import com.github.nalukit.gwtbootstarternalu.client.ApplicationContext;
 import com.github.nalukit.gwtbootstarternalu.client.event.GenerateProjectEvent;
 import com.github.nalukit.gwtbootstarternalu.client.service.ProjectService;
+import com.github.nalukit.gwtbootstarternalu.shared.model.ControllerData;
 import com.github.nalukit.nalu.client.handler.AbstractHandler;
 import com.github.nalukit.nalu.client.handler.annotation.Handler;
 import com.google.gwt.core.client.GWT;
@@ -35,10 +36,11 @@ import org.fusesource.restygwt.client.TextCallback;
 import org.jboss.gwt.elemento.core.Elements;
 
 import java.util.Arrays;
+import java.util.Optional;
 
 @Handler
 public class GenerateHandler
-  extends AbstractHandler<ApplicationContext> {
+    extends AbstractHandler<ApplicationContext> {
 
   private ProjectService projectService;
 
@@ -74,8 +76,11 @@ public class GenerateHandler
                                    @Override
                                    public void onSuccess(Method method,
                                                          String value) {
-                                     String url = GWT.getHostPageBaseURL() + "loadZip/download?archive=" + context.getNaluGeneraterParms()
-                                                                                                                  .getArtefactId() + ".zip";
+                                     String url = GWT.getHostPageBaseURL() +
+                                                  "loadZip/download?archive=" +
+                                                  context.getNaluGeneraterParms()
+                                                         .getArtefactId() +
+                                                  ".zip";
                                      MessageDialog dialog = MessageDialog.createMessage("Download your project ...",
                                                                                         "",
                                                                                         () -> Notification.create("Close")
