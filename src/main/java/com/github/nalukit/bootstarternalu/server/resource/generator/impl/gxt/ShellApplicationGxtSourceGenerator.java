@@ -20,6 +20,7 @@ package com.github.nalukit.bootstarternalu.server.resource.generator.impl.gxt;
 import com.github.nalukit.bootstarternalu.server.resource.generator.GeneratorUtils;
 import com.github.nalukit.bootstarternalu.server.resource.generator.impl.AbstractShellApplicationSourceGenerator;
 import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
+import com.github.nalukit.nalu.client.component.annotation.Shell;
 import com.github.nalukit.nalu.plugin.gwt.client.annotation.Selector;
 import com.github.nalukit.nalu.plugin.gwt.client.selector.IsSelectorProvider;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
@@ -146,6 +147,15 @@ public class ShellApplicationGxtSourceGenerator
   @Override
   protected String getShellName() {
     return super.shellPackage + getShellSimpleName();
+  }
+
+  @Override
+  protected void generateShellAnnotation(TypeSpec.Builder typeSpec) {
+    typeSpec.addAnnotation(AnnotationSpec.builder(Shell.class)
+                                         .addMember("value",
+                                                    "$S",
+                                                    "application")
+                                         .build());
   }
 
   @Override

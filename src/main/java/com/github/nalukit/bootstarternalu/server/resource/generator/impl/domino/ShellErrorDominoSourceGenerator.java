@@ -18,10 +18,8 @@ package com.github.nalukit.bootstarternalu.server.resource.generator.impl.domino
 
 import com.github.nalukit.bootstarternalu.server.resource.generator.impl.AbstractShellApplicationSourceGenerator;
 import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
-import com.squareup.javapoet.ClassName;
-import com.squareup.javapoet.FieldSpec;
-import com.squareup.javapoet.MethodSpec;
-import com.squareup.javapoet.TypeSpec;
+import com.github.nalukit.nalu.client.component.annotation.Shell;
+import com.squareup.javapoet.*;
 import elemental2.dom.CSSProperties;
 import org.dominokit.domino.ui.layout.Layout;
 import org.dominokit.domino.ui.style.ColorScheme;
@@ -84,6 +82,15 @@ public class ShellErrorDominoSourceGenerator
   @Override
   protected String getShellName() {
     return super.shellPackage + getShellSimpleName();
+  }
+
+  @Override
+  protected void generateShellAnnotation(TypeSpec.Builder typeSpec) {
+    typeSpec.addAnnotation(AnnotationSpec.builder(Shell.class)
+                                         .addMember("value",
+                                                    "$S",
+                                                    "error")
+                                         .build());
   }
 
   @Override

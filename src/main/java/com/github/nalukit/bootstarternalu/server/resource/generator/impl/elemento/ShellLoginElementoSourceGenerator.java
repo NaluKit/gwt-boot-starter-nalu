@@ -18,6 +18,7 @@ package com.github.nalukit.bootstarternalu.server.resource.generator.impl.elemen
 
 import com.github.nalukit.bootstarternalu.server.resource.generator.impl.AbstractShellApplicationSourceGenerator;
 import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
+import com.github.nalukit.nalu.client.component.annotation.Shell;
 import com.squareup.javapoet.*;
 import elemental2.dom.DomGlobal;
 import elemental2.dom.HTMLDivElement;
@@ -92,6 +93,15 @@ public class ShellLoginElementoSourceGenerator
   @Override
   protected String getShellName() {
     return super.shellPackage + ".login." + getShellSimpleName();
+  }
+
+  @Override
+  protected void generateShellAnnotation(TypeSpec.Builder typeSpec) {
+    typeSpec.addAnnotation(AnnotationSpec.builder(Shell.class)
+                                         .addMember("value",
+                                                    "$S",
+                                                    "login")
+                                         .build());
   }
 
   @Override

@@ -5,21 +5,21 @@
  *  use this file except in compliance with the License. You may obtain a copy of
  *  the License at
  *
- *  http://www.apache.org/licenses/LICENSE-2.0
+ *   http://www.apache.org/licenses/LICENSE-2.0
  *
  *  Unless required by applicable law or agreed to in writing, software
  *  distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
  *  License for the specific language governing permissions and limitations under
  *  the License.
- *
  */
 
-package com.github.nalukit.gwtbootstarternalu.client.ui.shell;
+package com.github.nalukit.gwtbootstarternalu.client.ui.shell.applicaiton;
 
 import com.github.nalukit.gwtbootstarternalu.client.ApplicationContext;
 import com.github.nalukit.gwtbootstarternalu.client.Version;
 import com.github.nalukit.nalu.client.component.AbstractShell;
+import com.github.nalukit.nalu.client.component.annotation.Shell;
 import elemental2.dom.DomGlobal;
 import elemental2.dom.HTMLAnchorElement;
 import org.dominokit.domino.ui.grid.Column;
@@ -39,10 +39,11 @@ import static org.jboss.gwt.elemento.core.Elements.*;
  * this is the presenter of the shell. The shell divides the browser in
  * severeal areas.
  */
-public class ShellApplication
+@Shell("application")
+public class ApplicationShell
     extends AbstractShell<ApplicationContext> {
 
-  public ShellApplication() {
+  public ApplicationShell() {
     super();
   }
 

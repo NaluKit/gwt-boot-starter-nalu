@@ -44,7 +44,7 @@
     <!-- Elemento version -->
     <elemento.version>0.8.1</elemento.version>
     <!-- nalu version -->
-    <nalu.version>1.0.0-rc-12</nalu.version>
+    <nalu.version>1.0.0</nalu.version>
 
     <gwt-events.version>HEAD-SNAPSHOT</gwt-events.version>
 
@@ -70,36 +70,21 @@
     <generated.source.directory>${project.build.directory}/generated-sources/annotations</generated.source.directory>
   </properties>
 
-  <!--<dependencyManagement>-->
-    <!--<dependencies>-->
-      <!--<dependency>-->
-        <!--<groupId>com.google.gwt</groupId>-->
-        <!--<artifactId>gwt</artifactId>-->
-        <!--<version>${gwtVersion}</version>-->
-        <!--<type>pom</type>-->
-        <!--<scope>import</scope>-->
-      <!--</dependency>-->
-    <!--</dependencies>-->
-  <!--</dependencyManagement>-->
-
   <dependencies>
     <dependency>
       <groupId>com.google.gwt</groupId>
       <artifactId>gwt-user</artifactId>
       <version>${gwtVersion}</version>
-      <!--<scope>provided</scope>-->
     </dependency>
     <dependency>
       <groupId>com.google.gwt</groupId>
       <artifactId>gwt-dev</artifactId>
       <version>${gwtVersion}</version>
-      <!--<scope>provided</scope>-->
     </dependency>
     <dependency>
       <groupId>com.google.gwt</groupId>
       <artifactId>gwt-codeserver</artifactId>
       <version>${gwtVersion}</version>
-      <!--<scope>provided</scope>-->
     </dependency>
     <dependency>
       <groupId>com.github.nalukit</groupId>

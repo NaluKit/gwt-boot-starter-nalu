@@ -35,7 +35,7 @@
 
     <properties>
         <!-- nalu version -->
-        <nalu.version>1.0.0-rc-12</nalu.version>
+        <nalu.version>1.0.0</nalu.version>
 <#if widgetLibrary == "DOMINO_UI">
         <!-- DominoUI version -->
         <domino.version>1.0-SNAPSHOT</domino.version>

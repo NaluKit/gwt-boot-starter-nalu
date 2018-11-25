@@ -23,7 +23,9 @@ import com.github.nalukit.gwtbootstarternalu.shared.model.ControllerData;
 import com.github.nalukit.gwtbootstarternalu.shared.model.GeneratorException;
 import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
 import com.github.nalukit.nalu.client.application.IsApplication;
-import com.github.nalukit.nalu.client.application.annotation.*;
+import com.github.nalukit.nalu.client.application.annotation.Application;
+import com.github.nalukit.nalu.client.application.annotation.Debug;
+import com.github.nalukit.nalu.client.application.annotation.Filters;
 import com.github.nalukit.nalu.plugin.elemental2.client.DefaultElemental2Logger;
 import com.github.nalukit.nalu.plugin.gwt.client.DefaultGWTLogger;
 import com.squareup.javapoet.*;
@@ -59,75 +61,6 @@ public class ApplicationSourceGenerator
                                                                  .addMember("startRoute",
                                                                             "$S",
                                                                             this.naluGeneraterParms.hasLoginScreen() ? "/login/login" : getStartRoute());
-    // @Shell (Appilication)
-    AnnotationSpec annotationApplicationShell = AnnotationSpec.builder(Shell.class)
-                                                              .addMember("name",
-                                                                         "$S",
-                                                                         "application")
-                                                              .addMember("shell",
-                                                                         "$T.class",
-                                                                         ClassName.get(this.clientPackageJavaConform + ".ui.shell.application",
-                                                                                       "ApplicationShell"))
-                                                              .build();
-    // @Shells
-    AnnotationSpec.Builder shellsAnnotation = AnnotationSpec.builder(Shells.class);
-    if (this.naluGeneraterParms.hasErrorScreen() && this.naluGeneraterParms.hasLoginScreen()) {
-      AnnotationSpec annotationErrorShell = AnnotationSpec.builder(Shell.class)
-                                                          .addMember("name",
-                                                                     "$S",
-                                                                     "error")
-                                                          .addMember("shell",
-                                                                     "$T.class",
-                                                                     ClassName.get(this.clientPackageJavaConform + ".ui.shell.error",
-                                                                                   "ErrorShell"))
-                                                          .build();
-      AnnotationSpec annotationLoginShell = AnnotationSpec.builder(Shell.class)
-                                                          .addMember("name",
-                                                                     "$S",
-                                                                     "login")
-                                                          .addMember("shell",
-                                                                     "$T.class",
-                                                                     ClassName.get(this.clientPackageJavaConform + ".ui.shell.login",
-                                                                                   "LoginShell"))
-                                                          .build();
-      shellsAnnotation.addMember("value",
-                                 "{ $L, $L, $L }",
-                                 annotationApplicationShell,
-                                 annotationErrorShell,
-                                 annotationLoginShell);
-    } else if (this.naluGeneraterParms.hasErrorScreen()) {
-      AnnotationSpec annotationErrorShell = AnnotationSpec.builder(Shell.class)
-                                                          .addMember("name",
-                                                                     "$S",
-                                                                     "error")
-                                                          .addMember("shell",
-                                                                     "$T.class",
-                                                                     ClassName.get(this.clientPackageJavaConform + ".ui.shell.error",
-                                                                                   "ErrorShell"))
-                                                          .build();
-      shellsAnnotation.addMember("value",
-                                 "{ $L, $L }",
-                                 annotationApplicationShell,
-                                 annotationErrorShell);
-    } else if (this.naluGeneraterParms.hasLoginScreen()) {
-      AnnotationSpec annotationLoginShell = AnnotationSpec.builder(Shell.class)
-                                                          .addMember("name",
-                                                                     "$S",
-                                                                     "login")
-                                                          .addMember("shell",
-                                                                     "$T.class",
-                                                                     ClassName.get(this.clientPackageJavaConform + ".ui.shell.login",
-                                                                                   "LoginShell"))
-                                                          .build();
-      shellsAnnotation.addMember("value",
-                                 "{ $L, $L }",
-                                 annotationApplicationShell,
-                                 annotationLoginShell);
-    } else {
-      shellsAnnotation.addMember("value",
-                                 "{ $L }",
-                                 annotationApplicationShell);
-    }
 
     if (this.naluGeneraterParms.isApplicationLoader()) {
       applicationAnnotation.addMember("loader",
@@ -149,8 +82,7 @@ public class ApplicationSourceGenerator
                                                              .build())
                                         .addModifiers(Modifier.PUBLIC)
                                         .addSuperinterface(ClassName.get(IsApplication.class))
-                                        .addAnnotation(applicationAnnotation.build())
-                                        .addAnnotation(shellsAnnotation.build());
+                                        .addAnnotation(applicationAnnotation.build());
 
     // add debugging logs ????
     if (naluGeneraterParms.isDebug()) {
@@ -191,19 +123,14 @@ public class ApplicationSourceGenerator
   private String getStartRoute() {
     Optional<ControllerData> optinalStartRoute = this.naluGeneraterParms.getControllers()
                                                                         .stream()
-                                                                        .filter(c -> c.isShowControllerAtStart())
+                                                                        .filter(ControllerData::isShowControllerAtStart)
                                                                         .findFirst();
-    if (optinalStartRoute.isPresent()) {
-      return "/application/" +
-             optinalStartRoute.get()
-                              .getRoute();
-    } else {
-      return this.naluGeneraterParms.getControllers()
-                                    .size() > 0 ? "/application/" +
-                                                  this.naluGeneraterParms.getControllers()
-                                                                         .get(0)
-                                                                         .getRoute() : "/application";
-    }
+    return optinalStartRoute.map(controllerData -> "/application/" + controllerData.getRoute())
+                            .orElseGet(() -> this.naluGeneraterParms.getControllers()
+                                                                    .size() > 0 ? "/application/" +
+                                                                                  this.naluGeneraterParms.getControllers()
+                                                                                                         .get(0)
+                                                                                                         .getRoute() : "/application");
   }
 
   private ClassName getLogger() {

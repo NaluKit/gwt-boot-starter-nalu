@@ -41,7 +41,6 @@ public abstract class AbstractShellApplicationSourceGenerator
 
   protected void generateShellClass()
       throws GeneratorException {
-
     TypeSpec.Builder typeSpec = TypeSpec.classBuilder(getShellSimpleName())
                                         .addJavadoc(CodeBlock.builder()
                                                              .add(GeneratorConstants.COPYRIGHT_JAVA)
@@ -51,6 +50,9 @@ public abstract class AbstractShellApplicationSourceGenerator
                                                                               ClassName.get(this.clientPackageJavaConform,
                                                                                             GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId() +
                                                                                                                                         GeneratorConstants.CONTEXT))));
+
+    generateShellAnnotation(typeSpec);
+
     // add fields
     this.createFieldSpecs(typeSpec);
     // constrcutor
@@ -85,6 +87,8 @@ public abstract class AbstractShellApplicationSourceGenerator
       throw new GeneratorException("Unable to write generated file: >>" + getShellName() + "<< -> " + "exception: " + e.getMessage());
     }
   }
+
+  protected abstract void generateShellAnnotation(TypeSpec.Builder typeSpec);
 
   protected abstract String getShellSimpleName();
 
