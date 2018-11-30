@@ -107,9 +107,10 @@ predefined screens called Screen01, Screen02, Screen03, Screen04 and Screen05. T
 
 ## Development
 
-#### Build application
+### Build application
 `mvn package`
-#### Run application
+
+### Run application
 `mvn gwt:codeserver` (for devmode)
 
 `mvn spring-boot:run`
