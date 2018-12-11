@@ -95,7 +95,6 @@
       <groupId>com.github.nalukit</groupId>
       <artifactId>nalu-processor</artifactId>
       <version>${nalu.version}</version>
-      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>com.github.nalukit</groupId>
@@ -106,7 +105,11 @@
       <groupId>com.github.nalukit</groupId>
       <artifactId>nalu-plugin-gwt-processor</artifactId>
       <version>${nalu.version}</version>
-      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.github.nalukit</groupId>
+      <artifactId>nalu-plugin-gwt</artifactId>
+      <version>${nalu.version}</version>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -278,6 +281,7 @@
             <arg>12</arg>
           </compilerArgs>
           <logLevel>TRACE</logLevel>
+          <localWorkers>4</localWorkers>
           <!--<skipModule>true</skipModule>-->
           <devmodeArgs>
             <devmodeArg>-noserver</devmodeArg>
