@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-  ~ Copyright (C) 2018 Frank Hossfeld <frank.hossfeld@googlemail.com>
+  ~ Copyright (C) 2018 - 2019 Frank Hossfeld <frank.hossfeld@googlemail.com>
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~  you may not use this file except in compliance with the License.
@@ -61,5 +61,8 @@
 
     <!-- Specify the paths for translatable code                    -->
     <source path='client'/>
+<#if mavenProjectType == "MultiMavenModule">
+    <source path='shared'/>
+</#if>
 
 </module>

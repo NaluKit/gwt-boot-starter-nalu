@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 - Frank Hossfeld
+ * Copyright (c) 2018 - 2019 - Frank Hossfeld
  *
  *  Licensed under the Apache License, Version 2.0 (the "License"); you may not
  *  use this file except in compliance with the License. You may obtain a copy of
@@ -17,10 +17,11 @@
 
 package com.github.nalukit.gwtbootstarternalu.client.ui.content.composite.project;
 
+import com.github.nalukit.gwtbootstarternalu.client.ui.content.composite.project.IProjectComponent.Controller;
 import com.github.nalukit.gwtbootstarternalu.shared.model.MavenModule;
 import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
 import com.github.nalukit.gwtbootstarternalu.shared.model.WidgetLibrary;
-import com.github.nalukit.nalu.client.component.AbstractComponent;
+import com.github.nalukit.nalu.client.component.AbstractCompositeComponent;
 import elemental2.dom.HTMLDivElement;
 import elemental2.dom.HTMLElement;
 import org.dominokit.domino.ui.cards.Card;
@@ -33,13 +34,9 @@ import org.dominokit.domino.ui.grid.Row;
 import org.dominokit.domino.ui.header.BlockHeader;
 import org.dominokit.domino.ui.icons.Icons;
 
-import static org.jboss.gwt.elemento.core.Elements.div;
-
 public class ProjectComponent
-    extends AbstractComponent<IProjectComponent.Controller, HTMLElement>
+    extends AbstractCompositeComponent<Controller, HTMLElement>
     implements IProjectComponent {
-
-  private HTMLDivElement element;
 
   private FieldsGrouping fieldsGrouping = FieldsGrouping.create();
 
@@ -109,8 +106,7 @@ public class ProjectComponent
                                                                 .setAutoValidation(true)
                                                                 .groupBy(fieldsGrouping);
 
-    this.element = div().asElement();
-    this.element.appendChild(Row.create()
+    HTMLDivElement element = Row.create()
                                 .appendChild(Column.span10()
                                                    .offset1()
                                                    .appendChild(BlockHeader.create("Project Meta Data"))
@@ -132,8 +128,8 @@ public class ProjectComponent
                                                                                     .appendChild(Column.span12()
                                                                                                        .condenced()
                                                                                                        .appendChild(mavenSettingsSelect)))))
-                                .asElement());
-    initElement(this.element);
+                                .asElement();
+    initElement(element);
   }
 
   @Override
@@ -155,4 +151,5 @@ public class ProjectComponent
     naluGeneraterParms.setWidgetLibrary(this.widgetSetSelect.getValue());
     return naluGeneraterParms;
   }
+
 }

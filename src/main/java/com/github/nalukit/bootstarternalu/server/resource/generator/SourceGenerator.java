@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 - Frank Hossfeld
+ * Copyright (c) 2018 - 2019 - Frank Hossfeld
  *
  *  Licensed under the Apache License, Version 2.0 (the "License"); you may not
  *  use this file except in compliance with the License. You may obtain a copy of
@@ -123,6 +123,8 @@ public class SourceGenerator {
                            .generate();
     // web.xml ...
     WebXmlSourceGenerator.builder()
+                         .naluGeneraterParms(this.naluGeneraterParms)
+                         .clientPackageJavaServerConform(this.clientPackageJavaServerConform)
                          .directoryWebapp(this.directoryWebapp)
                          .build()
                          .generate();
@@ -133,6 +135,15 @@ public class SourceGenerator {
                              .directoryJava(this.directoryJavaClient)
                              .build()
                              .generate();
+    // redirect filter
+    if (!this.naluGeneraterParms.hasHashUrl()) {
+      RedirectFilterSourceGenerator.builder()
+                                   .naluGeneraterParms(this.naluGeneraterParms)
+                                   .clientPackageJavaServerConform(this.clientPackageJavaServerConform)
+                                   .directoryJava(this.directoryJavaServer)
+                                   .build()
+                                   .generate();
+    }
     // Application
     ApplicationSourceGenerator.builder()
                               .naluGeneraterParms(this.naluGeneraterParms)
@@ -203,6 +214,7 @@ public class SourceGenerator {
           ControllerComponentDominoSourceGenerator.builder()
                                                   .naluGeneraterParms(this.naluGeneraterParms)
                                                   .clientPackageJavaConform(this.clientPackageJavaClientConform)
+                                                  .sharedPackageJavaConform(this.clientPackageJavaSharedConform)
                                                   .directoryJava(this.directoryJavaClient)
                                                   .presenterData(controllerData)
                                                   .build()
@@ -212,6 +224,7 @@ public class SourceGenerator {
           ControllerComponentElementoSourceGenerator.builder()
                                                     .naluGeneraterParms(this.naluGeneraterParms)
                                                     .clientPackageJavaConform(this.clientPackageJavaClientConform)
+                                                    .sharedPackageJavaConform(this.clientPackageJavaSharedConform)
                                                     .directoryJava(this.directoryJavaClient)
                                                     .presenterData(controllerData)
                                                     .build()
@@ -221,6 +234,7 @@ public class SourceGenerator {
           ControllerComponentGwtSourceGenerator.builder()
                                                .naluGeneraterParms(this.naluGeneraterParms)
                                                .clientPackageJavaConform(this.clientPackageJavaClientConform)
+                                               .sharedPackageJavaConform(this.clientPackageJavaSharedConform)
                                                .directoryJava(this.directoryJavaClient)
                                                .presenterData(controllerData)
                                                .build()
@@ -230,6 +244,7 @@ public class SourceGenerator {
           ControllerComponentGxtSourceGenerator.builder()
                                                .naluGeneraterParms(this.naluGeneraterParms)
                                                .clientPackageJavaConform(this.clientPackageJavaClientConform)
+                                               .sharedPackageJavaConform(this.clientPackageJavaSharedConform)
                                                .directoryJava(this.directoryJavaClient)
                                                .presenterData(controllerData)
                                                .build()
@@ -252,6 +267,8 @@ public class SourceGenerator {
                            .generate();
     // web.xml ...
     WebXmlSourceGenerator.builder()
+                         .naluGeneraterParms(this.naluGeneraterParms)
+                         .clientPackageJavaServerConform(this.clientPackageJavaServerConform)
                          .directoryWebapp(this.directoryWebapp)
                          .build()
                          .generate();
@@ -262,6 +279,15 @@ public class SourceGenerator {
                              .directoryJava(this.directoryJava)
                              .build()
                              .generate();
+    // redirect filter
+    if (!this.naluGeneraterParms.hasHashUrl()) {
+      RedirectFilterSourceGenerator.builder()
+                                   .naluGeneraterParms(this.naluGeneraterParms)
+                                   .clientPackageJavaServerConform(this.clientPackageJavaServerConform)
+                                   .directoryJava(this.directoryJava)
+                                   .build()
+                                   .generate();
+    }
     // Application
     ApplicationSourceGenerator.builder()
                               .naluGeneraterParms(this.naluGeneraterParms)
@@ -332,6 +358,7 @@ public class SourceGenerator {
           ControllerComponentDominoSourceGenerator.builder()
                                                   .naluGeneraterParms(this.naluGeneraterParms)
                                                   .clientPackageJavaConform(this.clientPackageJavaConform)
+                                                  .sharedPackageJavaConform(this.clientPackageJavaSharedConform)
                                                   .directoryJava(this.directoryJava)
                                                   .presenterData(controllerData)
                                                   .build()
@@ -341,6 +368,7 @@ public class SourceGenerator {
           ControllerComponentElementoSourceGenerator.builder()
                                                     .naluGeneraterParms(this.naluGeneraterParms)
                                                     .clientPackageJavaConform(this.clientPackageJavaConform)
+                                                    .sharedPackageJavaConform(this.clientPackageJavaSharedConform)
                                                     .directoryJava(this.directoryJava)
                                                     .presenterData(controllerData)
                                                     .build()
@@ -350,6 +378,7 @@ public class SourceGenerator {
           ControllerComponentGwtSourceGenerator.builder()
                                                .naluGeneraterParms(this.naluGeneraterParms)
                                                .clientPackageJavaConform(this.clientPackageJavaConform)
+                                               .sharedPackageJavaConform(this.clientPackageJavaSharedConform)
                                                .directoryJava(this.directoryJava)
                                                .presenterData(controllerData)
                                                .build()
@@ -359,6 +388,7 @@ public class SourceGenerator {
           ControllerComponentGxtSourceGenerator.builder()
                                                .naluGeneraterParms(this.naluGeneraterParms)
                                                .clientPackageJavaConform(this.clientPackageJavaConform)
+                                               .sharedPackageJavaConform(this.clientPackageJavaSharedConform)
                                                .directoryJava(this.directoryJava)
                                                .presenterData(controllerData)
                                                .build()
@@ -405,6 +435,12 @@ public class SourceGenerator {
     String clientPackage = srcPackage + File.separator + SourceGenerator.CLIENT;
     this.clientPackageJavaConform = clientPackage.replace(File.separator,
                                                           ".");
+    String sharedPackage = srcPackage + File.separator + SourceGenerator.SHARED;
+    this.clientPackageJavaSharedConform = sharedPackage.replace(File.separator,
+                                                                ".");
+    String serverPackage = srcPackage + File.separator + SourceGenerator.SERVER;
+    this.clientPackageJavaServerConform = serverPackage.replace(File.separator,
+                                                                ".");
   }
 
   private void createDataDependingStructureForMultiMavenModule() {
@@ -421,10 +457,10 @@ public class SourceGenerator {
     this.clientPackageJavaClientConform = clientPackage.replace(File.separator,
                                                                 ".");
     String sharedPackage = srcPackage + File.separator + SourceGenerator.SHARED;
-    this.clientPackageJavaSharedConform = clientPackage.replace(File.separator,
+    this.clientPackageJavaSharedConform = sharedPackage.replace(File.separator,
                                                                 ".");
     String serverPackage = srcPackage + File.separator + SourceGenerator.SERVER;
-    this.clientPackageJavaClientConform = clientPackage.replace(File.separator,
+    this.clientPackageJavaServerConform = serverPackage.replace(File.separator,
                                                                 ".");
   }
 

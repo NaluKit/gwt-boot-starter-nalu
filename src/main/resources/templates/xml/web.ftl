@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-  ~ Copyright (C) 2018 Frank Hossfeld <frank.hossfeld@googlemail.com>
+  ~ Copyright (C) 2018 - 2019 Frank Hossfeld <frank.hossfeld@googlemail.com>
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~  you may not use this file except in compliance with the License.
@@ -24,6 +24,19 @@
 
     <!-- Default page to serve -->
     <welcome-file-list>
-        <welcome-file>ElHossProject.html</welcome-file>
+        <welcome-file>${artefactId}.html</welcome-file>
     </welcome-file-list>
+
+<#if !hashUrl>
+    <filter>
+        <filter-name>RedirectFilter</filter-name>
+        <filter-class>${clientPackageJavaServerConform}.filter.RedirectFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>RedirectFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+</#if>
+
 </web-app>

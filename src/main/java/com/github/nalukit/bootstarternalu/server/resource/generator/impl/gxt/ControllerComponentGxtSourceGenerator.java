@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 - Frank Hossfeld
+ * Copyright (c) 2018 - 2019 - Frank Hossfeld
  *
  *  Licensed under the Apache License, Version 2.0 (the "License"); you may not
  *  use this file except in compliance with the License. You may obtain a copy of
@@ -19,6 +19,8 @@ package com.github.nalukit.bootstarternalu.server.resource.generator.impl.gxt;
 
 import com.github.nalukit.bootstarternalu.server.resource.generator.impl.AbstractControllerComponentSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.resource.generator.impl.common.Comments;
+import com.github.nalukit.bootstarternalu.server.resource.generator.impl.domino.ControllerComponentDominoSourceGenerator;
+import com.github.nalukit.bootstarternalu.server.resource.generator.impl.domino.ControllerComponentDominoSourceGenerator.Builder;
 import com.github.nalukit.gwtbootstarternalu.shared.model.ControllerData;
 import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
 import com.google.gwt.dom.client.Style;
@@ -42,6 +44,7 @@ public class ControllerComponentGxtSourceGenerator
     this.naluGeneraterParms = builder.naluGeneraterParms;
     this.directoryJava = builder.directoryJava;
     this.clientPackageJavaConform = builder.clientPackageJavaConform;
+    this.sharedPackageJavaConform = builder.sharedPackageJavaConform;
     this.controllerData = builder.controllerData;
   }
 
@@ -118,6 +121,8 @@ public class ControllerComponentGxtSourceGenerator
 
     String clientPackageJavaConform;
 
+    String sharedPackageJavaConform;
+
     ControllerData controllerData;
 
     public Builder naluGeneraterParms(NaluGeneraterParms naluGeneraterParms) {
@@ -132,6 +137,11 @@ public class ControllerComponentGxtSourceGenerator
 
     public Builder clientPackageJavaConform(String clientPackageJavaConform) {
       this.clientPackageJavaConform = clientPackageJavaConform;
+      return this;
+    }
+
+    public Builder sharedPackageJavaConform(String sharedPackageJavaConform) {
+      this.sharedPackageJavaConform = sharedPackageJavaConform;
       return this;
     }
 

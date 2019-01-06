@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 - Frank Hossfeld
+ * Copyright (c) 2018 - 2019 - Frank Hossfeld
  *
  *  Licensed under the Apache License, Version 2.0 (the "License"); you may not
  *  use this file except in compliance with the License. You may obtain a copy of
@@ -29,7 +29,7 @@ import org.junit.Test;
  *
  * @author <Authors name>
  * @version 1.0
- * @since <pre>Apr 7, 2018</pre>
+ * @since <pre>Apr 7, 2018 - 2019</pre>
  */
 public class ProjectServiceTest {
 
@@ -59,6 +59,7 @@ public class ProjectServiceTest {
     naluGeneraterParms.setDebug(true);
     naluGeneraterParms.setLoginScreen(true);
     naluGeneraterParms.setErrorScreen(true);
+    naluGeneraterParms.setHashUrl(false);
     naluGeneraterParms.setGwtVersion(DataConstants.GWT_VERSION_2_8_2);
     naluGeneraterParms.setWidgetLibrary(WidgetLibrary.GWT);
 

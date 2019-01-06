@@ -86,6 +86,10 @@ Generates a login screen and a filter, that checks, if the user is logged in. In
 #### Generate Error Screen
 Generates a error screen. Entering a illigal route in the URL will make the error screen visible.
 
+#### Use hash in URL
+
+If checked, the code needed to tell Nalu to use a hash inside the URL is generated. In case unchecked, a redirect filter is generated and the flag to tell Nalu to work with hash less url is set.
+
 ### Screen Meta Data
 
 In this area the screens are defined. A screen in Nalu is a combination of a controller and a component. There are five

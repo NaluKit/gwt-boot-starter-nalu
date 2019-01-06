@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-  ~ Copyright (C) 2018 Frank Hossfeld <frank.hossfeld@googlemail.com>
+  ~ Copyright (C) 2018 - 2019 Frank Hossfeld <frank.hossfeld@googlemail.com>
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~  you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
     <parent>
         <groupId>${groupId}</groupId>
         <artifactId>${artifactId}</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>1.1.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>${artifactId}-client</artifactId>
@@ -35,17 +35,17 @@
 
     <properties>
         <!-- nalu version -->
-        <nalu.version>1.0.0</nalu.version>
-<#if widgetLibrary == "DOMINO_UI">
-        <!-- DominoUI version -->
-        <domino.version>1.0-SNAPSHOT</domino.version>
-<#elseif widgetLibrary == "ELEMENTO">
-        <!-- Elemento version -->
-        <elemento.version>0.8.1</elemento.version>
-<#elseif widgetLibrary == "GXT">
-        <!-- GXT version -->
-        <gxt.version>4.0.0</gxt.version>
-</#if>
+        <nalu.version>1.1.0-SNAPSHOT</nalu.version>
+        <#if widgetLibrary == "DOMINO_UI">
+            <!-- DominoUI version -->
+            <domino.version>1.0-SNAPSHOT</domino.version>
+        <#elseif widgetLibrary == "ELEMENTO">
+            <!-- Elemento version -->
+            <elemento.version>0.8.7</elemento.version>
+        <#elseif widgetLibrary == "GXT">
+            <!-- GXT version -->
+            <gxt.version>4.0.0</gxt.version>
+        </#if>
     </properties>
 
     <dependencies>
@@ -78,73 +78,73 @@
             <artifactId>nalu-processor</artifactId>
             <version>${naluVersion}</version>
         </dependency>
-<#if widgetLibrary == "DOMINO_UI">
-        <dependency>
-            <groupId>com.github.nalukit</groupId>
-            <artifactId>nalu-plugin-elemental2</artifactId>
-            <version>${naluVersion}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.dominokit</groupId>
-            <artifactId>domino-ui</artifactId>
-            <version>${dominoVersion}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.dominokit</groupId>
-            <artifactId>domino-ui</artifactId>
-            <version>${dominoVersion}</version>
-            <classifier>sources</classifier>
-        </dependency>
-<#elseif widgetLibrary == "ELEMENTO">
-        <dependency>
-            <groupId>com.github.nalukit</groupId>
-            <artifactId>nalu-plugin-elemental2</artifactId>
-            <version>${naluVersion}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.gwt.element</groupId>
-            <artifactId>element-core</artifactId>
-            <version>${elementoVersion}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.dominokit</groupId>
-            <artifactId>domino-ui</artifactId>
-            <version>${dominoVersion}</version>
-            <classifier>sources</classifier>
-        </dependency>
-<#elseif widgetLibrary == "GWT">
-        <dependency>
-            <groupId>com.github.nalukit</groupId>
-            <artifactId>nalu-plugin-gwt</artifactId>
-            <version>${naluVersion}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github.nalukit</groupId>
-            <artifactId>nalu-plugin-gwt-processor</artifactId>
-            <version>${naluVersion}</version>
-        </dependency>
-<#elseif widgetLibrary == "GXT">
-        <dependency>
-            <groupId>com.github.nalukit</groupId>
-            <artifactId>nalu-plugin-gwt</artifactId>
-            <version>${naluVersion}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github.nalukit</groupId>
-            <artifactId>nalu-plugin-gwt-processor</artifactId>
-            <version>${naluVersion}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sencha.gxt</groupId>
-            <artifactId>gxt</artifactId>
-            <version>${gxtVersion}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sencha.gxt</groupId>
-            <artifactId>gxt-theme-neptune</artifactId>
-            <version>${gxtVersion}</version>
-        </dependency>
-</#if>
+        <#if widgetLibrary == "DOMINO_UI">
+            <dependency>
+                <groupId>com.github.nalukit</groupId>
+                <artifactId>nalu-plugin-elemental2</artifactId>
+                <version>${naluVersion}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dominokit</groupId>
+                <artifactId>domino-ui</artifactId>
+                <version>${dominoVersion}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dominokit</groupId>
+                <artifactId>domino-ui</artifactId>
+                <version>${dominoVersion}</version>
+                <classifier>sources</classifier>
+            </dependency>
+        <#elseif widgetLibrary == "ELEMENTO">
+            <dependency>
+                <groupId>com.github.nalukit</groupId>
+                <artifactId>nalu-plugin-elemental2</artifactId>
+                <version>${naluVersion}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.gwt.elemento</groupId>
+                <artifactId>elemento-core</artifactId>
+                <version>${elementoVersion}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.gwt.elemento</groupId>
+                <artifactId>elemento-core</artifactId>
+                <version>${elementoVersion}</version>
+                <classifier>sources</classifier>
+            </dependency>
+        <#elseif widgetLibrary == "GWT">
+            <dependency>
+                <groupId>com.github.nalukit</groupId>
+                <artifactId>nalu-plugin-gwt</artifactId>
+                <version>${naluVersion}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.nalukit</groupId>
+                <artifactId>nalu-plugin-gwt-processor</artifactId>
+                <version>${naluVersion}</version>
+            </dependency>
+        <#elseif widgetLibrary == "GXT">
+            <dependency>
+                <groupId>com.github.nalukit</groupId>
+                <artifactId>nalu-plugin-gwt</artifactId>
+                <version>${naluVersion}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.nalukit</groupId>
+                <artifactId>nalu-plugin-gwt-processor</artifactId>
+                <version>${naluVersion}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.sencha.gxt</groupId>
+                <artifactId>gxt</artifactId>
+                <version>${gxtVersion}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.sencha.gxt</groupId>
+                <artifactId>gxt-theme-neptune</artifactId>
+                <version>${gxtVersion}</version>
+            </dependency>
+        </#if>
     </dependencies>
 
     <build>
@@ -160,26 +160,26 @@
         </plugins>
     </build>
 
-<#if widgetLibrary == "DOMINO_UI">
-   <repositories>
-       <repository>
-           <id>sonatype-snapshots-repo</id>
-           <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-           <snapshots>
-               <enabled>true</enabled>
-               <updatePolicy>always</updatePolicy>
-               <checksumPolicy>fail</checksumPolicy>
-           </snapshots>
-       </repository>
-   </repositories>
-<#elseif widgetLibrary == "GXT">
-   <repositories>
-       <repository>
-           <id>sencha-gxt-repository</id>
-           <name>sencha-gxt-repository</name>
-           <!-- GPL -->
-           <url>https://maven.sencha.com/repo/gxt-gpl-release</url>
-       </repository>
-   </repositories>
-</#if>
+    <#if widgetLibrary == "DOMINO_UI">
+        <repositories>
+            <repository>
+                <id>sonatype-snapshots-repo</id>
+                <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+                <snapshots>
+                    <enabled>true</enabled>
+                    <updatePolicy>always</updatePolicy>
+                    <checksumPolicy>fail</checksumPolicy>
+                </snapshots>
+            </repository>
+        </repositories>
+    <#elseif widgetLibrary == "GXT">
+        <repositories>
+            <repository>
+                <id>sencha-gxt-repository</id>
+                <name>sencha-gxt-repository</name>
+                <!-- GPL -->
+                <url>https://maven.sencha.com/repo/gxt-gpl-release</url>
+            </repository>
+        </repositories>
+    </#if>
 </project>

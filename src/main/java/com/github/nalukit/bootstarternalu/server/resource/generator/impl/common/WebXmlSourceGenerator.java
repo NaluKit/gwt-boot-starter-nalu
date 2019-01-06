@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 - Frank Hossfeld
+ * Copyright (c) 2018 - 2019 - Frank Hossfeld
  *
  *  Licensed under the Apache License, Version 2.0 (the "License"); you may not
  *  use this file except in compliance with the License. You may obtain a copy of
@@ -17,6 +17,7 @@
 package com.github.nalukit.bootstarternalu.server.resource.generator.impl.common;
 
 import com.github.nalukit.gwtbootstarternalu.shared.model.GeneratorException;
+import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -31,11 +32,15 @@ import java.util.Map;
 
 public class WebXmlSourceGenerator {
 
-  private File directoryWebapp;
+  private String             clientPackageJavaServerConform;
+  private File               directoryWebapp;
+  private NaluGeneraterParms naluGeneraterParms;
 
   private WebXmlSourceGenerator(Builder builder) {
     super();
 
+    this.naluGeneraterParms = builder.naluGeneraterParms;
+    this.clientPackageJavaServerConform = builder.clientPackageJavaServerConform;
     this.directoryWebapp = builder.directoryWebapp;
   }
 
@@ -65,6 +70,12 @@ public class WebXmlSourceGenerator {
     }
 
     Map<String, Object> templateData = new HashMap<>();
+    templateData.put("hashUrl",
+                     this.naluGeneraterParms.hasHashUrl());
+    templateData.put("clientPackageJavaServerConform",
+                     this.clientPackageJavaServerConform);
+    templateData.put("artefactId",
+                     this.naluGeneraterParms.getArtefactId());
 
     String pathToWebInf = this.directoryWebapp.getPath() + File.separator + "WEB-INF";
     File fileWebInf = new File(pathToWebInf);
@@ -93,7 +104,21 @@ public class WebXmlSourceGenerator {
 
   public static class Builder {
 
+    NaluGeneraterParms naluGeneraterParms;
+
     File directoryWebapp;
+
+    String clientPackageJavaServerConform;
+
+    public Builder naluGeneraterParms(NaluGeneraterParms naluGeneraterParms) {
+      this.naluGeneraterParms = naluGeneraterParms;
+      return this;
+    }
+
+    public Builder clientPackageJavaServerConform(String clientPackageJavaServerConform) {
+      this.clientPackageJavaServerConform = clientPackageJavaServerConform;
+      return this;
+    }
 
     public Builder directoryWebapp(File directoryWebapp) {
       this.directoryWebapp = directoryWebapp;
@@ -103,5 +128,7 @@ public class WebXmlSourceGenerator {
     public WebXmlSourceGenerator build() {
       return new WebXmlSourceGenerator(this);
     }
+
   }
+
 }

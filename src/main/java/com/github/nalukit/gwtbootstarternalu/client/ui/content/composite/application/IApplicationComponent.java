@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 - Frank Hossfeld
+ * Copyright (c) 2018 - 2019 - Frank Hossfeld
  *
  *  Licensed under the Apache License, Version 2.0 (the "License"); you may not
  *  use this file except in compliance with the License. You may obtain a copy of
@@ -17,19 +17,20 @@
 
 package com.github.nalukit.gwtbootstarternalu.client.ui.content.composite.application;
 
+import com.github.nalukit.gwtbootstarternalu.client.ui.content.composite.application.IApplicationComponent.Controller;
 import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
-import com.github.nalukit.nalu.client.component.IsComponent;
+import com.github.nalukit.nalu.client.component.IsCompositeComponent;
 import elemental2.dom.HTMLElement;
 
 public interface IApplicationComponent
-  extends IsComponent<IApplicationComponent.Controller, HTMLElement> {
+    extends IsCompositeComponent<Controller, HTMLElement> {
 
   void edit(NaluGeneraterParms naluGeneraterParms);
 
   NaluGeneraterParms flush(NaluGeneraterParms naluGeneraterParms);
 
   interface Controller
-    extends IsComponent.Controller {
+      extends IsCompositeComponent.Controller {
 
   }
 }

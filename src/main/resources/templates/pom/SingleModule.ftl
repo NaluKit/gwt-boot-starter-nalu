@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-  ~ Copyright (C) 2018 Frank Hossfeld <frank.hossfeld@googlemail.com>
+  ~ Copyright (C) 2018 - 2019 Frank Hossfeld <frank.hossfeld@googlemail.com>
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~  you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@
 
     <groupId>${groupId}</groupId>
     <artifactId>${artifactId}</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.1.0-SNAPSHOT</version>
     <packaging>gwt-app</packaging>
 
     <name>${artifactId}  - Nalu Boot Starter Project</name>
@@ -35,13 +35,13 @@
         <!-- gwt version -->
         <gwt.version>2.8.2</gwt.version>
         <!-- nalu version -->
-        <nalu.version>1.0.0</nalu.version>
+        <nalu.version>1.1.0-SNAPSHOT</nalu.version>
 <#if widgetLibrary == "DOMINO_UI">
         <!-- DominoUI version -->
         <domino.version>1.0-SNAPSHOT</domino.version>
 <#elseif widgetLibrary == "ELEMENTO">
         <!-- Elemento version -->
-        <elemento.version>0.8.1</elemento.version>
+        <elemento.version>0.8.7</elemento.version>
 <#elseif widgetLibrary == "GXT">
         <!-- GXT version -->
         <gxt.version>4.0.0</gxt.version>
@@ -121,14 +121,14 @@
             <version>${naluVersion}</version>
         </dependency>
         <dependency>
-            <groupId>org.jboss.gwt.element</groupId>
-            <artifactId>element-core</artifactId>
+            <groupId>org.jboss.gwt.elemento</groupId>
+            <artifactId>elemento-core</artifactId>
             <version>${elementoVersion}</version>
         </dependency>
         <dependency>
-            <groupId>org.dominokit</groupId>
-            <artifactId>domino-ui</artifactId>
-            <version>${dominoVersion}</version>
+            <groupId>org.jboss.gwt.elemento</groupId>
+            <artifactId>elemento-core</artifactId>
+            <version>${elementoVersion}</version>
             <classifier>sources</classifier>
         </dependency>
 <#elseif widgetLibrary == "GWT">

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 - Frank Hossfeld
+ * Copyright (c) 2018 - 2019 - Frank Hossfeld
  *
  *  Licensed under the Apache License, Version 2.0 (the "License"); you may not
  *  use this file except in compliance with the License. You may obtain a copy of
@@ -17,8 +17,9 @@
 
 package com.github.nalukit.gwtbootstarternalu.client.ui.content.composite.application;
 
+import com.github.nalukit.gwtbootstarternalu.client.ui.content.composite.application.IApplicationComponent.Controller;
 import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
-import com.github.nalukit.nalu.client.component.AbstractComponent;
+import com.github.nalukit.nalu.client.component.AbstractCompositeComponent;
 import elemental2.dom.HTMLDivElement;
 import elemental2.dom.HTMLElement;
 import org.dominokit.domino.ui.cards.Card;
@@ -31,10 +32,8 @@ import org.dominokit.domino.ui.style.Color;
 import static org.jboss.gwt.elemento.core.Elements.div;
 
 public class ApplicationComponent
-    extends AbstractComponent<IApplicationComponent.Controller, HTMLElement>
+    extends AbstractCompositeComponent<Controller, HTMLElement>
     implements IApplicationComponent {
-
-  private HTMLDivElement element;
 
   private CheckBox cbApplicationLoader;
 
@@ -43,6 +42,8 @@ public class ApplicationComponent
   private CheckBox cbLoginScreen;
 
   private CheckBox cbErrorScreen;
+
+  private CheckBox cbHashUrl;
 
   public ApplicationComponent() {
   }
@@ -69,33 +70,39 @@ public class ApplicationComponent
                                  .setColor(Color.BLUE_GREY)
                                  .filledIn()
                                  .styler(style -> style.setMarginBottom("0px"));
+    this.cbHashUrl = CheckBox.create("Use hash in URL")
+                             .check()
+                             .setColor(Color.BLUE_GREY)
+                             .filledIn()
+                             .styler(style -> style.setMarginBottom("0px"));
 
-    this.element = div().asElement();
-    this.element = Row.create()
-                      .appendChild(Column.span10()
-                                         .offset1()
-                                         .appendChild(BlockHeader.create("Application Meta Data"))
-                                         .appendChild(Card.create()
-                                                          .appendChild(Row.create()
-                                                                          .appendChild(Column.span12()
-                                                                                             .condenced()
-                                                                                             .appendChild(this.cbApplicationLoader)))
-                                                          .appendChild(Row.create()
-                                                                          .appendChild(Column.span12()
-                                                                                             .condenced()
-                                                                                             .appendChild(this.cbDebugSupport)))
-                                                          .appendChild(Row.create()
-                                                                          .appendChild(Column.span12()
-                                                                                             .condenced()
-                                                                                             .appendChild(this.cbLoginScreen)))
-                                                          .appendChild(Row.create()
-                                                                          .appendChild(Column.span12()
-                                                                                             .condenced()
-                                                                                             .appendChild(this.cbErrorScreen))))
-                                         .style()
-                                         .setMarginTop("20px"))
-                      .asElement();
-    initElement(this.element);
+    HTMLDivElement element = Row.create()
+                                .appendChild(Column.span10()
+                                                   .offset1()
+                                                   .appendChild(BlockHeader.create("Application Meta Data"))
+                                                   .appendChild(Card.create()
+                                                                    .appendChild(Row.create()
+                                                                                    .appendChild(Column.span6()
+                                                                                                       .condenced()
+                                                                                                       .appendChild(this.cbApplicationLoader))
+                                                                                    .appendChild(Column.span6()
+                                                                                                       .condenced()
+                                                                                                       .appendChild(this.cbDebugSupport)))
+                                                                    .appendChild(Row.create()
+                                                                                    .appendChild(Column.span6()
+                                                                                                       .condenced()
+                                                                                                       .appendChild(this.cbLoginScreen))
+                                                                                    .appendChild(Column.span6()
+                                                                                                       .condenced()
+                                                                                                       .appendChild(this.cbErrorScreen)))
+                                                                    .appendChild(Row.create()
+                                                                                    .appendChild(Column.span12()
+                                                                                                       .condenced()
+                                                                                                       .appendChild(this.cbHashUrl))))
+                                                   .style()
+                                                   .setMarginTop("20px"))
+                                .asElement();
+    initElement(element);
   }
 
   @Override
@@ -104,6 +111,7 @@ public class ApplicationComponent
     this.cbDebugSupport.setValue(naluGeneraterParms.isDebug());
     this.cbErrorScreen.setValue(naluGeneraterParms.hasErrorScreen());
     this.cbLoginScreen.setValue(naluGeneraterParms.hasLoginScreen());
+    this.cbHashUrl.setValue(naluGeneraterParms.hasHashUrl());
   }
 
   @Override
@@ -112,6 +120,8 @@ public class ApplicationComponent
     naluGeneraterParms.setDebug(cbDebugSupport.getValue());
     naluGeneraterParms.setErrorScreen(cbErrorScreen.getValue());
     naluGeneraterParms.setLoginScreen(cbLoginScreen.getValue());
+    naluGeneraterParms.setHashUrl(cbHashUrl.getValue());
     return naluGeneraterParms;
   }
+
 }

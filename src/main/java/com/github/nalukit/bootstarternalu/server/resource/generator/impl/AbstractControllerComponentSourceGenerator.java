@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 - Frank Hossfeld
+ * Copyright (c) 2018 - 2019 - Frank Hossfeld
  *
  *  Licensed under the Apache License, Version 2.0 (the "License"); you may not
  *  use this file except in compliance with the License. You may obtain a copy of
@@ -21,6 +21,7 @@ import com.github.nalukit.bootstarternalu.server.resource.generator.GeneratorCon
 import com.github.nalukit.bootstarternalu.server.resource.generator.GeneratorUtils;
 import com.github.nalukit.gwtbootstarternalu.shared.model.ControllerData;
 import com.github.nalukit.gwtbootstarternalu.shared.model.GeneratorException;
+import com.github.nalukit.gwtbootstarternalu.shared.model.MavenModule;
 import com.github.nalukit.nalu.client.component.AbstractComponent;
 import com.github.nalukit.nalu.client.component.AbstractComponentController;
 import com.github.nalukit.nalu.client.component.IsComponent;
@@ -51,6 +52,15 @@ public abstract class AbstractControllerComponentSourceGenerator
     this.generateControllerClass();
   }
 
+  private String getModelPackage() {
+    if (MavenModule.SINGLE_MAVEN_MODULE.equals(super.naluGeneraterParms.getMavenSettings())) {
+      return this.clientPackageJavaConform + ".model";
+    } else {
+      return this.sharedPackageJavaConform + ".model";
+    }
+  }
+
+
   private void generateIComponentClass()
       throws GeneratorException {
     TypeSpec.Builder typeSpec = TypeSpec.interfaceBuilder("I" + GeneratorUtils.setFirstCharacterToUpperCase(this.controllerData.getComponentName()) + "Component")
@@ -70,7 +80,7 @@ public abstract class AbstractControllerComponentSourceGenerator
                                         .addMethod(MethodSpec.methodBuilder("edit")
                                                              .addModifiers(Modifier.PUBLIC,
                                                                            Modifier.ABSTRACT)
-                                                             .addParameter(ParameterSpec.builder(ClassName.get(this.clientPackageJavaConform + ".model",
+                                                             .addParameter(ParameterSpec.builder(ClassName.get(this.getModelPackage(),
                                                                                                                "MyModel"),
                                                                                                  "model")
                                                                                         .build())
@@ -89,7 +99,7 @@ public abstract class AbstractControllerComponentSourceGenerator
               .addMethod(MethodSpec.methodBuilder("flush")
                                    .addModifiers(Modifier.PUBLIC,
                                                  Modifier.ABSTRACT)
-                                   .addParameter(ParameterSpec.builder(ClassName.get(this.clientPackageJavaConform + ".model",
+                                   .addParameter(ParameterSpec.builder(ClassName.get(this.getModelPackage(),
                                                                                      "MyModel"),
                                                                        "model")
                                                               .build())
@@ -150,7 +160,7 @@ public abstract class AbstractControllerComponentSourceGenerator
     typeSpec.addMethod(MethodSpec.methodBuilder("edit")
                                  .addAnnotation(Override.class)
                                  .addModifiers(Modifier.PUBLIC)
-                                 .addParameter(ParameterSpec.builder(ClassName.get(this.clientPackageJavaConform + ".model",
+                                 .addParameter(ParameterSpec.builder(ClassName.get(this.getModelPackage(),
                                                                                    "MyModel"),
                                                                      "model")
                                                             .build())
@@ -183,7 +193,7 @@ public abstract class AbstractControllerComponentSourceGenerator
       typeSpec.addMethod(MethodSpec.methodBuilder("flush")
                                    .addModifiers(Modifier.PUBLIC)
                                    .addAnnotation(Override.class)
-                                   .addParameter(ParameterSpec.builder(ClassName.get(this.clientPackageJavaConform + ".model",
+                                   .addParameter(ParameterSpec.builder(ClassName.get(this.getModelPackage(),
                                                                                      "MyModel"),
                                                                        "model")
                                                               .build())
@@ -262,7 +272,7 @@ public abstract class AbstractControllerComponentSourceGenerator
                                                                          controllerData.getComponentName()
                                                                                        .toLowerCase(),
                                                                          "I" + GeneratorUtils.setFirstCharacterToUpperCase(this.controllerData.getComponentName()) + "Component.Controller"))
-                                        .addField(FieldSpec.builder(ClassName.get(this.clientPackageJavaConform + ".model",
+                                        .addField(FieldSpec.builder(ClassName.get(this.getModelPackage(),
                                                                                   "MyModel"),
                                                                     "model",
                                                                     Modifier.PRIVATE)
@@ -277,7 +287,7 @@ public abstract class AbstractControllerComponentSourceGenerator
                                                              .addComment("In the real world we would do a server call or")
                                                              .addComment("something else to get the data.")
                                                              .addStatement("model = new $T(\"This value is set using the edit method! The value is >>\" + $S + \"<<\")",
-                                                                           ClassName.get(this.clientPackageJavaConform + ".model",
+                                                                           ClassName.get(this.getModelPackage(),
                                                                                          "MyModel"),
                                                                            controllerData.getComponentName())
                                                              .addComment("")

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 - Frank Hossfeld
+ * Copyright (c) 2018 - 2019 - Frank Hossfeld
  *
  *  Licensed under the Apache License, Version 2.0 (the "License"); you may not
  *  use this file except in compliance with the License. You may obtain a copy of
@@ -17,9 +17,11 @@
 
 package com.github.nalukit.gwtbootstarternalu.client.ui.content.composite.screen;
 
+import com.github.nalukit.gwtbootstarternalu.client.ui.content.composite.screen.IScreenComponent.Controller;
 import com.github.nalukit.gwtbootstarternalu.shared.model.ControllerData;
 import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
 import com.github.nalukit.nalu.client.component.AbstractComponent;
+import com.github.nalukit.nalu.client.component.AbstractCompositeComponent;
 import elemental2.dom.HTMLDivElement;
 import elemental2.dom.HTMLElement;
 import jsinterop.base.Js;
@@ -40,14 +42,12 @@ import org.dominokit.domino.ui.utils.ElementUtil;
 import static org.jboss.gwt.elemento.core.Elements.div;
 
 public class ScreenComponent
-  extends AbstractComponent<IScreenComponent.Controller, HTMLElement>
+    extends AbstractCompositeComponent<Controller, HTMLElement>
   implements IScreenComponent {
 
-  private TableConfig<ControllerData>        screenMetaDataTableConfig;
   private DataTable<ControllerData>          dataDataTable;
-  private HTMLDivElement                     element = div().asElement();
+  private HTMLDivElement                     element = div().get();
   private LocalListDataStore<ControllerData> dataStore;
-  private Button                             addButton;
 
   public ScreenComponent() {
   }
@@ -55,11 +55,11 @@ public class ScreenComponent
   @Override
   public void render() {
     Card card = Card.create("Screen meta data");
-    addButton = Button.createDefault(Icons.ALL.add());
+    Button addButton = Button.createDefault(Icons.ALL.add());
 
     dataStore = new LocalListDataStore<>();
 
-    screenMetaDataTableConfig = new TableConfig<>();
+    TableConfig<ControllerData> screenMetaDataTableConfig = new TableConfig<>();
     screenMetaDataTableConfig.addColumn(ColumnConfig.<ControllerData>create("name",
                                                                             "Component name")
                                           .setWidth("250px")

@@ -5,7 +5,7 @@ Change directory to your generated project and issue the following commands:
 
 
 <#if mavenSettings == "SINGLE_MAVEN_MODULE">
-    * mvn gwt:codeserver
+    * mvn gwt:devmode
 <#else>
 * run in one terminal window:
 

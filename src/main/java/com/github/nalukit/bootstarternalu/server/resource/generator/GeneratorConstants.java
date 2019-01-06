@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 - Frank Hossfeld
+ * Copyright (c) 2018 - 2019 - Frank Hossfeld
  *
  *  Licensed under the Apache License, Version 2.0 (the "License"); you may not
  *  use this file except in compliance with the License. You may obtain a copy of
@@ -26,7 +26,7 @@ public class GeneratorConstants {
   public static final String LOADER      = "Loader";
 
   public final static String COPYRIGHT_HTML = String.format("<!--\n" +
-                                                            "  ~ Copyright (C) 2018 Frank Hossfeld <frank.hossfeld@googlemail.com>\n" +
+                                                            "  ~ Copyright (C) 2018 - 2019 Frank Hossfeld <frank.hossfeld@googlemail.com>\n" +
                                                             "  ~\n" +
                                                             "  ~ Licensed under the Apache License, Version 2.0 (the \"License\");\n" +
                                                             "  ~  you may not use this file except in compliance with the License.\n" +
@@ -42,7 +42,7 @@ public class GeneratorConstants {
                                                             "  ~\n" +
                                                             "  -->");
 
-  public final static String COPYRIGHT_JAVA = String.format("Copyright (C) 2018 Frank Hossfeld <frank.hossfeld@googlemail.com>%n" +
+  public final static String COPYRIGHT_JAVA = String.format("Copyright (C) 2018 - 2019 Frank Hossfeld <frank.hossfeld@googlemail.com>%n" +
                                                             "%n" +
                                                             "Licensed under the Apache License, Version 2.0 (the \"License\");%n" +
                                                             "you may not use this file except in compliance with the License.%n" +

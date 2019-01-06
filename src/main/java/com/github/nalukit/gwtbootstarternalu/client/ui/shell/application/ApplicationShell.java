@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 - Frank Hossfeld
+ * Copyright (c) 2018 - 2019 - Frank Hossfeld
  *
  *  Licensed under the Apache License, Version 2.0 (the "License"); you may not
  *  use this file except in compliance with the License. You may obtain a copy of
@@ -14,7 +14,7 @@
  *  the License.
  */
 
-package com.github.nalukit.gwtbootstarternalu.client.ui.shell.applicaiton;
+package com.github.nalukit.gwtbootstarternalu.client.ui.shell.application;
 
 import com.github.nalukit.gwtbootstarternalu.client.ApplicationContext;
 import com.github.nalukit.gwtbootstarternalu.client.Version;
@@ -117,13 +117,13 @@ public class ApplicationShell
 
   private HTMLAnchorElement createAnchorElement(String label,
                                                 String url) {
-    HTMLAnchorElement anchor = Elements.a()
-                                       .textContent(label)
-                                       .attr("href",
-                                             url)
-                                       .attr("target",
-                                             "_blank")
-                                       .asElement();
-    return anchor;
+    return Elements.a()
+                   .textContent(label)
+                   .attr("href",
+                         url)
+                   .attr("target",
+                         "_blank")
+                   .get();
   }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 - Frank Hossfeld
+ * Copyright (c) 2018 - 2019 - Frank Hossfeld
  *
  *  Licensed under the Apache License, Version 2.0 (the "License"); you may not
  *  use this file except in compliance with the License. You may obtain a copy of
@@ -37,6 +37,8 @@ public class NaluGeneraterParms {
   private boolean errorScreen;
 
   private boolean loginScreen;
+
+  private boolean hashUrl;
 
   private WidgetLibrary widgetLibrary;
 
@@ -124,6 +126,14 @@ public class NaluGeneraterParms {
 
   public void setLoginScreen(boolean loginScreen) {
     this.loginScreen = loginScreen;
+  }
+
+  public boolean hasHashUrl() {
+    return hashUrl;
+  }
+
+  public void setHashUrl(boolean hashUrl) {
+    this.hashUrl = hashUrl;
   }
 
   public boolean hasNavigationConfirmation() {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 - Frank Hossfeld
+ * Copyright (c) 2018 - 2019 - Frank Hossfeld
  *
  *  Licensed under the Apache License, Version 2.0 (the "License"); you may not
  *  use this file except in compliance with the License. You may obtain a copy of
@@ -18,6 +18,7 @@ package com.github.nalukit.bootstarternalu.server.resource.generator.impl.common
 
 import com.github.nalukit.bootstarternalu.server.resource.generator.GeneratorUtils;
 import com.github.nalukit.gwtbootstarternalu.shared.model.GeneratorException;
+import com.github.nalukit.gwtbootstarternalu.shared.model.MavenModule;
 import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
@@ -77,6 +78,8 @@ public class ModuleDescriptorGenerator {
                      GeneratorUtils.removeBadChracters(this.naluGeneraterParms.getArtefactId()));
     templateData.put("groupId",
                      this.naluGeneraterParms.getGroupId());
+    templateData.put("mavenProjectType",
+                     MavenModule.MULTI_MAVEN_MODULE.equals(this.naluGeneraterParms.getMavenSettings()) ? "MultiMavenModule" : "SingleMavenModule");
     String pathToModuleDescriptor = this.projectFolder + File.separator + "src" + File.separator + "main";
     File folderModuleDescriptor = new File(pathToModuleDescriptor);
     if (!folderModuleDescriptor.exists()) {
