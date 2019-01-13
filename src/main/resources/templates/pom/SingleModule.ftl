@@ -49,7 +49,7 @@
         <!-- plugin versions -->
         <plugin.version.eclipse.lifecyle>1.0.0</plugin.version.eclipse.lifecyle>
         <plugin.version.maven.compiler>3.6.1</plugin.version.maven.compiler>
-        <plugin.version.maven.gwt>1.0-rc-9</plugin.version.maven.gwt>
+        <plugin.version.maven.gwt>1.0-rc-10</plugin.version.maven.gwt>
         <plugin.version.maven.war>3.0.0</plugin.version.maven.war>
 
         <!-- GWT needs at least java 1.6 -->
