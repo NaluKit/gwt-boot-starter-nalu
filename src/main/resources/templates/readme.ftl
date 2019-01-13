@@ -19,6 +19,6 @@ Change directory to your generated project and issue the following commands:
 </#if>
 
 
-To start the applicaiton, call:
+To start the application, call:
 
 -> http://localhost:8080
