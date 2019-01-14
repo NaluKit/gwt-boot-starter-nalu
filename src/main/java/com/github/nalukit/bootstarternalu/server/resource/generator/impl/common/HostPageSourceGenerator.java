@@ -79,7 +79,7 @@ public class HostPageSourceGenerator {
     try (StringWriter out = new StringWriter()) {
       template.process(templateData,
                        out);
-      Files.write(Paths.get(this.directoryWebapp.getPath() + File.separator + GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId()) + ".html"),
+      Files.write(Paths.get(this.directoryWebapp.getPath() + File.separator + this.naluGeneraterParms.getArtefactId() + ".html"),
                   out.toString()
                      .getBytes());
       out.flush();
