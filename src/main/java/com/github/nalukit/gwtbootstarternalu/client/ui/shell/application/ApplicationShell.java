@@ -70,7 +70,7 @@ public class ApplicationShell
     layout.setLogo(img("./img/Nalu_64px.png").style("width: 48px; height:48px;"))
           .getNavigationBar()
           .setId("header")
-          .getNavigationBar()
+          .getNavBarHeader()
           .appendChild(span().css(Styles.pull_right)
                              .css("powered-by")
                              .textContent("Powered by")
