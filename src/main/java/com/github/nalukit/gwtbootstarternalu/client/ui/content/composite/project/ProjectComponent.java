@@ -18,6 +18,7 @@
 package com.github.nalukit.gwtbootstarternalu.client.ui.content.composite.project;
 
 import com.github.nalukit.gwtbootstarternalu.client.ui.content.composite.project.IProjectComponent.Controller;
+import com.github.nalukit.gwtbootstarternalu.client.ui.content.composite.project.validation.ClassNameValidator;
 import com.github.nalukit.gwtbootstarternalu.client.ui.content.composite.project.validation.PackageValidator;
 import com.github.nalukit.gwtbootstarternalu.shared.model.MavenModule;
 import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
@@ -66,6 +67,7 @@ public class ProjectComponent
                                .floating()
                                .setLeftAddon(Icons.ALL.archive())
                                .groupBy(grouping);
+    artifactIdTextBox.addValidator(new ClassNameValidator(this.artifactIdTextBox));
 
     gwtVersionSelect = Select.<String>create("GWT Version").appendChild(SelectOption.create("2.8.2",
                                                                                             "2.8.2"))
