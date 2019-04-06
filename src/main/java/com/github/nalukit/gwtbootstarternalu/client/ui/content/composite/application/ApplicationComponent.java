@@ -24,57 +24,60 @@ import elemental2.dom.HTMLDivElement;
 import elemental2.dom.HTMLElement;
 import org.dominokit.domino.ui.cards.Card;
 import org.dominokit.domino.ui.forms.CheckBox;
+import org.dominokit.domino.ui.forms.FieldsGrouping;
 import org.dominokit.domino.ui.grid.Column;
 import org.dominokit.domino.ui.grid.Row;
 import org.dominokit.domino.ui.header.BlockHeader;
 import org.dominokit.domino.ui.style.Color;
 
-import static org.jboss.gwt.elemento.core.Elements.div;
-
 public class ApplicationComponent
     extends AbstractCompositeComponent<Controller, HTMLElement>
     implements IApplicationComponent {
 
-  private CheckBox cbApplicationLoader;
-
-  private CheckBox cbDebugSupport;
-
-  private CheckBox cbLoginScreen;
-
-  private CheckBox cbErrorScreen;
-
-  private CheckBox cbHashUrl;
+  private CheckBox       cbApplicationLoader;
+  private CheckBox       cbDebugSupport;
+  private CheckBox       cbLoginScreen;
+  private CheckBox       cbErrorScreen;
+  private CheckBox       cbHashUrl;
+  private FieldsGrouping grouping;
 
   public ApplicationComponent() {
   }
 
   @Override
   public void render() {
+    this.grouping = new FieldsGrouping();
+
     this.cbApplicationLoader = CheckBox.create("Generate Application Loader class")
                                        .check()
                                        .setColor(Color.BLUE_GREY)
                                        .filledIn()
-                                       .styler(style -> style.setMarginBottom("0px"));
+                                       .styler(style -> style.setMarginBottom("0px"))
+                                       .groupBy(this.grouping);
     this.cbDebugSupport = CheckBox.create("Generate Debug support (in development mode)")
                                   .check()
                                   .setColor(Color.BLUE_GREY)
                                   .filledIn()
-                                  .styler(style -> style.setMarginBottom("0px"));
+                                  .styler(style -> style.setMarginBottom("0px"))
+                                  .groupBy(this.grouping);
     this.cbLoginScreen = CheckBox.create("Generate Login screen and Login filter")
                                  .check()
                                  .setColor(Color.BLUE_GREY)
                                  .filledIn()
-                                 .styler(style -> style.setMarginBottom("0px"));
+                                 .styler(style -> style.setMarginBottom("0px"))
+                                 .groupBy(this.grouping);
     this.cbErrorScreen = CheckBox.create("Generate Error Screen")
                                  .check()
                                  .setColor(Color.BLUE_GREY)
                                  .filledIn()
-                                 .styler(style -> style.setMarginBottom("0px"));
+                                 .styler(style -> style.setMarginBottom("0px"))
+                                 .groupBy(this.grouping);
     this.cbHashUrl = CheckBox.create("Use hash in URL")
                              .check()
                              .setColor(Color.BLUE_GREY)
                              .filledIn()
-                             .styler(style -> style.setMarginBottom("0px"));
+                             .styler(style -> style.setMarginBottom("0px"))
+                             .groupBy(this.grouping);
 
     HTMLDivElement element = Row.create()
                                 .appendChild(Column.span10()
@@ -122,6 +125,12 @@ public class ApplicationComponent
     naluGeneraterParms.setLoginScreen(cbLoginScreen.getValue());
     naluGeneraterParms.setHashUrl(cbHashUrl.getValue());
     return naluGeneraterParms;
+  }
+
+  @Override
+  public boolean isVald() {
+    return this.grouping.validate()
+                        .isValid();
   }
 
 }

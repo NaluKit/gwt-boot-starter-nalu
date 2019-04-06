@@ -20,6 +20,7 @@ package com.github.nalukit.gwtbootstarternalu.client.ui.content;
 import com.github.nalukit.nalu.client.component.AbstractComponent;
 import elemental2.dom.HTMLDivElement;
 import elemental2.dom.HTMLElement;
+import org.dominokit.domino.ui.dialogs.MessageDialog;
 import org.jboss.gwt.elemento.core.Elements;
 
 public class ContentComponent
@@ -43,6 +44,14 @@ public class ContentComponent
                                    .id("screenSettings")
                                    .get());
     initElement(divElement);
+  }
+
+  @Override
+  public void showErrorDialog() {
+    MessageDialog.createMessage("Error!",
+                                "Please, fix the errors and try again.")
+                 .error()
+                 .open();
   }
 
 }

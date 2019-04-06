@@ -18,6 +18,7 @@
 package com.github.nalukit.gwtbootstarternalu.client.ui.content.composite.project;
 
 import com.github.nalukit.gwtbootstarternalu.client.ui.content.composite.project.IProjectComponent.Controller;
+import com.github.nalukit.gwtbootstarternalu.client.ui.content.composite.project.validation.PackageValidator;
 import com.github.nalukit.gwtbootstarternalu.shared.model.MavenModule;
 import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
 import com.github.nalukit.gwtbootstarternalu.shared.model.WidgetLibrary;
@@ -38,16 +39,11 @@ public class ProjectComponent
     extends AbstractCompositeComponent<Controller, HTMLElement>
     implements IProjectComponent {
 
-  private FieldsGrouping fieldsGrouping = FieldsGrouping.create();
-
-  private TextBox groupIdTextBox;
-
-  private TextBox artifactIdTextBox;
-
-  private Select<String> gwtVersionSelect;
-
-  private Select<MavenModule> mavenSettingsSelect;
-
+  private FieldsGrouping        grouping = FieldsGrouping.create();
+  private TextBox               groupIdTextBox;
+  private TextBox               artifactIdTextBox;
+  private Select<String>        gwtVersionSelect;
+  private Select<MavenModule>   mavenSettingsSelect;
   private Select<WidgetLibrary> widgetSetSelect;
 
   public ProjectComponent() {
@@ -60,27 +56,23 @@ public class ProjectComponent
                             .setPlaceholder("com.example")
                             .value("com.example")
                             .floating()
-                            .setRequired(true)
-                            .setAutoValidation(true)
                             .setLeftAddon(Icons.ALL.inbox())
-                            .groupBy(fieldsGrouping);
+                            .groupBy(grouping);
+    groupIdTextBox.addValidator(new PackageValidator(this.groupIdTextBox));
 
     artifactIdTextBox = TextBox.create("Artifact ID")
                                .setPlaceholder("MyTestProject")
                                .value("MyTestProject")
                                .floating()
-                               .setRequired(true)
-                               .setAutoValidation(true)
                                .setLeftAddon(Icons.ALL.archive())
-                               .groupBy(fieldsGrouping);
+                               .groupBy(grouping);
 
     gwtVersionSelect = Select.<String>create("GWT Version").appendChild(SelectOption.create("2.8.2",
                                                                                             "2.8.2"))
                                                            .selectAt(0)
                                                            .setLeftAddon(Icons.ALL.code())
                                                            .setRequired(true)
-                                                           .setAutoValidation(true)
-                                                           .groupBy(fieldsGrouping);
+                                                           .groupBy(grouping);
 
     mavenSettingsSelect = Select.<MavenModule>create("Maven").appendChild(SelectOption.create(MavenModule.SINGLE_MAVEN_MODULE,
                                                                                               MavenModule.SINGLE_MAVEN_MODULE.getText()))
@@ -88,9 +80,7 @@ public class ProjectComponent
                                                                                               MavenModule.MULTI_MAVEN_MODULE.getText()))
                                                              .selectAt(2)
                                                              .setLeftAddon(Icons.ALL.build())
-                                                             .setRequired(true)
-                                                             .setAutoValidation(true)
-                                                             .groupBy(fieldsGrouping);
+                                                             .groupBy(grouping);
 
     widgetSetSelect = Select.<WidgetLibrary>create("Widget Set").appendChild(SelectOption.create(WidgetLibrary.DOMINO_UI,
                                                                                                  WidgetLibrary.DOMINO_UI.getText()))
@@ -102,9 +92,10 @@ public class ProjectComponent
                                                                                                  WidgetLibrary.GXT.getText()))
                                                                 .selectAt(3)
                                                                 .setLeftAddon(Icons.ALL.dashboard())
-                                                                .setRequired(true)
-                                                                .setAutoValidation(true)
-                                                                .groupBy(fieldsGrouping);
+                                                                .groupBy(grouping);
+
+    this.grouping.setAutoValidation(true)
+                 .setRequired(true);
 
     HTMLDivElement element = Row.create()
                                 .appendChild(Column.span10()
@@ -150,6 +141,12 @@ public class ProjectComponent
     naluGeneraterParms.setGwtVersion(this.gwtVersionSelect.getValue());
     naluGeneraterParms.setWidgetLibrary(this.widgetSetSelect.getValue());
     return naluGeneraterParms;
+  }
+
+  @Override
+  public boolean isVald() {
+    return this.grouping.validate()
+                        .isValid();
   }
 
 }

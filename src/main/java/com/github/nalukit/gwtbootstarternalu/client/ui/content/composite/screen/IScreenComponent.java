@@ -30,6 +30,8 @@ public interface IScreenComponent
 
   NaluGeneraterParms flush(NaluGeneraterParms naluGeneraterParms);
 
+  boolean isValid();
+
   interface Controller
     extends IsCompositeComponent.Controller {
 

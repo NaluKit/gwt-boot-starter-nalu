@@ -82,9 +82,7 @@ public class GenerateHandler
                                                          .getArtefactId() +
                                                   ".zip";
                                      MessageDialog dialog = MessageDialog.createMessage("Download your project ...",
-                                                                                        "",
-                                                                                        () -> Notification.create("Close")
-                                                                                                          .show())
+                                                                                        "")
                                                                          .appendChild(Paragraph.create("Your project has been generated!"))
                                                                          .appendChild(Paragraph.create("To download the generated project, use the link below."))
                                                                          .appendChild(Elements.br()

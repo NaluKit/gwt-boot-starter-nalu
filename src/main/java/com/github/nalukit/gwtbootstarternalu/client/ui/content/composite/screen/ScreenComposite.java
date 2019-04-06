@@ -35,7 +35,12 @@ public class ScreenComposite
     this.component.edit(this.context.getNaluGeneraterParms());
   }
 
-  public void flush() {
-    this.context.setNaluGeneraterParms(this.component.flush(this.context.getNaluGeneraterParms()));
+  public boolean flush() {
+    if (this.component.isValid()) {
+      this.context.setNaluGeneraterParms(this.component.flush(this.context.getNaluGeneraterParms()));
+      return true;
+    } else {
+      return false;
+    }
   }
 }

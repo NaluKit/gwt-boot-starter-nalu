@@ -29,6 +29,8 @@ public interface IApplicationComponent
 
   NaluGeneraterParms flush(NaluGeneraterParms naluGeneraterParms);
 
+  boolean isVald();
+
   interface Controller
       extends IsCompositeComponent.Controller {
 

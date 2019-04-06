@@ -29,6 +29,7 @@ import com.github.nalukit.nalu.client.component.annotation.Composite;
 import com.github.nalukit.nalu.client.component.annotation.Composites;
 import com.github.nalukit.nalu.client.component.annotation.Controller;
 import elemental2.dom.HTMLElement;
+import org.dominokit.domino.ui.dialogs.MessageDialog;
 import org.dominokit.domino.ui.notifications.Notification;
 
 import java.util.Optional;
@@ -57,38 +58,41 @@ public class ContentController
   public void start() {
     this.eventBus.addHandler(FlushProjectEvent.TYPE,
                              e -> {
-                               // flush data
-                               this.<ApplicationComposite>getComposite("ApplicationMetaData").flush();
-                               this.<ProjectComposite>getComposite("ProjectMetaData").flush();
-                               this.<ScreenComposite>getComposite("ScreenMetaData").flush();
-                               // check is >>login<< is used as route
-                               Optional<String> optionalRouteLogin = this.context.getNaluGeneraterParms()
-                                                                                 .getControllers()
-                                                                                 .stream()
-                                                                                 .map(ControllerData::getRoute)
-                                                                                 .filter(s -> "login".equals(s.toLowerCase()))
-                                                                                 .findAny();
-                               if (optionalRouteLogin.isPresent()) {
-                                 Notification.createDanger("route value >>login<< is a reserved word")
-                                             .setPosition(Notification.TOP_LEFT)
-                                             .show();
-                                 return;
-                               }
-                               // check is >>error<< is used as route
-                               Optional<String> optionalRouteError = this.context.getNaluGeneraterParms()
-                                                                                 .getControllers()
-                                                                                 .stream()
-                                                                                 .map(ControllerData::getRoute)
-                                                                                 .filter(s -> "error".equals(s.toLowerCase()))
-                                                                                 .findAny();
-                               if (optionalRouteError.isPresent()) {
-                                 Notification.createDanger("route value >>error<< is a reserved word")
-                                             .setPosition(Notification.TOP_LEFT)
-                                             .show();
-                                 return;
-                               }
+                               boolean validApplicationData = this.<ApplicationComposite>getComposite("ApplicationMetaData").flush();
+                               boolean validProjectData = this.<ProjectComposite>getComposite("ProjectMetaData").flush();
+                               boolean validScreensData = this.<ScreenComposite>getComposite("ScreenMetaData").flush();
+                               if (validApplicationData && validProjectData && validScreensData) {
+                                 // check is >>login<< is used as route
+                                 Optional<String> optionalRouteLogin = this.context.getNaluGeneraterParms()
+                                                                                   .getControllers()
+                                                                                   .stream()
+                                                                                   .map(ControllerData::getRoute)
+                                                                                   .filter(s -> "login".equals(s.toLowerCase()))
+                                                                                   .findAny();
+                                 if (optionalRouteLogin.isPresent()) {
+                                   Notification.createDanger("route value >>login<< is a reserved word")
+                                               .setPosition(Notification.TOP_LEFT)
+                                               .show();
+                                   return;
+                                 }
+                                 // check is >>error<< is used as route
+                                 Optional<String> optionalRouteError = this.context.getNaluGeneraterParms()
+                                                                                   .getControllers()
+                                                                                   .stream()
+                                                                                   .map(ControllerData::getRoute)
+                                                                                   .filter(s -> "error".equals(s.toLowerCase()))
+                                                                                   .findAny();
+                                 if (optionalRouteError.isPresent()) {
+                                   Notification.createDanger("route value >>error<< is a reserved word")
+                                               .setPosition(Notification.TOP_LEFT)
+                                               .show();
+                                   return;
+                                 }
 
-                               eventBus.fireEvent(new GenerateProjectEvent());
+                                 eventBus.fireEvent(new GenerateProjectEvent());
+                               } else {
+                                 this.component.showErrorDialog();
+                               }
                              });
     this.<ApplicationComposite>getComposite("ApplicationMetaData").edit();
     this.<ProjectComposite>getComposite("ProjectMetaData").edit();
