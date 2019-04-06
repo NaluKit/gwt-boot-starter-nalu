@@ -19,11 +19,11 @@ work. It is not a widget library. So, the components are nearly empty. It is up 
 
 **Note:**
 
-The implementation of the generator uses Nalu, [Domino-UI](https://github.com/DominoKit/domino-ui) and is based on GWT 2.8.2! The generated project requires GWT 2.8.2 and Java 8. The generated Nalu source code will work with J2CL / GWT 3 once all dependies to GWT
+The implementation of the generator uses Nalu, [Domino-UI](https://github.com/DominoKit/domino-ui) and is based on GWT 2.8.2! The generated project requires GWT 2.8.2 and Java 8. The generated Nalu source code will work with J2CL / GWT 3 once all dependencies to GWT
 2.8.2 are replaced. You have to choose a widget set, that will work with J2CL / GWT 3 to be compatible with J2CL / GWT 3!
 
 **The generator nor Nalu will make any existing source code compatible with J2CL / GWT 3. There is no magic to
-transfom GWT 2.x code to work with GWT 3!**
+transform GWT 2.x code to work with GWT 3!**
 
 ## Configuration
 
@@ -81,14 +81,14 @@ If checked, the [Debug](https://github.com/NaluKit/nalu/wiki/04.-Application#deb
 added to the application interface.
 
 #### Generate Login Screen
-Generates a login screen and a filter, that checks, if the user is logged in. In case of relaoding, the project will always route to the login screen.
+Generates a login screen and a filter, that checks, if the user is logged in. In case of reloading, the project will always route to the login screen.
 
 #### Generate Error Screen
-Generates a error screen. Entering a illigal route in the URL will make the error screen visible.
+Generates a error screen. Entering a illegal route in the URL will make the error screen visible.
 
 #### Use hash in URL
 
-If checked, the code needed to tell Nalu to use a hash inside the URL is generated. In case unchecked, a redirect filter is generated and the flag to tell Nalu to work with hash less url is set.
+If checked, the code needed to tell Nalu to use a hash inside the URL is generated. In case unchecked, a redirect filter is generated and the flag to tell Nalu to work with hash less URL is set.
 
 ### Screen Meta Data
 
