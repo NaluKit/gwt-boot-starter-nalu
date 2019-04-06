@@ -37,7 +37,7 @@
         <!-- This script is for IE11-support only. -->
         <script type="text/javascript" language="javascript" src="${artifactId}/polyfill/polyfill-ie11.js"></script>
 <#else>
-        <!-- Consider inlining CSS to reduce the number of requested files -->")
+    <!-- Consider inlining CSS to reduce the number of requested files -->
         <link type="text/css" rel="stylesheet" href="${artifactId}.css">
 </#if>
 
