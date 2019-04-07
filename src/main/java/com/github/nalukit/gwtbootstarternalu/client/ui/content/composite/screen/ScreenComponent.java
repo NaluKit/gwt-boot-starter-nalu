@@ -159,12 +159,13 @@ public class ScreenComponent
                                                                                                                                                                        .setConfirmation(value))
                                                                                                                                     .asElement()))
 
-                             .addColumn(ColumnConfig.<ControllerData>create("remove",
-                                                                            "").setCellRenderer(cellInfo -> Icons.ALL.delete()
-                                                                                                                     .setColor(Color.BLUE_GREY)
-                                                                                                                     .styler(style -> style.setCursor("pointer"))
-                                                                                                                     .addClickListener(evt -> dataStore.removeRecord(cellInfo.getRecord()))
-                                                                                                                     .asElement()));
+                             .addColumn(ColumnConfig.<ControllerData>create("remove").setShowTooltip(false)
+                                                                                     .setCellRenderer(cellInfo -> Icons.ALL.delete()
+                                                                                                                           .setColor(Color.BLUE_GREY)
+                                                                                                                           .setTooltip("Remove screen")
+                                                                                                                           .styler(style -> style.setCursor("pointer"))
+                                                                                                                           .addClickListener(evt -> dataStore.removeRecord(cellInfo.getRecord()))
+                                                                                                                           .asElement()));
 
     dataDataTable = new DataTable<>(screenMetaDataTableConfig,
                                     dataStore);
@@ -172,6 +173,7 @@ public class ScreenComponent
 
     card.getHeaderBar()
         .appendChild(addButton.setContent("ADD")
+                              .setTooltip("Add screen")
                               .styler(style -> style.setMarginTop("-10px"))
                               .linkify()
                               .addClickListener(evt -> {
