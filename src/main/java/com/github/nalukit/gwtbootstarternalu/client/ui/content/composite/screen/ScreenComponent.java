@@ -34,6 +34,7 @@ import org.dominokit.domino.ui.forms.SwitchButton;
 import org.dominokit.domino.ui.forms.TextBox;
 import org.dominokit.domino.ui.grid.Column;
 import org.dominokit.domino.ui.grid.Row;
+import org.dominokit.domino.ui.header.BlockHeader;
 import org.dominokit.domino.ui.icons.Icons;
 import org.dominokit.domino.ui.style.Color;
 import org.dominokit.domino.ui.utils.ElementUtil;
@@ -53,7 +54,7 @@ public class ScreenComponent
 
   @Override
   public void render() {
-    Card card = Card.create("Screen meta data");
+    Card card = Card.create("");
     Button addButton = Button.createDefault(Icons.ALL.add());
 
     dataStore = new LocalListDataStore<>();
@@ -192,6 +193,7 @@ public class ScreenComponent
     this.element.appendChild(Row.create()
                                 .appendChild(Column.span10()
                                                    .offset1()
+                                                   .appendChild(BlockHeader.create("Screen Meta Data"))
                                                    .appendChild(card.appendChild(dataDataTable)))
                                 .asElement());
     dataDataTable.load();
