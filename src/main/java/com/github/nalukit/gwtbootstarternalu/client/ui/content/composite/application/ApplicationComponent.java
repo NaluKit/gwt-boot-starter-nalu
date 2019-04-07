@@ -102,8 +102,7 @@ public class ApplicationComponent
                                                                                     .appendChild(Column.span12()
                                                                                                        .condenced()
                                                                                                        .appendChild(this.cbHashUrl))))
-                                                   .style()
-                                                   .setMarginTop("20px"))
+                                                   .style())
                                 .asElement();
     initElement(element);
   }
