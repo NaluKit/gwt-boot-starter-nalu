@@ -155,4 +155,5 @@ public abstract class AbstractHeaderSourceGenerator
   protected abstract FieldSpec getContainerFieldSpec();
 
   protected abstract void createRenderMethod(TypeSpec.Builder typeSpec);
+
 }

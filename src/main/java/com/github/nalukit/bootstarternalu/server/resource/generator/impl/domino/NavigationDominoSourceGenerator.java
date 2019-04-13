@@ -111,5 +111,7 @@ public class NavigationDominoSourceGenerator
     public NavigationDominoSourceGenerator build() {
       return new NavigationDominoSourceGenerator(this);
     }
+
   }
+
 }

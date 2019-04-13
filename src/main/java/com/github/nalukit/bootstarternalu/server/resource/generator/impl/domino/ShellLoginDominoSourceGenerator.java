@@ -149,5 +149,7 @@ public class ShellLoginDominoSourceGenerator
     public ShellLoginDominoSourceGenerator build() {
       return new ShellLoginDominoSourceGenerator(this);
     }
+
   }
+
 }

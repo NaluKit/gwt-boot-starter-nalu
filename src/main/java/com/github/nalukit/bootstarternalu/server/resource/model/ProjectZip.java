@@ -22,7 +22,8 @@ import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
 @Component
-@Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
+@Scope(value = "session",
+       proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class ProjectZip {
 
   private String pathToGenerateProjectZip;
@@ -37,4 +38,5 @@ public class ProjectZip {
   public void setPathToGenerateProjectZip(String pathToGenerateProjectZip) {
     this.pathToGenerateProjectZip = pathToGenerateProjectZip;
   }
+
 }

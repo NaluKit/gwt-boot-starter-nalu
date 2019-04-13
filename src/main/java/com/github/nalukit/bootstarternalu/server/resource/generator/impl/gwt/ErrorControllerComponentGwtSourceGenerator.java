@@ -118,5 +118,7 @@ public class ErrorControllerComponentGwtSourceGenerator
     public ErrorControllerComponentGwtSourceGenerator build() {
       return new ErrorControllerComponentGwtSourceGenerator(this);
     }
+
   }
+
 }

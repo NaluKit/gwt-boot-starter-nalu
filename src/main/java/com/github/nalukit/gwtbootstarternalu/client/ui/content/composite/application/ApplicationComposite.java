@@ -26,7 +26,7 @@ import elemental2.dom.HTMLElement;
                      component = ApplicationComponent.class)
 public class ApplicationComposite
     extends AbstractCompositeController<ApplicationContext, IApplicationComponent, HTMLElement>
-  implements IApplicationComponent.Controller {
+    implements IApplicationComponent.Controller {
 
   public ApplicationComposite() {
   }
@@ -43,4 +43,5 @@ public class ApplicationComposite
       return false;
     }
   }
+
 }

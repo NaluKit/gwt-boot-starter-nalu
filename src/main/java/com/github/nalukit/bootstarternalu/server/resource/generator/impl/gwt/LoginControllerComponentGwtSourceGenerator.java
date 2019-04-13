@@ -114,5 +114,7 @@ public class LoginControllerComponentGwtSourceGenerator
     public LoginControllerComponentGwtSourceGenerator build() {
       return new LoginControllerComponentGwtSourceGenerator(this);
     }
+
   }
+
 }

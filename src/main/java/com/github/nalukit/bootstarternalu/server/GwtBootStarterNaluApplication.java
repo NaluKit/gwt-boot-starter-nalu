@@ -28,7 +28,7 @@ import org.springframework.core.env.Environment;
 
 @SpringBootApplication(scanBasePackages = "com.github.nalukit.bootstarternalu.server.resource")
 public class GwtBootStarterNaluApplication
-  extends SpringBootServletInitializer {
+    extends SpringBootServletInitializer {
 
   final static Logger logger = LoggerFactory.getLogger(GwtBootStarterNaluApplication.class);
 
@@ -44,4 +44,5 @@ public class GwtBootStarterNaluApplication
   protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
     return application.sources(GwtBootStarterNaluApplication.class);
   }
+
 }

@@ -98,5 +98,7 @@ public class HeaderGwtSourceGenerator
     public HeaderGwtSourceGenerator build() {
       return new HeaderGwtSourceGenerator(this);
     }
+
   }
+
 }

@@ -24,9 +24,11 @@ import com.github.nalukit.nalu.plugin.elemental2.client.DefaultElemental2Logger;
 
 @Application(startRoute = "/application/setUp",
              context = ApplicationContext.class,
-             routeError = "/application/setUp")
+             routeError = "/application/setUp",
+             history = false)
 @Debug(logLevel = Debug.LogLevel.DETAILED,
        logger = DefaultElemental2Logger.class)
 interface GwtBootStarterNaluApplication
     extends IsApplication {
+
 }

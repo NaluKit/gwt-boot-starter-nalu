@@ -143,5 +143,7 @@ public class ControllerComponentDominoSourceGenerator
     public ControllerComponentDominoSourceGenerator build() {
       return new ControllerComponentDominoSourceGenerator(this);
     }
+
   }
+
 }

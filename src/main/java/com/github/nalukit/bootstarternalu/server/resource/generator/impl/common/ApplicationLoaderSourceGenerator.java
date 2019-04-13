@@ -84,9 +84,9 @@ public class ApplicationLoaderSourceGenerator
 
     NaluGeneraterParms naluGeneraterParms;
 
-    File               directoryJava;
+    File directoryJava;
 
-    String             clientPackageJavaConform;
+    String clientPackageJavaConform;
 
     public Builder naluGeneraterParms(NaluGeneraterParms naluGeneraterParms) {
       this.naluGeneraterParms = naluGeneraterParms;
@@ -106,5 +106,7 @@ public class ApplicationLoaderSourceGenerator
     public ApplicationLoaderSourceGenerator build() {
       return new ApplicationLoaderSourceGenerator(this);
     }
+
   }
+
 }

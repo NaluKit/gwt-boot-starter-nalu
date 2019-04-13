@@ -116,5 +116,7 @@ public class StatusBarDominoSourceGenerator
     public StatusBarDominoSourceGenerator build() {
       return new StatusBarDominoSourceGenerator(this);
     }
+
   }
+
 }

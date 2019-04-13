@@ -140,4 +140,5 @@ public class NaluGeneraterParms {
     return this.controllers.stream()
                            .anyMatch(ControllerData::isConfirmation);
   }
+
 }

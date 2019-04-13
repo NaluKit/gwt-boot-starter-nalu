@@ -126,5 +126,7 @@ public class LoginControllerComponentElementoSourceGenerator
     public LoginControllerComponentElementoSourceGenerator build() {
       return new LoginControllerComponentElementoSourceGenerator(this);
     }
+
   }
+
 }

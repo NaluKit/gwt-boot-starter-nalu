@@ -16,9 +16,7 @@
 
 package com.github.nalukit.bootstarternalu.server.resource.generator.impl.common;
 
-import com.github.nalukit.bootstarternalu.server.resource.generator.GeneratorConstants;
 import com.github.nalukit.gwtbootstarternalu.shared.model.GeneratorException;
-import com.github.nalukit.gwtbootstarternalu.shared.model.MavenModule;
 import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
@@ -55,7 +53,8 @@ public class InfoGenerator {
 
     Configuration freeMarkerConfiguration = new Configuration();
 
-    freeMarkerConfiguration.setClassForTemplateLoading(InfoGenerator.class, "/templates");
+    freeMarkerConfiguration.setClassForTemplateLoading(InfoGenerator.class,
+                                                       "/templates");
     freeMarkerConfiguration.setDefaultEncoding("UTF-8");
 
     Template template;
@@ -66,13 +65,16 @@ public class InfoGenerator {
     }
 
     Map<String, Object> templateData = new HashMap<>();
-    templateData.put("mavenSettings", this.naluGeneraterParms.getMavenSettings().toString());
+    templateData.put("mavenSettings",
+                     this.naluGeneraterParms.getMavenSettings()
+                                            .toString());
 
     try (StringWriter out = new StringWriter()) {
-      template.process(templateData, out);
+      template.process(templateData,
+                       out);
       Files.write(Paths.get(this.projectFolder + File.separator + "readme.txt"),
                   out.toString()
-                    .getBytes());
+                     .getBytes());
       out.flush();
     } catch (IOException e) {
       throw new GeneratorException("Unable to write generated file: >>" + this.projectFolder + File.separator + "readme.txt" + "<< -> exception: " + e.getMessage());
@@ -100,5 +102,7 @@ public class InfoGenerator {
     public InfoGenerator build() {
       return new InfoGenerator(this);
     }
+
   }
+
 }

@@ -126,5 +126,7 @@ public class ErrorControllerComponentGxtSourceGenerator
     public ErrorControllerComponentGxtSourceGenerator build() {
       return new ErrorControllerComponentGxtSourceGenerator(this);
     }
+
   }
+
 }

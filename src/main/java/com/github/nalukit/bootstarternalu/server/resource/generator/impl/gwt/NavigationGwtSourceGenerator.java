@@ -120,5 +120,7 @@ public class NavigationGwtSourceGenerator
     public NavigationGwtSourceGenerator build() {
       return new NavigationGwtSourceGenerator(this);
     }
+
   }
+
 }

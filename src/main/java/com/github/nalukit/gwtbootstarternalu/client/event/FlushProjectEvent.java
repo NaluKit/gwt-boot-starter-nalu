@@ -4,7 +4,7 @@ import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
 import org.gwtproject.event.shared.Event;
 
 public class FlushProjectEvent
-  extends Event<FlushProjectEvent.FlushProjectHandler> {
+    extends Event<FlushProjectEvent.FlushProjectHandler> {
 
   public static Type<FlushProjectHandler> TYPE = new Type<FlushProjectHandler>();
 
@@ -28,4 +28,5 @@ public class FlushProjectEvent
     void onFlushProject(FlushProjectEvent event);
 
   }
+
 }

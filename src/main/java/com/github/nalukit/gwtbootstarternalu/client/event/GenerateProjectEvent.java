@@ -3,7 +3,7 @@ package com.github.nalukit.gwtbootstarternalu.client.event;
 import org.gwtproject.event.shared.Event;
 
 public class GenerateProjectEvent
-  extends Event<GenerateProjectEvent.GenerateHandler> {
+    extends Event<GenerateProjectEvent.GenerateHandler> {
 
   public static Type<GenerateHandler> TYPE = new Type<GenerateHandler>();
 
@@ -25,4 +25,5 @@ public class GenerateProjectEvent
     void onGenerate(GenerateProjectEvent event);
 
   }
+
 }

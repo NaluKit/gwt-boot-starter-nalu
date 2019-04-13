@@ -20,12 +20,12 @@ package com.github.nalukit.gwtbootstarternalu.client;
 import com.github.nalukit.nalu.plugin.elemental2.client.NaluPluginElemental2;
 import com.google.gwt.core.client.EntryPoint;
 
-
 public class GwtBootStarterNalu
-  implements EntryPoint {
+    implements EntryPoint {
 
   public void onModuleLoad() {
     GwtBootStarterNaluApplication application = new GwtBootStarterNaluApplicationImpl();
     application.run(new NaluPluginElemental2());
   }
+
 }

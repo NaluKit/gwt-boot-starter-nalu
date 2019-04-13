@@ -48,4 +48,5 @@ public class Parameter {
   public void setType(String type) {
     this.type = type;
   }
+
 }

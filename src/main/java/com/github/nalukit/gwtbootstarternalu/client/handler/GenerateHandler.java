@@ -20,7 +20,6 @@ package com.github.nalukit.gwtbootstarternalu.client.handler;
 import com.github.nalukit.gwtbootstarternalu.client.ApplicationContext;
 import com.github.nalukit.gwtbootstarternalu.client.event.GenerateProjectEvent;
 import com.github.nalukit.gwtbootstarternalu.client.service.ProjectService;
-import com.github.nalukit.gwtbootstarternalu.shared.model.ControllerData;
 import com.github.nalukit.nalu.client.handler.AbstractHandler;
 import com.github.nalukit.nalu.client.handler.annotation.Handler;
 import com.google.gwt.core.client.GWT;
@@ -28,7 +27,6 @@ import com.google.gwt.user.client.Window;
 import com.sencha.gxt.widget.core.client.ProgressBar;
 import org.dominokit.domino.ui.Typography.Paragraph;
 import org.dominokit.domino.ui.dialogs.MessageDialog;
-import org.dominokit.domino.ui.notifications.Notification;
 import org.fusesource.restygwt.client.Method;
 import org.fusesource.restygwt.client.Resource;
 import org.fusesource.restygwt.client.RestServiceProxy;
@@ -36,7 +34,6 @@ import org.fusesource.restygwt.client.TextCallback;
 import org.jboss.gwt.elemento.core.Elements;
 
 import java.util.Arrays;
-import java.util.Optional;
 
 @Handler
 public class GenerateHandler
@@ -108,4 +105,5 @@ public class GenerateHandler
                                    }
                                  });
   }
+
 }

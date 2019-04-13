@@ -60,7 +60,6 @@ public abstract class AbstractControllerComponentSourceGenerator
     }
   }
 
-
   private void generateIComponentClass()
       throws GeneratorException {
     TypeSpec.Builder typeSpec = TypeSpec.interfaceBuilder("I" + GeneratorUtils.setFirstCharacterToUpperCase(this.controllerData.getComponentName()) + "Component")

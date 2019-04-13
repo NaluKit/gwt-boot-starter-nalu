@@ -19,7 +19,6 @@ package com.github.nalukit.gwtbootstarternalu.client.ui.content.composite.screen
 
 import com.github.nalukit.gwtbootstarternalu.client.ui.content.composite.screen.IScreenComponent.Controller;
 import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
-import com.github.nalukit.nalu.client.component.IsComponent;
 import com.github.nalukit.nalu.client.component.IsCompositeComponent;
 import elemental2.dom.HTMLElement;
 
@@ -33,7 +32,8 @@ public interface IScreenComponent
   boolean isValid();
 
   interface Controller
-    extends IsCompositeComponent.Controller {
+      extends IsCompositeComponent.Controller {
 
   }
+
 }

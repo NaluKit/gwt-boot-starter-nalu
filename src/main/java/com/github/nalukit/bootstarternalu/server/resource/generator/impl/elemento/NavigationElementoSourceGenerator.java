@@ -93,5 +93,7 @@ public class NavigationElementoSourceGenerator
     public NavigationElementoSourceGenerator build() {
       return new NavigationElementoSourceGenerator(this);
     }
+
   }
+
 }

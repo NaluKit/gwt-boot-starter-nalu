@@ -19,7 +19,7 @@ package com.github.nalukit.gwtbootstarternalu.shared.model;
 
 @SuppressWarnings("serial")
 public class GeneratorException
-  extends Exception {
+    extends Exception {
 
   public GeneratorException() {
     super();
@@ -48,4 +48,5 @@ public class GeneratorException
           enableSuppression,
           writableStackTrace);
   }
+
 }

@@ -37,7 +37,7 @@ public class CssPageGxtSourceGenerator {
 
   private NaluGeneraterParms naluGeneraterParms;
 
-  private File               directoryWebapp;
+  private File directoryWebapp;
 
   private CssPageGxtSourceGenerator(Builder builder) {
     super();
@@ -95,7 +95,7 @@ public class CssPageGxtSourceGenerator {
 
     NaluGeneraterParms naluGeneraterParms;
 
-    File               directoryWebapp;
+    File directoryWebapp;
 
     public Builder naluGeneraterParms(NaluGeneraterParms naluGeneraterParms) {
       this.naluGeneraterParms = naluGeneraterParms;
@@ -110,5 +110,7 @@ public class CssPageGxtSourceGenerator {
     public CssPageGxtSourceGenerator build() {
       return new CssPageGxtSourceGenerator(this);
     }
+
   }
+
 }

@@ -257,5 +257,7 @@ public class MultiPomGenerator {
     public MultiPomGenerator build() {
       return new MultiPomGenerator(this);
     }
+
   }
+
 }

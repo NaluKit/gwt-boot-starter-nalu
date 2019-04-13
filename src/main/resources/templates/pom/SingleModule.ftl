@@ -25,7 +25,7 @@
 
     <groupId>${groupId}</groupId>
     <artifactId>${artifactId}</artifactId>
-    <version>1.2.0</version>
+    <version>1.0.0</version>
     <packaging>gwt-app</packaging>
 
     <name>${artifactId}  - Nalu Boot Starter Project</name>
@@ -35,7 +35,7 @@
         <!-- gwt version -->
         <gwt.version>2.8.2</gwt.version>
         <!-- nalu version -->
-        <nalu.version>1.2.0</nalu.version>
+        <nalu.version>1.2.1</nalu.version>
 <#if widgetLibrary == "DOMINO_UI">
         <!-- DominoUI version -->
         <domino.version>1.0-SNAPSHOT</domino.version>

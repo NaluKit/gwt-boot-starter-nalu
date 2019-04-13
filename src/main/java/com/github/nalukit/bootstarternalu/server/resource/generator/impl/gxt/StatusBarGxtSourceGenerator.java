@@ -102,5 +102,7 @@ public class StatusBarGxtSourceGenerator
     public StatusBarGxtSourceGenerator build() {
       return new StatusBarGxtSourceGenerator(this);
     }
+
   }
+
 }

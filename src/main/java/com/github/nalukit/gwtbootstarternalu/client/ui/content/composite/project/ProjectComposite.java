@@ -26,7 +26,7 @@ import elemental2.dom.HTMLElement;
                      component = ProjectComponent.class)
 public class ProjectComposite
     extends AbstractCompositeController<ApplicationContext, IProjectComponent, HTMLElement>
-  implements IProjectComponent.Controller {
+    implements IProjectComponent.Controller {
 
   public ProjectComposite() {
   }
@@ -43,4 +43,5 @@ public class ProjectComposite
       return false;
     }
   }
+
 }

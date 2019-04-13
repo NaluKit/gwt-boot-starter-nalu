@@ -104,5 +104,7 @@ public class StatusBarGwtSourceGenerator
     public StatusBarGwtSourceGenerator build() {
       return new StatusBarGwtSourceGenerator(this);
     }
+
   }
+
 }

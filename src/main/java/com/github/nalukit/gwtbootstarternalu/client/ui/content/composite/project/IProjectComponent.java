@@ -34,4 +34,5 @@ public interface IProjectComponent
       extends IsCompositeComponent.Controller {
 
   }
+
 }

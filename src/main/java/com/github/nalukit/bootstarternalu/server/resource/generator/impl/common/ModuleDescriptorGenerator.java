@@ -118,5 +118,7 @@ public class ModuleDescriptorGenerator {
     public ModuleDescriptorGenerator build() {
       return new ModuleDescriptorGenerator(this);
     }
+
   }
+
 }

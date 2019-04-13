@@ -26,7 +26,7 @@ import elemental2.dom.HTMLElement;
                      component = ScreenComponent.class)
 public class ScreenComposite
     extends AbstractCompositeController<ApplicationContext, IScreenComponent, HTMLElement>
-  implements IScreenComponent.Controller {
+    implements IScreenComponent.Controller {
 
   public ScreenComposite() {
   }
@@ -43,4 +43,5 @@ public class ScreenComposite
       return false;
     }
   }
+
 }

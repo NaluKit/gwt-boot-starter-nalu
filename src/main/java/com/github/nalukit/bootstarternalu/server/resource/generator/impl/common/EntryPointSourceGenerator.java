@@ -91,9 +91,9 @@ public class EntryPointSourceGenerator
 
     NaluGeneraterParms naluGeneraterParms;
 
-    File               directoryJava;
+    File directoryJava;
 
-    String             clientPackageJavaConform;
+    String clientPackageJavaConform;
 
     public Builder naluGeneraterParms(NaluGeneraterParms naluGeneraterParms) {
       this.naluGeneraterParms = naluGeneraterParms;
@@ -113,5 +113,7 @@ public class EntryPointSourceGenerator
     public EntryPointSourceGenerator build() {
       return new EntryPointSourceGenerator(this);
     }
+
   }
+
 }

@@ -28,11 +28,11 @@ public abstract class AbstractSourceGenerator {
 
   protected NaluGeneraterParms naluGeneraterParms;
 
-  protected File               directoryJava;
+  protected File directoryJava;
 
-  protected String             clientPackageJavaConform;
+  protected String clientPackageJavaConform;
 
-  protected String             sharedPackageJavaConform;
+  protected String sharedPackageJavaConform;
 
   protected ClassName getClassNameWidget() {
     switch (this.naluGeneraterParms.getWidgetLibrary()) {
@@ -46,4 +46,5 @@ public abstract class AbstractSourceGenerator {
         return ClassName.get(Widget.class);
     }
   }
+
 }

@@ -21,7 +21,7 @@ import com.github.nalukit.gwtbootstarternalu.shared.model.*;
 import com.github.nalukit.nalu.client.application.IsContext;
 
 public class ApplicationContext
-  implements IsContext {
+    implements IsContext {
 
   private String version;
 
@@ -89,4 +89,5 @@ public class ApplicationContext
   public void setNaluGeneraterParms(NaluGeneraterParms naluGeneraterParms) {
     this.naluGeneraterParms = naluGeneraterParms;
   }
+
 }

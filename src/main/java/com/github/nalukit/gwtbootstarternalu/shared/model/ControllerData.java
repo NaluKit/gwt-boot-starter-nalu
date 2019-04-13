@@ -149,12 +149,24 @@ public class ControllerData {
     return componentName;
   }
 
+  public void setComponentName(String componentName) {
+    this.componentName = componentName;
+  }
+
   public String getRoute() {
     return route;
   }
 
+  public void setRoute(String route) {
+    this.route = route;
+  }
+
   public boolean isShowControllerAtStart() {
     return showControllerAtStart;
+  }
+
+  public void setShowControllerAtStart(boolean showControllerAtStart) {
+    this.showControllerAtStart = showControllerAtStart;
   }
 
   public boolean isConfirmation() {
@@ -177,6 +189,10 @@ public class ControllerData {
     return editable;
   }
 
+  public void setEditable(boolean editable) {
+    this.editable = editable;
+  }
+
   public List<String> getParameters() {
     return parameters;
   }
@@ -185,33 +201,29 @@ public class ControllerData {
     this.parameters = parameters;
   }
 
-  public void setEditable(boolean editable) {
-    this.editable = editable;
-  }
-
-  public void setShowControllerAtStart(boolean showControllerAtStart) {
-    this.showControllerAtStart = showControllerAtStart;
-  }
-
-  public void setRoute(String route) {
-    this.route = route;
-  }
-
-  public void setComponentName(String componentName) {
-    this.componentName = componentName;
-  }
-
   @Override
   public String toString() {
     return "ControllerData{" +
-            "id='" + id + '\'' +
-            ", componentName='" + componentName + '\'' +
-            ", route='" + route + '\'' +
-            ", confirmation=" + confirmation +
-            ", showControllerAtStart=" + showControllerAtStart +
-            ", deletable=" + deletable +
-            ", editable=" + editable +
-            ", parameters=" + parameters +
-            '}';
+           "id='" +
+           id +
+           '\'' +
+           ", componentName='" +
+           componentName +
+           '\'' +
+           ", route='" +
+           route +
+           '\'' +
+           ", confirmation=" +
+           confirmation +
+           ", showControllerAtStart=" +
+           showControllerAtStart +
+           ", deletable=" +
+           deletable +
+           ", editable=" +
+           editable +
+           ", parameters=" +
+           parameters +
+           '}';
   }
+
 }

@@ -177,4 +177,5 @@ public abstract class AbstractNavigationSourceGenerator
   }
 
   protected abstract void createRenderMethod(TypeSpec.Builder typeSpec);
+
 }

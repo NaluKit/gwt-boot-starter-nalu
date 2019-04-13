@@ -33,4 +33,5 @@ public class MediaTypeUtils {
       return MediaType.APPLICATION_OCTET_STREAM;
     }
   }
+
 }

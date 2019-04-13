@@ -149,5 +149,7 @@ public class LoginControllerComponentDominoSourceGenerator
     public LoginControllerComponentDominoSourceGenerator build() {
       return new LoginControllerComponentDominoSourceGenerator(this);
     }
+
   }
+
 }

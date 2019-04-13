@@ -47,9 +47,10 @@ public class DownloadZipService {
   @Autowired
   private ServletContext servletContext;
 
-  @RequestMapping(method = RequestMethod.GET, path = "/download")
+  @RequestMapping(method = RequestMethod.GET,
+                  path = "/download")
   public ResponseEntity<InputStreamResource> zip(@RequestParam("archive") String zipName)
-    throws IOException {
+      throws IOException {
 
     logger.debug("preparing download for zip-file >>" + zipName + "<<");
 
@@ -71,5 +72,6 @@ public class DownloadZipService {
                          .contentLength(file.length())
                          .body(resource);
   }
+
 }
 

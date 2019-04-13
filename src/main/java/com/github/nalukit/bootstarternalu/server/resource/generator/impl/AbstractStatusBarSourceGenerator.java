@@ -191,4 +191,5 @@ public abstract class AbstractStatusBarSourceGenerator
   protected abstract String getSetLabelValueStatement();
 
   protected abstract void createRenderMethod(TypeSpec.Builder typeSpec);
+
 }

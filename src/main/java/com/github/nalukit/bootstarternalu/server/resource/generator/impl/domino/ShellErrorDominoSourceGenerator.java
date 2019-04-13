@@ -149,5 +149,7 @@ public class ShellErrorDominoSourceGenerator
     public ShellErrorDominoSourceGenerator build() {
       return new ShellErrorDominoSourceGenerator(this);
     }
+
   }
+
 }

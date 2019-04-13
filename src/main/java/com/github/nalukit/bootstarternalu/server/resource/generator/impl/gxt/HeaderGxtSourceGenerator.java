@@ -96,5 +96,7 @@ public class HeaderGxtSourceGenerator
     public HeaderGxtSourceGenerator build() {
       return new HeaderGxtSourceGenerator(this);
     }
+
   }
+
 }

@@ -25,7 +25,7 @@
 
     <groupId>${groupId}</groupId>
     <artifactId>${artifactId}</artifactId>
-    <version>1.2.0</version>
+    <version>1.0.0</version>
     <packaging>pom</packaging>
 
     <name>${artifactId}  - Nalu Boot Starter Project</name>

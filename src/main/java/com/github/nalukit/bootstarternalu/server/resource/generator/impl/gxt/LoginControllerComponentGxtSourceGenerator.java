@@ -126,5 +126,7 @@ public class LoginControllerComponentGxtSourceGenerator
     public LoginControllerComponentGxtSourceGenerator build() {
       return new LoginControllerComponentGxtSourceGenerator(this);
     }
+
   }
+
 }

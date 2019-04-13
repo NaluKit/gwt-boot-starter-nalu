@@ -118,3 +118,5 @@ predefined screens called Screen01, Screen02, Screen03, Screen04 and Screen05. T
 `mvn gwt:codeserver` (for devmode)
 
 `mvn spring-boot:run`
+
+Use this URL to run the application: `http://localhost:8080/GwtBootStarterNalu.html`

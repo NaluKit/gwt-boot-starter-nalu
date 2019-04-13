@@ -29,7 +29,6 @@ import com.github.nalukit.nalu.client.component.annotation.Composite;
 import com.github.nalukit.nalu.client.component.annotation.Composites;
 import com.github.nalukit.nalu.client.component.annotation.Controller;
 import elemental2.dom.HTMLElement;
-import org.dominokit.domino.ui.dialogs.MessageDialog;
 import org.dominokit.domino.ui.notifications.Notification;
 
 import java.util.Optional;
@@ -98,4 +97,5 @@ public class ContentController
     this.<ProjectComposite>getComposite("ProjectMetaData").edit();
     this.<ScreenComposite>getComposite("ScreenMetaData").edit();
   }
+
 }

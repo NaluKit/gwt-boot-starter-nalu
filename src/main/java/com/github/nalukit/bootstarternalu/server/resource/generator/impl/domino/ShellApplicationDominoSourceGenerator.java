@@ -150,5 +150,7 @@ public class ShellApplicationDominoSourceGenerator
     public ShellApplicationDominoSourceGenerator build() {
       return new ShellApplicationDominoSourceGenerator(this);
     }
+
   }
+
 }

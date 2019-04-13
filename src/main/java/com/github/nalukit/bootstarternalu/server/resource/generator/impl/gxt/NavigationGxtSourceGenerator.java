@@ -111,5 +111,7 @@ public class NavigationGxtSourceGenerator
     public NavigationGxtSourceGenerator build() {
       return new NavigationGxtSourceGenerator(this);
     }
+
   }
+
 }

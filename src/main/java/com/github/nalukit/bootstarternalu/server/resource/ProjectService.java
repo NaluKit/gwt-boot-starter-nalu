@@ -26,7 +26,6 @@ import com.github.nalukit.bootstarternalu.server.resource.model.ProjectZip;
 import com.github.nalukit.gwtbootstarternalu.shared.model.GeneratorException;
 import com.github.nalukit.gwtbootstarternalu.shared.model.MavenModule;
 import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
-import freemarker.template.Configuration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -295,20 +294,20 @@ public class ProjectService {
         return new ResponseEntity<>("ERROR: creation of project folder (2) failed!",
                                     HttpStatus.INTERNAL_SERVER_ERROR);
       }
-//
-//      // create ...
-//      File projectRootFolderFile = new File(projectRootFolder);
-//      if (!projectRootFolderFile.mkdirs()) {
-//        logger.error(">>" + model.getArtefactId() + "<< creation of project folder (1) failed! >>" + projectRootFolder + "<< ");
-//        return new ResponseEntity<>("ERROR: creation of project folder (1) failed!",
-//                                    HttpStatus.INTERNAL_SERVER_ERROR);
-//      }
-//      File projectFolderFile = new File(projectFolder);
-//      if (!projectFolderFile.mkdirs()) {
-//        logger.error(">>" + model.getArtefactId() + "<< creation of project folder (1) failed! >>" + projectRootFolder + "<< ");
-//        return new ResponseEntity<>("ERROR: creation of project folder (2) failed!",
-//                                    HttpStatus.INTERNAL_SERVER_ERROR);
-//      }
+      //
+      //      // create ...
+      //      File projectRootFolderFile = new File(projectRootFolder);
+      //      if (!projectRootFolderFile.mkdirs()) {
+      //        logger.error(">>" + model.getArtefactId() + "<< creation of project folder (1) failed! >>" + projectRootFolder + "<< ");
+      //        return new ResponseEntity<>("ERROR: creation of project folder (1) failed!",
+      //                                    HttpStatus.INTERNAL_SERVER_ERROR);
+      //      }
+      //      File projectFolderFile = new File(projectFolder);
+      //      if (!projectFolderFile.mkdirs()) {
+      //        logger.error(">>" + model.getArtefactId() + "<< creation of project folder (1) failed! >>" + projectRootFolder + "<< ");
+      //        return new ResponseEntity<>("ERROR: creation of project folder (2) failed!",
+      //                                    HttpStatus.INTERNAL_SERVER_ERROR);
+      //      }
       // create Java sources (must run first, because this creates the project structre)
       try {
         logger.debug(">>" + model.getArtefactId() + "<< generating sources!");
@@ -543,5 +542,6 @@ public class ProjectService {
     }
     folder.delete();
   }
+
 }
 

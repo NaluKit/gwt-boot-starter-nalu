@@ -19,8 +19,6 @@ package com.github.nalukit.bootstarternalu.server.resource.generator.impl.elemen
 
 import com.github.nalukit.bootstarternalu.server.resource.generator.impl.AbstractControllerComponentSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.resource.generator.impl.common.Comments;
-import com.github.nalukit.bootstarternalu.server.resource.generator.impl.domino.ControllerComponentDominoSourceGenerator;
-import com.github.nalukit.bootstarternalu.server.resource.generator.impl.domino.ControllerComponentDominoSourceGenerator.Builder;
 import com.github.nalukit.gwtbootstarternalu.shared.model.ControllerData;
 import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
 import com.squareup.javapoet.ClassName;
@@ -147,5 +145,7 @@ public class ControllerComponentElementoSourceGenerator
     public ControllerComponentElementoSourceGenerator build() {
       return new ControllerComponentElementoSourceGenerator(this);
     }
+
   }
+
 }

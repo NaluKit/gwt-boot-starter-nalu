@@ -21,9 +21,9 @@ public class GeneratorConstants {
 
   public static final String APPLICAITON = "Application";
 
-  public static final String CONTEXT     = "Context";
+  public static final String CONTEXT = "Context";
 
-  public static final String LOADER      = "Loader";
+  public static final String LOADER = "Loader";
 
   public final static String COPYRIGHT_HTML = String.format("<!--\n" +
                                                             "  ~ Copyright (C) 2018 - 2019 Frank Hossfeld <frank.hossfeld@googlemail.com>\n" +

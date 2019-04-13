@@ -24,12 +24,12 @@ import com.github.nalukit.nalu.client.component.annotation.Controller;
 import elemental2.dom.HTMLElement;
 
 @Controller(route = "/application",
-  selector = "buttonBar",
-  componentInterface = IButtonBarComponent.class,
-  component = ButtonBarComponent.class)
+            selector = "buttonBar",
+            componentInterface = IButtonBarComponent.class,
+            component = ButtonBarComponent.class)
 public class ButtonBarController
-  extends AbstractComponentController<ApplicationContext, IButtonBarComponent, HTMLElement>
-  implements IButtonBarComponent.Controller {
+    extends AbstractComponentController<ApplicationContext, IButtonBarComponent, HTMLElement>
+    implements IButtonBarComponent.Controller {
 
   public ButtonBarController() {
   }
@@ -38,4 +38,5 @@ public class ButtonBarController
   public void doGenerate() {
     this.eventBus.fireEvent(new FlushProjectEvent());
   }
+
 }

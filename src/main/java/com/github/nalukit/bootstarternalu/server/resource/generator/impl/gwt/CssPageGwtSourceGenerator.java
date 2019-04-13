@@ -38,7 +38,7 @@ public class CssPageGwtSourceGenerator {
 
   private NaluGeneraterParms naluGeneraterParms;
 
-  private File               directoryWebapp;
+  private File directoryWebapp;
 
   private CssPageGwtSourceGenerator(Builder builder) {
     super();
@@ -96,7 +96,7 @@ public class CssPageGwtSourceGenerator {
 
     NaluGeneraterParms naluGeneraterParms;
 
-    File               directoryWebapp;
+    File directoryWebapp;
 
     public Builder naluGeneraterParms(NaluGeneraterParms naluGeneraterParms) {
       this.naluGeneraterParms = naluGeneraterParms;
@@ -111,5 +111,7 @@ public class CssPageGwtSourceGenerator {
     public CssPageGwtSourceGenerator build() {
       return new CssPageGwtSourceGenerator(this);
     }
+
   }
+
 }

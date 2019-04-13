@@ -26,7 +26,7 @@
     <parent>
         <groupId>${groupId}</groupId>
         <artifactId>${artifactId}</artifactId>
-        <version>1.2.0</version>
+        <version>1.0.0</version>
     </parent>
 
     <artifactId>${artifactId}-client</artifactId>
@@ -35,7 +35,7 @@
 
     <properties>
         <!-- nalu version -->
-        <nalu.version>1.2.0</nalu.version>
+        <nalu.version>1.2.1</nalu.version>
         <#if widgetLibrary == "DOMINO_UI">
             <!-- DominoUI version -->
             <domino.version>1.0-SNAPSHOT</domino.version>

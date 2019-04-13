@@ -227,5 +227,7 @@ public class ShellErrorGxtSourceGenerator
     public ShellErrorGxtSourceGenerator build() {
       return new ShellErrorGxtSourceGenerator(this);
     }
+
   }
+
 }

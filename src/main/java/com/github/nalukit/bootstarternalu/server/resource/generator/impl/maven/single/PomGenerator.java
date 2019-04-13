@@ -138,5 +138,7 @@ public class PomGenerator {
     public PomGenerator build() {
       return new PomGenerator(this);
     }
+
   }
+
 }

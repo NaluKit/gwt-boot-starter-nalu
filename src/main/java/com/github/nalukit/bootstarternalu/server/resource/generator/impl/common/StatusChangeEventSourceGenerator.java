@@ -129,9 +129,9 @@ public class StatusChangeEventSourceGenerator
 
     NaluGeneraterParms naluGeneraterParms;
 
-    File               directoryJava;
+    File directoryJava;
 
-    String             clientPackageJavaConform;
+    String clientPackageJavaConform;
 
     public Builder naluGeneraterParms(NaluGeneraterParms naluGeneraterParms) {
       this.naluGeneraterParms = naluGeneraterParms;
@@ -151,5 +151,7 @@ public class StatusChangeEventSourceGenerator
     public StatusChangeEventSourceGenerator build() {
       return new StatusChangeEventSourceGenerator(this);
     }
+
   }
+
 }

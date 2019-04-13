@@ -227,5 +227,7 @@ public class ShellLoginGwtSourceGenerator
     public ShellLoginGwtSourceGenerator build() {
       return new ShellLoginGwtSourceGenerator(this);
     }
+
   }
+
 }

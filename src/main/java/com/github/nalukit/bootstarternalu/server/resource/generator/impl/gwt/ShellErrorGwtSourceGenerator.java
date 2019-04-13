@@ -227,5 +227,7 @@ public class ShellErrorGwtSourceGenerator
     public ShellErrorGwtSourceGenerator build() {
       return new ShellErrorGwtSourceGenerator(this);
     }
+
   }
+
 }

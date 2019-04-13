@@ -96,5 +96,7 @@ public class StatusBarElementoSourceGenerator
     public StatusBarElementoSourceGenerator build() {
       return new StatusBarElementoSourceGenerator(this);
     }
+
   }
+
 }

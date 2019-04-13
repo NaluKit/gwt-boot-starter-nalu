@@ -185,5 +185,7 @@ public class ModelSourceGenerator
     public ModelSourceGenerator build() {
       return new ModelSourceGenerator(this);
     }
+
   }
+
 }

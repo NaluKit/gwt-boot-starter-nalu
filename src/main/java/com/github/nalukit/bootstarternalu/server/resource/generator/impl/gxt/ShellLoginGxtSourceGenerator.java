@@ -227,5 +227,7 @@ public class ShellLoginGxtSourceGenerator
     public ShellLoginGxtSourceGenerator build() {
       return new ShellLoginGxtSourceGenerator(this);
     }
+
   }
+
 }

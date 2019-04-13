@@ -35,4 +35,5 @@ public interface IApplicationComponent
       extends IsCompositeComponent.Controller {
 
   }
+
 }

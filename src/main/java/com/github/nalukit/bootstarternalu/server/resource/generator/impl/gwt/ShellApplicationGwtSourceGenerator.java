@@ -238,5 +238,7 @@ public class ShellApplicationGwtSourceGenerator
     public ShellApplicationGwtSourceGenerator build() {
       return new ShellApplicationGwtSourceGenerator(this);
     }
+
   }
+
 }

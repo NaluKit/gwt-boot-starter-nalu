@@ -24,7 +24,7 @@ import com.sencha.gxt.data.shared.ModelKeyProvider;
 import com.sencha.gxt.data.shared.PropertyAccess;
 
 public interface ControllerDataProps
-  extends PropertyAccess<ControllerData> {
+    extends PropertyAccess<ControllerData> {
 
   @Editor.Path("id")
   ModelKeyProvider<ControllerData> key();

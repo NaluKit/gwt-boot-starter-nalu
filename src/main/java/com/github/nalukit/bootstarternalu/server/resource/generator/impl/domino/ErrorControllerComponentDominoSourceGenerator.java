@@ -116,5 +116,7 @@ public class ErrorControllerComponentDominoSourceGenerator
     public ErrorControllerComponentDominoSourceGenerator build() {
       return new ErrorControllerComponentDominoSourceGenerator(this);
     }
+
   }
+
 }

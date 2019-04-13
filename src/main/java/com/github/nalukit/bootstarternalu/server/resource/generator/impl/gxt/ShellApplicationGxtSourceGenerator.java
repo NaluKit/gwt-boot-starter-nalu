@@ -244,5 +244,7 @@ public class ShellApplicationGxtSourceGenerator
     public ShellApplicationGxtSourceGenerator build() {
       return new ShellApplicationGxtSourceGenerator(this);
     }
+
   }
+
 }
