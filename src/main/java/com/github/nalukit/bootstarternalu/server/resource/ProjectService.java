@@ -67,7 +67,7 @@ public class ProjectService {
     //      }
     //      logger.debug(">>" + model.getArtefactId() + "<< -> java.io.tempdir >>" + tmpDirPath + "<<");
     //      // create archive-Folder
-    //      String projectRootFolder = tmpDirPath + "nalu-boot-strarter-project-" + model.getArtefactId();
+    //      String projectRootFolder = tmpDirPath + "nalu-boot-starter-project-" + model.getArtefactId();
     //      logger.debug(">>" + model.getArtefactId() + "<< -> project root directory >>" + projectRootFolder + "<<");
     //      String projectFolder = projectRootFolder + File.separator + model.getArtefactId();
     //      logger.debug(">>" + model.getArtefactId() + "<< try to create project root directory with path >>" + projectRootFolder + "<<");
@@ -240,7 +240,7 @@ public class ProjectService {
       }
       logger.debug(">>" + model.getArtefactId() + "<< -> java.io.tempdir >>" + tmpDirPath + "<<");
       // create archive-Folder
-      String projectRootFolder = tmpDirPath + "nalu-boot-strarter-project-" + GeneratorUtils.removeBadChracters(model.getArtefactId());
+      String projectRootFolder = tmpDirPath + "nalu-boot-starter-project-" + GeneratorUtils.removeBadChracters(model.getArtefactId());
       logger.debug(">>" + model.getArtefactId() + "<< -> project root directory >>" + projectRootFolder + "<<");
       String projectFolder = projectRootFolder + File.separator + model.getArtefactId();
       logger.debug(">>" + model.getArtefactId() + "<< try to create project root directory with path >>" + projectRootFolder + "<<");
@@ -386,7 +386,7 @@ public class ProjectService {
       }
       logger.debug(">>" + model.getArtefactId() + "<< -> java.io.tempdir >>" + tmpDirPath + "<<");
       // create archive-Folder
-      String projectRootFolder = tmpDirPath + "nalu-boot-strarter-project-" + model.getArtefactId();
+      String projectRootFolder = tmpDirPath + "nalu-boot-starter-project-" + model.getArtefactId();
       logger.debug(">>" + model.getArtefactId() + "<< -> project root directory >>" + projectRootFolder + "<<");
       String projectFolder = projectRootFolder + File.separator + model.getArtefactId();
       logger.debug(">>" + model.getArtefactId() + "<< try to create project root directory with path >>" + projectRootFolder + "<<");
