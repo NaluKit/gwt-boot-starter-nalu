@@ -292,7 +292,7 @@ public abstract class AbstractControllerComponentSourceGenerator
                                                              .addComment("")
                                                              .addComment("now, move the data out of the model into the widgets - that's what we do next")
                                                              .addStatement("component.edit(model)")
-                                                             .addComment("update the statusbar at the buttom of the screen")
+                                                             .addComment("update the statusbar at the bottom of the screen")
                                                              .addStatement("eventBus.fireEvent(new $T(\"active screen: >>$L<<\"))",
                                                                            ClassName.get(this.clientPackageJavaConform + ".event",
                                                                                          "StatusChangeEvent"),
