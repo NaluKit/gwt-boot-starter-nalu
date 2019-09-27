@@ -98,7 +98,7 @@ public class ProjectService {
     //                       .build()
     //                       .generate();
     //      } catch (GeneratorException e) {
-    //        logger.error(">>" + model.getArtefactId() + "<< source genertion failed!",
+    //        logger.error(">>" + model.getArtefactId() + "<< source generation failed!",
     //                     e);
     //        return new ResponseEntity<>(e.getMessage(),
     //                                    HttpStatus.INTERNAL_SERVER_ERROR);
@@ -127,7 +127,7 @@ public class ProjectService {
     //                                   .build()
     //                                   .generate();
     //        } catch (GeneratorException e) {
-    //          logger.error(">>" + model.getArtefactId() + "<< module descriptor genertion failed!",
+    //          logger.error(">>" + model.getArtefactId() + "<< module descriptor generation failed!",
     //                       e);
     //          return new ResponseEntity<>(e.getMessage(),
     //                                      HttpStatus.INTERNAL_SERVER_ERROR);
@@ -204,7 +204,7 @@ public class ProjectService {
     //                                   .build()
     //                                   .generate();
     //        } catch (GeneratorException e) {
-    //          logger.error(">>" + model.getArtefactId() + "<< module descriptor genertion failed!",
+    //          logger.error(">>" + model.getArtefactId() + "<< module descriptor generation failed!",
     //                       e);
     //          return new ResponseEntity<>(e.getMessage(),
     //                                      HttpStatus.INTERNAL_SERVER_ERROR);
@@ -232,7 +232,7 @@ public class ProjectService {
 
   private ResponseEntity<String> generateMultiueMavenProject(NaluGeneraterParms model) {
     try {
-      logger.debug("generation started for groupIs >>" + model.getGroupId() + "<< - >>" + model.getArtefactId() + "<<");
+      logger.debug("generation started for groupIds >>" + model.getGroupId() + "<< - >>" + model.getArtefactId() + "<<");
       // create folder in tempDirectory
       String tmpDirPath = System.getProperty("java.io.tmpdir");
       if (!tmpDirPath.endsWith(File.separator)) {
@@ -320,7 +320,7 @@ public class ProjectService {
                        .build()
                        .generate();
       } catch (GeneratorException e) {
-        logger.error(">>" + model.getArtefactId() + "<< source genertion failed!",
+        logger.error(">>" + model.getArtefactId() + "<< source generation failed!",
                      e);
         return new ResponseEntity<>(e.getMessage(),
                                     HttpStatus.INTERNAL_SERVER_ERROR);
@@ -351,7 +351,7 @@ public class ProjectService {
                                  .build()
                                  .generate();
       } catch (GeneratorException e) {
-        logger.error(">>" + model.getArtefactId() + "<< module descriptor genertion failed!",
+        logger.error(">>" + model.getArtefactId() + "<< module descriptor generation failed!",
                      e);
         return new ResponseEntity<>(e.getMessage(),
                                     HttpStatus.INTERNAL_SERVER_ERROR);
@@ -378,7 +378,7 @@ public class ProjectService {
 
   private ResponseEntity<String> generateSingleMavenProject(NaluGeneraterParms model) {
     try {
-      logger.debug("generation started for groupIs >>" + model.getGroupId() + "<< - >>" + GeneratorUtils.removeBadChracters(model.getArtefactId()) + "<<");
+      logger.debug("generation started for groupIds >>" + model.getGroupId() + "<< - >>" + GeneratorUtils.removeBadChracters(model.getArtefactId()) + "<<");
       // create folder in tempDirectory
       String tmpDirPath = System.getProperty("java.io.tmpdir");
       if (!tmpDirPath.endsWith(File.separator)) {
@@ -417,7 +417,7 @@ public class ProjectService {
                        .build()
                        .generate();
       } catch (GeneratorException e) {
-        logger.error(">>" + model.getArtefactId() + "<< source genertion failed!",
+        logger.error(">>" + model.getArtefactId() + "<< source generation failed!",
                      e);
         return new ResponseEntity<>(e.getMessage(),
                                     HttpStatus.INTERNAL_SERVER_ERROR);
@@ -445,7 +445,7 @@ public class ProjectService {
                                  .build()
                                  .generate();
       } catch (GeneratorException e) {
-        logger.error(">>" + model.getArtefactId() + "<< module descriptor genertion failed!",
+        logger.error(">>" + model.getArtefactId() + "<< module descriptor generation failed!",
                      e);
         return new ResponseEntity<>(e.getMessage(),
                                     HttpStatus.INTERNAL_SERVER_ERROR);
