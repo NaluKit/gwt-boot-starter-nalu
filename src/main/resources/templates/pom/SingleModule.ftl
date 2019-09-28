@@ -211,7 +211,7 @@
             <plugin>
                 <groupId>net.ltgt.gwt.maven</groupId>
                 <artifactId>gwt-maven-plugin</artifactId>
-                <version>1.0-rc-10</version>
+                <version>${pluginVersionMavenGwt}</version>
                 <extensions>true</extensions>
                 <configuration>
                     <classpathScope>compile</classpathScope>
