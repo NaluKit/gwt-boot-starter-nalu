@@ -87,6 +87,12 @@
                     <configuration>
                         <sourceLevel>1.8</sourceLevel>
                         <failOnError>true</failOnError>
+                        <codeserverArgs>
+                            <arg>-strict</arg>
+                        </codeserverArgs>
+                        <devmodeArgs>
+                            <arg>-strict</arg>
+                        </devmodeArgs>
                     </configuration>
                 </plugin>
                 <plugin>
