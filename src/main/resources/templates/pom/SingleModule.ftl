@@ -211,14 +211,11 @@
             <plugin>
                 <groupId>net.ltgt.gwt.maven</groupId>
                 <artifactId>gwt-maven-plugin</artifactId>
-                <version>${pluginVersionMavenGwt}</version>
                 <extensions>true</extensions>
                 <configuration>
                     <classpathScope>compile</classpathScope>
                     <moduleName>${groupId}.${artifactIdLowerCase}.${artifactId}</moduleName>
                     <moduleShortName>${artifactId}</moduleShortName>
-                    <failOnError>true</failOnError>
-                    <sourceLevel>${mavenCompilerSource}</sourceLevel>
                     <logLevel>TRACE</logLevel>
                     <startupUrls>
                         <startupUrl>${artifactId}.html</startupUrl>
@@ -282,6 +279,22 @@
                                 </pluginExecution>
                             </pluginExecutions>
                         </lifecycleMappingMetadata>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>net.ltgt.gwt.maven</groupId>
+                    <artifactId>gwt-maven-plugin</artifactId>
+                    <version>${pluginVersionMavenGwt}</version>
+                    <extensions>true</extensions>
+                    <configuration>
+                        <sourceLevel>${mavenCompilerSource}</sourceLevel>
+                        <failOnError>true</failOnError>
+                        <codeserverArgs>
+                            <arg>-strict</arg>
+                        </codeserverArgs>
+                        <devmodeArgs>
+                            <arg>-strict</arg>
+                        </devmodeArgs>
                     </configuration>
                 </plugin>
             </plugins>
