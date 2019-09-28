@@ -272,23 +272,27 @@
           <startupUrls>
             <startupUrl>http://localhost:8080/GwtBootStarterNalu.html</startupUrl>
           </startupUrls>
+          <codeserverArgs>
+            <arg>-strict</arg>
+          </codeserverArgs>
           <!-- Compiler configuration -->
           <compilerArgs>
             <!--Ask GWT to create the Story of Your Compile (SOYC) (gwt:compile)-->
             <arg>-compileReport</arg>
             <arg>-XcompilerMetrics</arg>
-            <arg>-localWorkers</arg>
-            <arg>12</arg>
+            <!-- arg>-localWorkers</arg-->
+            <!-- arg>4</arg-->
           </compilerArgs>
           <logLevel>TRACE</logLevel>
-          <localWorkers>4</localWorkers>
+          <localWorkers>0.5C</localWorkers>
           <!--<skipModule>true</skipModule>-->
           <devmodeArgs>
-            <devmodeArg>-noserver</devmodeArg>
-            <!--<devmodeArg>-bindAddress</devmodeArg>-->
-            <!--<devmodeArg>192.168.1.9</devmodeArg>-->
-            <devmodeArg>-port</devmodeArg>
-            <devmodeArg>${serverPort}</devmodeArg>
+            <arg>-noserver</arg>
+            <!--<arg>-bindAddress</arg>-->
+            <!--<arg>192.168.1.9</arg>-->
+            <arg>-port</arg>
+            <arg>${serverPort}</arg>
+            <arg>-strict</arg>
           </devmodeArgs>
           <jvmArgs>
             <arg>-Xmx2G</arg>
@@ -297,7 +301,6 @@
           <launcherDir>${project.build.directory}/classes/static</launcherDir>
           <warDir>${project.build.directory}/classes/static</warDir>
           <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
-          <localWorkers>4</localWorkers>
           <systemProperties>
             <gwt.persistentunitcachedir>${project.build.directory}/gwt/unitCache/</gwt.persistentunitcachedir>
             <gwt.war.directory>${project.build.directory}/classes/static</gwt.war.directory>
