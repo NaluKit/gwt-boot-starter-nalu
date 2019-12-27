@@ -53,7 +53,7 @@
     <inherits name='com.sencha.gxt.theme.neptune.Theme'/>
 
     <!-- GXT Stylesheet -->
-    <stylesheet src="reset.css" />
+    <stylesheet src="reset.css"/>
 </#if>
 
     <!-- Specify the app entry point class.                         -->
@@ -61,8 +61,8 @@
 
     <!-- Specify the paths for translatable code                    -->
     <source path='client'/>
-<#if mavenProjectType == "MultiMavenModule">
-    <source path='shared'/>
-</#if>
+    <#--<#if mavenProjectType == "MultiMavenModule">-->
+    <#--    <source path='shared'/>-->
+    <#--</#if>-->
 
 </module>

@@ -28,9 +28,12 @@ import com.github.nalukit.gwtbootstarternalu.shared.transport.response.Status;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.core.Context;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -47,19 +50,23 @@ public class ProjectService {
 
   private static final Logger logger = LoggerFactory.getLogger(ProjectService.class);
 
-  //  ProjectZip projectZip;
+  @Context
+  HttpServletRequest request;
 
   @POST
   @Path("/generate")
   @Consumes("application/json")
   public GenerateResponse generate(NaluGeneraterParms model) {
+    HttpSession session = request.getSession(true);
     GenerateResponse response = new GenerateResponse();
     response.setStatus(new Status());
-    return this.generateMultiueMavenProject(model,
+    return this.generateMultiueMavenProject(session,
+                                            model,
                                             response);
   }
 
-  private GenerateResponse generateMultiueMavenProject(NaluGeneraterParms model,
+  private GenerateResponse generateMultiueMavenProject(HttpSession session,
+                                                       NaluGeneraterParms model,
                                                        GenerateResponse response) {
     try {
       logger.debug("generation started for groupIds >>" + model.getGroupId() + "<< - >>" + model.getArtefactId() + "<<");
@@ -208,8 +215,9 @@ public class ProjectService {
       logger.debug(">>" + model.getArtefactId() + "<< creating zip");
       this.zipIt(projectRootFolder);
       logger.debug(">>" + model.getArtefactId() + "<< zip created");
-      //       save path to session
-      //      projectZip.setPathToGenerateProjectZip(projectRootFolder + ".zip");
+      // save path to session
+      session.setAttribute("PathToGenerateProjectZip",
+                           projectRootFolder + ".zip");
       logger.debug(">>" + model.getArtefactId() + "<< saving path to session");
       // delete tmp folder
       logger.debug(">>" + model.getArtefactId() + "<< delete temp folders");

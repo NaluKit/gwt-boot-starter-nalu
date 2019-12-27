@@ -48,7 +48,7 @@ public class GenerateHandler
     ProjectServiceFactory.INSTANCE.generate(this.context.getNaluGeneraterParms())
                                   .onSuccess(response -> {
                                     String url = GWT.getHostPageBaseURL() +
-                                                 "loadZip/download?archive=" +
+                                                 "service/gwtbootstarter/loadZip/download/" +
                                                  context.getNaluGeneraterParms()
                                                         .getArtefactId() +
                                                  ".zip";
@@ -73,7 +73,14 @@ public class GenerateHandler
                                                                         .appendChild(Elements.br()
                                                                                              .element())
                                                                         .appendChild(Paragraph.create("To start the project after importing, use:"))
-                                                                        .appendChild(Paragraph.create("gwt:devmode")
+                                                                        .appendChild(Paragraph.create("mvn clean install")
+                                                                                              .bold())
+                                                                        .appendChild(Paragraph.create("mvn gwt:codeserver -pl *-client -am")
+                                                                                              .bold())
+                                                                        .appendChild(Paragraph.create("mvn jetty:run -pl *-server -am -Denv=dev")
+                                                                                              .bold())
+                                                                        .appendChild(Paragraph.create("or"))
+                                                                        .appendChild(Paragraph.create("read the 'readme.txt'")
                                                                                               .bold());
                                     dialog.open();
                                   })
