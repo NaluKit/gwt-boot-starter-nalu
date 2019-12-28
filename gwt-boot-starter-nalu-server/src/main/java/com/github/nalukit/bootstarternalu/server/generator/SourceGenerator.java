@@ -35,7 +35,6 @@ import com.github.nalukit.bootstarternalu.server.generator.impl.domino.PopupErro
 import com.github.nalukit.bootstarternalu.server.generator.impl.domino.ShellApplicationDominoSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.domino.ShellLoginDominoSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.domino.StatusBarDominoSourceGenerator;
-import com.github.nalukit.bootstarternalu.server.generator.impl.elemento.ControllerComponentElementoSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.elemento.CssPageElementoSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.elemento.HeaderElementoSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.elemento.LoginControllerComponentElementoSourceGenerator;
@@ -56,6 +55,7 @@ import com.github.nalukit.bootstarternalu.server.generator.impl.gxt.CssPageGxtSo
 import com.github.nalukit.bootstarternalu.server.generator.impl.gxt.HeaderGxtSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.gxt.LoginControllerComponentGxtSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.gxt.NavigationGxtSourceGenerator;
+import com.github.nalukit.bootstarternalu.server.generator.impl.gxt.PopupErrorControllerComponentGxtSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.gxt.ShellApplicationGxtSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.gxt.ShellLoginGxtSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.gxt.StatusBarGxtSourceGenerator;
@@ -224,10 +224,11 @@ public class SourceGenerator {
         this.generateDominoSources(this.clientPackageJavaClientConform,
                                    this.directoryJavaClient);
         break;
-      case ELEMENTO:
-        this.generateElementoSources(this.clientPackageJavaClientConform,
-                                     this.directoryJavaClient);
-        break;
+      // TODO Elemento
+      //      case ELEMENTO:
+      //        this.generateElementoSources(this.clientPackageJavaClientConform,
+      //                                     this.directoryJavaClient);
+      //        break;
       case GWT:
         this.generateGwtSources(this.clientPackageJavaClientConform,
                                 this.directoryJavaClient);
@@ -250,16 +251,17 @@ public class SourceGenerator {
                                                   .build()
                                                   .generate();
           break;
-        case ELEMENTO:
-          ControllerComponentElementoSourceGenerator.builder()
-                                                    .naluGeneraterParms(this.naluGeneraterParms)
-                                                    .clientPackageJavaConform(this.clientPackageJavaClientConform)
-                                                    .sharedPackageJavaConform(this.clientPackageJavaSharedConform)
-                                                    .directoryJava(this.directoryJavaClient)
-                                                    .presenterData(controllerData)
-                                                    .build()
-                                                    .generate();
-          break;
+        // TODO Elemento
+        //        case ELEMENTO:
+        //          ControllerComponentElementoSourceGenerator.builder()
+        //                                                    .naluGeneraterParms(this.naluGeneraterParms)
+        //                                                    .clientPackageJavaConform(this.clientPackageJavaClientConform)
+        //                                                    .sharedPackageJavaConform(this.clientPackageJavaSharedConform)
+        //                                                    .directoryJava(this.directoryJavaClient)
+        //                                                    .presenterData(controllerData)
+        //                                                    .build()
+        //                                                    .generate();
+        //          break;
         case GWT:
           ControllerComponentGwtSourceGenerator.builder()
                                                .naluGeneraterParms(this.naluGeneraterParms)
@@ -517,20 +519,12 @@ public class SourceGenerator {
                                       .build()
                                       .generate();
     // generate error shell
-    //    if (this.naluGeneraterParms.isErrorScreen()) {
-    //      ShellErrorGxtSourceGenerator.builder()
-    //                                  .naluGeneraterParms(this.naluGeneraterParms)
-    //                                  .clientPackageJavaConform(clientPackageJavaConform)
-    //                                  .directoryJava(directoryJava)
-    //                                  .build()
-    //                                  .generate();
-    //      ErrorControllerComponentGxtSourceGenerator.builder()
-    //                                                .naluGeneraterParms(this.naluGeneraterParms)
-    //                                                .clientPackageJavaConform(clientPackageJavaConform)
-    //                                                .directoryJava(directoryJava)
-    //                                                .build()
-    //                                                .generate();
-    //    }
+    PopupErrorControllerComponentGxtSourceGenerator.builder()
+                                                   .naluGeneraterParms(this.naluGeneraterParms)
+                                                   .clientPackageJavaConform(clientPackageJavaConform)
+                                                   .directoryJava(directoryJava)
+                                                   .build()
+                                                   .generate();
     // generate login shell
     if (this.naluGeneraterParms.isLoginScreen()) {
       ShellLoginGxtSourceGenerator.builder()

@@ -37,7 +37,8 @@ public abstract class AbstractSourceGenerator {
   protected ClassName getClassNameWidget() {
     switch (this.naluGeneraterParms.getWidgetLibrary()) {
       case DOMINO_UI:
-      case ELEMENTO:
+        // TODO Elemento
+        //      case ELEMENTO:
         return ClassName.get(HTMLElement.class);
       case GWT:
       case GXT:

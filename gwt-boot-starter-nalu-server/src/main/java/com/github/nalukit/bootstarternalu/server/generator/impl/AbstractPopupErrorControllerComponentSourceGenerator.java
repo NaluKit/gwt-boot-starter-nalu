@@ -130,6 +130,7 @@ public abstract class AbstractPopupErrorControllerComponentSourceGenerator
                                  .addModifiers(Modifier.PUBLIC)
                                  .build());
 
+    createBindMethod(typeSpec);
     createRenderMethod(typeSpec);
     createEditMethod(typeSpec);
     createClearMethod(typeSpec);
@@ -208,6 +209,8 @@ public abstract class AbstractPopupErrorControllerComponentSourceGenerator
   }
 
   protected abstract void createFieldSpecs(TypeSpec.Builder typeSpec);
+
+  protected abstract void createBindMethod(TypeSpec.Builder typeSpec);
 
   protected abstract void createRenderMethod(TypeSpec.Builder typeSpec);
 

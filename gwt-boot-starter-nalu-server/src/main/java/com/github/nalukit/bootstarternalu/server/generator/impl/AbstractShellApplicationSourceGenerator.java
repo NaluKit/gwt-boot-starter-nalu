@@ -76,7 +76,9 @@ public abstract class AbstractShellApplicationSourceGenerator
       // bind method
       typeSpec.addMethod(this.createBindMethod());
     }
-    if (!WidgetLibrary.DOMINO_UI.equals(this.naluGeneraterParms.getWidgetLibrary()) && !WidgetLibrary.ELEMENTO.equals(this.naluGeneraterParms.getWidgetLibrary())) {
+    // TODO Elemento
+    //    if (!WidgetLibrary.DOMINO_UI.equals(this.naluGeneraterParms.getWidgetLibrary()) && !WidgetLibrary.ELEMENTO.equals(this.naluGeneraterParms.getWidgetLibrary())) {
+    if (!WidgetLibrary.DOMINO_UI.equals(this.naluGeneraterParms.getWidgetLibrary())) {
       // add methods to attach widgets
       this.createAddMethods(typeSpec);
     }

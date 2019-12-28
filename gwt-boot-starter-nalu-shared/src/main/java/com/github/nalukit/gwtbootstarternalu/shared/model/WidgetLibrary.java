@@ -20,7 +20,8 @@ package com.github.nalukit.gwtbootstarternalu.shared.model;
 public enum WidgetLibrary {
 
   DOMINO_UI("use Domino-UI widgets"),
-  ELEMENTO("use Elemento widgets"),
+  // TODO implement error popup for Elemento!
+  //  ELEMENTO("use Elemento widgets"),
   GWT("use GWT widgets (will not work with J2CL / GWT 3)"),
   GXT("use GXT GPL widgets (will not work with J2CL / GWT 3)");
 

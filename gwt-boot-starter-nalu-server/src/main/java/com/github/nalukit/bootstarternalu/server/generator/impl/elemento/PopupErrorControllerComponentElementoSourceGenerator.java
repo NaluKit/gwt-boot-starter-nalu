@@ -14,7 +14,7 @@
  *  the License.
  */
 
-package com.github.nalukit.bootstarternalu.server.generator.impl.domino;
+package com.github.nalukit.bootstarternalu.server.generator.impl.elemento;
 
 import com.github.nalukit.bootstarternalu.server.generator.impl.AbstractPopupErrorControllerComponentSourceGenerator;
 import com.github.nalukit.gwtbootstarternalu.shared.model.ControllerData;
@@ -40,10 +40,10 @@ import javax.lang.model.element.Modifier;
 import java.io.File;
 import java.util.Map;
 
-public class PopupErrorControllerComponentDominoSourceGenerator
+public class PopupErrorControllerComponentElementoSourceGenerator
     extends AbstractPopupErrorControllerComponentSourceGenerator {
 
-  private PopupErrorControllerComponentDominoSourceGenerator(Builder builder) {
+  private PopupErrorControllerComponentElementoSourceGenerator(Builder builder) {
     super();
 
     this.naluGeneraterParms = builder.naluGeneraterParms;
@@ -63,17 +63,19 @@ public class PopupErrorControllerComponentDominoSourceGenerator
                                .build());
     typeSpec.addField(FieldSpec.builder(ClassName.get(HTMLDivElement.class),
                                         "route")
-                               .addModifiers(Modifier.PRIVATE)
                                .build());
     typeSpec.addField(FieldSpec.builder(ClassName.get(HTMLDivElement.class),
                                         "message")
-                               .addModifiers(Modifier.PRIVATE)
                                .build());
     typeSpec.addField(FieldSpec.builder(ParameterizedTypeName.get(ClassName.get(DominoElement.class),
                                                                   ClassName.get(HTMLDivElement.class)),
                                         "content")
-                               .addModifiers(Modifier.PRIVATE)
                                .build());
+  }
+
+  @Override
+  protected void createBindMethod(TypeSpec.Builder typeSpec) {
+
   }
 
   @Override
@@ -233,14 +235,7 @@ public class PopupErrorControllerComponentDominoSourceGenerator
                                  .addAnnotation(ClassName.get(Override.class))
                                  .addStatement("dialog.open()")
                                  .build());
-  }
 
-  @Override
-  protected void createBindMethod(TypeSpec.Builder typeSpec) {
-    typeSpec.addMethod(MethodSpec.methodBuilder("bind")
-                                 .addModifiers(Modifier.PUBLIC)
-                                 .addAnnotation(ClassName.get(Override.class))
-                                 .build());
   }
 
   public static class Builder {
@@ -273,8 +268,8 @@ public class PopupErrorControllerComponentDominoSourceGenerator
       return this;
     }
 
-    public PopupErrorControllerComponentDominoSourceGenerator build() {
-      return new PopupErrorControllerComponentDominoSourceGenerator(this);
+    public PopupErrorControllerComponentElementoSourceGenerator build() {
+      return new PopupErrorControllerComponentElementoSourceGenerator(this);
     }
 
   }

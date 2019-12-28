@@ -76,8 +76,9 @@ public class ProjectCompositeComponent
 
     widgetSetSelect = Select.<WidgetLibrary>create("Widget Set").appendChild(SelectOption.create(WidgetLibrary.DOMINO_UI,
                                                                                                  WidgetLibrary.DOMINO_UI.getText()))
-                                                                .appendChild(SelectOption.create(WidgetLibrary.ELEMENTO,
-                                                                                                 WidgetLibrary.ELEMENTO.getText()))
+                                                                // TODO Elemento
+                                                                //                                                                .appendChild(SelectOption.create(WidgetLibrary.ELEMENTO,
+                                                                //                                                                                                 WidgetLibrary.ELEMENTO.getText()))
                                                                 .appendChild(SelectOption.create(WidgetLibrary.GWT,
                                                                                                  WidgetLibrary.GWT.getText()))
                                                                 .appendChild(SelectOption.create(WidgetLibrary.GXT,

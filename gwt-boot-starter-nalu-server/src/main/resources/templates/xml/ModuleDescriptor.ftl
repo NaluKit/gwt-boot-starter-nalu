@@ -63,4 +63,19 @@
     <source path='client'/>
     <source path='shared'/>
 
+    <#if widgetLibrary == "GXT">
+        <!-- collapse properties for fewer permutations -->
+        <collapse-property name="gxt.device"
+                           values="phone, tablet"/>
+
+        <collapse-property name="gxt.user.agent"
+                           values="air, safari*, chrome*, gecko*, ie11"/>
+        <collapse-property name="user.agent"
+                           values="safari*, gecko*"/>
+
+        <collapse-property name="gxt.user.agent"
+                           values="ie8, ie9, ie10"/>
+        <collapse-property name="user.agent"
+                           values="ie*"/>
+    </#if>
 </module>

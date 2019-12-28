@@ -103,8 +103,8 @@ public class ProjectServiceTest {
 
     NaluGeneraterParms naluGeneraterParms = new NaluGeneraterParms();
 
-    naluGeneraterParms.setGroupId("com.github.nalukit.hokulani.example");
-    naluGeneraterParms.setArtefactId("hokulani-example");
+    naluGeneraterParms.setGroupId("com.github.nalukit.gxt.example");
+    naluGeneraterParms.setArtefactId("gxt-example");
     naluGeneraterParms.setApplicationLoader(true);
     naluGeneraterParms.setDebug(true);
     naluGeneraterParms.setHashUrl(true);
@@ -156,7 +156,9 @@ public class ProjectServiceTest {
     naluGeneraterParms.setDebug(true);
     naluGeneraterParms.setHashUrl(true);
     naluGeneraterParms.setGwtVersion(DataConstants.GWT_VERSION_2_8_2);
-    naluGeneraterParms.setWidgetLibrary(WidgetLibrary.ELEMENTO);
+    // TODO Elemento
+    //    naluGeneraterParms.setWidgetLibrary(WidgetLibrary.ELEMENTO);
+    naluGeneraterParms.setWidgetLibrary(WidgetLibrary.GWT);
 
     naluGeneraterParms.getControllers()
                       .add(new ControllerData("Search",
@@ -192,13 +194,13 @@ public class ProjectServiceTest {
    * Method: generate(@RequestBody NaluGeneraterParms model)
    */
   @Test
-  public void testGenerateDiminoForMultiMavenModule()
+  public void testGenerateDominoForMultiMavenModule()
       throws Exception {
 
     NaluGeneraterParms naluGeneraterParms = new NaluGeneraterParms();
 
-    naluGeneraterParms.setGroupId("com.github.nalukit.hokulani.example");
-    naluGeneraterParms.setArtefactId("hokulani-example");
+    naluGeneraterParms.setGroupId("com.github.nalukit.domino.example");
+    naluGeneraterParms.setArtefactId("domino-example");
     naluGeneraterParms.setApplicationLoader(true);
     naluGeneraterParms.setDebug(true);
     naluGeneraterParms.setLoginScreen(true);

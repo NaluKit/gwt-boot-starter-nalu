@@ -217,7 +217,7 @@ public class ShellApplicationGwtSourceGenerator
 
   @Override
   protected void setUpShellPackage() {
-    super.shellPackage = this.clientPackageJavaConform + ".ui.shell.application";
+    super.shellPackage = this.clientPackageJavaConform + ".ui.application.shell";
 
   }
 

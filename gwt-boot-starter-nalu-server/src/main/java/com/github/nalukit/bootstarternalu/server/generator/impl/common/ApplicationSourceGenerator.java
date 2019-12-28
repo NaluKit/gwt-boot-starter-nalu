@@ -130,7 +130,8 @@ public class ApplicationSourceGenerator
   private ClassName getLogger() {
     switch (this.naluGeneraterParms.getWidgetLibrary()) {
       case DOMINO_UI:
-      case ELEMENTO:
+        // TODO Elemento
+        //      case ELEMENTO:
         return ClassName.get(DefaultElemental2Logger.class);
       case GWT:
       case GXT:

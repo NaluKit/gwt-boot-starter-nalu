@@ -60,7 +60,8 @@ public class EntryPointSourceGenerator
                                                                     GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId()) + GeneratorConstants.APPLICAITON);
     switch (this.naluGeneraterParms.getWidgetLibrary()) {
       case DOMINO_UI:
-      case ELEMENTO:
+        // TODO Elemento
+        //      case ELEMENTO:
         onModuleLoadMethod.addStatement("application.run(new $T())",
                                         ClassName.get(NaluPluginElemental2.class));
         break;
