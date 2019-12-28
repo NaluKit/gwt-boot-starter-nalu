@@ -22,47 +22,45 @@
   so that your app can take advantage of the latest GWT module capabilities.
 -->
 <!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.8.2//EN"
-  "http://gwtproject.org/doctype/2.8.2/gwt-module.dtd">
+        "http://gwtproject.org/doctype/2.8.2/gwt-module.dtd">
 <module rename-to="${artifactId}">
     <!-- Inherit the core Web Toolkit stuff.                        -->
     <inherits name='com.google.gwt.user.User'/>
-<#if widgetLibrary == "GWT">
+    <#if widgetLibrary == "GWT">
 
-    <!-- Inherit the default GWT style sheet.  You can change       -->
-    <!-- the theme of your GWT application by uncommenting          -->
-    <!-- any one of the following lines.                            -->
-    <inherits name='com.google.gwt.user.theme.clean.Clean'/>
-    <!-- <inherits historyName='com.google.gwt.user.theme.standard.Standard'/> -->
-    <!-- <inherits historyName='com.google.gwt.user.theme.chrome.Chrome'/> -->
-    <!-- <inherits historyName='com.google.gwt.user.theme.dark.Dark'/>     -->
-</#if>
+        <!-- Inherit the default GWT style sheet.  You can change       -->
+        <!-- the theme of your GWT application by uncommenting          -->
+        <!-- any one of the following lines.                            -->
+        <inherits name='com.google.gwt.user.theme.clean.Clean'/>
+        <!-- <inherits historyName='com.google.gwt.user.theme.standard.Standard'/> -->
+        <!-- <inherits historyName='com.google.gwt.user.theme.chrome.Chrome'/> -->
+        <!-- <inherits historyName='com.google.gwt.user.theme.dark.Dark'/>     -->
+    </#if>
 
     <!-- Other module inherits                                      -->
     <inherits name='com.github.nalukit.nalu.Nalu'/>
-<#if widgetLibrary == "DOMINO_UI">
-    <inherits name='com.github.nalukit.nalu.plugin.elemental2.NaluPluginElemental2'/>
-    <inherits name='org.dominokit.domino.ui.DominoUI'/>
-<#elseif widgetLibrary == "ELEMENTO">
-    <inherits name='com.github.nalukit.nalu.plugin.elemental2.NaluPluginElemental2'/>
-    <inherits name='org.jboss.gwt.elemento.Core'/>
-<#elseif widgetLibrary == "GWT">
-    <inherits name='com.github.nalukit.nalu.plugin.gwt.NaluPluginGWT'/>
-<#elseif widgetLibrary == "GXT">
-    <inherits name='com.github.nalukit.nalu.plugin.gwt.NaluPluginGWT'/>
-    <inherits name='com.sencha.gxt.ui.GXT'/>
-    <inherits name='com.sencha.gxt.theme.neptune.Theme'/>
+    <#if widgetLibrary == "DOMINO_UI">
+        <inherits name='com.github.nalukit.nalu.plugin.elemental2.NaluPluginElemental2'/>
+        <inherits name='org.dominokit.domino.ui.DominoUI'/>
+    <#elseif widgetLibrary == "ELEMENTO">
+        <inherits name='com.github.nalukit.nalu.plugin.elemental2.NaluPluginElemental2'/>
+        <inherits name='org.jboss.gwt.elemento.Core'/>
+    <#elseif widgetLibrary == "GWT">
+        <inherits name='com.github.nalukit.nalu.plugin.gwt.NaluPluginGWT'/>
+    <#elseif widgetLibrary == "GXT">
+        <inherits name='com.github.nalukit.nalu.plugin.gwt.NaluPluginGWT'/>
+        <inherits name='com.sencha.gxt.ui.GXT'/>
+        <inherits name='com.sencha.gxt.theme.neptune.Theme'/>
 
-    <!-- GXT Stylesheet -->
-    <stylesheet src="reset.css"/>
-</#if>
+        <!-- GXT Stylesheet -->
+        <stylesheet src="reset.css"/>
+    </#if>
 
     <!-- Specify the app entry point class.                         -->
-    <entry-point class='${groupId}.${artifactIdLowerCase}.client.${artifactIdFirstUpperCase}'/>
+    <entry-point class='${groupIdLowerCase}.${artifactIdLowerCase}.client.${artifactIdFirstUpperCase}'/>
 
     <!-- Specify the paths for translatable code                    -->
     <source path='client'/>
-    <#--<#if mavenProjectType == "MultiMavenModule">-->
-    <#--    <source path='shared'/>-->
-    <#--</#if>-->
+    <source path='shared'/>
 
 </module>

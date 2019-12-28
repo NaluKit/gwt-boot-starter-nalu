@@ -74,14 +74,10 @@ public class LoginControllerComponentDominoSourceGenerator
                                           .addModifiers(Modifier.PUBLIC)
                                           .addStatement("fieldsGrouping = $T.create()",
                                                         ClassName.get(FieldsGrouping.class))
-                                          .addStatement("this.userId = $T.create(\"User ID\")\n" +
-                                                        "                         .groupBy(fieldsGrouping)\n" +
-                                                        "                         .setLeftAddon($T.ALL.label())",
+                                          .addStatement("this.userId = $T.create(\"User ID\")\n" + "                         .groupBy(fieldsGrouping)\n" + "                         .setLeftAddon($T.ALL.label())",
                                                         ClassName.get(TextBox.class),
                                                         ClassName.get(Icons.class))
-                                          .addStatement("this.password = $T.create(\"Password\")\n" +
-                                                        "                         .groupBy(fieldsGrouping)\n" +
-                                                        "                         .setLeftAddon($T.ALL.location_on())",
+                                          .addStatement("this.password = $T.create(\"Password\")\n" + "                         .groupBy(fieldsGrouping)\n" + "                         .setLeftAddon($T.ALL.location_on())",
                                                         ClassName.get(TextBox.class),
                                                         ClassName.get(Icons.class))
                                           .addStatement("initElement($T.create(\"Login Parameter\")\n" +

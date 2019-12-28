@@ -183,7 +183,7 @@ public class ShellLoginGxtSourceGenerator
 
   @Override
   protected void setUpShellPackage() {
-    super.shellPackage = this.clientPackageJavaConform + ".ui.shell.login";
+    super.shellPackage = this.clientPackageJavaConform + ".ui.login.shell";
 
   }
 

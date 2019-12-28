@@ -39,7 +39,6 @@ public class AppContext
     this.naluGeneraterParms.setApplicationLoader(true);
     this.naluGeneraterParms.setDebug(true);
     this.naluGeneraterParms.setLoginScreen(true);
-    this.naluGeneraterParms.setErrorScreen(true);
     this.naluGeneraterParms.setHashUrl(true);
     this.naluGeneraterParms.setGwtVersion(DataConstants.GWT_VERSION_2_8_2);
     this.naluGeneraterParms.setWidgetLibrary(WidgetLibrary.DOMINO_UI);

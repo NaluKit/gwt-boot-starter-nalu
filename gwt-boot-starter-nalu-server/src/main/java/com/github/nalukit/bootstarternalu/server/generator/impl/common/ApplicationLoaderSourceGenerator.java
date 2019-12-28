@@ -60,8 +60,7 @@ public class ApplicationLoaderSourceGenerator
                                         .addModifiers(Modifier.PUBLIC)
                                         .superclass(ParameterizedTypeName.get(ClassName.get(AbstractApplicationLoader.class),
                                                                               ClassName.get(this.clientPackageJavaConform,
-                                                                                            GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId() +
-                                                                                                                                        GeneratorConstants.CONTEXT))))
+                                                                                            GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId() + GeneratorConstants.CONTEXT))))
                                         .addMethod(MethodSpec.methodBuilder("load")
                                                              .addParameter(ParameterSpec.builder(ClassName.get(IsApplicationLoader.FinishLoadCommand.class),
                                                                                                  "finishLoadCommand")
@@ -78,11 +77,7 @@ public class ApplicationLoaderSourceGenerator
       javaFile.writeTo(new File(directoryJava,
                                 ""));
     } catch (IOException e) {
-      throw new GeneratorException("Unable to write generated file: >>" +
-                                   GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId() + GeneratorConstants.LOADER) +
-                                   "<< -> " +
-                                   "exception: " +
-                                   e.getMessage());
+      throw new GeneratorException("Unable to write generated file: >>" + GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId() + GeneratorConstants.LOADER) + "<< -> " + "exception: " + e.getMessage());
     }
   }
 

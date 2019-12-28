@@ -60,14 +60,19 @@ public class ProjectService {
     HttpSession session = request.getSession(true);
     GenerateResponse response = new GenerateResponse();
     response.setStatus(new Status());
-    return this.generateMultiueMavenProject(session,
-                                            model,
-                                            response);
+    response = this.generateMultiMavenProject(model,
+                                              response);
+
+    logger.debug(">>" + model.getArtefactId() + "<< saving path to session");
+    // save path to session
+    session.setAttribute("PathToGenerateProjectZip",
+                         response.getDownloadUrl());
+    logger.debug(">>" + model.getArtefactId() + "<< saved path to session");
+    return response;
   }
 
-  private GenerateResponse generateMultiueMavenProject(HttpSession session,
-                                                       NaluGeneraterParms model,
-                                                       GenerateResponse response) {
+  public GenerateResponse generateMultiMavenProject(NaluGeneraterParms model,
+                                                    GenerateResponse response) {
     try {
       logger.debug("generation started for groupIds >>" + model.getGroupId() + "<< - >>" + model.getArtefactId() + "<<");
       // create folder in tempDirectory
@@ -215,10 +220,6 @@ public class ProjectService {
       logger.debug(">>" + model.getArtefactId() + "<< creating zip");
       this.zipIt(projectRootFolder);
       logger.debug(">>" + model.getArtefactId() + "<< zip created");
-      // save path to session
-      session.setAttribute("PathToGenerateProjectZip",
-                           projectRootFolder + ".zip");
-      logger.debug(">>" + model.getArtefactId() + "<< saving path to session");
       // delete tmp folder
       logger.debug(">>" + model.getArtefactId() + "<< delete temp folders");
       deleteFolder(new File(projectRootFolder));

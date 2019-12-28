@@ -37,7 +37,6 @@ public class ApplicationCompositeComponent
   private CheckBox       cbApplicationLoader;
   private CheckBox       cbDebugSupport;
   private CheckBox       cbLoginScreen;
-  private CheckBox       cbErrorScreen;
   private CheckBox       cbHashUrl;
   private FieldsGrouping grouping;
 
@@ -61,12 +60,6 @@ public class ApplicationCompositeComponent
                                   .styler(style -> style.setMarginBottom("0px"))
                                   .groupBy(this.grouping);
     this.cbLoginScreen = CheckBox.create("Generate Login screen and Login filter")
-                                 .check()
-                                 .setColor(Color.BLUE_GREY)
-                                 .filledIn()
-                                 .styler(style -> style.setMarginBottom("0px"))
-                                 .groupBy(this.grouping);
-    this.cbErrorScreen = CheckBox.create("Generate Error Screen")
                                  .check()
                                  .setColor(Color.BLUE_GREY)
                                  .filledIn()
@@ -97,10 +90,6 @@ public class ApplicationCompositeComponent
                                                                                                        .appendChild(this.cbLoginScreen))
                                                                                     .appendChild(Column.span6()
                                                                                                        .condenced()
-                                                                                                       .appendChild(this.cbErrorScreen)))
-                                                                    .appendChild(Row.create()
-                                                                                    .appendChild(Column.span12()
-                                                                                                       .condenced()
                                                                                                        .appendChild(this.cbHashUrl))))
                                                    .style())
                                 .element();
@@ -111,7 +100,6 @@ public class ApplicationCompositeComponent
   public void edit(NaluGeneraterParms naluGeneraterParms) {
     this.cbApplicationLoader.setValue(naluGeneraterParms.isApplicationLoader());
     this.cbDebugSupport.setValue(naluGeneraterParms.isDebug());
-    this.cbErrorScreen.setValue(naluGeneraterParms.isErrorScreen());
     this.cbLoginScreen.setValue(naluGeneraterParms.isLoginScreen());
     this.cbHashUrl.setValue(naluGeneraterParms.isHashUrl());
   }
@@ -120,7 +108,6 @@ public class ApplicationCompositeComponent
   public NaluGeneraterParms flush(NaluGeneraterParms naluGeneraterParms) {
     naluGeneraterParms.setApplicationLoader(cbApplicationLoader.getValue());
     naluGeneraterParms.setDebug(cbDebugSupport.getValue());
-    naluGeneraterParms.setErrorScreen(cbErrorScreen.getValue());
     naluGeneraterParms.setLoginScreen(cbLoginScreen.getValue());
     naluGeneraterParms.setHashUrl(cbHashUrl.getValue());
     return naluGeneraterParms;

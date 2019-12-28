@@ -41,7 +41,7 @@
             <domino.version>1.0-SNAPSHOT</domino.version>
         <#elseif widgetLibrary == "ELEMENTO">
             <!-- Elemento version -->
-            <elemento.version>0.8.7</elemento.version>
+            <elemento.version>0.9.6</elemento.version>
         <#elseif widgetLibrary == "GXT">
             <!-- GXT version -->
             <gxt.version>4.0.0</gxt.version>

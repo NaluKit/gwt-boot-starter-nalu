@@ -91,14 +91,7 @@ public class WebXmlSourceGenerator {
                      .getBytes());
       out.flush();
     } catch (IOException | TemplateException e) {
-      throw new GeneratorException("Unable to write generated file: >>" +
-                                   this.directoryWebapp.getPath() +
-                                   File.separator +
-                                   "WEB-INF" +
-                                   File.separator +
-                                   "web.xml" +
-                                   "<< -> exception: " +
-                                   e.getMessage());
+      throw new GeneratorException("Unable to write generated file: >>" + this.directoryWebapp.getPath() + File.separator + "WEB-INF" + File.separator + "web.xml" + "<< -> exception: " + e.getMessage());
     }
   }
 

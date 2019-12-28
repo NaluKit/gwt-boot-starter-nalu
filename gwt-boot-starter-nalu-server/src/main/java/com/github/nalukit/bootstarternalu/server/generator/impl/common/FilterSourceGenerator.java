@@ -59,8 +59,7 @@ public class FilterSourceGenerator
                                         .addModifiers(Modifier.PUBLIC)
                                         .superclass(ParameterizedTypeName.get(ClassName.get(AbstractFilter.class),
                                                                               ClassName.get(this.clientPackageJavaConform,
-                                                                                            GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId()) +
-                                                                                            GeneratorConstants.CONTEXT)))
+                                                                                            GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId()) + GeneratorConstants.CONTEXT)))
                                         .addMethod(MethodSpec.methodBuilder("filter")
                                                              .addAnnotation(ClassName.get(Override.class))
                                                              .addModifiers(Modifier.PUBLIC)

@@ -22,6 +22,8 @@ import com.github.nalukit.gwtbootstarternalu.shared.model.ControllerData;
 import com.github.nalukit.gwtbootstarternalu.shared.model.DataConstants;
 import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
 import com.github.nalukit.gwtbootstarternalu.shared.model.WidgetLibrary;
+import com.github.nalukit.gwtbootstarternalu.shared.transport.response.GenerateResponse;
+import com.github.nalukit.gwtbootstarternalu.shared.transport.response.Status;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -37,187 +39,12 @@ public class ProjectServiceTest {
 
   @Before
   public void before()
-    throws Exception {
+      throws Exception {
   }
 
   @After
   public void after()
-    throws Exception {
-  }
-
-  /**
-   * Method: generate(@RequestBody NaluGeneraterParms model)
-   */
-  @Test
-  public void testGenerateGwtForSingleMavenModule()
-    throws Exception {
-
-    NaluGeneraterParms naluGeneraterParms = new NaluGeneraterParms();
-
-    naluGeneraterParms.setGroupId("com.github.nalukit.hokulani.example");
-    naluGeneraterParms.setArtefactId("hokulani-example");
-    naluGeneraterParms.setApplicationLoader(true);
-    naluGeneraterParms.setDebug(true);
-    naluGeneraterParms.setLoginScreen(true);
-    naluGeneraterParms.setErrorScreen(true);
-    naluGeneraterParms.setHashUrl(false);
-    naluGeneraterParms.setGwtVersion(DataConstants.GWT_VERSION_2_8_2);
-    naluGeneraterParms.setWidgetLibrary(WidgetLibrary.GWT);
-
-    naluGeneraterParms.getControllers()
-                      .add(new ControllerData("Search",
-                                              "search",
-                                              true,
-                                              false,
-                                              true,
-                                              true));
-    naluGeneraterParms.getControllers()
-                      .add(new ControllerData("List",
-                                              "list",
-                                              false,
-                                              false,
-                                              true,
-                                              true));
-    naluGeneraterParms.getControllers()
-                      .add(new ControllerData("Detail",
-                                              "detail",
-                                              false,
-                                              true,
-                                              true,
-                                              true));
-    ProjectService projectService = new ProjectService();
-    projectService.generate(naluGeneraterParms);
-  }
-
-  /**
-   * Method: generate(@RequestBody NaluGeneraterParms model)
-   */
-  @Test
-  public void testGenerateGxtForSingleMavenModule()
-    throws Exception {
-
-    NaluGeneraterParms naluGeneraterParms = new NaluGeneraterParms();
-
-    naluGeneraterParms.setGroupId("com.github.nalukit.hokulani.example");
-    naluGeneraterParms.setArtefactId("hokulani-example");
-    naluGeneraterParms.setApplicationLoader(true);
-    naluGeneraterParms.setDebug(true);
-    naluGeneraterParms.setLoginScreen(true);
-    naluGeneraterParms.setErrorScreen(true);
-    naluGeneraterParms.setGwtVersion(DataConstants.GWT_VERSION_2_8_2);
-    naluGeneraterParms.setWidgetLibrary(WidgetLibrary.GXT);
-
-    naluGeneraterParms.getControllers()
-                      .add(new ControllerData("Search",
-                                              "search",
-                                              true,
-                                              false,
-                                              true,
-                                              true));
-    naluGeneraterParms.getControllers()
-                      .add(new ControllerData("List",
-                                              "list",
-                                              false,
-                                              false,
-                                              true,
-                                              true));
-    naluGeneraterParms.getControllers()
-                      .add(new ControllerData("Detail",
-                                              "detail",
-                                              false,
-                                              true,
-                                              true,
-                                              true));
-    ProjectService projectService = new ProjectService();
-    projectService.generate(naluGeneraterParms);
-  }
-
-  /**
-   * Method: generate(@RequestBody NaluGeneraterParms model)
-   */
-  @Test
-  public void testGenerateElementoForSingleMavenModule()
-    throws Exception {
-
-    NaluGeneraterParms naluGeneraterParms = new NaluGeneraterParms();
-
-    naluGeneraterParms.setGroupId("com.github.nalukit.hokulani.example");
-    naluGeneraterParms.setArtefactId("hokulani-example");
-    naluGeneraterParms.setApplicationLoader(true);
-    naluGeneraterParms.setDebug(true);
-    naluGeneraterParms.setLoginScreen(true);
-    naluGeneraterParms.setErrorScreen(true);
-    naluGeneraterParms.setGwtVersion(DataConstants.GWT_VERSION_2_8_2);
-    naluGeneraterParms.setWidgetLibrary(WidgetLibrary.ELEMENTO);
-
-    naluGeneraterParms.getControllers()
-                      .add(new ControllerData("Search",
-                                              "search",
-                                              true,
-                                              false,
-                                              true,
-                                              true));
-    naluGeneraterParms.getControllers()
-                      .add(new ControllerData("List",
-                                              "list",
-                                              false,
-                                              false,
-                                              true,
-                                              true));
-    naluGeneraterParms.getControllers()
-                      .add(new ControllerData("Detail",
-                                              "detail",
-                                              false,
-                                              true,
-                                              true,
-                                              true));
-
-    ProjectService projectService = new ProjectService();
-    projectService.generate(naluGeneraterParms);
-  }
-
-  /**
-   * Method: generate(@RequestBody NaluGeneraterParms model)
-   */
-  @Test
-  public void testGenerateDiminoForSingleMavenModule()
-    throws Exception {
-
-    NaluGeneraterParms naluGeneraterParms = new NaluGeneraterParms();
-
-    naluGeneraterParms.setGroupId("com.github.nalukit.hokulani.example");
-    naluGeneraterParms.setArtefactId("hokulani-example");
-    naluGeneraterParms.setApplicationLoader(true);
-    naluGeneraterParms.setDebug(true);
-    naluGeneraterParms.setLoginScreen(true);
-    naluGeneraterParms.setErrorScreen(true);
-    naluGeneraterParms.setGwtVersion(DataConstants.GWT_VERSION_2_8_2);
-    naluGeneraterParms.setWidgetLibrary(WidgetLibrary.DOMINO_UI);
-
-    naluGeneraterParms.getControllers()
-                      .add(new ControllerData("Search",
-                                              "search",
-                                              true,
-                                              false,
-                                              true,
-                                              true));
-    naluGeneraterParms.getControllers()
-                      .add(new ControllerData("List",
-                                              "list",
-                                              false,
-                                              false,
-                                              true,
-                                              true));
-    naluGeneraterParms.getControllers()
-                      .add(new ControllerData("Detail",
-                                              "detail",
-                                              false,
-                                              true,
-                                              true,
-                                              true));
-
-    ProjectService projectService = new ProjectService();
-    projectService.generate(naluGeneraterParms);
+      throws Exception {
   }
 
   /**
@@ -233,6 +60,7 @@ public class ProjectServiceTest {
     naluGeneraterParms.setArtefactId("hokulani-example");
     naluGeneraterParms.setApplicationLoader(true);
     naluGeneraterParms.setDebug(true);
+    naluGeneraterParms.setHashUrl(true);
     naluGeneraterParms.setGwtVersion(DataConstants.GWT_VERSION_2_8_2);
     naluGeneraterParms.setWidgetLibrary(WidgetLibrary.GWT);
 
@@ -257,8 +85,13 @@ public class ProjectServiceTest {
                                               true,
                                               true,
                                               true));
+
+    GenerateResponse response = new GenerateResponse();
+    response.setStatus(new Status());
+
     ProjectService projectService = new ProjectService();
-    projectService.generate(naluGeneraterParms);
+    projectService.generateMultiMavenProject(naluGeneraterParms,
+                                             response);
   }
 
   /**
@@ -274,6 +107,7 @@ public class ProjectServiceTest {
     naluGeneraterParms.setArtefactId("hokulani-example");
     naluGeneraterParms.setApplicationLoader(true);
     naluGeneraterParms.setDebug(true);
+    naluGeneraterParms.setHashUrl(true);
     naluGeneraterParms.setGwtVersion(DataConstants.GWT_VERSION_2_8_2);
     naluGeneraterParms.setWidgetLibrary(WidgetLibrary.GXT);
 
@@ -298,8 +132,13 @@ public class ProjectServiceTest {
                                               true,
                                               true,
                                               true));
+
+    GenerateResponse response = new GenerateResponse();
+    response.setStatus(new Status());
+
     ProjectService projectService = new ProjectService();
-    projectService.generate(naluGeneraterParms);
+    projectService.generateMultiMavenProject(naluGeneraterParms,
+                                             response);
   }
 
   /**
@@ -315,6 +154,7 @@ public class ProjectServiceTest {
     naluGeneraterParms.setArtefactId("hokulani-example");
     naluGeneraterParms.setApplicationLoader(true);
     naluGeneraterParms.setDebug(true);
+    naluGeneraterParms.setHashUrl(true);
     naluGeneraterParms.setGwtVersion(DataConstants.GWT_VERSION_2_8_2);
     naluGeneraterParms.setWidgetLibrary(WidgetLibrary.ELEMENTO);
 
@@ -340,8 +180,12 @@ public class ProjectServiceTest {
                                               true,
                                               true));
 
+    GenerateResponse response = new GenerateResponse();
+    response.setStatus(new Status());
+
     ProjectService projectService = new ProjectService();
-    projectService.generate(naluGeneraterParms);
+    projectService.generateMultiMavenProject(naluGeneraterParms,
+                                             response);
   }
 
   /**
@@ -358,7 +202,7 @@ public class ProjectServiceTest {
     naluGeneraterParms.setApplicationLoader(true);
     naluGeneraterParms.setDebug(true);
     naluGeneraterParms.setLoginScreen(true);
-    naluGeneraterParms.setErrorScreen(true);
+    naluGeneraterParms.setHashUrl(true);
     naluGeneraterParms.setGwtVersion(DataConstants.GWT_VERSION_2_8_2);
     naluGeneraterParms.setWidgetLibrary(WidgetLibrary.DOMINO_UI);
 
@@ -384,18 +228,21 @@ public class ProjectServiceTest {
                                               true,
                                               true));
 
-    ProjectService projectService = new ProjectService();
-    projectService.generate(naluGeneraterParms);
-  }
+    GenerateResponse response = new GenerateResponse();
+    response.setStatus(new Status());
 
+    ProjectService projectService = new ProjectService();
+    projectService.generateMultiMavenProject(naluGeneraterParms,
+                                             response);
+  }
 
   /**
    * Method: zipIt(String projectFolder)
    */
   @Test
   public void testZipIt()
-    throws Exception {
-//TODO: Test goes here... 
+      throws Exception {
+    //TODO: Test goes here...
 /* 
 try { 
    Method method = ProjectService.getClass().getMethod("zipIt", String.class); 
@@ -413,8 +260,8 @@ try {
    */
   @Test
   public void testGenerateFileList()
-    throws Exception {
-//TODO: Test goes here... 
+      throws Exception {
+    //TODO: Test goes here...
 /* 
 try { 
    Method method = ProjectService.getClass().getMethod("generateFileList", String.class, List<String>.class, File.class); 
@@ -432,8 +279,8 @@ try {
    */
   @Test
   public void testGenerateZipEntry()
-    throws Exception {
-//TODO: Test goes here... 
+      throws Exception {
+    //TODO: Test goes here...
 /* 
 try { 
    Method method = ProjectService.getClass().getMethod("generateZipEntry", String.class, String.class); 
@@ -451,8 +298,8 @@ try {
    */
   @Test
   public void testDeleteFolder()
-    throws Exception {
-//TODO: Test goes here... 
+      throws Exception {
+    //TODO: Test goes here...
 /* 
 try { 
    Method method = ProjectService.getClass().getMethod("deleteFolder", File.class); 

@@ -46,7 +46,7 @@ public abstract class AbstractStatusBarSourceGenerator
 
   public void generate()
       throws GeneratorException {
-    this.controllerPackage = this.clientPackageJavaConform + ".ui.statusbar";
+    this.controllerPackage = this.clientPackageJavaConform + ".ui.application.shell.content.statusbar";
 
     this.generateIComponentClass();
     this.generateComponentClass();
@@ -156,8 +156,7 @@ public abstract class AbstractStatusBarSourceGenerator
                                                                      .build())
                                         .superclass(ParameterizedTypeName.get(ClassName.get(AbstractComponentController.class),
                                                                               ClassName.get(this.clientPackageJavaConform,
-                                                                                            GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId()) +
-                                                                                            GeneratorConstants.CONTEXT),
+                                                                                            GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId()) + GeneratorConstants.CONTEXT),
                                                                               ClassName.get(this.controllerPackage,
                                                                                             "IStatusbarComponent"),
                                                                               super.getClassNameWidget()))

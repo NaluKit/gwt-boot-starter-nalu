@@ -56,8 +56,7 @@ public class EntryPointSourceGenerator
                                                       .addModifiers(Modifier.PUBLIC)
                                                       .addStatement("$T application = new $LImpl()",
                                                                     ClassName.get(this.clientPackageJavaConform,
-                                                                                  GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId()) +
-                                                                                  GeneratorConstants.APPLICAITON),
+                                                                                  GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId()) + GeneratorConstants.APPLICAITON),
                                                                     GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId()) + GeneratorConstants.APPLICAITON);
     switch (this.naluGeneraterParms.getWidgetLibrary()) {
       case DOMINO_UI:

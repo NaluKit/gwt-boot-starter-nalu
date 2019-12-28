@@ -27,16 +27,16 @@
         <welcome-file>${artefactId}.html</welcome-file>
     </welcome-file-list>
 
-<#if !hashUrl>
-    <filter>
-        <filter-name>RedirectFilter</filter-name>
-        <filter-class>${clientPackageJavaServerConform}.filter.RedirectFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>RedirectFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-    </filter-mapping>
-</#if>
+    <#if !hashUrl>
+        <filter>
+            <filter-name>RedirectFilter</filter-name>
+            <filter-class>${clientPackageJavaServerConform}.filter.RedirectFilter</filter-class>
+        </filter>
+        <filter-mapping>
+            <filter-name>RedirectFilter</filter-name>
+            <url-pattern>/*</url-pattern>
+            <dispatcher>REQUEST</dispatcher>
+        </filter-mapping>
+    </#if>
 
 </web-app>

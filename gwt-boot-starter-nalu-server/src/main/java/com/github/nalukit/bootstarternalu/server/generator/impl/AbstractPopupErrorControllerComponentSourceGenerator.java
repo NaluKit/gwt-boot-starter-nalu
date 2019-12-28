@@ -20,14 +20,14 @@ import com.github.nalukit.bootstarternalu.server.generator.GeneratorConstants;
 import com.github.nalukit.bootstarternalu.server.generator.GeneratorUtils;
 import com.github.nalukit.gwtbootstarternalu.shared.model.ControllerData;
 import com.github.nalukit.gwtbootstarternalu.shared.model.GeneratorException;
-import com.github.nalukit.nalu.client.component.AbstractComponent;
-import com.github.nalukit.nalu.client.component.AbstractComponentController;
-import com.github.nalukit.nalu.client.component.IsComponent;
-import com.github.nalukit.nalu.client.component.annotation.Controller;
+import com.github.nalukit.nalu.client.component.AbstractErrorPopUpComponent;
+import com.github.nalukit.nalu.client.component.AbstractErrorPopUpComponentController;
+import com.github.nalukit.nalu.client.component.IsErrorPopUpComponent;
+import com.github.nalukit.nalu.client.component.annotation.ErrorPopUpController;
+import com.github.nalukit.nalu.client.event.model.ErrorInfo.ErrorType;
 import com.squareup.javapoet.AnnotationSpec;
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.CodeBlock;
-import com.squareup.javapoet.FieldSpec;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.ParameterSpec;
@@ -37,8 +37,9 @@ import com.squareup.javapoet.TypeSpec;
 import javax.lang.model.element.Modifier;
 import java.io.File;
 import java.io.IOException;
+import java.util.Map;
 
-public abstract class AbstractErrorControllerComponentSourceGenerator
+public abstract class AbstractPopupErrorControllerComponentSourceGenerator
     extends AbstractSourceGenerator {
 
   protected ControllerData controllerData;
@@ -48,7 +49,7 @@ public abstract class AbstractErrorControllerComponentSourceGenerator
   public void generate()
       throws GeneratorException {
 
-    this.controllerPackage = this.clientPackageJavaConform + ".ui.error";
+    this.controllerPackage = this.clientPackageJavaConform + ".ui.application.popup.error";
 
     this.generateIComponentClass();
     this.generateComponentClass();
@@ -62,20 +63,34 @@ public abstract class AbstractErrorControllerComponentSourceGenerator
                                                              .add(GeneratorConstants.COPYRIGHT_JAVA)
                                                              .build())
                                         .addModifiers(Modifier.PUBLIC)
-                                        .addSuperinterface(ParameterizedTypeName.get(ClassName.get(IsComponent.class),
-                                                                                     ClassName.get(this.clientPackageJavaConform + ".ui.error",
-                                                                                                   "IErrorComponent.Controller"),
-                                                                                     super.getClassNameWidget()))
-                                        .addMethod(MethodSpec.methodBuilder("setErrorMessage")
+                                        .addSuperinterface(ParameterizedTypeName.get(ClassName.get(IsErrorPopUpComponent.class),
+                                                                                     ClassName.get(this.clientPackageJavaConform + ".ui.application.popup.error",
+                                                                                                   "IErrorComponent.Controller")))
+                                        .addMethod(MethodSpec.methodBuilder("clear")
                                                              .addModifiers(Modifier.ABSTRACT,
                                                                            Modifier.PUBLIC)
+                                                             .build())
+                                        .addMethod(MethodSpec.methodBuilder("edit")
+                                                             .addModifiers(Modifier.ABSTRACT,
+                                                                           Modifier.PUBLIC)
+                                                             .addParameter(ParameterSpec.builder(ClassName.get(ErrorType.class),
+                                                                                                 "errorEventType")
+                                                                                        .build())
                                                              .addParameter(ParameterSpec.builder(ClassName.get(String.class),
-                                                                                                 "errorMessage")
+                                                                                                 "route")
+                                                                                        .build())
+                                                             .addParameter(ParameterSpec.builder(ClassName.get(String.class),
+                                                                                                 "message")
+                                                                                        .build())
+                                                             .addParameter(ParameterSpec.builder(ParameterizedTypeName.get(ClassName.get(Map.class),
+                                                                                                                           ClassName.get(String.class),
+                                                                                                                           ClassName.get(String.class)),
+                                                                                                 "dataStore")
                                                                                         .build())
                                                              .build());
 
     typeSpec.addType(TypeSpec.interfaceBuilder("Controller")
-                             .addSuperinterface(ClassName.get(IsComponent.Controller.class))
+                             .addSuperinterface(ClassName.get(IsErrorPopUpComponent.Controller.class))
                              .addModifiers(Modifier.PUBLIC,
                                            Modifier.STATIC)
                              .addMethod(MethodSpec.methodBuilder("doRouteHome")
@@ -102,14 +117,13 @@ public abstract class AbstractErrorControllerComponentSourceGenerator
                                                              .add(GeneratorConstants.COPYRIGHT_JAVA)
                                                              .build())
                                         .addModifiers(Modifier.PUBLIC)
-                                        .superclass(ParameterizedTypeName.get(ClassName.get(AbstractComponent.class),
-                                                                              ClassName.get(this.clientPackageJavaConform + ".ui.error",
-                                                                                            "IErrorComponent.Controller"),
-                                                                              this.getClassNameWidget()))
-                                        .addSuperinterface(ClassName.get(this.clientPackageJavaConform + ".ui.error",
+                                        .superclass(ParameterizedTypeName.get(ClassName.get(AbstractErrorPopUpComponent.class),
+                                                                              ClassName.get(this.clientPackageJavaConform + ".ui.application.popup.error",
+                                                                                            "IErrorComponent.Controller")))
+                                        .addSuperinterface(ClassName.get(this.clientPackageJavaConform + ".ui.application.popup.error",
                                                                          "IErrorComponent"));
 
-    typeSpec.addField(getFieldSpec());
+    createFieldSpecs(typeSpec);
     // constrcutor
     typeSpec.addMethod(MethodSpec.constructorBuilder()
                                  .addStatement("super()")
@@ -117,8 +131,10 @@ public abstract class AbstractErrorControllerComponentSourceGenerator
                                  .build());
 
     createRenderMethod(typeSpec);
-
-    createSetErrorTextMethod(typeSpec);
+    createEditMethod(typeSpec);
+    createClearMethod(typeSpec);
+    createShowMethod(typeSpec);
+    createHideMethod(typeSpec);
 
     JavaFile javaFile = JavaFile.builder(this.controllerPackage,
                                          typeSpec.build())
@@ -133,44 +149,42 @@ public abstract class AbstractErrorControllerComponentSourceGenerator
 
   private void generateControllerClass()
       throws GeneratorException {
-    TypeSpec.Builder typeSpec = TypeSpec.classBuilder(ClassName.get(this.clientPackageJavaConform + ".ui.error",
+    TypeSpec.Builder typeSpec = TypeSpec.classBuilder(ClassName.get(this.clientPackageJavaConform + ".ui.application.popup.error",
                                                                     "ErrorController"))
                                         .addJavadoc(CodeBlock.builder()
                                                              .add(GeneratorConstants.COPYRIGHT_JAVA)
                                                              .build())
                                         .addModifiers(Modifier.PUBLIC)
-                                        .addAnnotation(AnnotationSpec.builder(Controller.class)
-                                                                     .addMember("route",
-                                                                                "$S",
-                                                                                "/error/error")
-                                                                     .addMember("selector",
-                                                                                "$S",
-                                                                                "content")
+                                        .addAnnotation(AnnotationSpec.builder(ErrorPopUpController.class)
                                                                      .addMember("componentInterface",
                                                                                 "$T.class",
-                                                                                ClassName.get(this.clientPackageJavaConform + ".ui.error",
+                                                                                ClassName.get(this.clientPackageJavaConform + ".ui.application.popup.error",
                                                                                               "IErrorComponent"))
                                                                      .addMember("component",
                                                                                 "$T.class",
-                                                                                ClassName.get(this.clientPackageJavaConform + ".ui.error",
+                                                                                ClassName.get(this.clientPackageJavaConform + ".ui.application.popup.error",
                                                                                               "ErrorComponent"))
                                                                      .build())
-                                        .superclass(ParameterizedTypeName.get(ClassName.get(AbstractComponentController.class),
+                                        .superclass(ParameterizedTypeName.get(ClassName.get(AbstractErrorPopUpComponentController.class),
                                                                               ClassName.get(this.clientPackageJavaConform,
                                                                                             GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId()) + GeneratorConstants.CONTEXT),
-                                                                              ClassName.get(this.clientPackageJavaConform + ".ui.error",
-                                                                                            "IErrorComponent"),
-                                                                              super.getClassNameWidget()))
-                                        .addSuperinterface(ClassName.get(this.clientPackageJavaConform + ".ui.error",
+                                                                              ClassName.get(this.clientPackageJavaConform + ".ui.application.popup.error",
+                                                                                            "IErrorComponent")))
+                                        .addSuperinterface(ClassName.get(this.clientPackageJavaConform + ".ui.application.popup.error",
                                                                          "IErrorComponent.Controller"))
                                         .addMethod(MethodSpec.constructorBuilder()
                                                              .addModifiers(Modifier.PUBLIC)
                                                              .build())
-                                        .addMethod(MethodSpec.methodBuilder("start")
+                                        .addMethod(MethodSpec.methodBuilder("onBeforeShow")
                                                              .addModifiers(Modifier.PUBLIC)
                                                              .addAnnotation(ClassName.get(Override.class))
-                                                             .addComment("Get the error message from the router and set it.")
-                                                             .addStatement("this.component.setErrorMessage(this.router.getNaluErrorMessage().getErrorMessage())")
+                                                             .addStatement("this.component.clear()")
+                                                             .build())
+                                        .addMethod(MethodSpec.methodBuilder("show")
+                                                             .addModifiers(Modifier.PUBLIC)
+                                                             .addAnnotation(ClassName.get(Override.class))
+                                                             .addStatement("this.component.edit(this.errorEventType, this.route, this.message, this.dataStore)")
+                                                             .addStatement("this.component.show()")
                                                              .build())
                                         .addMethod(MethodSpec.methodBuilder("doRouteHome")
                                                              .addModifiers(Modifier.PUBLIC)
@@ -193,10 +207,16 @@ public abstract class AbstractErrorControllerComponentSourceGenerator
     }
   }
 
-  protected abstract FieldSpec getFieldSpec();
+  protected abstract void createFieldSpecs(TypeSpec.Builder typeSpec);
 
   protected abstract void createRenderMethod(TypeSpec.Builder typeSpec);
 
-  protected abstract void createSetErrorTextMethod(TypeSpec.Builder typeSpec);
+  protected abstract void createClearMethod(TypeSpec.Builder typeSpec);
+
+  protected abstract void createEditMethod(TypeSpec.Builder typeSpec);
+
+  protected abstract void createHideMethod(TypeSpec.Builder typeSpec);
+
+  protected abstract void createShowMethod(TypeSpec.Builder typeSpec);
 
 }

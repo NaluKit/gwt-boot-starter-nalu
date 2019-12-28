@@ -68,15 +68,6 @@ public class ApplicationSourceGenerator
       applicationAnnotation.addMember("loader",
                                       GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId()) + GeneratorConstants.LOADER + ".class");
     }
-    if (this.naluGeneraterParms.isErrorScreen()) {
-      applicationAnnotation.addMember("routeError",
-                                      "$S",
-                                      "/error/error");
-    } else {
-      applicationAnnotation.addMember("routeError",
-                                      "$S",
-                                      getStartRoute());
-    }
     if (!this.naluGeneraterParms.isHashUrl()) {
       applicationAnnotation.addMember("useHash",
                                       "$L",
@@ -119,11 +110,7 @@ public class ApplicationSourceGenerator
       javaFile.writeTo(new File(directoryJava,
                                 ""));
     } catch (IOException e) {
-      throw new GeneratorException("Unable to write generated file: >>" +
-                                   GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId()) +
-                                   GeneratorConstants.APPLICAITON +
-                                   "<< -> exception: " +
-                                   e.getMessage());
+      throw new GeneratorException("Unable to write generated file: >>" + GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId()) + GeneratorConstants.APPLICAITON + "<< -> exception: " + e.getMessage());
     }
   }
 

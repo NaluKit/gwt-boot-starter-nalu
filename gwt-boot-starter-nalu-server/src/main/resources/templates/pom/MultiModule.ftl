@@ -28,7 +28,7 @@
     <version>1.0.0</version>
     <packaging>pom</packaging>
 
-    <name>${artifactId}  - Nalu Boot Starter Project</name>
+    <name>${artifactId} - Nalu Boot Starter Project</name>
     <description>Nalu Boot Starter Project</description>
 
     <properties>
@@ -70,7 +70,8 @@
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>3.5.1</version>
                     <configuration>
-                        <source>1.8</source>
+                        <source>
+                        1.8</source>
                         <target>1.8</target>
                     </configuration>
                 </plugin>
@@ -82,7 +83,7 @@
                 <plugin>
                     <groupId>net.ltgt.gwt.maven</groupId>
                     <artifactId>gwt-maven-plugin</artifactId>
-                    <version>1.0-rc-10</version>
+                    <version>1.0.0</version>
                     <extensions>true</extensions>
                     <configuration>
                         <sourceLevel>1.8</sourceLevel>

@@ -70,9 +70,12 @@ public class ModuleDescriptorGenerator {
                                             .toString());
     templateData.put("artifactIdFirstUpperCase",
                      GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId()));
+    templateData.put("groupIdLowerCase",
+                     GeneratorUtils.removeBadChracters(this.naluGeneraterParms.getGroupId())
+                                   .toLowerCase());
     templateData.put("artifactIdLowerCase",
-                     GeneratorUtils.removeBadChracters(this.naluGeneraterParms.getArtefactId()
-                                                                              .toLowerCase()));
+                     GeneratorUtils.removeBadChracters(this.naluGeneraterParms.getArtefactId())
+                                   .toLowerCase());
     templateData.put("artifactId",
                      GeneratorUtils.removeBadChracters(this.naluGeneraterParms.getArtefactId()));
     templateData.put("groupId",

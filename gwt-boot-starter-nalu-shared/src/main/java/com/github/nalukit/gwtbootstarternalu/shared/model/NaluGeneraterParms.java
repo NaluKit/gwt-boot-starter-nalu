@@ -30,7 +30,6 @@ public class NaluGeneraterParms {
   private String               gwtVersion;
   private boolean              applicationLoader;
   private boolean              debug;
-  private boolean              errorScreen;
   private boolean              loginScreen;
   private boolean              hashUrl;
   private WidgetLibrary        widgetLibrary;
@@ -94,14 +93,6 @@ public class NaluGeneraterParms {
 
   public void setWidgetLibrary(WidgetLibrary widgetLibrary) {
     this.widgetLibrary = widgetLibrary;
-  }
-
-  public boolean isErrorScreen() {
-    return errorScreen;
-  }
-
-  public void setErrorScreen(boolean errorScreen) {
-    this.errorScreen = errorScreen;
   }
 
   public boolean isLoginScreen() {

@@ -46,7 +46,7 @@ public abstract class AbstractLoginControllerComponentSourceGenerator
   public void generate()
       throws GeneratorException {
 
-    this.controllerPackage = this.clientPackageJavaConform + ".ui.login";
+    this.controllerPackage = this.clientPackageJavaConform + ".ui.login.content.login";
 
     this.generateIComponentClass();
     this.generateComponentClass();
@@ -61,7 +61,7 @@ public abstract class AbstractLoginControllerComponentSourceGenerator
                                                              .build())
                                         .addModifiers(Modifier.PUBLIC)
                                         .addSuperinterface(ParameterizedTypeName.get(ClassName.get(IsComponent.class),
-                                                                                     ClassName.get(this.clientPackageJavaConform + ".ui.login",
+                                                                                     ClassName.get(this.clientPackageJavaConform + ".ui.login.content.login",
                                                                                                    "ILoginComponent.Controller"),
                                                                                      super.getClassNameWidget()));
 
@@ -98,10 +98,10 @@ public abstract class AbstractLoginControllerComponentSourceGenerator
                                                              .build())
                                         .addModifiers(Modifier.PUBLIC)
                                         .superclass(ParameterizedTypeName.get(ClassName.get(AbstractComponent.class),
-                                                                              ClassName.get(this.clientPackageJavaConform + ".ui.login",
+                                                                              ClassName.get(this.clientPackageJavaConform + ".ui.login.content.login",
                                                                                             "ILoginComponent.Controller"),
                                                                               this.getClassNameWidget()))
-                                        .addSuperinterface(ClassName.get(this.clientPackageJavaConform + ".ui.login",
+                                        .addSuperinterface(ClassName.get(this.clientPackageJavaConform + ".ui.login.content.login",
                                                                          "ILoginComponent"));
 
     createFieldSpecs(typeSpec);
@@ -126,7 +126,7 @@ public abstract class AbstractLoginControllerComponentSourceGenerator
 
   private void generateControllerClass()
       throws GeneratorException {
-    TypeSpec.Builder typeSpec = TypeSpec.classBuilder(ClassName.get(this.clientPackageJavaConform + ".ui.login",
+    TypeSpec.Builder typeSpec = TypeSpec.classBuilder(ClassName.get(this.clientPackageJavaConform + ".ui.login.content.login",
                                                                     "LoginController"))
                                         .addJavadoc(CodeBlock.builder()
                                                              .add(GeneratorConstants.COPYRIGHT_JAVA)
@@ -141,21 +141,20 @@ public abstract class AbstractLoginControllerComponentSourceGenerator
                                                                                 "content")
                                                                      .addMember("componentInterface",
                                                                                 "$T.class",
-                                                                                ClassName.get(this.clientPackageJavaConform + ".ui.login",
+                                                                                ClassName.get(this.clientPackageJavaConform + ".ui.login.content.login",
                                                                                               "ILoginComponent"))
                                                                      .addMember("component",
                                                                                 "$T.class",
-                                                                                ClassName.get(this.clientPackageJavaConform + ".ui.login",
+                                                                                ClassName.get(this.clientPackageJavaConform + ".ui.login.content.login",
                                                                                               "LoginComponent"))
                                                                      .build())
                                         .superclass(ParameterizedTypeName.get(ClassName.get(AbstractComponentController.class),
                                                                               ClassName.get(this.clientPackageJavaConform,
-                                                                                            GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId()) +
-                                                                                            GeneratorConstants.CONTEXT),
-                                                                              ClassName.get(this.clientPackageJavaConform + ".ui.login",
+                                                                                            GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId()) + GeneratorConstants.CONTEXT),
+                                                                              ClassName.get(this.clientPackageJavaConform + ".ui.login.content.login",
                                                                                             "ILoginComponent"),
                                                                               super.getClassNameWidget()))
-                                        .addSuperinterface(ClassName.get(this.clientPackageJavaConform + ".ui.login",
+                                        .addSuperinterface(ClassName.get(this.clientPackageJavaConform + ".ui.login.content.login",
                                                                          "ILoginComponent.Controller"))
                                         .addMethod(MethodSpec.constructorBuilder()
                                                              .addModifiers(Modifier.PUBLIC)

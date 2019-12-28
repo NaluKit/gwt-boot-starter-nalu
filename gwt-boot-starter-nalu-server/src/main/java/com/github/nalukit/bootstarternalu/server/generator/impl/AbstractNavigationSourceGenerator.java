@@ -45,7 +45,7 @@ public abstract class AbstractNavigationSourceGenerator
   public void generate()
       throws GeneratorException {
 
-    this.controllerPackage = this.clientPackageJavaConform + ".ui.navigation";
+    this.controllerPackage = this.clientPackageJavaConform + ".ui.application.shell.content.navigation";
 
     this.generateIComponentClass();
     this.generateComponentClass();
@@ -60,7 +60,7 @@ public abstract class AbstractNavigationSourceGenerator
                                                              .build())
                                         .addModifiers(Modifier.PUBLIC)
                                         .addSuperinterface(ParameterizedTypeName.get(ClassName.get(IsComponent.class),
-                                                                                     ClassName.get(this.clientPackageJavaConform + ".ui.navigation",
+                                                                                     ClassName.get(this.clientPackageJavaConform + ".ui.application.shell.content.navigation",
                                                                                                    "INavigationComponent.Controller"),
                                                                                      super.getClassNameWidget()));
 
@@ -96,10 +96,10 @@ public abstract class AbstractNavigationSourceGenerator
                                                              .build())
                                         .addModifiers(Modifier.PUBLIC)
                                         .superclass(ParameterizedTypeName.get(ClassName.get(AbstractComponent.class),
-                                                                              ClassName.get(this.clientPackageJavaConform + ".ui.navigation",
+                                                                              ClassName.get(this.clientPackageJavaConform + ".ui.application.shell.content.navigation",
                                                                                             "INavigationComponent.Controller"),
                                                                               this.getClassNameWidget()))
-                                        .addSuperinterface(ClassName.get(this.clientPackageJavaConform + ".ui.navigation",
+                                        .addSuperinterface(ClassName.get(this.clientPackageJavaConform + ".ui.application.shell.content.navigation",
                                                                          "INavigationComponent"));
     // constrcutor
     typeSpec.addMethod(MethodSpec.constructorBuilder()
@@ -136,21 +136,20 @@ public abstract class AbstractNavigationSourceGenerator
                                                                                 "navigation")
                                                                      .addMember("componentInterface",
                                                                                 "$T.class",
-                                                                                ClassName.get(this.clientPackageJavaConform + ".ui.navigation",
+                                                                                ClassName.get(this.clientPackageJavaConform + ".ui.application.shell.content.navigation",
                                                                                               "INavigationComponent"))
                                                                      .addMember("component",
                                                                                 "$T.class",
-                                                                                ClassName.get(this.clientPackageJavaConform + ".ui.navigation",
+                                                                                ClassName.get(this.clientPackageJavaConform + ".ui.application.shell.content.navigation",
                                                                                               "NavigationComponent"))
                                                                      .build())
                                         .superclass(ParameterizedTypeName.get(ClassName.get(AbstractComponentController.class),
                                                                               ClassName.get(this.clientPackageJavaConform,
-                                                                                            GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId()) +
-                                                                                            GeneratorConstants.CONTEXT),
-                                                                              ClassName.get(this.clientPackageJavaConform + ".ui.navigation",
+                                                                                            GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId()) + GeneratorConstants.CONTEXT),
+                                                                              ClassName.get(this.clientPackageJavaConform + ".ui.application.shell.content.navigation",
                                                                                             "INavigationComponent"),
                                                                               super.getClassNameWidget()))
-                                        .addSuperinterface(ClassName.get(this.clientPackageJavaConform + ".ui.navigation",
+                                        .addSuperinterface(ClassName.get(this.clientPackageJavaConform + ".ui.application.shell.content.navigation",
                                                                          "INavigationComponent.Controller"))
                                         .addMethod(MethodSpec.constructorBuilder()
                                                              .addModifiers(Modifier.PUBLIC)

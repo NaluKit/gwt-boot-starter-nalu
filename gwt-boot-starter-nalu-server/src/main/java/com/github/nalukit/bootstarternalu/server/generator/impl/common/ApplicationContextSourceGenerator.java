@@ -89,11 +89,7 @@ public class ApplicationContextSourceGenerator
       javaFile.writeTo(new File(directoryJava,
                                 ""));
     } catch (IOException e) {
-      throw new GeneratorException("Unable to write generated file: >>" +
-                                   GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId() + GeneratorConstants.CONTEXT) +
-                                   "<< -> " +
-                                   "exception: " +
-                                   e.getMessage());
+      throw new GeneratorException("Unable to write generated file: >>" + GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId() + GeneratorConstants.CONTEXT) + "<< -> " + "exception: " + e.getMessage());
     }
   }
 

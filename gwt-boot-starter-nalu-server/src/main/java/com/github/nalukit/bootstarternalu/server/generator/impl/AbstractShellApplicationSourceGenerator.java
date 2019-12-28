@@ -53,8 +53,7 @@ public abstract class AbstractShellApplicationSourceGenerator
                                         .addModifiers(Modifier.PUBLIC)
                                         .superclass(ParameterizedTypeName.get(ClassName.get(AbstractShell.class),
                                                                               ClassName.get(this.clientPackageJavaConform,
-                                                                                            GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId() +
-                                                                                                                                        GeneratorConstants.CONTEXT))));
+                                                                                            GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId() + GeneratorConstants.CONTEXT))));
 
     generateShellAnnotation(typeSpec);
 

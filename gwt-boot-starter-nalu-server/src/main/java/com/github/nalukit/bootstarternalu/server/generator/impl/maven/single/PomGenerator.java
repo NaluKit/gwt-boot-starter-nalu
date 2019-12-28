@@ -95,7 +95,7 @@ public class PomGenerator {
     templateData.put("pluginVersionMavenCompiler",
                      "${plugin.version.maven.compiler}");
     templateData.put("pluginVersionMavenGwt",
-            "${plugin.version.maven.gwt}");
+                     "${plugin.version.maven.gwt}");
     templateData.put("pluginVersionMavenWar",
                      "${plugin.version.maven.war}");
     templateData.put("pluginVersionEclipseLifecyle",

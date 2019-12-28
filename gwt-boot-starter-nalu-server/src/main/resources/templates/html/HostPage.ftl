@@ -24,27 +24,38 @@
 
 <html>
     <head>
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta http-equiv="content-type"
+              content="text/html; charset=UTF-8">
 
         <!-- Any title is fine (please update)               -->
         <title>Nalu Boot Starter Project ==> ElHossProject</title>
 
-<#if widgetLibrary == "DOMINO_UI">
-        <!-- Consider inlining CSS to reduce the number of requested files -->
-        <link type="text/css" rel="stylesheet" href="${artifactId}/css/domino-ui.css">
-        <link type="text/css" rel="stylesheet" href="${artifactId}/css/themes/all-themes.css">
+        <#if widgetLibrary == "DOMINO_UI">
+            <!-- Consider inlining CSS to reduce the number of requested files -->
+            <link type="text/css"
+                  rel="stylesheet"
+                  href="${artifactId}/css/domino-ui.css">
+            <link type="text/css"
+                  rel="stylesheet"
+                  href="${artifactId}/css/themes/all-themes.css">
 
-        <!-- This script is for IE11-support only. -->
-        <script type="text/javascript" language="javascript" src="${artifactId}/polyfill/polyfill-ie11.js"></script>
-<#else>
-    <!-- Consider inlining CSS to reduce the number of requested files -->
-        <link type="text/css" rel="stylesheet" href="${artifactId}.css">
-</#if>
+            <!-- This script is for IE11-support only. -->
+            <script type="text/javascript"
+                    language="javascript"
+                    src="${artifactId}/polyfill/polyfill-ie11.js"></script>
+        <#else>
+            <!-- Consider inlining CSS to reduce the number of requested files -->
+        <link type="text/css"
+              rel="stylesheet"
+              href="${artifactId}.css">
+        </#if>
 
         <!-- This script loads your compiled module.   -->
         <!-- If you add any GWT meta tags, they must   -->
         <!-- be added before this line.                -->
-        <script type="text/javascript" language="javascript" src="${artifactId}/${artifactId}.nocache.js"></script>
+        <script type="text/javascript"
+                language="javascript"
+                src="${artifactId}/${artifactId}.nocache.js"></script>
     </head>
 
     <!-- The body can have arbitrary html, or      -->

@@ -29,41 +29,34 @@ import com.github.nalukit.bootstarternalu.server.generator.impl.common.RedirectF
 import com.github.nalukit.bootstarternalu.server.generator.impl.common.StatusChangeEventSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.common.WebXmlSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.domino.ControllerComponentDominoSourceGenerator;
-import com.github.nalukit.bootstarternalu.server.generator.impl.domino.ErrorControllerComponentDominoSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.domino.LoginControllerComponentDominoSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.domino.NavigationDominoSourceGenerator;
+import com.github.nalukit.bootstarternalu.server.generator.impl.domino.PopupErrorControllerComponentDominoSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.domino.ShellApplicationDominoSourceGenerator;
-import com.github.nalukit.bootstarternalu.server.generator.impl.domino.ShellErrorDominoSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.domino.ShellLoginDominoSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.domino.StatusBarDominoSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.elemento.ControllerComponentElementoSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.elemento.CssPageElementoSourceGenerator;
-import com.github.nalukit.bootstarternalu.server.generator.impl.elemento.ErrorControllerComponentElementoSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.elemento.HeaderElementoSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.elemento.LoginControllerComponentElementoSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.elemento.NavigationElementoSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.elemento.ShellApplicationElementoSourceGenerator;
-import com.github.nalukit.bootstarternalu.server.generator.impl.elemento.ShellErrorElementoSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.elemento.ShellLoginElementoSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.elemento.StatusBarElementoSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.gwt.ControllerComponentGwtSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.gwt.CssPageGwtSourceGenerator;
-import com.github.nalukit.bootstarternalu.server.generator.impl.gwt.ErrorControllerComponentGwtSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.gwt.HeaderGwtSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.gwt.LoginControllerComponentGwtSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.gwt.NavigationGwtSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.gwt.ShellApplicationGwtSourceGenerator;
-import com.github.nalukit.bootstarternalu.server.generator.impl.gwt.ShellErrorGwtSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.gwt.ShellLoginGwtSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.gwt.StatusBarGwtSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.gxt.ControllerComponentGxtSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.gxt.CssPageGxtSourceGenerator;
-import com.github.nalukit.bootstarternalu.server.generator.impl.gxt.ErrorControllerComponentGxtSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.gxt.HeaderGxtSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.gxt.LoginControllerComponentGxtSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.gxt.NavigationGxtSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.gxt.ShellApplicationGxtSourceGenerator;
-import com.github.nalukit.bootstarternalu.server.generator.impl.gxt.ShellErrorGxtSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.gxt.ShellLoginGxtSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.gxt.StatusBarGxtSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.maven.multi.ConfigGenerator;
@@ -338,20 +331,12 @@ public class SourceGenerator {
                                          .build()
                                          .generate();
     // generate error shell
-    if (this.naluGeneraterParms.isErrorScreen()) {
-      ShellErrorDominoSourceGenerator.builder()
-                                     .naluGeneraterParms(this.naluGeneraterParms)
-                                     .clientPackageJavaConform(clientPackageJavaConform)
-                                     .directoryJava(directoryJava)
-                                     .build()
-                                     .generate();
-      ErrorControllerComponentDominoSourceGenerator.builder()
-                                                   .naluGeneraterParms(this.naluGeneraterParms)
-                                                   .clientPackageJavaConform(clientPackageJavaConform)
-                                                   .directoryJava(directoryJava)
-                                                   .build()
-                                                   .generate();
-    }
+    PopupErrorControllerComponentDominoSourceGenerator.builder()
+                                                      .naluGeneraterParms(this.naluGeneraterParms)
+                                                      .clientPackageJavaConform(clientPackageJavaConform)
+                                                      .directoryJava(directoryJava)
+                                                      .build()
+                                                      .generate();
     // generate login shell
     if (this.naluGeneraterParms.isLoginScreen()) {
       ShellLoginDominoSourceGenerator.builder()
@@ -401,20 +386,12 @@ public class SourceGenerator {
                                            .build()
                                            .generate();
     // generate error shell
-    if (this.naluGeneraterParms.isErrorScreen()) {
-      ShellErrorElementoSourceGenerator.builder()
-                                       .naluGeneraterParms(this.naluGeneraterParms)
-                                       .clientPackageJavaConform(clientPackageJavaConform)
-                                       .directoryJava(directoryJava)
-                                       .build()
-                                       .generate();
-      ErrorControllerComponentElementoSourceGenerator.builder()
-                                                     .naluGeneraterParms(this.naluGeneraterParms)
-                                                     .clientPackageJavaConform(clientPackageJavaConform)
-                                                     .directoryJava(directoryJava)
-                                                     .build()
-                                                     .generate();
-    }
+    //    PopupErrorControllerComponentElementoSourceGenerator.builder()
+    //                                                     .naluGeneraterParms(this.naluGeneraterParms)
+    //                                                     .clientPackageJavaConform(clientPackageJavaConform)
+    //                                                     .directoryJava(directoryJava)
+    //                                                     .build()
+    //                                                     .generate();
     // generate login shell
     if (this.naluGeneraterParms.isLoginScreen()) {
       ShellLoginElementoSourceGenerator.builder()
@@ -471,20 +448,20 @@ public class SourceGenerator {
                                       .build()
                                       .generate();
     // generate error shell
-    if (this.naluGeneraterParms.isErrorScreen()) {
-      ShellErrorGwtSourceGenerator.builder()
-                                  .naluGeneraterParms(this.naluGeneraterParms)
-                                  .clientPackageJavaConform(clientPackageJavaConform)
-                                  .directoryJava(directoryJava)
-                                  .build()
-                                  .generate();
-      ErrorControllerComponentGwtSourceGenerator.builder()
-                                                .naluGeneraterParms(this.naluGeneraterParms)
-                                                .clientPackageJavaConform(clientPackageJavaConform)
-                                                .directoryJava(directoryJava)
-                                                .build()
-                                                .generate();
-    }
+    //    if (this.naluGeneraterParms.isErrorScreen()) {
+    //      ShellErrorGwtSourceGenerator.builder()
+    //                                  .naluGeneraterParms(this.naluGeneraterParms)
+    //                                  .clientPackageJavaConform(clientPackageJavaConform)
+    //                                  .directoryJava(directoryJava)
+    //                                  .build()
+    //                                  .generate();
+    //      ErrorControllerComponentGwtSourceGenerator.builder()
+    //                                                .naluGeneraterParms(this.naluGeneraterParms)
+    //                                                .clientPackageJavaConform(clientPackageJavaConform)
+    //                                                .directoryJava(directoryJava)
+    //                                                .build()
+    //                                                .generate();
+    //    }
     // generate login shell
     if (this.naluGeneraterParms.isLoginScreen()) {
       ShellLoginGwtSourceGenerator.builder()
@@ -540,20 +517,20 @@ public class SourceGenerator {
                                       .build()
                                       .generate();
     // generate error shell
-    if (this.naluGeneraterParms.isErrorScreen()) {
-      ShellErrorGxtSourceGenerator.builder()
-                                  .naluGeneraterParms(this.naluGeneraterParms)
-                                  .clientPackageJavaConform(clientPackageJavaConform)
-                                  .directoryJava(directoryJava)
-                                  .build()
-                                  .generate();
-      ErrorControllerComponentGxtSourceGenerator.builder()
-                                                .naluGeneraterParms(this.naluGeneraterParms)
-                                                .clientPackageJavaConform(clientPackageJavaConform)
-                                                .directoryJava(directoryJava)
-                                                .build()
-                                                .generate();
-    }
+    //    if (this.naluGeneraterParms.isErrorScreen()) {
+    //      ShellErrorGxtSourceGenerator.builder()
+    //                                  .naluGeneraterParms(this.naluGeneraterParms)
+    //                                  .clientPackageJavaConform(clientPackageJavaConform)
+    //                                  .directoryJava(directoryJava)
+    //                                  .build()
+    //                                  .generate();
+    //      ErrorControllerComponentGxtSourceGenerator.builder()
+    //                                                .naluGeneraterParms(this.naluGeneraterParms)
+    //                                                .clientPackageJavaConform(clientPackageJavaConform)
+    //                                                .directoryJava(directoryJava)
+    //                                                .build()
+    //                                                .generate();
+    //    }
     // generate login shell
     if (this.naluGeneraterParms.isLoginScreen()) {
       ShellLoginGxtSourceGenerator.builder()

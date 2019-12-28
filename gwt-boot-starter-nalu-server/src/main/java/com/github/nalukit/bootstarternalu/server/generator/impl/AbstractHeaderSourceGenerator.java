@@ -44,7 +44,7 @@ public abstract class AbstractHeaderSourceGenerator
 
   public void generate()
       throws GeneratorException {
-    this.controllerPackage = this.clientPackageJavaConform + ".ui.header";
+    this.controllerPackage = this.clientPackageJavaConform + ".ui.application.shell.content.header";
 
     this.generateIComponentClass();
     this.generateComponentClass();
@@ -59,7 +59,7 @@ public abstract class AbstractHeaderSourceGenerator
                                                              .build())
                                         .addModifiers(Modifier.PUBLIC)
                                         .addSuperinterface(ParameterizedTypeName.get(ClassName.get(IsComponent.class),
-                                                                                     ClassName.get(this.clientPackageJavaConform + ".ui.header",
+                                                                                     ClassName.get(this.clientPackageJavaConform + ".ui.application.shell.content.header",
                                                                                                    "IHeaderComponent.Controller"),
                                                                                      super.getClassNameWidget()));
 
@@ -88,10 +88,10 @@ public abstract class AbstractHeaderSourceGenerator
                                                              .build())
                                         .addModifiers(Modifier.PUBLIC)
                                         .superclass(ParameterizedTypeName.get(ClassName.get(AbstractComponent.class),
-                                                                              ClassName.get(this.clientPackageJavaConform + ".ui.header",
+                                                                              ClassName.get(this.clientPackageJavaConform + ".ui.application.shell.content.header",
                                                                                             "IHeaderComponent.Controller"),
                                                                               this.getClassNameWidget()))
-                                        .addSuperinterface(ClassName.get(this.clientPackageJavaConform + ".ui.header",
+                                        .addSuperinterface(ClassName.get(this.clientPackageJavaConform + ".ui.application.shell.content.header",
                                                                          "IHeaderComponent"));
     typeSpec.addField(getContainerFieldSpec());
     // constrcutor
@@ -129,21 +129,20 @@ public abstract class AbstractHeaderSourceGenerator
                                                                                 "header")
                                                                      .addMember("componentInterface",
                                                                                 "$T.class",
-                                                                                ClassName.get(this.clientPackageJavaConform + ".ui.header",
+                                                                                ClassName.get(this.clientPackageJavaConform + ".ui.application.shell.content.header",
                                                                                               "IHeaderComponent"))
                                                                      .addMember("component",
                                                                                 "$T.class",
-                                                                                ClassName.get(this.clientPackageJavaConform + ".ui.header",
+                                                                                ClassName.get(this.clientPackageJavaConform + ".ui.application.shell.content.header",
                                                                                               "HeaderComponent"))
                                                                      .build())
                                         .superclass(ParameterizedTypeName.get(ClassName.get(AbstractComponentController.class),
                                                                               ClassName.get(this.clientPackageJavaConform,
-                                                                                            GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId()) +
-                                                                                            GeneratorConstants.CONTEXT),
-                                                                              ClassName.get(this.clientPackageJavaConform + ".ui.header",
+                                                                                            GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId()) + GeneratorConstants.CONTEXT),
+                                                                              ClassName.get(this.clientPackageJavaConform + ".ui.application.shell.content.header",
                                                                                             "IHeaderComponent"),
                                                                               super.getClassNameWidget()))
-                                        .addSuperinterface(ClassName.get(this.clientPackageJavaConform + ".ui.header",
+                                        .addSuperinterface(ClassName.get(this.clientPackageJavaConform + ".ui.application.shell.content.header",
                                                                          "IHeaderComponent.Controller"))
                                         .addMethod(MethodSpec.constructorBuilder()
                                                              .addModifiers(Modifier.PUBLIC)

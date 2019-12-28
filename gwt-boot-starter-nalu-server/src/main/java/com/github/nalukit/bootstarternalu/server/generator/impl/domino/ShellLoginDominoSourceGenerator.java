@@ -63,10 +63,7 @@ public class ShellLoginDominoSourceGenerator
                                    ClassName.get(Layout.class),
                                    ClassName.get(ColorScheme.class))
                      .addCode("")
-                     .addStatement("layout.showFooter()\n" +
-                                   "          .fixFooter()\n" +
-                                   "          .getFooter()\n" +
-                                   "          .asElement().style.minHeight = $T.MinHeightUnionType.of(\"42px\")",
+                     .addStatement("layout.showFooter()\n" + "          .fixFooter()\n" + "          .getFooter()\n" + "          .asElement().style.minHeight = $T.MinHeightUnionType.of(\"42px\")",
                                    ClassName.get(CSSProperties.class))
                      .addStatement("layout.getFooter().setId(\"footer\")")
                      .addStatement("layout.disableLeftPanel()")
@@ -104,7 +101,7 @@ public class ShellLoginDominoSourceGenerator
 
   @Override
   protected void setUpShellPackage() {
-    super.shellPackage = this.clientPackageJavaConform + ".ui.shell.login";
+    super.shellPackage = this.clientPackageJavaConform + ".ui.login.shell";
 
   }
 

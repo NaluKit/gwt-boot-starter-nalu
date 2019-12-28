@@ -51,7 +51,7 @@ public abstract class AbstractControllerComponentSourceGenerator
       throws GeneratorException {
 
     this.controllerPackage = this.clientPackageJavaConform +
-                             ".ui." +
+                             ".ui.application.content." +
                              controllerData.getComponentName()
                                            .toLowerCase();
 
@@ -73,7 +73,7 @@ public abstract class AbstractControllerComponentSourceGenerator
                                         .addModifiers(Modifier.PUBLIC)
                                         .addSuperinterface(ParameterizedTypeName.get(ClassName.get(IsComponent.class),
                                                                                      ClassName.get(this.clientPackageJavaConform +
-                                                                                                   ".ui." +
+                                                                                                   ".ui.application.content." +
                                                                                                    controllerData.getComponentName()
                                                                                                                  .toLowerCase(),
                                                                                                    "I" + GeneratorUtils.setFirstCharacterToUpperCase(this.controllerData.getComponentName()) + "Component.Controller"),
@@ -133,13 +133,13 @@ public abstract class AbstractControllerComponentSourceGenerator
                                         .addModifiers(Modifier.PUBLIC)
                                         .superclass(ParameterizedTypeName.get(ClassName.get(AbstractComponent.class),
                                                                               ClassName.get(this.clientPackageJavaConform +
-                                                                                            ".ui." +
+                                                                                            ".ui.application.content." +
                                                                                             controllerData.getComponentName()
                                                                                                           .toLowerCase(),
                                                                                             "I" + GeneratorUtils.setFirstCharacterToUpperCase(this.controllerData.getComponentName()) + "Component.Controller"),
                                                                               this.getClassNameWidget()))
                                         .addSuperinterface(ClassName.get(this.clientPackageJavaConform +
-                                                                         ".ui." +
+                                                                         ".ui.application.content." +
                                                                          controllerData.getComponentName()
                                                                                        .toLowerCase(),
                                                                          "I" + GeneratorUtils.setFirstCharacterToUpperCase(this.controllerData.getComponentName()) + "Component"));
@@ -211,7 +211,7 @@ public abstract class AbstractControllerComponentSourceGenerator
   private void generateControllerClass()
       throws GeneratorException {
     TypeSpec.Builder typeSpec = TypeSpec.classBuilder(ClassName.get(this.clientPackageJavaConform +
-                                                                    ".ui." +
+                                                                    ".ui.application.content." +
                                                                     controllerData.getComponentName()
                                                                                   .toLowerCase(),
                                                                     GeneratorUtils.setFirstCharacterToUpperCase(this.controllerData.getComponentName()) + "Controller"))
@@ -229,14 +229,14 @@ public abstract class AbstractControllerComponentSourceGenerator
                                                                      .addMember("componentInterface",
                                                                                 "$T.class",
                                                                                 ClassName.get(this.clientPackageJavaConform +
-                                                                                              ".ui." +
+                                                                                              ".ui.application.content." +
                                                                                               controllerData.getComponentName()
                                                                                                             .toLowerCase(),
                                                                                               "I" + GeneratorUtils.setFirstCharacterToUpperCase(this.controllerData.getComponentName()) + "Component"))
                                                                      .addMember("component",
                                                                                 "$T.class",
                                                                                 ClassName.get(this.clientPackageJavaConform +
-                                                                                              ".ui." +
+                                                                                              ".ui.application.content." +
                                                                                               controllerData.getComponentName()
                                                                                                             .toLowerCase(),
                                                                                               GeneratorUtils.setFirstCharacterToUpperCase(this.controllerData.getComponentName()) + "Component"))
@@ -245,13 +245,13 @@ public abstract class AbstractControllerComponentSourceGenerator
                                                                               ClassName.get(this.clientPackageJavaConform,
                                                                                             GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId()) + GeneratorConstants.CONTEXT),
                                                                               ClassName.get(this.clientPackageJavaConform +
-                                                                                            ".ui." +
+                                                                                            ".ui.application.content." +
                                                                                             controllerData.getComponentName()
                                                                                                           .toLowerCase(),
                                                                                             "I" + GeneratorUtils.setFirstCharacterToUpperCase(this.controllerData.getComponentName()) + "Component"),
                                                                               super.getClassNameWidget()))
                                         .addSuperinterface(ClassName.get(this.clientPackageJavaConform +
-                                                                         ".ui." +
+                                                                         ".ui.application.content." +
                                                                          controllerData.getComponentName()
                                                                                        .toLowerCase(),
                                                                          "I" + GeneratorUtils.setFirstCharacterToUpperCase(this.controllerData.getComponentName()) + "Component.Controller"))
