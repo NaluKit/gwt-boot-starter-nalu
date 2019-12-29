@@ -75,7 +75,12 @@ public class PopupErrorControllerComponentElementoSourceGenerator
 
   @Override
   protected void createBindMethod(TypeSpec.Builder typeSpec) {
-
+    typeSpec.addMethod(MethodSpec.methodBuilder("bind")
+                                 .addModifiers(Modifier.PUBLIC)
+                                 .addAnnotation(ClassName.get(Override.class))
+                                 //                                 .addStatement("dialog.getButton($T.OK).addSelectHandler(e -> { hide(); getController().doRouteHome(); })",
+                                 //                                               ClassName.get(PredefinedButton.class))
+                                 .build());
   }
 
   @Override

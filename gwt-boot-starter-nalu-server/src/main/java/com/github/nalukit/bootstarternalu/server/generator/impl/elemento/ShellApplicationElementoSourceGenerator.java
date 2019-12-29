@@ -100,7 +100,7 @@ public class ShellApplicationElementoSourceGenerator
 
   @Override
   protected String getShellName() {
-    return super.shellPackage + ".application." + getShellSimpleName();
+    return super.shellPackage + getShellSimpleName();
   }
 
   @Override
@@ -126,10 +126,7 @@ public class ShellApplicationElementoSourceGenerator
 
   @Override
   protected MethodSpec createBindMethod() {
-    return MethodSpec.methodBuilder("bind")
-                     .addModifiers(Modifier.PUBLIC)
-                     .addAnnotation(ClassName.get(Override.class))
-                     .build();
+    return null;
   }
 
   @Override

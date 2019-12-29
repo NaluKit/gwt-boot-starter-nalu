@@ -97,7 +97,7 @@ public class ShellLoginElementoSourceGenerator
 
   @Override
   protected String getShellName() {
-    return super.shellPackage + ".login." + getShellSimpleName();
+    return super.shellPackage + getShellSimpleName();
   }
 
   @Override
@@ -123,10 +123,7 @@ public class ShellLoginElementoSourceGenerator
 
   @Override
   protected MethodSpec createBindMethod() {
-    return MethodSpec.methodBuilder("bind")
-                     .addModifiers(Modifier.PUBLIC)
-                     .addAnnotation(ClassName.get(Override.class))
-                     .build();
+    return null;
   }
 
   @Override
