@@ -56,11 +56,12 @@ public class ProjectServiceTest {
 
     NaluGeneraterParms naluGeneraterParms = new NaluGeneraterParms();
 
-    naluGeneraterParms.setGroupId("com.github.nalukit.hokulani.example");
-    naluGeneraterParms.setArtefactId("hokulani-example");
+    naluGeneraterParms.setGroupId("com.github.nalukit.gwt.example");
+    naluGeneraterParms.setArtefactId("gwt-example");
     naluGeneraterParms.setApplicationLoader(true);
     naluGeneraterParms.setDebug(true);
     naluGeneraterParms.setHashUrl(true);
+    naluGeneraterParms.setLoginScreen(true);
     naluGeneraterParms.setGwtVersion(DataConstants.GWT_VERSION_2_8_2);
     naluGeneraterParms.setWidgetLibrary(WidgetLibrary.GWT);
 
@@ -108,6 +109,7 @@ public class ProjectServiceTest {
     naluGeneraterParms.setApplicationLoader(true);
     naluGeneraterParms.setDebug(true);
     naluGeneraterParms.setHashUrl(true);
+    naluGeneraterParms.setLoginScreen(true);
     naluGeneraterParms.setGwtVersion(DataConstants.GWT_VERSION_2_8_2);
     naluGeneraterParms.setWidgetLibrary(WidgetLibrary.GXT);
 

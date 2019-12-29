@@ -20,6 +20,7 @@ package com.github.nalukit.bootstarternalu.server.generator.impl.gwt;
 import com.github.nalukit.bootstarternalu.server.generator.GeneratorUtils;
 import com.github.nalukit.bootstarternalu.server.generator.impl.AbstractShellApplicationSourceGenerator;
 import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
+import com.github.nalukit.nalu.client.component.IsShell.ShellLoader;
 import com.github.nalukit.nalu.client.component.annotation.Shell;
 import com.github.nalukit.nalu.plugin.gwt.client.annotation.Selector;
 import com.github.nalukit.nalu.plugin.gwt.client.selector.IsSelectorProvider;
@@ -178,9 +179,13 @@ public class ShellApplicationGwtSourceGenerator
     return MethodSpec.methodBuilder("bind")
                      .addModifiers(Modifier.PUBLIC)
                      .addAnnotation(ClassName.get(Override.class))
+                     .addParameter(ParameterSpec.builder(ClassName.get(ShellLoader.class),
+                                                         "loader")
+                                                .build())
                      .addStatement("$T<ApplicationShell> provider = new ApplicationShellSelectorProviderImpl()",
                                    ClassName.get(IsSelectorProvider.class))
                      .addStatement("provider.initialize(this)")
+                     .addStatement("loader.continueLoading()")
                      .build();
   }
 

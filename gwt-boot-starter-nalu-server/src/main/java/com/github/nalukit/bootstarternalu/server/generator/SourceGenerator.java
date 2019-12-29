@@ -47,6 +47,7 @@ import com.github.nalukit.bootstarternalu.server.generator.impl.gwt.CssPageGwtSo
 import com.github.nalukit.bootstarternalu.server.generator.impl.gwt.HeaderGwtSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.gwt.LoginControllerComponentGwtSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.gwt.NavigationGwtSourceGenerator;
+import com.github.nalukit.bootstarternalu.server.generator.impl.gwt.PopupErrorControllerComponentGwtSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.gwt.ShellApplicationGwtSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.gwt.ShellLoginGwtSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.gwt.StatusBarGwtSourceGenerator;
@@ -450,20 +451,12 @@ public class SourceGenerator {
                                       .build()
                                       .generate();
     // generate error shell
-    //    if (this.naluGeneraterParms.isErrorScreen()) {
-    //      ShellErrorGwtSourceGenerator.builder()
-    //                                  .naluGeneraterParms(this.naluGeneraterParms)
-    //                                  .clientPackageJavaConform(clientPackageJavaConform)
-    //                                  .directoryJava(directoryJava)
-    //                                  .build()
-    //                                  .generate();
-    //      ErrorControllerComponentGwtSourceGenerator.builder()
-    //                                                .naluGeneraterParms(this.naluGeneraterParms)
-    //                                                .clientPackageJavaConform(clientPackageJavaConform)
-    //                                                .directoryJava(directoryJava)
-    //                                                .build()
-    //                                                .generate();
-    //    }
+    PopupErrorControllerComponentGwtSourceGenerator.builder()
+                                                   .naluGeneraterParms(this.naluGeneraterParms)
+                                                   .clientPackageJavaConform(clientPackageJavaConform)
+                                                   .directoryJava(directoryJava)
+                                                   .build()
+                                                   .generate();
     // generate login shell
     if (this.naluGeneraterParms.isLoginScreen()) {
       ShellLoginGwtSourceGenerator.builder()
