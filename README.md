@@ -10,7 +10,7 @@ Setting up a Nalu project can be difficult, especially if you are not familiar w
 to do before it is possible to run the project and check whether things are working or not.
 
 To improve the process of setting up a project using Nalu, the
-[Nalu project generator](http://www.mvp4g.org/gwt-boot-starter-nalu/GwtBootStarterNalu.html) was created. Once you have configured and generated the project, you will get a zip file containing the - ready to import - Nalu project.
+[Nalu project generator](http://www.mvp4g.org/boot-starter-nalu/BootStarterNalu.html) was created. Once you have configured and generated the project, you will get a zip file containing the - ready to import - Nalu project.
 
 Keep in mind, Nalu helps you to structure your application. Navigation, dependencies and confirmation will be generated and
 work. It is not a widget library. So, the components are nearly empty. It is up to you to implement the components.
