@@ -54,7 +54,7 @@ At the moment the Nalu Example generator supports:
 
 - [Domino-UI](https://github.com/DominoKit/domino-ui)
 
-- [Elemento](https://github.com/hal/elemento)
+- [Elemento](https://github.com/hal/elemento) - currently not available
 
 - [native GWT widgets](http://www.gwtproject.org/)
 

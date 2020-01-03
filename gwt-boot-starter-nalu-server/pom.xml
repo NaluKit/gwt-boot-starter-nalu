@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2018 - 2020 - Frank Hossfeld
+  ~
+  ~  Licensed under the Apache License, Version 2.0 (the "License"); you may not
+  ~  use this file except in compliance with the License. You may obtain a copy of
+  ~  the License at
+  ~
+  ~  http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~  Unless required by applicable law or agreed to in writing, software
+  ~  distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+  ~  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+  ~  License for the specific language governing permissions and limitations under
+  ~  the License.
+  ~
+  -->
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.github.nalukit</groupId>
+    <artifactId>gwt-boot-starter-nalu</artifactId>
+    <version>2.0.0</version>
+  </parent>
+
+  <artifactId>gwt-boot-starter-nalu-server</artifactId>
+  <name>GWT Bootstarter Nalu - Server Module</name>
+
+  <packaging>war</packaging>
+
+  <properties>
+    <!-- GXT GPL version without support -->
+    <gxt.version>4.0.0</gxt.version>
+    <!-- Domino version -->
+    <domino.version>1.0-F-SNAPSHOT</domino.version>
+    <domino.rest.version>1.0-rc.4-SNAPSHOT</domino.rest.version>
+    <!-- Elemento version -->
+    <elemento.version>0.9.6</elemento.version>
+    <!-- nalu version -->
+    <nalu.version>2.0.0</nalu.version>
+    <!--    <eis2.version>1.1.0</eis2.version>-->
+    <freemarker.version>2.3.9</freemarker.version>
+    <!--    <javax.activation.version>1.1</javax.activation.version>-->
+    <!--    <jackson.mapper.asl.version>1.9.13</jackson.mapper.asl.version>-->
+    <jersey.version>2.28</jersey.version>
+    <javaPoet.version>1.11.1</javaPoet.version>
+    <junit.version>4.12</junit.version>
+    <!--    <json.version>20180813</json.version>-->
+    <mapstruct.version>1.3.0.Final</mapstruct.version>
+    <servlet-api.version>3.1.0</servlet-api.version>
+    <slf4j.version>1.8.0-beta4</slf4j.version>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.glassfish.jersey</groupId>
+        <artifactId>jersey-bom</artifactId>
+        <version>${jersey.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
+    <!-- GWT -->
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-user</artifactId>
+    </dependency>
+
+    <!-- Nalu -->
+    <dependency>
+      <groupId>com.github.nalukit</groupId>
+      <artifactId>nalu</artifactId>
+      <version>${nalu.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.github.nalukit</groupId>
+      <artifactId>nalu-plugin-elemental2</artifactId>
+      <version>${nalu.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.github.nalukit</groupId>
+      <artifactId>nalu-plugin-elemento</artifactId>
+      <version>${nalu.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.github.nalukit</groupId>
+      <artifactId>nalu-plugin-gwt</artifactId>
+      <version>${nalu.version}</version>
+    </dependency>
+
+    <!-- GXT -->
+    <dependency>
+      <groupId>com.sencha.gxt</groupId>
+      <artifactId>gxt</artifactId>
+      <version>${gxt.version}</version>
+    </dependency>
+    <!-- GXT 3.1+ - Neptune Theme -->
+    <dependency>
+      <groupId>com.sencha.gxt</groupId>
+      <artifactId>gxt-theme-neptune</artifactId>
+      <version>${gxt.version}</version>
+    </dependency>
+    <!-- GXT 3.1+ - Triton Theme -->
+    <dependency>
+      <groupId>com.sencha.gxt</groupId>
+      <artifactId>gxt-theme-triton</artifactId>
+      <version>${gxt.version}</version>
+      <!--<scope>system</scope>-->
+      <!--<systemPath>${project.basedir}/etc/lib/gxt-theme-triton.jar</systemPath>-->
+    </dependency>
+    <!-- Elemento -->
+    <dependency>
+      <groupId>org.jboss.gwt.elemento</groupId>
+      <artifactId>elemento-core</artifactId>
+      <version>${elemento.version}</version>
+    </dependency>
+    <!-- Domino -->
+    <dependency>
+      <groupId>org.dominokit</groupId>
+      <artifactId>domino-ui</artifactId>
+      <version>${domino.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.dominokit</groupId>
+      <artifactId>domino-ui</artifactId>
+      <version>${domino.version}</version>
+      <classifier>sources</classifier>
+    </dependency>
+
+    <dependency>
+      <groupId>com.github.nalukit</groupId>
+      <artifactId>gwt-boot-starter-nalu-shared</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <!-- logging -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>${slf4j.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
+      <version>${slf4j.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.freemarker</groupId>
+      <artifactId>freemarker</artifactId>
+      <version>${freemarker.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>jakarta.ws.rs</groupId>
+      <artifactId>jakarta.ws.rs-api</artifactId>
+      <version>${javax.ws.rs-api.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.jersey.containers</groupId>
+      <artifactId>jersey-container-jetty-http</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.jersey.containers</groupId>
+      <artifactId>jersey-container-servlet</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.jersey.core</groupId>
+      <artifactId>jersey-common</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.jersey.core</groupId>
+      <artifactId>jersey-client</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.jersey.media</groupId>
+      <artifactId>jersey-media-jaxb</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.jersey.inject</groupId>
+      <artifactId>jersey-hk2</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.jersey.media</groupId>
+      <artifactId>jersey-media-json-jackson</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>jakarta.annotation</groupId>
+      <artifactId>jakarta.annotation-api</artifactId>
+      <version>1.3.4</version>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.hk2</groupId>
+      <artifactId>osgi-resource-locator</artifactId>
+      <version>1.0.1</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/com.squareup/javapoet -->
+    <dependency>
+      <groupId>com.squareup</groupId>
+      <artifactId>javapoet</artifactId>
+      <version>${javaPoet.version}</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>${servlet-api.version}</version>
+      <scope>provided</scope>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>javax.xml.bind</groupId>
+      <artifactId>jaxb-api</artifactId>
+      <version>2.3.1</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/junit/junit -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <finalName>boot-starter-nalu</finalName>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.eclipse.jetty</groupId>
+          <artifactId>jetty-maven-plugin</artifactId>
+          <configuration>
+            <scanIntervalSeconds>1</scanIntervalSeconds>
+            <!--<webApp>-->
+            <!--<extraClasspath>${basedir}/../NaluDominoLoginPluginApplication-shared/target/classes/</extraClasspath>-->
+            <!--<extraClasspath>${basedir}/../NaluDominoLoginPluginApplication-core/target/classes/</extraClasspath>-->
+            <!--</webApp>-->
+            <contextXml>${basedir}/src/main/jettyconf/context.xml</contextXml>
+          </configuration>
+        </plugin>
+        <!--<plugin>-->
+        <!--<groupId>org.apache.tomcat.maven</groupId>-->
+        <!--<artifactId>tomcat7-maven-plugin</artifactId>-->
+        <!--<configuration>-->
+        <!--<addWarDependenciesInClassloader>false</addWarDependenciesInClassloader>-->
+        <!--<path>/</path>-->
+        <!--<uriEncoding>UTF-8</uriEncoding>-->
+        <!--</configuration>-->
+        <!--</plugin>-->
+      </plugins>
+    </pluginManagement>
+  </build>
+
+  <repositories>
+    <repository>
+      <id>sonatype-snapshots-repo</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+      <snapshots>
+        <enabled>true</enabled>
+        <updatePolicy>always</updatePolicy>
+        <checksumPolicy>fail</checksumPolicy>
+      </snapshots>
+    </repository>
+    <repository>
+      <!-- ~/.m2/settings.xml add <server/> with the support portal credentials -->
+      <id>sencha-gxt-repository</id>
+      <name>Sencha GXT Repository</name>
+      <!-- GPL -->
+      <url>https://maven.sencha.com/repo/gxt-gpl-release</url>
+    </repository>
+  </repositories>
+
+  <profiles>
+    <profile>
+      <id>env-prod</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <dependencies>
+        <dependency>
+          <groupId>com.github.nalukit</groupId>
+          <artifactId>gwt-boot-starter-nalu-client</artifactId>
+          <version>${project.version}</version>
+          <type>war</type>
+          <scope>runtime</scope>
+        </dependency>
+      </dependencies>
+    </profile>
+    <profile>
+      <id>env-dev</id>
+      <activation>
+        <property>
+          <name>env</name>
+          <value>dev</value>
+        </property>
+      </activation>
+      <build>
+        <pluginManagement>
+          <plugins>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-compiler-plugin</artifactId>
+              <version>3.5.1</version>
+              <configuration>
+                <source>${maven.compiler.source}</source> <!-- or higher, depending on your project -->
+                <target>${maven.compiler.target}</target> <!-- or higher, depending on your project -->
+                <annotationProcessorPaths>
+                  <path>
+                    <groupId>org.mapstruct</groupId>
+                    <artifactId>mapstruct-processor</artifactId>
+                    <version>${mapstruct.version}</version>
+                  </path>
+                </annotationProcessorPaths>
+              </configuration>
+            </plugin>
+            <plugin>
+              <groupId>org.eclipse.jetty</groupId>
+              <artifactId>jetty-maven-plugin</artifactId>
+              <configuration>
+                <webApp>
+                  <resourceBases>
+                    <resourceBase>${basedir}/src/main/webapp</resourceBase>
+                    <resourceBase>${basedir}/../target/gwt/launcherDir/</resourceBase>
+                  </resourceBases>
+                </webApp>
+              </configuration>
+            </plugin>
+            <!--<plugin>-->
+            <!--<groupId>org.apache.tomcat.maven</groupId>-->
+            <!--<artifactId>tomcat7-maven-plugin</artifactId>-->
+            <!--<configuration>-->
+            <!--<contextFile>${basedir}/src/main/tomcatconf/context.xml</contextFile>-->
+            <!--</configuration>-->
+            <!--</plugin>-->
+          </plugins>
+        </pluginManagement>
+      </build>
+    </profile>
+  </profiles>
+  <!--  <modelVersion>4.0.0</modelVersion>-->
+  <!--  <parent>-->
+  <!--    <groupId>com.github.gwtboot</groupId>-->
+  <!--    <artifactId>gwt-boot-starter-parent</artifactId>-->
+  <!--    <version>1.0.0-SNAPSHOT</version>-->
+  <!--  </parent>-->
+  <!--  <groupId>com.example</groupId>-->
+  <!--  <artifactId>domino-rest-enum-date-client</artifactId>-->
+  <!--  <version>1.0.0-SNAPSHOT</version>-->
+  <!--  <packaging>jar</packaging>-->
+  <!--  <name>domino-rest-enum-date-client</name>-->
+
+  <!--  <properties>-->
+  <!--    <domino-rest-enum-date-api.version>1.0.0-SNAPSHOT</domino-rest-enum-date-api.version>-->
+  <!--  </properties>-->
+
+  <!--  <dependencies>-->
+  <!--    <dependency>-->
+  <!--      <groupId>com.github.gwtboot</groupId>-->
+  <!--      <artifactId>gwt-boot-starter</artifactId>-->
+  <!--    </dependency>-->
+
+  <!--    <dependency>-->
+  <!--      <groupId>com.example</groupId>-->
+  <!--      <artifactId>domino-rest-enum-date-api</artifactId>-->
+  <!--      <version>${domino-rest-enum-date-api.version}</version>-->
+  <!--    </dependency>-->
+  <!--    <dependency>-->
+  <!--      <groupId>com.example</groupId>-->
+  <!--      <artifactId>domino-rest-enum-date-api</artifactId>-->
+  <!--      <version>${domino-rest-enum-date-api.version}</version>-->
+  <!--      <classifier>sources</classifier>-->
+  <!--    </dependency>-->
+
+  <!--    <dependency>-->
+  <!--      <groupId>org.dominokit</groupId>-->
+  <!--      <artifactId>domino-rest-gwt</artifactId>-->
+  <!--      <version>1.0-rc.4-SNAPSHOT</version>-->
+  <!--    </dependency>-->
+
+  <!--    <dependency>-->
+  <!--      <groupId>org.dominokit</groupId>-->
+  <!--      <artifactId>domino-rest-apt</artifactId>-->
+  <!--      <version>1.0-rc.4-SNAPSHOT</version>-->
+  <!--      <scope>provided</scope>-->
+  <!--    </dependency>-->
+
+  <!--    <dependency>-->
+  <!--      <groupId>org.dominokit</groupId>-->
+  <!--      <artifactId>domino-rest-shared</artifactId>-->
+  <!--      <version>1.0-rc.4-SNAPSHOT</version>-->
+  <!--    </dependency>-->
+  <!--  </dependencies>-->
+
+  <!--  <build>-->
+  <!--    <plugins>-->
+  <!--      <plugin>-->
+  <!--        <groupId>net.ltgt.gwt.maven</groupId>-->
+  <!--        <artifactId>gwt-maven-plugin</artifactId>-->
+  <!--        <configuration>-->
+  <!--          <moduleName>com.example.Example</moduleName>-->
+  <!--          <startupUrls>-->
+  <!--            <url>/example/</url>-->
+  <!--          </startupUrls>-->
+  <!--          <compilerArgs>-->
+  <!--            <arg>-generateJsInteropExports</arg>-->
+  <!--            <arg>-compileReport</arg>-->
+  <!--            <arg>-style</arg>-->
+  <!--            <arg>PRETTY</arg>-->
+  <!--          </compilerArgs>-->
+  <!--          <devmodeArgs>-->
+  <!--            <arg>-logLevel</arg>-->
+  <!--            <arg>INFO</arg>-->
+  <!--            <arg>-generateJsInteropExports</arg>-->
+  <!--            <arg>-style</arg>-->
+  <!--            <arg>PRETTY</arg>-->
+  <!--          </devmodeArgs>-->
+  <!--          <codeserverArgs>-->
+  <!--            <arg>-logLevel</arg>-->
+  <!--            <arg>INFO</arg>-->
+  <!--            <arg>-generateJsInteropExports</arg>-->
+  <!--            <arg>-style</arg>-->
+  <!--            <arg>PRETTY</arg>-->
+  <!--          </codeserverArgs>-->
+  <!--        </configuration>-->
+  <!--      </plugin>-->
+
+  <!--      <plugin>-->
+  <!--        <artifactId>maven-assembly-plugin</artifactId>-->
+  <!--        <configuration>-->
+  <!--          <descriptors>-->
+  <!--            <descriptor>src/assembly/distribution.xml</descriptor>-->
+  <!--          </descriptors>-->
+  <!--        </configuration>-->
+  <!--        <executions>-->
+  <!--          <execution>-->
+  <!--            <id>make-assembly</id>-->
+  <!--            <phase>package</phase>-->
+  <!--            <goals>-->
+  <!--              <goal>single</goal>-->
+  <!--            </goals>-->
+  <!--          </execution>-->
+  <!--        </executions>-->
+  <!--      </plugin>-->
+
+  <!--      <plugin>-->
+  <!--        <groupId>org.codehaus.mojo</groupId>-->
+  <!--        <artifactId>build-helper-maven-plugin</artifactId>-->
+  <!--        <executions>-->
+  <!--          <execution>-->
+  <!--            <phase>generate-sources</phase>-->
+  <!--            <goals>-->
+  <!--              <goal>add-source</goal>-->
+  <!--            </goals>-->
+  <!--            <configuration>-->
+  <!--              <sources>-->
+  <!--                <source>target/generated-sources/annotations</source>-->
+  <!--              </sources>-->
+  <!--            </configuration>-->
+  <!--          </execution>-->
+  <!--        </executions>-->
+  <!--      </plugin>-->
+  <!--    </plugins>-->
+  <!--  </build>-->
+
+  <!--  <repositories>-->
+  <!--    <repository>-->
+  <!--      <id>sonatype-snapshots</id>-->
+  <!--      <name>Sonatype Snapshots</name>-->
+  <!--      <url>https://oss.sonatype.org/content/repositories/snapshots</url>-->
+  <!--      <snapshots>-->
+  <!--        <enabled>true</enabled>-->
+  <!--        <updatePolicy>daily</updatePolicy>-->
+  <!--        <checksumPolicy>fail</checksumPolicy>-->
+  <!--      </snapshots>-->
+  <!--    </repository>-->
+  <!--  </repositories>-->
+</project>
