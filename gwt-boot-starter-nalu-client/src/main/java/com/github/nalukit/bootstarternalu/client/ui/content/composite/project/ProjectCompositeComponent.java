@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 - 2019 - Frank Hossfeld
+ * Copyright (c) 2018 - 2020 - Frank Hossfeld
  *
  *  Licensed under the Apache License, Version 2.0 (the "License"); you may not
  *  use this file except in compliance with the License. You may obtain a copy of
@@ -21,6 +21,7 @@ import com.github.nalukit.bootstarternalu.client.ui.content.composite.project.IP
 import com.github.nalukit.bootstarternalu.client.ui.content.composite.project.validation.ClassNameValidator;
 import com.github.nalukit.bootstarternalu.client.ui.content.composite.project.validation.PackageValidator;
 import com.github.nalukit.bootstarternalu.shared.model.NaluGeneraterParms;
+import com.github.nalukit.bootstarternalu.shared.model.ServerImplementation;
 import com.github.nalukit.bootstarternalu.shared.model.WidgetLibrary;
 import com.github.nalukit.nalu.client.component.AbstractCompositeComponent;
 import elemental2.dom.HTMLDivElement;
@@ -39,11 +40,12 @@ public class ProjectCompositeComponent
     extends AbstractCompositeComponent<Controller, HTMLElement>
     implements IProjectCompositeComponent {
 
-  private FieldsGrouping        grouping = FieldsGrouping.create();
-  private TextBox               groupIdTextBox;
-  private TextBox               artifactIdTextBox;
-  private Select<String>        gwtVersionSelect;
-  private Select<WidgetLibrary> widgetSetSelect;
+  private FieldsGrouping               grouping = FieldsGrouping.create();
+  private TextBox                      groupIdTextBox;
+  private TextBox                      artifactIdTextBox;
+  private Select<String>               gwtVersionSelect;
+  private Select<ServerImplementation> serverImplementationSelect;
+  private Select<WidgetLibrary>        widgetSetSelect;
 
   public ProjectCompositeComponent() {
   }
@@ -73,6 +75,14 @@ public class ProjectCompositeComponent
                                                            .addLeftAddOn(Icons.ALL.code_tags_mdi())
                                                            .setRequired(true)
                                                            .groupBy(grouping);
+
+    serverImplementationSelect = Select.<ServerImplementation>create("Server Implementation").appendChild(SelectOption.create(ServerImplementation.GWT_MAVEN_PLUGIN,
+                                                                                                                              ServerImplementation.GWT_MAVEN_PLUGIN.getText()))
+                                                                                             .appendChild(SelectOption.create(ServerImplementation.SPRING_BOOT,
+                                                                                                                              ServerImplementation.SPRING_BOOT.getText()))
+                                                                                             .selectAt(1)
+                                                                                             .addLeftAddOn(Icons.ALL.server_mdi())
+                                                                                             .groupBy(grouping);
 
     widgetSetSelect = Select.<WidgetLibrary>create("Widget Set").appendChild(SelectOption.create(WidgetLibrary.DOMINO_UI,
                                                                                                  WidgetLibrary.DOMINO_UI.getText()))
@@ -107,7 +117,11 @@ public class ProjectCompositeComponent
                                                                                                        .appendChild(gwtVersionSelect))
                                                                                     .appendChild(Column.span6()
                                                                                                        .condenced()
-                                                                                                       .appendChild(widgetSetSelect)))))
+                                                                                                       .appendChild(widgetSetSelect)))
+                                                                    .appendChild(Row.create()
+                                                                                    .appendChild(Column.span12()
+                                                                                                       .condenced()
+                                                                                                       .appendChild(serverImplementationSelect)))))
                                 .element();
     initElement(element);
   }
@@ -117,6 +131,7 @@ public class ProjectCompositeComponent
     this.groupIdTextBox.setValue(naluGeneraterParms.getGroupId());
     this.artifactIdTextBox.setValue(naluGeneraterParms.getArtefactId());
     this.gwtVersionSelect.setValue(naluGeneraterParms.getGwtVersion());
+    this.serverImplementationSelect.setValue(naluGeneraterParms.getServerImplementation());
     this.widgetSetSelect.setValue(naluGeneraterParms.getWidgetLibrary());
 
   }
@@ -126,6 +141,7 @@ public class ProjectCompositeComponent
     naluGeneraterParms.setGroupId(this.groupIdTextBox.getValue());
     naluGeneraterParms.setArtefactId(this.artifactIdTextBox.getValue());
     naluGeneraterParms.setGwtVersion(this.gwtVersionSelect.getValue());
+    naluGeneraterParms.setServerImplementation(this.serverImplementationSelect.getValue());
     naluGeneraterParms.setWidgetLibrary(this.widgetSetSelect.getValue());
     return naluGeneraterParms;
   }

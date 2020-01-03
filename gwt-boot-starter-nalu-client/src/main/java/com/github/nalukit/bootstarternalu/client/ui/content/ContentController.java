@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 - 2019 - Frank Hossfeld
+ * Copyright (c) 2018 - 2020 - Frank Hossfeld
  *
  *  Licensed under the Apache License, Version 2.0 (the "License"); you may not
  *  use this file except in compliance with the License. You may obtain a copy of
@@ -17,12 +17,12 @@
 
 package com.github.nalukit.bootstarternalu.client.ui.content;
 
-import com.github.nalukit.bootstarternalu.client.ui.content.composite.application.ApplicationComposite;
 import com.github.nalukit.bootstarternalu.client.AppContext;
 import com.github.nalukit.bootstarternalu.client.Routes;
 import com.github.nalukit.bootstarternalu.client.Selector;
 import com.github.nalukit.bootstarternalu.client.event.FlushProjectEvent;
 import com.github.nalukit.bootstarternalu.client.event.GenerateProjectEvent;
+import com.github.nalukit.bootstarternalu.client.ui.content.composite.application.ApplicationComposite;
 import com.github.nalukit.bootstarternalu.client.ui.content.composite.project.ProjectComposite;
 import com.github.nalukit.bootstarternalu.client.ui.content.composite.screen.ScreenComposite;
 import com.github.nalukit.bootstarternalu.shared.model.ControllerData;

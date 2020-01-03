@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 - 2019 - Frank Hossfeld
+ * Copyright (c) 2018 - 2020 - Frank Hossfeld
  *
  *  Licensed under the Apache License, Version 2.0 (the "License"); you may not
  *  use this file except in compliance with the License. You may obtain a copy of
@@ -33,6 +33,7 @@ public class NaluGeneraterParms {
   private boolean              loginScreen;
   private boolean              hashUrl;
   private WidgetLibrary        widgetLibrary;
+  private ServerImplementation serverImplementation;
   private List<ControllerData> controllers;
 
   public NaluGeneraterParms() {
@@ -79,22 +80,6 @@ public class NaluGeneraterParms {
     this.debug = debug;
   }
 
-  public List<ControllerData> getControllers() {
-    return controllers;
-  }
-
-  public void setControllers(List<ControllerData> controllers) {
-    this.controllers = controllers;
-  }
-
-  public WidgetLibrary getWidgetLibrary() {
-    return widgetLibrary;
-  }
-
-  public void setWidgetLibrary(WidgetLibrary widgetLibrary) {
-    this.widgetLibrary = widgetLibrary;
-  }
-
   public boolean isLoginScreen() {
     return loginScreen;
   }
@@ -109,6 +94,30 @@ public class NaluGeneraterParms {
 
   public void setHashUrl(boolean hashUrl) {
     this.hashUrl = hashUrl;
+  }
+
+  public WidgetLibrary getWidgetLibrary() {
+    return widgetLibrary;
+  }
+
+  public void setWidgetLibrary(WidgetLibrary widgetLibrary) {
+    this.widgetLibrary = widgetLibrary;
+  }
+
+  public ServerImplementation getServerImplementation() {
+    return serverImplementation;
+  }
+
+  public void setServerImplementation(ServerImplementation serverImplementation) {
+    this.serverImplementation = serverImplementation;
+  }
+
+  public List<ControllerData> getControllers() {
+    return controllers;
+  }
+
+  public void setControllers(List<ControllerData> controllers) {
+    this.controllers = controllers;
   }
 
   public boolean hasNavigationConfirmation() {

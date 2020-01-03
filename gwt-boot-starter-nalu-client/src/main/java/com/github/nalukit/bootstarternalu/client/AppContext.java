@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 - 2019 - Frank Hossfeld
+ * Copyright (c) 2018 - 2020 - Frank Hossfeld
  *
  *  Licensed under the Apache License, Version 2.0 (the "License"); you may not
  *  use this file except in compliance with the License. You may obtain a copy of
@@ -20,6 +20,7 @@ package com.github.nalukit.bootstarternalu.client;
 import com.github.nalukit.bootstarternalu.shared.model.ControllerData;
 import com.github.nalukit.bootstarternalu.shared.model.DataConstants;
 import com.github.nalukit.bootstarternalu.shared.model.NaluGeneraterParms;
+import com.github.nalukit.bootstarternalu.shared.model.ServerImplementation;
 import com.github.nalukit.bootstarternalu.shared.model.WidgetLibrary;
 import com.github.nalukit.nalu.client.context.IsContext;
 
@@ -41,6 +42,7 @@ public class AppContext
     this.naluGeneraterParms.setLoginScreen(true);
     this.naluGeneraterParms.setHashUrl(true);
     this.naluGeneraterParms.setGwtVersion(DataConstants.GWT_VERSION_2_8_2);
+    this.naluGeneraterParms.setServerImplementation(ServerImplementation.GWT_MAVEN_PLUGIN);
     this.naluGeneraterParms.setWidgetLibrary(WidgetLibrary.DOMINO_UI);
     this.naluGeneraterParms.getControllers()
                            .add(new ControllerData("Screen01",

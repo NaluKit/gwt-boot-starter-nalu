@@ -15,15 +15,20 @@
  *
  */
 
-package com.github.nalukit.bootstarternalu.client.ui;
+package com.github.nalukit.bootstarternalu.shared.model;
 
-public class Constants {
+public enum ServerImplementation {
 
-  public final static String CONTENT_WIDTH = "800px";
+  GWT_MAVEN_PLUGIN("use standard GWT-Maven-Plugin as server implmentation"),
+  SPRING_BOOT("use Spring Boot as server implementation");
 
-  public final static int MARGIN_CONTAINER = 12;
-  public final static int MARGIN_FORM_ROW  = 6;
+  private String text;
 
-  public static final String ERROR_PARAMETER_ROUTE = "Route";
+  ServerImplementation(String text) {
+    this.text = text;
+  }
 
+  public String getText() {
+    return text;
+  }
 }
