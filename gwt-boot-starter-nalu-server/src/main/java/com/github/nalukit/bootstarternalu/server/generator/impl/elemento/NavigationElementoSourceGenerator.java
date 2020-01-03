@@ -18,7 +18,7 @@
 package com.github.nalukit.bootstarternalu.server.generator.impl.elemento;
 
 import com.github.nalukit.bootstarternalu.server.generator.impl.AbstractNavigationSourceGenerator;
-import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
+import com.github.nalukit.bootstarternalu.shared.model.NaluGeneraterParms;
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeSpec;

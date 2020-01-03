@@ -34,7 +34,7 @@
   <inherits name="org.dominokit.domino.rest.Rest"/>
 
   <!-- Specify the app entry point class.                         -->
-  <entry-point class='com.github.nalukit.gwtbootstarternalu.client.App'/>
+  <entry-point class='com.github.nalukit.bootstarternalu.client.App'/>
 
   <!-- Specify the paths for translatable code                    -->
   <source path='client'/>

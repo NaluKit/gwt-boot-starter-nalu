@@ -18,7 +18,7 @@
 package com.github.nalukit.bootstarternalu.server.generator.impl.gxt;
 
 import com.github.nalukit.bootstarternalu.server.generator.impl.AbstractStatusBarSourceGenerator;
-import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
+import com.github.nalukit.bootstarternalu.shared.model.NaluGeneraterParms;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.ui.Label;
 import com.sencha.gxt.widget.core.client.container.SimpleContainer;

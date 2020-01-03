@@ -234,6 +234,7 @@
   </dependencies>
 
   <build>
+    <finalName>boot-starter-nalu</finalName>
     <pluginManagement>
       <plugins>
         <plugin>

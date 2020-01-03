@@ -21,10 +21,10 @@ import com.github.nalukit.bootstarternalu.server.generator.GeneratorUtils;
 import com.github.nalukit.bootstarternalu.server.generator.SourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.common.ModuleDescriptorGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.maven.multi.MultiPomGenerator;
-import com.github.nalukit.gwtbootstarternalu.shared.model.GeneratorException;
-import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
-import com.github.nalukit.gwtbootstarternalu.shared.transport.response.GenerateResponse;
-import com.github.nalukit.gwtbootstarternalu.shared.transport.response.Status;
+import com.github.nalukit.bootstarternalu.shared.model.GeneratorException;
+import com.github.nalukit.bootstarternalu.shared.model.NaluGeneraterParms;
+import com.github.nalukit.bootstarternalu.shared.transport.response.GenerateResponse;
+import com.github.nalukit.bootstarternalu.shared.transport.response.Status;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

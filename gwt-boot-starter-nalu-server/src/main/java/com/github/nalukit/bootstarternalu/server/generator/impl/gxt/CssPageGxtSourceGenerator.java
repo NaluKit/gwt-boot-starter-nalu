@@ -19,8 +19,8 @@ package com.github.nalukit.bootstarternalu.server.generator.impl.gxt;
 
 import com.github.nalukit.bootstarternalu.server.generator.GeneratorUtils;
 import com.github.nalukit.bootstarternalu.server.generator.impl.elemento.CssPageElementoSourceGenerator;
-import com.github.nalukit.gwtbootstarternalu.shared.model.GeneratorException;
-import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
+import com.github.nalukit.bootstarternalu.shared.model.GeneratorException;
+import com.github.nalukit.bootstarternalu.shared.model.NaluGeneraterParms;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;

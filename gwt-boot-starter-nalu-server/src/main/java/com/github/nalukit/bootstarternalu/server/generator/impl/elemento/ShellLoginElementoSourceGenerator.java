@@ -17,7 +17,7 @@
 package com.github.nalukit.bootstarternalu.server.generator.impl.elemento;
 
 import com.github.nalukit.bootstarternalu.server.generator.impl.AbstractShellApplicationSourceGenerator;
-import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
+import com.github.nalukit.bootstarternalu.shared.model.NaluGeneraterParms;
 import com.github.nalukit.nalu.client.component.annotation.Shell;
 import com.squareup.javapoet.AnnotationSpec;
 import com.squareup.javapoet.ClassName;

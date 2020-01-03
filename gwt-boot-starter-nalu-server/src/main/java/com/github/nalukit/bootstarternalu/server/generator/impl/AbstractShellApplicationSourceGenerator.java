@@ -19,8 +19,8 @@ package com.github.nalukit.bootstarternalu.server.generator.impl;
 
 import com.github.nalukit.bootstarternalu.server.generator.GeneratorConstants;
 import com.github.nalukit.bootstarternalu.server.generator.GeneratorUtils;
-import com.github.nalukit.gwtbootstarternalu.shared.model.GeneratorException;
-import com.github.nalukit.gwtbootstarternalu.shared.model.WidgetLibrary;
+import com.github.nalukit.bootstarternalu.shared.model.GeneratorException;
+import com.github.nalukit.bootstarternalu.shared.model.WidgetLibrary;
 import com.github.nalukit.nalu.client.component.AbstractShell;
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.CodeBlock;

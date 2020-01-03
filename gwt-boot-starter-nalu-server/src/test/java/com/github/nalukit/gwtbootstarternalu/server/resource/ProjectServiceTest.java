@@ -18,12 +18,12 @@
 package com.github.nalukit.gwtbootstarternalu.server.resource;
 
 import com.github.nalukit.bootstarternalu.server.resource.impl.ProjectService;
-import com.github.nalukit.gwtbootstarternalu.shared.model.ControllerData;
-import com.github.nalukit.gwtbootstarternalu.shared.model.DataConstants;
-import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
-import com.github.nalukit.gwtbootstarternalu.shared.model.WidgetLibrary;
-import com.github.nalukit.gwtbootstarternalu.shared.transport.response.GenerateResponse;
-import com.github.nalukit.gwtbootstarternalu.shared.transport.response.Status;
+import com.github.nalukit.bootstarternalu.shared.model.ControllerData;
+import com.github.nalukit.bootstarternalu.shared.model.DataConstants;
+import com.github.nalukit.bootstarternalu.shared.model.NaluGeneraterParms;
+import com.github.nalukit.bootstarternalu.shared.model.WidgetLibrary;
+import com.github.nalukit.bootstarternalu.shared.transport.response.GenerateResponse;
+import com.github.nalukit.bootstarternalu.shared.transport.response.Status;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

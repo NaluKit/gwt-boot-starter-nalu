@@ -17,8 +17,8 @@
 package com.github.nalukit.bootstarternalu.server.generator.impl.elemento;
 
 import com.github.nalukit.bootstarternalu.server.generator.impl.AbstractErrorControllerComponentSourceGenerator;
-import com.github.nalukit.gwtbootstarternalu.shared.model.ControllerData;
-import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
+import com.github.nalukit.bootstarternalu.shared.model.ControllerData;
+import com.github.nalukit.bootstarternalu.shared.model.NaluGeneraterParms;
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.FieldSpec;
 import com.squareup.javapoet.MethodSpec;

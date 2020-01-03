@@ -61,9 +61,9 @@ import com.github.nalukit.bootstarternalu.server.generator.impl.gxt.ShellApplica
 import com.github.nalukit.bootstarternalu.server.generator.impl.gxt.ShellLoginGxtSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.gxt.StatusBarGxtSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.maven.multi.ConfigGenerator;
-import com.github.nalukit.gwtbootstarternalu.shared.model.ControllerData;
-import com.github.nalukit.gwtbootstarternalu.shared.model.GeneratorException;
-import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
+import com.github.nalukit.bootstarternalu.shared.model.ControllerData;
+import com.github.nalukit.bootstarternalu.shared.model.GeneratorException;
+import com.github.nalukit.bootstarternalu.shared.model.NaluGeneraterParms;
 
 import java.io.File;
 

@@ -17,8 +17,8 @@
 package com.github.nalukit.bootstarternalu.server.generator.impl.gxt;
 
 import com.github.nalukit.bootstarternalu.server.generator.impl.AbstractLoginControllerComponentSourceGenerator;
-import com.github.nalukit.gwtbootstarternalu.shared.model.ControllerData;
-import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
+import com.github.nalukit.bootstarternalu.shared.model.ControllerData;
+import com.github.nalukit.bootstarternalu.shared.model.NaluGeneraterParms;
 import com.google.gwt.user.client.ui.Label;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.CenterLayoutContainer;
