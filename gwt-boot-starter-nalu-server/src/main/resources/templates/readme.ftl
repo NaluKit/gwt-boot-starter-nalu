@@ -28,12 +28,12 @@ To start the application, call:
 
 
 <#if widgetLibrary == "SPRING_BOOT">
-    Running
+Running
 
-    - mvn clean install
+- mvn clean install
 
-    on the parent module will create a executable war file in the "MyTestProject-server" module, which can be run usin
+on the parent module will create a executable war file in the "MyTestProject-server" module, which can be run using
 
-    java -jar MyTestProject-server\target\MyTestProject-server-1.0.0.war
+java -jar MyTestProject-server\target\MyTestProject-server-1.0.0.war
 </#if>
 
