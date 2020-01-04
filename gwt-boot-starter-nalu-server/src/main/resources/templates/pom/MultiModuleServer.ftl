@@ -32,8 +32,37 @@
     <artifactId>${artifactId}-server</artifactId>
     <packaging>war</packaging>
 
+    <#if serverImplementation == "SPRING_BOOT">
+        <properties>
+            <spring-boot.version>2.2.2.RELEASE</spring-boot.version>
+        </properties>
+    </#if>
+
+    <#if serverImplementation == "SPRING_BOOT">
+        <!-- Spring Boot -->
+        <dependencyManagement>
+            <dependencies>
+                <dependency>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-dependencies</artifactId>
+                    <version>${springBootVersion}</version>
+                    <type>pom</type>
+                    <scope>import</scope>
+                </dependency>
+            </dependencies>
+        </dependencyManagement>
+    </#if>
+
 
     <dependencies>
+        <#if serverImplementation == "SPRING_BOOT">
+            <!-- SPRING BOOT -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+            </dependency>
+
+        </#if>
         <dependency>
             <groupId>${groupId}</groupId>
             <artifactId>${artifactId}-shared</artifactId>
@@ -53,26 +82,41 @@
     <build>
         <pluginManagement>
             <plugins>
-                <plugin>
-                    <groupId>org.eclipse.jetty</groupId>
-                    <artifactId>jetty-maven-plugin</artifactId>
-                    <configuration>
-                        <scanIntervalSeconds>1</scanIntervalSeconds>
-                        <webApp>
-                            <extraClasspath>${basedir}/../${artifactId}-shared/target/classes/</extraClasspath>
-                        </webApp>
-                        <contextXml>${basedir}/src/main/jettyconf/context.xml</contextXml>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.tomcat.maven</groupId>
-                    <artifactId>tomcat7-maven-plugin</artifactId>
-                    <configuration>
-                        <addWarDependenciesInClassloader>false</addWarDependenciesInClassloader>
-                        <path>/</path>
-                        <uriEncoding>UTF-8</uriEncoding>
-                    </configuration>
-                </plugin>
+                <#if serverImplementation == "GWT_MAVEN_PLUGIN">
+                    <plugin>
+                        <groupId>org.eclipse.jetty</groupId>
+                        <artifactId>jetty-maven-plugin</artifactId>
+                        <configuration>
+                            <scanIntervalSeconds>1</scanIntervalSeconds>
+                            <webApp>
+                                <extraClasspath>${basedir}/../${artifactId}-shared/target/classes/</extraClasspath>
+                            </webApp>
+                            <contextXml>${basedir}/src/main/jettyconf/context.xml</contextXml>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.tomcat.maven</groupId>
+                        <artifactId>tomcat7-maven-plugin</artifactId>
+                        <configuration>
+                            <addWarDependenciesInClassloader>false</addWarDependenciesInClassloader>
+                            <path>/</path>
+                            <uriEncoding>UTF-8</uriEncoding>
+                        </configuration>
+                    </plugin>
+                <#elseif serverImplementation == "SPRING_BOOT">
+                    <plugin>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-maven-plugin</artifactId>
+                        <version>${springBootVersion}</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>repackage</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </#if>
             </plugins>
         </pluginManagement>
     </build>
@@ -103,25 +147,33 @@
             <build>
                 <pluginManagement>
                     <plugins>
-                        <plugin>
-                            <groupId>org.eclipse.jetty</groupId>
-                            <artifactId>jetty-maven-plugin</artifactId>
-                            <configuration>
-                                <webApp>
-                                    <resourceBases>
-                                        <resourceBase>${basedir}/src/main/webapp</resourceBase>
-                                        <resourceBase>${basedir}/../target/gwt/launcherDir/</resourceBase>
-                                    </resourceBases>
-                                </webApp>
-                            </configuration>
-                        </plugin>
-                        <plugin>
-                            <groupId>org.apache.tomcat.maven</groupId>
-                            <artifactId>tomcat7-maven-plugin</artifactId>
-                            <configuration>
-                                <contextFile>${basedir}/src/main/tomcatconf/context.xml</contextFile>
-                            </configuration>
-                        </plugin>
+                        <#if serverImplementation == "GWT_MAVEN_PLUGIN">
+                            <plugin>
+                                <groupId>org.eclipse.jetty</groupId>
+                                <artifactId>jetty-maven-plugin</artifactId>
+                                <configuration>
+                                    <webApp>
+                                        <resourceBases>
+                                            <resourceBase>${basedir}/src/main/webapp</resourceBase>
+                                            <resourceBase>${basedir}/../target/gwt/launcherDir/</resourceBase>
+                                        </resourceBases>
+                                    </webApp>
+                                </configuration>
+                            </plugin>
+                            <plugin>
+                                <groupId>org.apache.tomcat.maven</groupId>
+                                <artifactId>tomcat7-maven-plugin</artifactId>
+                                <configuration>
+                                    <contextFile>${basedir}/src/main/tomcatconf/context.xml</contextFile>
+                                </configuration>
+                            </plugin>
+                        <#elseif serverImplementation == "SPRING_BOOT">
+                            <plugin>
+                                <groupId>org.springframework.boot</groupId>
+                                <artifactId>spring-boot-maven-plugin</artifactId>
+                                <version>${springBootVersion}</version>
+                            </plugin>
+                        </#if>
                     </plugins>
                 </pluginManagement>
             </build>
