@@ -65,7 +65,9 @@ public class InfoGenerator {
     }
 
     Map<String, Object> templateData = new HashMap<>();
-
+    templateData.put("serverImplementation",
+                     this.naluGeneraterParms.getServerImplementation()
+                                            .toString());
     try (StringWriter out = new StringWriter()) {
       template.process(templateData,
                        out);
