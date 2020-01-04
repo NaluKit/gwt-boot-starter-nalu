@@ -32,7 +32,7 @@ public class MultiPomGeneratorTest {
 
     @Test
     public void springBootServerPom() throws GeneratorException, IOException {
-        MultiPomGenerator generator = getGeneratorBuilderForSpringBoot().build();
+        MultiPomGenerator generator = getGeneratorForSpringBoot();
         generator.generate();
 
         File serverPom = Arrays.stream(Objects.requireNonNull(serverFolder.getRoot().listFiles()))
@@ -45,16 +45,34 @@ public class MultiPomGeneratorTest {
         assertTrue(pomAsString.contains("<spring-boot.version>2.2.2.RELEASE</spring-boot.version>"));
         assertTrue(pomAsString.contains("<artifactId>spring-boot-starter-web</artifactId>"));
         assertTrue(pomAsString.contains("<artifactId>spring-boot-maven-plugin</artifactId>"));
+        assertFalse(pomAsString.contains("<artifactId>jetty-maven-plugin</artifactId>"));
+        assertFalse(pomAsString.contains("<artifactId>tomcat7-maven-plugin</artifactId>"));
     }
 
-    private MultiPomGenerator.Builder getGeneratorBuilderForSpringBoot() {
+    @Test
+    public void springBootClientPom() throws GeneratorException, IOException {
+        MultiPomGenerator generator = getGeneratorForSpringBoot();
+        generator.generate();
+
+        File clientPom = Arrays.stream(Objects.requireNonNull(clientFolder.getRoot().listFiles()))
+                .filter(f -> f.getName().equals("pom.xml")).findFirst().orElse(null);
+
+        assertNotNull(clientPom);
+
+        String pomAsString = FileUtils.readFileToString(clientPom);
+        assertTrue(pomAsString.contains("<spring-boot.public.dir>"));
+        assertTrue(pomAsString.contains("<launcherDir>${spring-boot.public.dir}</launcherDir>"));
+        assertTrue(pomAsString.contains("<warDir>${spring-boot.public.dir}</warDir>"));
+    }
+
+    private MultiPomGenerator getGeneratorForSpringBoot() {
         MultiPomGenerator.Builder builder = new MultiPomGenerator.Builder();
         builder.projectFolder(projectFolder.getRoot().getPath());
         builder.projectFolderClient(clientFolder.getRoot().getPath());
         builder.projectFolderShared(sharedFolder.getRoot().getPath());
         builder.projectFolderServer(serverFolder.getRoot().getPath());
         builder.naluGeneraterParms(getNaluGeneratorParamsForSpringBoot());
-        return builder;
+        return builder.build();
     }
 
     private NaluGeneraterParms getNaluGeneratorParamsForSpringBoot() {

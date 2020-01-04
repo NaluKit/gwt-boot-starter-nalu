@@ -46,6 +46,10 @@
             <!-- GXT version -->
             <gxt.version>4.0.0</gxt.version>
         </#if>
+        <#if serverImplementation == "SPRING_BOOT">
+            <!-- Public Spring Boot directory -->
+            <spring-boot.public.dir>${basedir}/../${artifactId}-server/target/classes/public/</spring-boot.public.dir>
+        </#if>
     </properties>
 
     <dependencies>
@@ -155,6 +159,12 @@
                 <configuration>
                     <moduleName>${groupId}.${artifactIdLowerCase}.${artifactId}</moduleName>
                     <moduleShortName>${artifactId}</moduleShortName>
+                    <#if serverImplementation == "SPRING_BOOT">
+                        <!-- Spring Boot as default: put the compile result under public directory -->
+                        <classpathScope>compile+runtime</classpathScope>
+                        <launcherDir>${springBootPublicDir}</launcherDir>
+                        <warDir>${springBootPublicDir}</warDir>
+                    </#if>
                 </configuration>
             </plugin>
         </plugins>

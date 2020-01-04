@@ -33,73 +33,75 @@ import java.util.Map;
 // TODO CSS generieren !
 public class InfoGenerator {
 
-  private NaluGeneraterParms naluGeneraterParms;
+    private NaluGeneraterParms naluGeneraterParms;
 
-  private String projectFolder;
+    private String projectFolder;
 
-  private InfoGenerator(Builder builder) {
-    super();
+    private InfoGenerator(Builder builder) {
+        super();
 
-    this.naluGeneraterParms = builder.naluGeneraterParms;
-    this.projectFolder = builder.projectFolder;
-  }
-
-  public static Builder builder() {
-    return new Builder();
-  }
-
-  public void generate()
-      throws GeneratorException {
-
-    Configuration freeMarkerConfiguration = new Configuration();
-
-    freeMarkerConfiguration.setClassForTemplateLoading(InfoGenerator.class,
-                                                       "/templates");
-    freeMarkerConfiguration.setDefaultEncoding("UTF-8");
-
-    Template template;
-    try {
-      template = freeMarkerConfiguration.getTemplate("readme.ftl");
-    } catch (IOException e) {
-      throw new GeneratorException("Unable to get >>readme.ftl<< -> exception: " + e.getMessage());
+        this.naluGeneraterParms = builder.naluGeneraterParms;
+        this.projectFolder = builder.projectFolder;
     }
 
-    Map<String, Object> templateData = new HashMap<>();
-    templateData.put("serverImplementation",
-                     this.naluGeneraterParms.getServerImplementation()
-                                            .toString());
-    try (StringWriter out = new StringWriter()) {
-      template.process(templateData,
-                       out);
-      Files.write(Paths.get(this.projectFolder + File.separator + "readme.txt"),
-                  out.toString()
-                     .getBytes());
-      out.flush();
-    } catch (IOException | TemplateException e) {
-      throw new GeneratorException("Unable to write generated file: >>" + this.projectFolder + File.separator + "readme.txt" + "<< -> exception: " + e.getMessage());
-    }
-  }
-
-  public static class Builder {
-
-    NaluGeneraterParms naluGeneraterParms;
-
-    String projectFolder;
-
-    public Builder naluGeneraterParms(NaluGeneraterParms naluGeneraterParms) {
-      this.naluGeneraterParms = naluGeneraterParms;
-      return this;
+    public static Builder builder() {
+        return new Builder();
     }
 
-    public Builder projectFolder(String projectFolder) {
-      this.projectFolder = projectFolder;
-      return this;
+    public void generate()
+            throws GeneratorException {
+
+        Configuration freeMarkerConfiguration = new Configuration();
+
+        freeMarkerConfiguration.setClassForTemplateLoading(InfoGenerator.class,
+                "/templates");
+        freeMarkerConfiguration.setDefaultEncoding("UTF-8");
+
+        Template template;
+        try {
+            template = freeMarkerConfiguration.getTemplate("readme.ftl");
+        } catch (IOException e) {
+            throw new GeneratorException("Unable to get >>readme.ftl<< -> exception: " + e.getMessage());
+        }
+
+        Map<String, Object> templateData = new HashMap<>();
+        templateData.put("serverImplementation",
+                this.naluGeneraterParms.getServerImplementation()
+                        .name());
+        templateData.put("artefactId", this.naluGeneraterParms.getArtefactId());
+
+        try (StringWriter out = new StringWriter()) {
+            template.process(templateData,
+                    out);
+            Files.write(Paths.get(this.projectFolder + File.separator + "readme.txt"),
+                    out.toString()
+                            .getBytes());
+            out.flush();
+        } catch (IOException | TemplateException e) {
+            throw new GeneratorException("Unable to write generated file: >>" + this.projectFolder + File.separator + "readme.txt" + "<< -> exception: " + e.getMessage());
+        }
     }
 
-    public InfoGenerator build() {
-      return new InfoGenerator(this);
-    }
+    public static class Builder {
 
-  }
+        NaluGeneraterParms naluGeneraterParms;
+
+        String projectFolder;
+
+        public Builder naluGeneraterParms(NaluGeneraterParms naluGeneraterParms) {
+            this.naluGeneraterParms = naluGeneraterParms;
+            return this;
+        }
+
+        public Builder projectFolder(String projectFolder) {
+            this.projectFolder = projectFolder;
+            return this;
+        }
+
+        public InfoGenerator build() {
+            return new InfoGenerator(this);
+        }
+
+    }
 
 }
