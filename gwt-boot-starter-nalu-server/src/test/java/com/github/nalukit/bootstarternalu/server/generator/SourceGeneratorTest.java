@@ -53,6 +53,14 @@ public class SourceGeneratorTest {
                 .orElse(null);
         assertNotNull(hostpagePath);
         assertTrue(hostpagePath.toFile().getAbsolutePath().contains("public" + File.separator + "MyTestProject.html"));
+
+        Path appProbs = Files.find(serverFolder.getRoot().toPath(), Integer.MAX_VALUE,
+                (filePath, fileAttr) -> fileAttr.isRegularFile())
+                .filter(path -> path.toFile().getName().equals("application.properties"))
+                .findFirst()
+                .orElse(null);
+        assertNotNull(appProbs);
+        assertTrue(appProbs.toFile().getAbsolutePath().contains("resources" + File.separator + "application.properties"));
     }
 
     private SourceGenerator getSourceGenerator() {

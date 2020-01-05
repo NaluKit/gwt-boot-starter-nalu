@@ -23,6 +23,7 @@ import com.github.nalukit.bootstarternalu.server.generator.impl.elemento.*;
 import com.github.nalukit.bootstarternalu.server.generator.impl.gwt.*;
 import com.github.nalukit.bootstarternalu.server.generator.impl.gxt.*;
 import com.github.nalukit.bootstarternalu.server.generator.impl.maven.multi.ConfigGenerator;
+import com.github.nalukit.bootstarternalu.server.generator.impl.springboot.ApplicationPropertiesSourceGenerator;
 import com.github.nalukit.bootstarternalu.server.generator.impl.springboot.SpringBootApplicationSourceGenerator;
 import com.github.nalukit.bootstarternalu.shared.model.ControllerData;
 import com.github.nalukit.bootstarternalu.shared.model.GeneratorException;
@@ -98,7 +99,7 @@ public class SourceGenerator {
     public void generate()
             throws GeneratorException {
 
-        this.generateSorucenForMultiMavenModule();
+        this.generateSourcesForMultiMavenModule();
 
         InfoGenerator.builder()
                 .naluGeneraterParms(this.naluGeneraterParms)
@@ -107,7 +108,7 @@ public class SourceGenerator {
                 .generate();
     }
 
-    private void generateSorucenForMultiMavenModule()
+    private void generateSourcesForMultiMavenModule()
             throws GeneratorException {
         this.createBasicStructureForMultiMavenModule();
         this.createDataDependingStructureForMultiMavenModule();
@@ -262,6 +263,11 @@ public class SourceGenerator {
             SpringBootApplicationSourceGenerator.builder()
                     .serverPackageJavaConform(this.clientPackageJavaServerConform)
                     .directoryJava(directoryJavaServer)
+                    .build()
+                    .generate();
+
+            ApplicationPropertiesSourceGenerator.builder()
+                    .setResourceDirecory(this.directoryResources)
                     .build()
                     .generate();
         }
