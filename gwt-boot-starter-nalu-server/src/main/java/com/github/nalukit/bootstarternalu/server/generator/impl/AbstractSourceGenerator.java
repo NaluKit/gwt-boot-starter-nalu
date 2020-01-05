@@ -34,6 +34,8 @@ public abstract class AbstractSourceGenerator {
 
   protected String sharedPackageJavaConform;
 
+  protected String serverPackageJavaConform;
+
   protected ClassName getClassNameWidget() {
     switch (this.naluGeneraterParms.getWidgetLibrary()) {
       case DOMINO_UI:
