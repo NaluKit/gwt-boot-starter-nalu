@@ -33,87 +33,87 @@ import java.util.Map;
 
 public class HostPageSourceGenerator {
 
-  private NaluGeneraterParms naluGeneraterParms;
+    private NaluGeneraterParms naluGeneraterParms;
 
-  private File directoryWebapp;
+    private File directory;
 
-  private HostPageSourceGenerator(Builder builder) {
-    super();
+    private HostPageSourceGenerator(Builder builder) {
+        super();
 
-    this.naluGeneraterParms = builder.naluGeneraterParms;
-    this.directoryWebapp = builder.directoryWebapp;
-  }
-
-  public static Builder builder() {
-    return new Builder();
-  }
-
-  public void generate()
-      throws GeneratorException {
-    this.generateHostPage();
-  }
-
-  private void generateHostPage()
-      throws GeneratorException {
-
-    Configuration freeMarkerConfiguration = new Configuration();
-
-    freeMarkerConfiguration.setClassForTemplateLoading(HostPageSourceGenerator.class,
-                                                       "/templates/html");
-    freeMarkerConfiguration.setDefaultEncoding("UTF-8");
-
-    Template template;
-    try {
-      template = freeMarkerConfiguration.getTemplate("HostPage.ftl");
-    } catch (IOException e) {
-      throw new GeneratorException("Unable to get >>HostPage.ftl<< -> exception: " + e.getMessage());
+        this.naluGeneraterParms = builder.naluGeneraterParms;
+        this.directory = builder.directory;
     }
 
-    Map<String, Object> templateData = new HashMap<>();
-    templateData.put("artifactId",
-                     GeneratorUtils.removeBadChracters(this.naluGeneraterParms.getArtefactId()));
-    templateData.put("widgetLibrary",
-                     this.naluGeneraterParms.getWidgetLibrary()
-                                            .toString());
-
-    try (StringWriter out = new StringWriter()) {
-      template.process(templateData,
-                       out);
-      Files.write(Paths.get(this.directoryWebapp.getPath() + File.separator + this.naluGeneraterParms.getArtefactId() + ".html"),
-                  out.toString()
-                     .getBytes());
-      out.flush();
-    } catch (IOException | TemplateException e) {
-      throw new GeneratorException("Unable to write generated file: >>" +
-                                   this.directoryWebapp.getPath() +
-                                   File.separator +
-                                   GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId()) +
-                                   ".html" +
-                                   "<< -> exception: " +
-                                   e.getMessage());
-    }
-  }
-
-  public static class Builder {
-
-    NaluGeneraterParms naluGeneraterParms;
-
-    File directoryWebapp;
-
-    public Builder naluGeneraterParms(NaluGeneraterParms naluGeneraterParms) {
-      this.naluGeneraterParms = naluGeneraterParms;
-      return this;
+    public static Builder builder() {
+        return new Builder();
     }
 
-    public Builder directoryWebapp(File directoryWebapp) {
-      this.directoryWebapp = directoryWebapp;
-      return this;
+    public void generate()
+            throws GeneratorException {
+        this.generateHostPage();
     }
 
-    public HostPageSourceGenerator build() {
-      return new HostPageSourceGenerator(this);
+    private void generateHostPage()
+            throws GeneratorException {
+
+        Configuration freeMarkerConfiguration = new Configuration();
+
+        freeMarkerConfiguration.setClassForTemplateLoading(HostPageSourceGenerator.class,
+                "/templates/html");
+        freeMarkerConfiguration.setDefaultEncoding("UTF-8");
+
+        Template template;
+        try {
+            template = freeMarkerConfiguration.getTemplate("HostPage.ftl");
+        } catch (IOException e) {
+            throw new GeneratorException("Unable to get >>HostPage.ftl<< -> exception: " + e.getMessage());
+        }
+
+        Map<String, Object> templateData = new HashMap<>();
+        templateData.put("artifactId",
+                GeneratorUtils.removeBadChracters(this.naluGeneraterParms.getArtefactId()));
+        templateData.put("widgetLibrary",
+                this.naluGeneraterParms.getWidgetLibrary()
+                        .toString());
+
+        try (StringWriter out = new StringWriter()) {
+            template.process(templateData,
+                    out);
+            Files.write(Paths.get(this.directory.getPath() + File.separator + this.naluGeneraterParms.getArtefactId() + ".html"),
+                    out.toString()
+                            .getBytes());
+            out.flush();
+        } catch (IOException | TemplateException e) {
+            throw new GeneratorException("Unable to write generated file: >>" +
+                    this.directory.getPath() +
+                    File.separator +
+                    GeneratorUtils.setFirstCharacterToUpperCase(this.naluGeneraterParms.getArtefactId()) +
+                    ".html" +
+                    "<< -> exception: " +
+                    e.getMessage());
+        }
     }
 
-  }
+    public static class Builder {
+
+        NaluGeneraterParms naluGeneraterParms;
+
+        File directory;
+
+        public Builder naluGeneraterParms(NaluGeneraterParms naluGeneraterParms) {
+            this.naluGeneraterParms = naluGeneraterParms;
+            return this;
+        }
+
+        public Builder directoryWebapp(File directory) {
+            this.directory = directory;
+            return this;
+        }
+
+        public HostPageSourceGenerator build() {
+            return new HostPageSourceGenerator(this);
+        }
+
+    }
 
 }

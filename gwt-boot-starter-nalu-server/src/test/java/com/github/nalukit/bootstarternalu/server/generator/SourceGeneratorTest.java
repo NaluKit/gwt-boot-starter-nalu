@@ -5,6 +5,14 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 public class SourceGeneratorTest {
 
     @Rule
@@ -20,9 +28,31 @@ public class SourceGeneratorTest {
     public TemporaryFolder sharedFolder = new TemporaryFolder();
 
     @Test
-    public void springBootGeneratorTest() throws GeneratorException {
+    public void springBootGeneratorTest() throws GeneratorException, IOException {
         SourceGenerator generator = getSourceGenerator();
         generator.generate();
+
+        Path resourcePath = Files.find(serverFolder.getRoot().toPath(), Integer.MAX_VALUE,
+                (filePath, fileAttr) -> fileAttr.isDirectory())
+                .filter(path -> path.toFile().getName().equals("resources"))
+                .findFirst()
+                .orElse(null);
+        assertNotNull(resourcePath);
+
+        Path publicPath = Files.find(serverFolder.getRoot().toPath(), Integer.MAX_VALUE,
+                (filePath, fileAttr) -> fileAttr.isDirectory())
+                .filter(path -> path.toFile().getName().equals("public"))
+                .findFirst()
+                .orElse(null);
+        assertNotNull(publicPath);
+
+        Path hostpagePath = Files.find(serverFolder.getRoot().toPath(), Integer.MAX_VALUE,
+                (filePath, fileAttr) -> fileAttr.isRegularFile())
+                .filter(path -> path.toFile().getName().equals("MyTestProject.html"))
+                .findFirst()
+                .orElse(null);
+        assertNotNull(hostpagePath);
+        assertTrue(hostpagePath.toFile().getAbsolutePath().contains("public" + File.separator + "MyTestProject.html"));
     }
 
     private SourceGenerator getSourceGenerator() {

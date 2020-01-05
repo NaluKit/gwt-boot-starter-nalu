@@ -27,7 +27,7 @@ public class SpringBootApplicationSourceGeneratorTest {
 
         Path appPath = Files.find(projectFolder.getRoot().toPath(), Integer.MAX_VALUE,
                 (filePath, fileAttr) -> fileAttr.isRegularFile())
-                .filter(f -> f.endsWith("Application.java"))
+                .filter(path -> path.toFile().getName().equals("Application.java"))
                 .findFirst()
                 .orElse(null);
 

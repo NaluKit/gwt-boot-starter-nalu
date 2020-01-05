@@ -37,6 +37,10 @@ public class SourceGenerator {
 
     private static final String SRC_MAIN_WEBAPP = "src" + File.separator + "main" + File.separator + "webapp";
 
+    private static final String SRC_MAIN_RESOURCES = "src" + File.separator + "main" + File.separator + "resources";
+
+    private static final String SRC_MAIN_RESOURCES_PUBLIC = SRC_MAIN_RESOURCES + File.separator + "public";
+
     private static final String CLIENT = "client";
 
     private static final String SHARED = "shared";
@@ -52,6 +56,10 @@ public class SourceGenerator {
     private File directoryJavaServer;
 
     private File directoryWebapp;
+
+    private File directoryResources;
+
+    private File directoryResourcesPublic;
 
     private String clientPackageJavaConform;
 
@@ -113,7 +121,7 @@ public class SourceGenerator {
         // Hostpage ...
         HostPageSourceGenerator.builder()
                 .naluGeneraterParms(this.naluGeneraterParms)
-                .directoryWebapp(this.directoryWebapp)
+                .directoryWebapp(isSpringBoot() ? this.directoryResourcesPublic : this.directoryWebapp)
                 .build()
                 .generate();
         // web.xml ...
@@ -250,7 +258,7 @@ public class SourceGenerator {
             }
         }
 
-        if (this.naluGeneraterParms.getServerImplementation() == ServerImplementation.SPRING_BOOT) {
+        if (isSpringBoot()) {
             SpringBootApplicationSourceGenerator.builder()
                     .serverPackageJavaConform(this.clientPackageJavaServerConform)
                     .directoryJava(directoryJavaServer)
@@ -272,6 +280,18 @@ public class SourceGenerator {
         // create webapp directory
         directoryWebapp = new File(this.projectFolderServer + File.separator + SourceGenerator.SRC_MAIN_WEBAPP);
         directoryWebapp.mkdirs();
+
+        if (isSpringBoot()) {
+            directoryResources = new File(this.projectFolderServer + File.separator + SourceGenerator.SRC_MAIN_RESOURCES);
+            directoryResources.mkdirs();
+
+            directoryResourcesPublic = new File(this.projectFolderServer + File.separator + SourceGenerator.SRC_MAIN_RESOURCES_PUBLIC);
+            directoryResourcesPublic.mkdirs();
+        }
+    }
+
+    private boolean isSpringBoot() {
+        return this.naluGeneraterParms.getServerImplementation() == ServerImplementation.SPRING_BOOT;
     }
 
     private void createDataDependingStructureForMultiMavenModule() {
