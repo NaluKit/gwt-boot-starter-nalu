@@ -20,11 +20,7 @@ package com.github.nalukit.bootstarternalu.server.generator.impl.domino;
 import com.github.nalukit.bootstarternalu.server.generator.impl.AbstractShellApplicationSourceGenerator;
 import com.github.nalukit.bootstarternalu.shared.model.NaluGeneraterParms;
 import com.github.nalukit.nalu.client.component.annotation.Shell;
-import com.squareup.javapoet.AnnotationSpec;
-import com.squareup.javapoet.ClassName;
-import com.squareup.javapoet.FieldSpec;
-import com.squareup.javapoet.MethodSpec;
-import com.squareup.javapoet.TypeSpec;
+import com.squareup.javapoet.*;
 import elemental2.dom.CSSProperties;
 import org.dominokit.domino.ui.layout.Layout;
 import org.dominokit.domino.ui.style.ColorScheme;
@@ -58,14 +54,14 @@ public class ShellApplicationDominoSourceGenerator
   @Override
   public MethodSpec createAttachShellMethod() {
     return MethodSpec.methodBuilder("attachShell")
-                     .addAnnotation(ClassName.get(Override.class))
-                     .addModifiers(Modifier.PUBLIC)
-                     .addStatement("layout = $T.create(\"Nalu - Simple Application using Domino-UI\")\n" + "                          .show($T.INDIGO)",
-                                   ClassName.get(Layout.class),
-                                   ClassName.get(ColorScheme.class))
-                     .addCode("")
-                     .addStatement("layout.showFooter()\n" + "          .fixFooter()\n" + "          .getFooter()\n" + "          .asElement().style.minHeight = $T.MinHeightUnionType.of(\"42px\")",
-                                   ClassName.get(CSSProperties.class))
+            .addAnnotation(ClassName.get(Override.class))
+            .addModifiers(Modifier.PUBLIC)
+            .addStatement("layout = $T.create(\"Nalu - Simple Application using Domino-UI\")\n" + "                          .show($T.INDIGO)",
+                    ClassName.get(Layout.class),
+                    ClassName.get(ColorScheme.class))
+            .addCode("")
+            .addStatement("layout.showFooter()\n" + "          .fixFooter()\n" + "          .getFooter()\n" + "          .element().style.minHeight = $T.MinHeightUnionType.of(\"42px\")",
+                    ClassName.get(CSSProperties.class))
                      .addStatement("layout.getFooter().setId(\"footer\")")
                      .addStatement("layout.getLeftPanel().setId(\"navigation\")")
                      .addStatement("layout.getContentPanel().setId(\"content\")")

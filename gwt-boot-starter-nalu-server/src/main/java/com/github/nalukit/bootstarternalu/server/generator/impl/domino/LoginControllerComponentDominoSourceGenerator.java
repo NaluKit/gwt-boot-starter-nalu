@@ -89,26 +89,26 @@ public class LoginControllerComponentDominoSourceGenerator
                                                         "                                                     .appendChild(this.password)))\n" +
                                                         "                    .appendChild($T.create()\n" +
                                                         "                                    .setGap(\"10px\")\n" +
-                                                        "                                    .addColumn($T.span12()\n" +
-                                                        "                                                     .appendChild($T.createPrimary(\"Login\")\n" +
-                                                        "                                                                        .setSize($T.LARGE)\n" +
-                                                        "                                                                        .style()\n" +
-                                                        "                                                                        .setMinWidth(\"120px\")\n" +
-                                                        "                                                                        .get()\n" +
-                                                        "                                                                        .addClickListener(e -> getController().doLogin(this.userId.getValue(),\n" +
-                                                        "                                                                                                                       this.password.getValue()))))\n" +
-                                                        "                                    .style()\n" +
-                                                        "                                    .setTextAlign(\"right\"))\n" +
-                                                        "                    .asElement())",
-                                                        ClassName.get(Card.class),
-                                                        ClassName.get(Row.class),
-                                                        ClassName.get(Column.class),
-                                                        ClassName.get(Row.class),
-                                                        ClassName.get(Column.class),
-                                                        ClassName.get(Row.class),
-                                                        ClassName.get(Column.class),
-                                                        ClassName.get(Button.class),
-                                                        ClassName.get(ButtonSize.class));
+                                                          "                                    .addColumn($T.span12()\n" +
+                                                          "                                                     .appendChild($T.createPrimary(\"Login\")\n" +
+                                                          "                                                                        .setSize($T.LARGE)\n" +
+                                                          "                                                                        .style()\n" +
+                                                          "                                                                        .setMinWidth(\"120px\")\n" +
+                                                          "                                                                        .get()\n" +
+                                                          "                                                                        .addClickListener(e -> getController().doLogin(this.userId.getValue(),\n" +
+                                                          "                                                                                                                       this.password.getValue()))))\n" +
+                                                          "                                    .style()\n" +
+                                                          "                                    .setTextAlign(\"right\"))\n" +
+                                                          "                    .element())",
+                                                  ClassName.get(Card.class),
+                                                  ClassName.get(Row.class),
+                                                  ClassName.get(Column.class),
+                                                  ClassName.get(Row.class),
+                                                  ClassName.get(Column.class),
+                                                  ClassName.get(Row.class),
+                                                  ClassName.get(Column.class),
+                                                  ClassName.get(Button.class),
+                                                  ClassName.get(ButtonSize.class));
     typeSpec.addMethod(method.build());
   }
 

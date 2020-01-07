@@ -61,31 +61,31 @@ public class LoginControllerComponentElementoSourceGenerator
   @Override
   protected void createRenderMethod(TypeSpec.Builder typeSpec) {
     MethodSpec.Builder method = MethodSpec.methodBuilder("render")
-                                          .addAnnotation(Override.class)
-                                          .addModifiers(Modifier.PUBLIC)
-                                          .addStatement("this.userId = $T.input(\"text\").asElement()",
-                                                        ClassName.get(Elements.class))
-                                          .addStatement("this.password = $T.input(\"text\").asElement()",
-                                                        ClassName.get(Elements.class))
-                                          .addStatement("initElement($T.div().add($T.div().add($T.label().textContent(\"UserId\").asElement()).asElement())" +
-                                                        "                    .add($T.br().asElement())" +
-                                                        "                    .add($T.div().add(this.userId).asElement())" +
-                                                        "                    .add($T.br().asElement())" +
-                                                        "                    .add($T.div().add($T.label().textContent(\"password\").asElement()))" +
-                                                        "                    .add($T.br().asElement())" +
-                                                        "                    .add($T.div().add(this.password).asElement())" +
-                                                        "                    .add($T.br().asElement())" +
-                                                        "                    .add($T.div().add($T.button().textContent(\"login\").on($T.click, e -> getController().doLogin(this.userId.value, this.password.value)))).asElement())",
-                                                        ClassName.get(Elements.class),
-                                                        ClassName.get(Elements.class),
-                                                        ClassName.get(Elements.class),
-                                                        ClassName.get(Elements.class),
-                                                        ClassName.get(Elements.class),
-                                                        ClassName.get(Elements.class),
-                                                        ClassName.get(Elements.class),
-                                                        ClassName.get(Elements.class),
-                                                        ClassName.get(Elements.class),
-                                                        ClassName.get(Elements.class),
+            .addAnnotation(Override.class)
+            .addModifiers(Modifier.PUBLIC)
+            .addStatement("this.userId = $T.input(\"text\").element()",
+                    ClassName.get(Elements.class))
+            .addStatement("this.password = $T.input(\"text\").element()",
+                    ClassName.get(Elements.class))
+            .addStatement("initElement($T.div().add($T.div().add($T.label().textContent(\"UserId\").element()).element())" +
+                            "                    .add($T.br().element())" +
+                            "                    .add($T.div().add(this.userId).element())" +
+                            "                    .add($T.br().element())" +
+                            "                    .add($T.div().add($T.label().textContent(\"password\").element()))" +
+                            "                    .add($T.br().element())" +
+                            "                    .add($T.div().add(this.password).element())" +
+                            "                    .add($T.br().element())" +
+                            "                    .add($T.div().add($T.button().textContent(\"login\").on($T.click, e -> getController().doLogin(this.userId.value, this.password.value)))).element())",
+                    ClassName.get(Elements.class),
+                    ClassName.get(Elements.class),
+                    ClassName.get(Elements.class),
+                    ClassName.get(Elements.class),
+                    ClassName.get(Elements.class),
+                    ClassName.get(Elements.class),
+                    ClassName.get(Elements.class),
+                    ClassName.get(Elements.class),
+                    ClassName.get(Elements.class),
+                    ClassName.get(Elements.class),
                                                         ClassName.get(Elements.class),
                                                         ClassName.get(Elements.class),
                                                         ClassName.get(Elements.class),

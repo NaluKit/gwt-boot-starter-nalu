@@ -19,12 +19,7 @@ package com.github.nalukit.bootstarternalu.server.generator.impl.elemento;
 import com.github.nalukit.bootstarternalu.server.generator.impl.AbstractShellApplicationSourceGenerator;
 import com.github.nalukit.bootstarternalu.shared.model.NaluGeneraterParms;
 import com.github.nalukit.nalu.client.component.annotation.Shell;
-import com.squareup.javapoet.AnnotationSpec;
-import com.squareup.javapoet.ClassName;
-import com.squareup.javapoet.FieldSpec;
-import com.squareup.javapoet.MethodSpec;
-import com.squareup.javapoet.ParameterizedTypeName;
-import com.squareup.javapoet.TypeSpec;
+import com.squareup.javapoet.*;
 import elemental2.dom.DomGlobal;
 import elemental2.dom.HTMLDivElement;
 import elemental2.dom.HTMLElement;
@@ -76,22 +71,22 @@ public class ShellLoginElementoSourceGenerator
                      .addStatement("this.element = $T.div()",
                                    ClassName.get(Elements.class))
                      .addStatement("return this.element.css(\"shell\")" +
-                                   ".add($T.div().attr(\"id\", \"header\").css(\"shellHeader\").asElement())" +
-                                   ".add($T.div().attr(\"id\", \"footer\").css(\"shellLoginFooter\").asElement())" +
-                                   ".add($T.div().attr(\"id\", \"content\").css(\"shellLoginContent\").asElement())" +
-                                   ".asElement()",
-                                   Elements.class,
-                                   Elements.class,
-                                   Elements.class)
+                                     ".add($T.div().attr(\"id\", \"header\").css(\"shellHeader\").element())" +
+                                     ".add($T.div().attr(\"id\", \"footer\").css(\"shellLoginFooter\").element())" +
+                                     ".add($T.div().attr(\"id\", \"content\").css(\"shellLoginContent\").element())" +
+                                     ".element()",
+                             Elements.class,
+                             Elements.class,
+                             Elements.class)
                      .build();
   }
 
   @Override
   protected MethodSpec createDetachMethod() {
     return MethodSpec.methodBuilder("detachShell")
-                     .addAnnotation(ClassName.get(Override.class))
-                     .addModifiers(Modifier.PUBLIC)
-                     .addStatement("this.element.asElement().remove()")
+            .addAnnotation(ClassName.get(Override.class))
+            .addModifiers(Modifier.PUBLIC)
+            .addStatement("this.element.element().remove()")
                      .build();
   }
 

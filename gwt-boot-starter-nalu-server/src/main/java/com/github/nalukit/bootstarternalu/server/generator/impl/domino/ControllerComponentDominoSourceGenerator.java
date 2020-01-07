@@ -64,11 +64,11 @@ public class ControllerComponentDominoSourceGenerator
   @Override
   protected void createRenderMethod(TypeSpec.Builder typeSpec) {
     MethodSpec.Builder method = MethodSpec.methodBuilder("render")
-                                          .addAnnotation(Override.class)
-                                          .addModifiers(Modifier.PUBLIC)
-                                          .addStatement("card = $T.create(\"\")",
-                                                        ClassName.get(Card.class))
-                                          .addStatement("initElement(card.asElement())");
+            .addAnnotation(Override.class)
+            .addModifiers(Modifier.PUBLIC)
+            .addStatement("card = $T.create(\"\")",
+                    ClassName.get(Card.class))
+            .addStatement("initElement(card.element())");
     typeSpec.addMethod(method.build());
   }
 

@@ -55,10 +55,10 @@ public class HeaderElementoSourceGenerator
   @Override
   protected void createRenderMethod(TypeSpec.Builder typeSpec) {
     MethodSpec.Builder method = MethodSpec.methodBuilder("render")
-                                          .addAnnotation(Override.class)
-                                          .addModifiers(Modifier.PUBLIC)
-                                          .addStatement("initElement($T.header().add(\"That's the header area. Create your header here\").asElement())",
-                                                        ClassName.get(Elements.class));
+            .addAnnotation(Override.class)
+            .addModifiers(Modifier.PUBLIC)
+            .addStatement("initElement($T.header().add(\"That's the header area. Create your header here\").element())",
+                    ClassName.get(Elements.class));
     typeSpec.addMethod(method.build());
   }
 

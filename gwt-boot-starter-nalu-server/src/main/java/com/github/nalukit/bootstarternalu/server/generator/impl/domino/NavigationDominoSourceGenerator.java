@@ -78,8 +78,8 @@ public class NavigationDominoSourceGenerator
                         ClassName.get(Tree.class),
                         ClassName.get(Tree.class));
     variableNames.forEach(n -> method.addStatement("tree.appendChild($L)",
-                                                   n));
-    method.addStatement("initElement(tree.asElement())");
+            n));
+    method.addStatement("initElement(tree.element())");
 
     typeSpec.addMethod(method.build());
     SpanElement el;

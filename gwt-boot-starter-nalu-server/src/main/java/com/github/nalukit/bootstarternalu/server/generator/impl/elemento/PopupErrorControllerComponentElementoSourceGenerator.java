@@ -20,12 +20,7 @@ import com.github.nalukit.bootstarternalu.server.generator.impl.AbstractPopupErr
 import com.github.nalukit.bootstarternalu.shared.model.ControllerData;
 import com.github.nalukit.bootstarternalu.shared.model.NaluGeneraterParms;
 import com.github.nalukit.nalu.client.event.model.ErrorInfo.ErrorType;
-import com.squareup.javapoet.ClassName;
-import com.squareup.javapoet.FieldSpec;
-import com.squareup.javapoet.MethodSpec;
-import com.squareup.javapoet.ParameterSpec;
-import com.squareup.javapoet.ParameterizedTypeName;
-import com.squareup.javapoet.TypeSpec;
+import com.squareup.javapoet.*;
 import elemental2.dom.HTMLDivElement;
 import elemental2.dom.Image;
 import org.dominokit.domino.ui.button.Button;
@@ -86,17 +81,17 @@ public class PopupErrorControllerComponentElementoSourceGenerator
   @Override
   protected void createRenderMethod(TypeSpec.Builder typeSpec) {
     MethodSpec.Builder method = MethodSpec.methodBuilder("render")
-                                          .addAnnotation(Override.class)
-                                          .addModifiers(Modifier.PUBLIC)
-                                          .addStatement("dialog = $T.create(\"to be set\").large().setAutoClose(false)",
-                                                        ClassName.get(ModalDialog.class))
-                                          .addStatement("$T errorIcon = new $T(64, 64)",
-                                                        ClassName.get(Image.class),
-                                                        ClassName.get(Image.class))
-                                          .addStatement("route = $T.div().styler(style -> style.setMarginBottom(\"12px\")).asElement()",
-                                                        ClassName.get(DominoElement.class))
-                                          .addStatement("message = $T.div().styler(style -> style.setMarginBottom(\"12px\")).asElement()",
-                                                        ClassName.get(DominoElement.class))
+            .addAnnotation(Override.class)
+            .addModifiers(Modifier.PUBLIC)
+            .addStatement("dialog = $T.create(\"to be set\").large().setAutoClose(false)",
+                    ClassName.get(ModalDialog.class))
+            .addStatement("$T errorIcon = new $T(64, 64)",
+                    ClassName.get(Image.class),
+                    ClassName.get(Image.class))
+            .addStatement("route = $T.div().styler(style -> style.setMarginBottom(\"12px\")).element()",
+                    ClassName.get(DominoElement.class))
+            .addStatement("message = $T.div().styler(style -> style.setMarginBottom(\"12px\")).element()",
+                    ClassName.get(DominoElement.class))
                                           .addStatement("content = $T.div()",
                                                         ClassName.get(DominoElement.class))
                                           .addStatement("$T<$T> messageElement = $T.div()" +

@@ -19,12 +19,7 @@ package com.github.nalukit.bootstarternalu.server.generator.impl.elemento;
 import com.github.nalukit.bootstarternalu.server.generator.impl.AbstractErrorControllerComponentSourceGenerator;
 import com.github.nalukit.bootstarternalu.shared.model.ControllerData;
 import com.github.nalukit.bootstarternalu.shared.model.NaluGeneraterParms;
-import com.squareup.javapoet.ClassName;
-import com.squareup.javapoet.FieldSpec;
-import com.squareup.javapoet.MethodSpec;
-import com.squareup.javapoet.ParameterSpec;
-import com.squareup.javapoet.ParameterizedTypeName;
-import com.squareup.javapoet.TypeSpec;
+import com.squareup.javapoet.*;
 import elemental2.dom.HTMLLabelElement;
 import org.jboss.gwt.elemento.core.Elements;
 import org.jboss.gwt.elemento.core.EventType;
@@ -66,34 +61,34 @@ public class ErrorControllerComponentElementoSourceGenerator
                                           .addStatement("this.errorText = $T.label()",
                                                         ClassName.get(Elements.class))
                                           .addStatement("initElement($T.div()" +
-                                                        "              .add($T.div().css(\"headline\").textContent(\"Error Message\"))" +
-                                                        "              .add($T.br()) " +
-                                                        "              .add($T.br()) " +
-                                                        "              .add(this.errorText)" +
-                                                        "              .add($T.br()) " +
-                                                        "              .add($T.br()) " +
-                                                        "              .add($T.div().add($T.button().textContent(\"home \").on($T.click, e -> getController().doRouteHome())).asElement()).asElement())",
-                                                        ClassName.get(Elements.class),
-                                                        ClassName.get(Elements.class),
-                                                        ClassName.get(Elements.class),
-                                                        ClassName.get(Elements.class),
-                                                        ClassName.get(Elements.class),
-                                                        ClassName.get(Elements.class),
-                                                        ClassName.get(Elements.class),
-                                                        ClassName.get(Elements.class),
-                                                        ClassName.get(EventType.class));
+                                                          "              .add($T.div().css(\"headline\").textContent(\"Error Message\"))" +
+                                                          "              .add($T.br()) " +
+                                                          "              .add($T.br()) " +
+                                                          "              .add(this.errorText)" +
+                                                          "              .add($T.br()) " +
+                                                          "              .add($T.br()) " +
+                                                          "              .add($T.div().add($T.button().textContent(\"home \").on($T.click, e -> getController().doRouteHome())).element()).element())",
+                                                  ClassName.get(Elements.class),
+                                                  ClassName.get(Elements.class),
+                                                  ClassName.get(Elements.class),
+                                                  ClassName.get(Elements.class),
+                                                  ClassName.get(Elements.class),
+                                                  ClassName.get(Elements.class),
+                                                  ClassName.get(Elements.class),
+                                                  ClassName.get(Elements.class),
+                                                  ClassName.get(EventType.class));
     typeSpec.addMethod(method.build());
   }
 
   @Override
   protected void createSetErrorTextMethod(TypeSpec.Builder typeSpec) {
     MethodSpec.Builder method = MethodSpec.methodBuilder("setErrorMessage")
-                                          .addAnnotation(Override.class)
-                                          .addModifiers(Modifier.PUBLIC)
-                                          .addParameter(ParameterSpec.builder(ClassName.get(String.class),
-                                                                              "errorMessage")
-                                                                     .build())
-                                          .addStatement("this.errorText.asElement().textContent = errorMessage");
+            .addAnnotation(Override.class)
+            .addModifiers(Modifier.PUBLIC)
+            .addParameter(ParameterSpec.builder(ClassName.get(String.class),
+                    "errorMessage")
+                    .build())
+            .addStatement("this.errorText.element().textContent = errorMessage");
     typeSpec.addMethod(method.build());
   }
 

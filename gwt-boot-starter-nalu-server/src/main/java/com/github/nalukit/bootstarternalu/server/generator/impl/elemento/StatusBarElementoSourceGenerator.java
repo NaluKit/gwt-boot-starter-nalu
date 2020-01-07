@@ -60,12 +60,12 @@ public class StatusBarElementoSourceGenerator
   @Override
   protected void createRenderMethod(TypeSpec.Builder typeSpec) {
     MethodSpec.Builder method = MethodSpec.methodBuilder("render")
-                                          .addAnnotation(Override.class)
-                                          .addModifiers(Modifier.PUBLIC)
-                                          .addStatement("label = $T.label().asElement()",
-                                                        ClassName.get(Elements.class))
-                                          .addStatement("initElement($T.header().add(label).asElement())",
-                                                        ClassName.get(Elements.class));
+            .addAnnotation(Override.class)
+            .addModifiers(Modifier.PUBLIC)
+            .addStatement("label = $T.label().element()",
+                    ClassName.get(Elements.class))
+            .addStatement("initElement($T.header().add(label).element())",
+                    ClassName.get(Elements.class));
 
     typeSpec.addMethod(method.build());
   }

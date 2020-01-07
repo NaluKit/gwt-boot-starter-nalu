@@ -47,20 +47,20 @@ public class NavigationElementoSourceGenerator
   @Override
   protected void createRenderMethod(TypeSpec.Builder typeSpec) {
     MethodSpec.Builder method = MethodSpec.methodBuilder("render")
-                                          .addAnnotation(Override.class)
-                                          .addModifiers(Modifier.PUBLIC)
-                                          .addStatement("$T container = $T.div().asElement()",
-                                                        ClassName.get(HTMLDivElement.class),
-                                                        ClassName.get(Elements.class));
+            .addAnnotation(Override.class)
+            .addModifiers(Modifier.PUBLIC)
+            .addStatement("$T container = $T.div().element()",
+                    ClassName.get(HTMLDivElement.class),
+                    ClassName.get(Elements.class));
 
     this.naluGeneraterParms.getControllers()
                            .forEach(controllerData -> {
-                             method.addStatement("container.appendChild($T.div().add($T.button().style(\"margin: 24px;\").textContent($S).on($T.click, event -> getController().doNavigateTo($S))).asElement())",
-                                                 ClassName.get(Elements.class),
-                                                 ClassName.get(Elements.class),
-                                                 controllerData.getComponentName(),
-                                                 ClassName.get(EventType.class),
-                                                 controllerData.getRoute());
+                             method.addStatement("container.appendChild($T.div().add($T.button().style(\"margin: 24px;\").textContent($S).on($T.click, event -> getController().doNavigateTo($S))).element())",
+                                     ClassName.get(Elements.class),
+                                     ClassName.get(Elements.class),
+                                     controllerData.getComponentName(),
+                                     ClassName.get(EventType.class),
+                                     controllerData.getRoute());
                            });
 
     method.addStatement("initElement(container)");

@@ -63,29 +63,29 @@ public class StatusBarDominoSourceGenerator
   @Override
   protected void createRenderMethod(TypeSpec.Builder typeSpec) {
     MethodSpec.Builder method = MethodSpec.methodBuilder("render")
-                                          .addAnnotation(Override.class)
-                                          .addModifiers(Modifier.PUBLIC)
-                                          .addStatement("messageInfo = $T.div().asElement()",
-                                                        ClassName.get(Elements.class))
+            .addAnnotation(Override.class)
+            .addModifiers(Modifier.PUBLIC)
+            .addStatement("messageInfo = $T.div().element()",
+                    ClassName.get(Elements.class))
                                           .addStatement("initElement($T.create()\n" +
                                                         "              .style()\n" +
-                                                        "              .setMargin(\"0px\")\n" +
-                                                        "              .add(\"demo-footer\")\n" +
-                                                        "              .get()\n" +
-                                                        "              .addColumn($T.of($T.span6())\n" +
-                                                        "              .get()\n" +
-                                                        "              .appendChild($T.h(4).textContent(\"Nalu example application using Domino-UI\")))\n" +
-                                                        "              .addColumn($T.of($T.span6())\n" +
-                                                        "                                 .setTextAlign(\"right\")\n" +
-                                                        "                                 .get()\n" +
-                                                        "                                 .appendChild(this.messageInfo))\n" +
-                                                        "                   .asElement())",
-                                                        ClassName.get(Row.class),
-                                                        ClassName.get(Style.class),
-                                                        ClassName.get(Column.class),
-                                                        ClassName.get(Elements.class),
-                                                        ClassName.get(Style.class),
-                                                        ClassName.get(Column.class));
+                                                          "              .setMargin(\"0px\")\n" +
+                                                          "              .add(\"demo-footer\")\n" +
+                                                          "              .get()\n" +
+                                                          "              .addColumn($T.of($T.span6())\n" +
+                                                          "              .get()\n" +
+                                                          "              .appendChild($T.h(4).textContent(\"Nalu example application using Domino-UI\")))\n" +
+                                                          "              .addColumn($T.of($T.span6())\n" +
+                                                          "                                 .setTextAlign(\"right\")\n" +
+                                                          "                                 .get()\n" +
+                                                          "                                 .appendChild(this.messageInfo))\n" +
+                                                          "                   .element())",
+                                                  ClassName.get(Row.class),
+                                                  ClassName.get(Style.class),
+                                                  ClassName.get(Column.class),
+                                                  ClassName.get(Elements.class),
+                                                  ClassName.get(Style.class),
+                                                  ClassName.get(Column.class));
 
     typeSpec.addMethod(method.build());
   }
