@@ -10,8 +10,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class SourceGeneratorTest {
 
@@ -32,19 +31,25 @@ public class SourceGeneratorTest {
         SourceGenerator generator = getSourceGenerator();
         generator.generate();
 
-        Path resourcePath = Files.find(serverFolder.getRoot().toPath(), Integer.MAX_VALUE,
+        boolean hasTomcatConfig = Files.find(serverFolder.getRoot().toPath(), Integer.MAX_VALUE,
                 (filePath, fileAttr) -> fileAttr.isDirectory())
-                .filter(path -> path.toFile().getName().equals("resources"))
-                .findFirst()
-                .orElse(null);
-        assertNotNull(resourcePath);
+                .anyMatch(path -> path.toFile().getName().equals("tomcatconf"));
+        assertFalse(hasTomcatConfig);
 
-        Path publicPath = Files.find(serverFolder.getRoot().toPath(), Integer.MAX_VALUE,
+        boolean hasJettyConfig = Files.find(serverFolder.getRoot().toPath(), Integer.MAX_VALUE,
                 (filePath, fileAttr) -> fileAttr.isDirectory())
-                .filter(path -> path.toFile().getName().equals("public"))
-                .findFirst()
-                .orElse(null);
-        assertNotNull(publicPath);
+                .anyMatch(path -> path.toFile().getName().equals("jettyconf"));
+        assertFalse(hasJettyConfig);
+
+        boolean hasResources = Files.find(serverFolder.getRoot().toPath(), Integer.MAX_VALUE,
+                (filePath, fileAttr) -> fileAttr.isDirectory())
+                .anyMatch(path -> path.toFile().getName().equals("resources"));
+        assertTrue(hasResources);
+
+        boolean hasPublicDir = Files.find(serverFolder.getRoot().toPath(), Integer.MAX_VALUE,
+                (filePath, fileAttr) -> fileAttr.isDirectory())
+                .anyMatch(path -> path.toFile().getName().equals("public"));
+        assertTrue(hasPublicDir);
 
         Path hostpagePath = Files.find(serverFolder.getRoot().toPath(), Integer.MAX_VALUE,
                 (filePath, fileAttr) -> fileAttr.isRegularFile())

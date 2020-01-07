@@ -24,7 +24,7 @@ Change directory to your generated project and issue the following commands:
 
 To start the application, call:
 
--> http://localhost:8080
+-> http://localhost:8080/${artefactId}.html
 
 
 <#if serverImplementation == "SPRING_BOOT">

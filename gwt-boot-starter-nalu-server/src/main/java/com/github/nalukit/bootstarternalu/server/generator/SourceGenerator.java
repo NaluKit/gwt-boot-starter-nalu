@@ -114,11 +114,13 @@ public class SourceGenerator {
         this.createDataDependingStructureForMultiMavenModule();
 
         // generate config
-        ConfigGenerator.builder()
-                .naluGeneraterParms(this.naluGeneraterParms)
-                .projectFolder(this.projectFolderServer)
-                .build()
-                .generate();
+        if (this.naluGeneraterParms.getServerImplementation() == ServerImplementation.GWT_MAVEN_PLUGIN) {
+            ConfigGenerator.builder()
+                    .naluGeneraterParms(this.naluGeneraterParms)
+                    .projectFolder(this.projectFolderServer)
+                    .build()
+                    .generate();
+        }
         // Hostpage ...
         HostPageSourceGenerator.builder()
                 .naluGeneraterParms(this.naluGeneraterParms)

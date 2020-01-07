@@ -80,45 +80,49 @@
     </dependencies>
 
     <build>
-        <pluginManagement>
+        <#if serverImplementation == "GWT_MAVEN_PLUGIN">
+            <pluginManagement>
+                <plugins>
+                        <plugin>
+                            <groupId>org.eclipse.jetty</groupId>
+                            <artifactId>jetty-maven-plugin</artifactId>
+                            <configuration>
+                                <scanIntervalSeconds>1</scanIntervalSeconds>
+                                <webApp>
+                                    <extraClasspath>${basedir}/../${artifactId}-shared/target/classes/</extraClasspath>
+                                </webApp>
+                                <contextXml>${basedir}/src/main/jettyconf/context.xml</contextXml>
+                            </configuration>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.apache.tomcat.maven</groupId>
+                            <artifactId>tomcat7-maven-plugin</artifactId>
+                            <configuration>
+                                <addWarDependenciesInClassloader>false</addWarDependenciesInClassloader>
+                                <path>/</path>
+                                <uriEncoding>UTF-8</uriEncoding>
+                            </configuration>
+                        </plugin>
+                </plugins>
+            </pluginManagement>
+        </#if>
+
+        <#if serverImplementation == "SPRING_BOOT">
             <plugins>
-                <#if serverImplementation == "GWT_MAVEN_PLUGIN">
-                    <plugin>
-                        <groupId>org.eclipse.jetty</groupId>
-                        <artifactId>jetty-maven-plugin</artifactId>
-                        <configuration>
-                            <scanIntervalSeconds>1</scanIntervalSeconds>
-                            <webApp>
-                                <extraClasspath>${basedir}/../${artifactId}-shared/target/classes/</extraClasspath>
-                            </webApp>
-                            <contextXml>${basedir}/src/main/jettyconf/context.xml</contextXml>
-                        </configuration>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.tomcat.maven</groupId>
-                        <artifactId>tomcat7-maven-plugin</artifactId>
-                        <configuration>
-                            <addWarDependenciesInClassloader>false</addWarDependenciesInClassloader>
-                            <path>/</path>
-                            <uriEncoding>UTF-8</uriEncoding>
-                        </configuration>
-                    </plugin>
-                <#elseif serverImplementation == "SPRING_BOOT">
-                    <plugin>
-                        <groupId>org.springframework.boot</groupId>
-                        <artifactId>spring-boot-maven-plugin</artifactId>
-                        <version>${springBootVersion}</version>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>repackage</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </#if>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${springBootVersion}</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>repackage</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
             </plugins>
-        </pluginManagement>
+        </#if>
     </build>
     <profiles>
         <profile>
