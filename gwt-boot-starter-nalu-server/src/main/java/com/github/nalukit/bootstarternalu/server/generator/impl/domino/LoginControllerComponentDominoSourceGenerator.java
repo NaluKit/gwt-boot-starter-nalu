@@ -99,7 +99,7 @@ public class LoginControllerComponentDominoSourceGenerator
                                                         "                                                                                                                       this.password.getValue()))))\n" +
                                                         "                                    .style()\n" +
                                                         "                                    .setTextAlign(\"right\"))\n" +
-                                                        "                    .asElement())",
+                                                        "                    .element())",
                                                         ClassName.get(Card.class),
                                                         ClassName.get(Row.class),
                                                         ClassName.get(Column.class),

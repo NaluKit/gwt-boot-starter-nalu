@@ -76,10 +76,10 @@ public class ShellLoginElementoSourceGenerator
                      .addStatement("this.element = $T.div()",
                                    ClassName.get(Elements.class))
                      .addStatement("return this.element.css(\"shell\")" +
-                                   ".add($T.div().attr(\"id\", \"header\").css(\"shellHeader\").asElement())" +
-                                   ".add($T.div().attr(\"id\", \"footer\").css(\"shellLoginFooter\").asElement())" +
-                                   ".add($T.div().attr(\"id\", \"content\").css(\"shellLoginContent\").asElement())" +
-                                   ".asElement()",
+                                   ".add($T.div().attr(\"id\", \"header\").css(\"shellHeader\").element())" +
+                                   ".add($T.div().attr(\"id\", \"footer\").css(\"shellLoginFooter\").element())" +
+                                   ".add($T.div().attr(\"id\", \"content\").css(\"shellLoginContent\").element())" +
+                                   ".element()",
                                    Elements.class,
                                    Elements.class,
                                    Elements.class)
@@ -91,7 +91,7 @@ public class ShellLoginElementoSourceGenerator
     return MethodSpec.methodBuilder("detachShell")
                      .addAnnotation(ClassName.get(Override.class))
                      .addModifiers(Modifier.PUBLIC)
-                     .addStatement("this.element.asElement().remove()")
+                     .addStatement("this.element.element().remove()")
                      .build();
   }
 

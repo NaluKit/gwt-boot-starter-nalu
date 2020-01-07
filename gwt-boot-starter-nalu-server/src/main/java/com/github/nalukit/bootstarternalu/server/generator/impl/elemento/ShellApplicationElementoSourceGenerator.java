@@ -77,11 +77,11 @@ public class ShellApplicationElementoSourceGenerator
                      .addStatement("this.element = $T.div()",
                                    ClassName.get(Elements.class))
                      .addStatement("return this.element.css(\"shell\")" +
-                                   ".add($T.div().attr(\"id\", \"header\").css(\"shellHeader\").asElement())" +
-                                   ".add($T.div().attr(\"id\", \"navigation\").css(\"shellNavigation\").asElement())" +
-                                   ".add($T.div().attr(\"id\", \"footer\").css(\"shellApplicationFooter\").asElement())" +
-                                   ".add($T.div().attr(\"id\", \"content\").css(\"shellApplicationContent\").asElement())" +
-                                   ".asElement()",
+                                   ".add($T.div().attr(\"id\", \"header\").css(\"shellHeader\").element())" +
+                                   ".add($T.div().attr(\"id\", \"navigation\").css(\"shellNavigation\").element())" +
+                                   ".add($T.div().attr(\"id\", \"footer\").css(\"shellApplicationFooter\").element())" +
+                                   ".add($T.div().attr(\"id\", \"content\").css(\"shellApplicationContent\").element())" +
+                                   ".element()",
                                    Elements.class,
                                    Elements.class,
                                    Elements.class,
@@ -94,7 +94,7 @@ public class ShellApplicationElementoSourceGenerator
     return MethodSpec.methodBuilder("detachShell")
                      .addAnnotation(ClassName.get(Override.class))
                      .addModifiers(Modifier.PUBLIC)
-                     .addStatement("this.element.asElement().remove()")
+                     .addStatement("this.element.element().remove()")
                      .build();
   }
 

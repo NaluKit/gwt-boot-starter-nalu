@@ -72,7 +72,7 @@ public class ErrorControllerComponentElementoSourceGenerator
                                                         "              .add(this.errorText)" +
                                                         "              .add($T.br()) " +
                                                         "              .add($T.br()) " +
-                                                        "              .add($T.div().add($T.button().textContent(\"home \").on($T.click, e -> getController().doRouteHome())).asElement()).asElement())",
+                                                        "              .add($T.div().add($T.button().textContent(\"home \").on($T.click, e -> getController().doRouteHome())).element()).element())",
                                                         ClassName.get(Elements.class),
                                                         ClassName.get(Elements.class),
                                                         ClassName.get(Elements.class),
@@ -93,7 +93,7 @@ public class ErrorControllerComponentElementoSourceGenerator
                                           .addParameter(ParameterSpec.builder(ClassName.get(String.class),
                                                                               "errorMessage")
                                                                      .build())
-                                          .addStatement("this.errorText.asElement().textContent = errorMessage");
+                                          .addStatement("this.errorText.element().textContent = errorMessage");
     typeSpec.addMethod(method.build());
   }
 

@@ -49,13 +49,13 @@ public class NavigationElementoSourceGenerator
     MethodSpec.Builder method = MethodSpec.methodBuilder("render")
                                           .addAnnotation(Override.class)
                                           .addModifiers(Modifier.PUBLIC)
-                                          .addStatement("$T container = $T.div().asElement()",
+                                          .addStatement("$T container = $T.div().element()",
                                                         ClassName.get(HTMLDivElement.class),
                                                         ClassName.get(Elements.class));
 
     this.naluGeneraterParms.getControllers()
                            .forEach(controllerData -> {
-                             method.addStatement("container.appendChild($T.div().add($T.button().style(\"margin: 24px;\").textContent($S).on($T.click, event -> getController().doNavigateTo($S))).asElement())",
+                             method.addStatement("container.appendChild($T.div().add($T.button().style(\"margin: 24px;\").textContent($S).on($T.click, event -> getController().doNavigateTo($S))).element())",
                                                  ClassName.get(Elements.class),
                                                  ClassName.get(Elements.class),
                                                  controllerData.getComponentName(),

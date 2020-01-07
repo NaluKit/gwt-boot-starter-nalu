@@ -65,7 +65,7 @@ public class StatusBarDominoSourceGenerator
     MethodSpec.Builder method = MethodSpec.methodBuilder("render")
                                           .addAnnotation(Override.class)
                                           .addModifiers(Modifier.PUBLIC)
-                                          .addStatement("messageInfo = $T.div().asElement()",
+                                          .addStatement("messageInfo = $T.div().element()",
                                                         ClassName.get(Elements.class))
                                           .addStatement("initElement($T.create()\n" +
                                                         "              .style()\n" +
@@ -79,7 +79,7 @@ public class StatusBarDominoSourceGenerator
                                                         "                                 .setTextAlign(\"right\")\n" +
                                                         "                                 .get()\n" +
                                                         "                                 .appendChild(this.messageInfo))\n" +
-                                                        "                   .asElement())",
+                                                        "                   .element())",
                                                         ClassName.get(Row.class),
                                                         ClassName.get(Style.class),
                                                         ClassName.get(Column.class),

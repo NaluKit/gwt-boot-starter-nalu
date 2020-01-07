@@ -68,7 +68,7 @@ public class ControllerComponentDominoSourceGenerator
                                           .addModifiers(Modifier.PUBLIC)
                                           .addStatement("card = $T.create(\"\")",
                                                         ClassName.get(Card.class))
-                                          .addStatement("initElement(card.asElement())");
+                                          .addStatement("initElement(card.element())");
     typeSpec.addMethod(method.build());
   }
 

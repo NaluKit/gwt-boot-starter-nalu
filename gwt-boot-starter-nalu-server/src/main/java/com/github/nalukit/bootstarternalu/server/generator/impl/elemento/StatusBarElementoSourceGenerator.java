@@ -62,9 +62,9 @@ public class StatusBarElementoSourceGenerator
     MethodSpec.Builder method = MethodSpec.methodBuilder("render")
                                           .addAnnotation(Override.class)
                                           .addModifiers(Modifier.PUBLIC)
-                                          .addStatement("label = $T.label().asElement()",
+                                          .addStatement("label = $T.label().element()",
                                                         ClassName.get(Elements.class))
-                                          .addStatement("initElement($T.header().add(label).asElement())",
+                                          .addStatement("initElement($T.header().add(label).element())",
                                                         ClassName.get(Elements.class));
 
     typeSpec.addMethod(method.build());

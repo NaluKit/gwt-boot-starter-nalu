@@ -93,9 +93,9 @@ public class PopupErrorControllerComponentElementoSourceGenerator
                                           .addStatement("$T errorIcon = new $T(64, 64)",
                                                         ClassName.get(Image.class),
                                                         ClassName.get(Image.class))
-                                          .addStatement("route = $T.div().styler(style -> style.setMarginBottom(\"12px\")).asElement()",
+                                          .addStatement("route = $T.div().styler(style -> style.setMarginBottom(\"12px\")).element()",
                                                         ClassName.get(DominoElement.class))
-                                          .addStatement("message = $T.div().styler(style -> style.setMarginBottom(\"12px\")).asElement()",
+                                          .addStatement("message = $T.div().styler(style -> style.setMarginBottom(\"12px\")).element()",
                                                         ClassName.get(DominoElement.class))
                                           .addStatement("content = $T.div()",
                                                         ClassName.get(DominoElement.class))
