@@ -54,6 +54,7 @@
     </dependencyManagement>
 
     <build>
+        <#if serverImplementation == "GWT_MAVEN_PLUGIN">
         <plugins>
             <plugin>
                 <groupId>net.ltgt.gwt.maven</groupId>
@@ -64,6 +65,7 @@
                 </configuration>
             </plugin>
         </plugins>
+        </#if>
         <pluginManagement>
             <plugins>
                 <plugin>

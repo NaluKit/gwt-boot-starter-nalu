@@ -99,6 +99,8 @@ public class MultiPomGenerator {
                 this.naluGeneraterParms.getGroupId());
         templateData.put("projectBuildDirectory",
                 "${project.build.directory}");
+        templateData.put("serverImplementation",
+                this.naluGeneraterParms.getServerImplementation().name());
 
         try (StringWriter out = new StringWriter()) {
             template.process(templateData,
@@ -208,6 +210,8 @@ public class MultiPomGenerator {
                 "${project.groupId}");
         templateData.put("projectVersion",
                 "${project.version}");
+        templateData.put("projectBuildDirectory",
+                "${project.build.directory}");
         templateData.put("springBootPublicDir",
                 "${spring-boot.public.dir}");
         templateData.put("serverImplementation",

@@ -65,6 +65,20 @@ public class MultiPomGeneratorTest {
         assertTrue(pomAsString.contains("<warDir>${spring-boot.public.dir}</warDir>"));
     }
 
+    @Test
+    public void springBootParentPom() throws GeneratorException, IOException {
+        MultiPomGenerator generator = getGeneratorForSpringBoot();
+        generator.generate();
+
+        File parentPom = Arrays.stream(Objects.requireNonNull(projectFolder.getRoot().listFiles()))
+                .filter(f -> f.getName().equals("pom.xml")).findFirst().orElse(null);
+
+        assertNotNull(parentPom);
+
+        String pomAsString = FileUtils.readFileToString(parentPom);
+        assertFalse(pomAsString.contains("<launcherDir>${projectBuildDirectory}/gwt/launcherDir</launcherDir>"));
+    }
+
     private MultiPomGenerator getGeneratorForSpringBoot() {
         MultiPomGenerator.Builder builder = new MultiPomGenerator.Builder();
         builder.projectFolder(projectFolder.getRoot().getPath());

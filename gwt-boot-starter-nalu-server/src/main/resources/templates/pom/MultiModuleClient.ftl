@@ -160,6 +160,7 @@
                     <moduleName>${groupId}.${artifactIdLowerCase}.${artifactId}</moduleName>
                     <moduleShortName>${artifactId}</moduleShortName>
                     <#if serverImplementation == "SPRING_BOOT">
+                        <launcherDir>${projectBuildDirectory}/gwt/launcherDir</launcherDir>
                         <!-- Spring Boot as default: put the compile result under public directory -->
                         <classpathScope>compile+runtime</classpathScope>
                         <launcherDir>${springBootPublicDir}</launcherDir>

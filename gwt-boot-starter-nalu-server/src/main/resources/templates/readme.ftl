@@ -11,9 +11,11 @@ Change directory to your generated project and issue the following commands:
 <#if serverImplementation == "GWT_MAVEN_PLUGIN">
     - mvn gwt:codeserver -pl *-client -am
 <#else>
-* run in client module:
+* run in client module either:
 
-    - mvn gwt:devmode
+    - mvn gwt:codeserver
+      or
+      mvn gwt:devmode
 </#if>
 
 * in another terminal window:
