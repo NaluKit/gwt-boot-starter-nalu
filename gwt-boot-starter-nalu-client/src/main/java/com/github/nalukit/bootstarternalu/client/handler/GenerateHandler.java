@@ -72,15 +72,8 @@ public class GenerateHandler
                                                                         .appendChild(Paragraph.create("Some browsers will warn you about the content."))
                                                                         .appendChild(Elements.br()
                                                                                              .element())
-                                                                        .appendChild(Paragraph.create("To start the project after importing, use:"))
-                                                                        .appendChild(Paragraph.create("mvn clean install")
-                                                                                              .bold())
-                                                                        .appendChild(Paragraph.create("mvn gwt:codeserver -pl *-client -am")
-                                                                                              .bold())
-                                                                        .appendChild(Paragraph.create("mvn jetty:run -pl *-server -am -Denv=dev")
-                                                                                              .bold())
-                                                                        .appendChild(Paragraph.create("or"))
-                                                                        .appendChild(Paragraph.create("read the 'readme.txt'")
+                                                                        .appendChild(Paragraph.create("Instructions to start the project after importing can be found here:"))
+                                                                        .appendChild(Paragraph.create("'readme.txt'")
                                                                                               .bold());
                                     dialog.open();
                                   })

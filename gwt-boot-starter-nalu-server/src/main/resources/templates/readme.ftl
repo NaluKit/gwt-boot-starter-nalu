@@ -19,6 +19,7 @@ Change directory to your generated project and issue the following commands:
 </#if>
 
 * in another terminal window:
+
 <#if serverImplementation == "GWT_MAVEN_PLUGIN">
     - mvn jetty:run -pl *-server -am -Denv=dev
 <#else>
