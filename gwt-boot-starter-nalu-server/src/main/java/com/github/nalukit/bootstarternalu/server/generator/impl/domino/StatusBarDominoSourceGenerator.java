@@ -27,7 +27,7 @@ import elemental2.dom.HTMLDivElement;
 import org.dominokit.domino.ui.grid.Column;
 import org.dominokit.domino.ui.grid.Row;
 import org.dominokit.domino.ui.style.Style;
-import org.jboss.gwt.elemento.core.Elements;
+import org.jboss.elemento.Elements;
 
 import javax.lang.model.element.Modifier;
 import java.io.File;

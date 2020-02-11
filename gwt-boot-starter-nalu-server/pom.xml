@@ -24,7 +24,7 @@
     <parent>
         <groupId>com.github.nalukit</groupId>
         <artifactId>gwt-boot-starter-nalu</artifactId>
-        <version>2.0.0</version>
+        <version>2.0.1</version>
     </parent>
 
     <artifactId>gwt-boot-starter-nalu-server</artifactId>
@@ -36,12 +36,12 @@
         <!-- GXT GPL version without support -->
         <gxt.version>4.0.0</gxt.version>
         <!-- Domino version -->
-        <domino.version>1.0-F-SNAPSHOT</domino.version>
+        <domino.version>1.0-SNAPSHOT</domino.version>
         <domino.rest.version>1.0-rc.4-SNAPSHOT</domino.rest.version>
         <!-- Elemento version -->
         <elemento.version>0.9.6</elemento.version>
         <!-- nalu version -->
-        <nalu.version>2.0.0</nalu.version>
+        <nalu.version>2.0.1-SNAPSHOT</nalu.version>
         <!--    <eis2.version>1.1.0</eis2.version>-->
         <freemarker.version>2.3.9</freemarker.version>
         <!--    <javax.activation.version>1.1</javax.activation.version>-->

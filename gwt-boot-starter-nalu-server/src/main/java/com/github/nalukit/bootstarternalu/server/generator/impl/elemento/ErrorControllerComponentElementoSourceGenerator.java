@@ -21,7 +21,7 @@ import com.github.nalukit.bootstarternalu.shared.model.ControllerData;
 import com.github.nalukit.bootstarternalu.shared.model.NaluGeneraterParms;
 import com.squareup.javapoet.*;
 import elemental2.dom.HTMLLabelElement;
-import org.jboss.gwt.elemento.core.Elements;
+import org.jboss.elemento.Elements;
 import org.jboss.gwt.elemento.core.EventType;
 import org.jboss.gwt.elemento.core.builder.HtmlContentBuilder;
 

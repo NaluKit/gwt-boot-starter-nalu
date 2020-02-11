@@ -26,7 +26,7 @@ import com.google.gwt.core.client.GWT;
 import elemental2.dom.DomGlobal;
 import org.dominokit.domino.ui.Typography.Paragraph;
 import org.dominokit.domino.ui.dialogs.MessageDialog;
-import org.jboss.gwt.elemento.core.Elements;
+import org.jboss.elemento.Elements;
 
 import java.util.Arrays;
 

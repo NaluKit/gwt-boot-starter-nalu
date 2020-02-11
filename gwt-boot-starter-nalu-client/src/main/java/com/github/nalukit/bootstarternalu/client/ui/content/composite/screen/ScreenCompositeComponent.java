@@ -39,7 +39,7 @@ import org.dominokit.domino.ui.icons.Icons;
 import org.dominokit.domino.ui.style.Color;
 import org.dominokit.domino.ui.utils.ElementUtil;
 
-import static org.jboss.gwt.elemento.core.Elements.div;
+import static org.jboss.elemento.Elements.div;
 
 public class ScreenCompositeComponent
     extends AbstractCompositeComponent<Controller, HTMLElement>

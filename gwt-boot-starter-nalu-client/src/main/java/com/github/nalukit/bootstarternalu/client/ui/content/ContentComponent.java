@@ -21,7 +21,7 @@ import com.github.nalukit.nalu.client.component.AbstractComponent;
 import elemental2.dom.HTMLDivElement;
 import elemental2.dom.HTMLElement;
 import org.dominokit.domino.ui.dialogs.MessageDialog;
-import org.jboss.gwt.elemento.core.Elements;
+import org.jboss.elemento.Elements;
 
 public class ContentComponent
     extends AbstractComponent<IContentComponent.Controller, HTMLElement>

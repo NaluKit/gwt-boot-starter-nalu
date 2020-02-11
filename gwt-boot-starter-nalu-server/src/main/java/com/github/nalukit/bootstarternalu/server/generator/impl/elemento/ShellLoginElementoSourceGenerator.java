@@ -23,7 +23,7 @@ import com.squareup.javapoet.*;
 import elemental2.dom.DomGlobal;
 import elemental2.dom.HTMLDivElement;
 import elemental2.dom.HTMLElement;
-import org.jboss.gwt.elemento.core.Elements;
+import org.jboss.elemento.Elements;
 import org.jboss.gwt.elemento.core.builder.HtmlContentBuilder;
 
 import javax.lang.model.element.Modifier;

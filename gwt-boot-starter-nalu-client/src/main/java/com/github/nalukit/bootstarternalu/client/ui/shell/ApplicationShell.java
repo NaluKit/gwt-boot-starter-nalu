@@ -32,9 +32,9 @@ import org.dominokit.domino.ui.style.Styles;
 import org.dominokit.domino.ui.utils.DominoElement;
 import org.dominokit.domino.ui.utils.ScreenMedia;
 import org.dominokit.domino.ui.utils.TextNode;
-import org.jboss.gwt.elemento.core.Elements;
+import org.jboss.elemento.Elements;
 
-import static org.jboss.gwt.elemento.core.Elements.*;
+import static org.jboss.elemento.Elements.*;
 
 /**
  * this is the presenter of the shell. The shell divides the browser in
@@ -131,7 +131,7 @@ public class ApplicationShell
                          url)
                    .attr("target",
                          "_blank")
-                   .get();
+                   .element();
   }
 
 }
