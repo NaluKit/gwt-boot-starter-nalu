@@ -41,7 +41,7 @@
         <!-- Elemento version -->
         <elemento.version>0.9.6</elemento.version>
         <!-- nalu version -->
-        <nalu.version>2.0.1-SNAPSHOT</nalu.version>
+        <nalu.version>2.0.1</nalu.version>
         <!--    <eis2.version>1.1.0</eis2.version>-->
         <freemarker.version>2.3.9</freemarker.version>
         <!--    <javax.activation.version>1.1</javax.activation.version>-->
