@@ -33,17 +33,17 @@ import java.util.Arrays;
 @Handler
 public class GenerateHandler
     extends AbstractHandler<AppContext> {
-
+  
   public GenerateHandler() {
     super();
   }
-
+  
   @Override
   public void bind() {
     this.eventBus.addHandler(GenerateProjectEvent.TYPE,
                              e -> onGenerate());
   }
-
+  
   private void onGenerate() {
     ProjectServiceFactory.INSTANCE.generate(this.context.getNaluGeneraterParms())
                                   .onSuccess(response -> {
@@ -88,5 +88,5 @@ public class GenerateHandler
                                   })
                                   .send();
   }
-
+  
 }

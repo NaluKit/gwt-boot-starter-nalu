@@ -27,14 +27,14 @@ import elemental2.dom.HTMLElement;
 public class ApplicationComposite
     extends AbstractCompositeController<AppContext, IApplicationCompositeComponent, HTMLElement>
     implements IApplicationCompositeComponent.Controller {
-
+  
   public ApplicationComposite() {
   }
-
+  
   public void edit() {
     this.component.edit(context.getNaluGeneraterParms());
   }
-
+  
   public boolean flush() {
     if (this.component.isVald()) {
       this.context.setNaluGeneraterParms(this.component.flush(context.getNaluGeneraterParms()));
@@ -43,5 +43,5 @@ public class ApplicationComposite
       return false;
     }
   }
-
+  
 }

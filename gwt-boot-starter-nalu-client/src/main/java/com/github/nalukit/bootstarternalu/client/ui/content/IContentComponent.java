@@ -22,12 +22,12 @@ import elemental2.dom.HTMLElement;
 
 public interface IContentComponent
     extends IsComponent<IContentComponent.Controller, HTMLElement> {
-
+  
   void showErrorDialog();
-
+  
   interface Controller
       extends IsComponent.Controller {
-
+    
   }
-
+  
 }

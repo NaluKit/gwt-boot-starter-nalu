@@ -25,7 +25,7 @@ import org.dominokit.domino.ui.forms.FieldStyle;
 
 public class App
     implements EntryPoint {
-
+  
   public void onModuleLoad() {
     // initialize domino rest
     DominoRestConfig.initDefaults();
@@ -34,5 +34,5 @@ public class App
     BootStarterNaluApplication application = new BootStarterNaluApplicationImpl();
     application.run(new NaluPluginElemental2());
   }
-
+  
 }

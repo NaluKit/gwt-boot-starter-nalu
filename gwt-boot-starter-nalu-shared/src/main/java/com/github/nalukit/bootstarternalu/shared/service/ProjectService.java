@@ -28,9 +28,9 @@ import javax.ws.rs.Path;
 @RequestFactory(serviceRoot = "service/gwtbootstarter")
 @Path("/project")
 public interface ProjectService {
-
+  
   @POST
   @Path("/generate")
   GenerateResponse generate(@RequestBody NaluGeneraterParms model);
-
+  
 }

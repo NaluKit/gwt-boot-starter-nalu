@@ -18,12 +18,10 @@
 package com.github.nalukit.bootstarternalu.client.ui;
 
 public class Constants {
-
-  public final static String CONTENT_WIDTH = "800px";
-
-  public final static int MARGIN_CONTAINER = 12;
-  public final static int MARGIN_FORM_ROW  = 6;
-
+  
+  public final static String CONTENT_WIDTH         = "800px";
+  public final static int    MARGIN_CONTAINER      = 12;
+  public final static int    MARGIN_FORM_ROW       = 6;
   public static final String ERROR_PARAMETER_ROUTE = "Route";
-
+  
 }

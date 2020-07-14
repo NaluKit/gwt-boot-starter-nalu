@@ -7,7 +7,7 @@ import org.glassfish.jersey.server.monitoring.RequestEventListener;
 
 public class GwtBootStarterNaluApplicationEventListener
     implements ApplicationEventListener {
-
+  
   @Override
   public void onEvent(ApplicationEvent applicationEvent) {
     switch (applicationEvent.getType()) {
@@ -25,17 +25,17 @@ public class GwtBootStarterNaluApplicationEventListener
         break;
     }
   }
-
+  
   @Override
   public RequestEventListener onRequest(RequestEvent requestEvent) {
     return new ResourceEventListener();
   }
-
+  
   private static class ResourceEventListener
       implements RequestEventListener {
-
+    
     private volatile long methodStartTime;
-
+    
     @Override
     public void onEvent(RequestEvent requestEvent) {
       switch (requestEvent.getType()) {
@@ -104,7 +104,7 @@ public class GwtBootStarterNaluApplicationEventListener
           break;
       }
     }
-
+    
   }
-
+  
 }

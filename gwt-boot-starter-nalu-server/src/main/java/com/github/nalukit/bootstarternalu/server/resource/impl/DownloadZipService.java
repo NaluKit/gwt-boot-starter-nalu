@@ -32,12 +32,11 @@ import java.io.File;
 
 @Path("/loadZip")
 public class DownloadZipService {
-
+  
   private static final Logger logger = LoggerFactory.getLogger(DownloadZipService.class);
-
   @Context
   HttpServletRequest request;
-
+  
   @GET
   @Path("/download/{archive}")
   @Produces({ "application/zip" })
@@ -45,8 +44,8 @@ public class DownloadZipService {
     logger.debug("preparing download for zip-file >>" + archive + "<<");
     // get data from session
     logger.debug("trying to get the zip path out of the session context for zip-file >>" + archive + "<<");
-    HttpSession session = request.getSession();
-    String pathToGenerateProjectZip = (String) session.getAttribute("PathToGenerateProjectZip");
+    HttpSession session                  = request.getSession();
+    String      pathToGenerateProjectZip = (String) session.getAttribute("PathToGenerateProjectZip");
     logger.debug("found the zip path out of the session context for zip-file >>" + archive + "<< --> >>" + pathToGenerateProjectZip + "<<");
     File file = new File(pathToGenerateProjectZip);
     return Response.ok(file)
@@ -54,6 +53,6 @@ public class DownloadZipService {
                            "attachment; filename=" + archive)
                    .build();
   }
-
+  
 }
 

@@ -21,17 +21,17 @@ import java.io.File;
 import java.util.Arrays;
 
 public class GeneratorUtils {
-
+  
   public static String setFirstCharacterToUpperCase(String value) {
     String returnValue = GeneratorUtils.removeBadChracters(value);
     return returnValue.substring(0,
                                  1)
                       .toUpperCase() + returnValue.substring(1);
   }
-
+  
   public static String removeBadChracters(String value) {
-    String[] parts = value.split("-");
-    String returnValue = parts[0];
+    String[] parts       = value.split("-");
+    String   returnValue = parts[0];
     for (int i = 1; i < parts.length; i++) {
       returnValue = returnValue +
                     parts[i].substring(0,
@@ -41,7 +41,7 @@ public class GeneratorUtils {
     }
     return returnValue;
   }
-
+  
   public static boolean createDirectory(String directory) {
     if ((new File(directory)).exists()) {
       deleteFolder(new File(directory));
@@ -50,7 +50,7 @@ public class GeneratorUtils {
     File projectRootFolderFile = new File(directory);
     return projectRootFolderFile.mkdirs();
   }
-
+  
   private static void deleteFolder(File folder) {
     File[] files = folder.listFiles();
     if (files != null) { //some JVMs return null for empty dirs
@@ -65,5 +65,5 @@ public class GeneratorUtils {
     }
     folder.delete();
   }
-
+  
 }

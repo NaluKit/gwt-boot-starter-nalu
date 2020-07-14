@@ -42,26 +42,26 @@ import java.util.Optional;
 @Composites({ @Composite(name = "ApplicationMetaData",
                          compositeController = ApplicationComposite.class,
                          selector = "applicationSettings"),
-              @Composite(name = "ProjectMetaData",
-                         compositeController = ProjectComposite.class,
-                         selector = "projectSettings"),
-              @Composite(name = "ScreenMetaData",
-                         compositeController = ScreenComposite.class,
-                         selector = "screenSettings") })
+                @Composite(name = "ProjectMetaData",
+                           compositeController = ProjectComposite.class,
+                           selector = "projectSettings"),
+                @Composite(name = "ScreenMetaData",
+                           compositeController = ScreenComposite.class,
+                           selector = "screenSettings") })
 public class ContentController
     extends AbstractComponentController<AppContext, IContentComponent, HTMLElement>
     implements IContentComponent.Controller {
-
+  
   public ContentController() {
   }
-
+  
   @Override
   public void start() {
     this.eventBus.addHandler(FlushProjectEvent.TYPE,
                              e -> {
                                boolean validApplicationData = this.<ApplicationComposite>getComposite("ApplicationMetaData").flush();
-                               boolean validProjectData = this.<ProjectComposite>getComposite("ProjectMetaData").flush();
-                               boolean validScreensData = this.<ScreenComposite>getComposite("ScreenMetaData").flush();
+                               boolean validProjectData     = this.<ProjectComposite>getComposite("ProjectMetaData").flush();
+                               boolean validScreensData     = this.<ScreenComposite>getComposite("ScreenMetaData").flush();
                                if (validApplicationData && validProjectData && validScreensData) {
                                  // check is >>login<< is used as route
                                  Optional<String> optionalRouteLogin = this.context.getNaluGeneraterParms()
@@ -89,7 +89,7 @@ public class ContentController
                                                .show();
                                    return;
                                  }
-
+        
                                  eventBus.fireEvent(new GenerateProjectEvent());
                                } else {
                                  this.component.showErrorDialog();
@@ -99,5 +99,5 @@ public class ContentController
     this.<ProjectComposite>getComposite("ProjectMetaData").edit();
     this.<ScreenComposite>getComposite("ScreenMetaData").edit();
   }
-
+  
 }

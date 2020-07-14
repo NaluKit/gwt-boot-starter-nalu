@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class LoggingResponseFilter
     implements ContainerResponseFilter {
-
+  
   @Override
   public void filter(ContainerRequestContext requestContext,
                      ContainerResponseContext responseContext)
@@ -22,5 +22,5 @@ public class LoggingResponseFilter
     Object entity = responseContext.getEntity();
     System.out.println("=====================================================================================================================");
   }
-
+  
 }

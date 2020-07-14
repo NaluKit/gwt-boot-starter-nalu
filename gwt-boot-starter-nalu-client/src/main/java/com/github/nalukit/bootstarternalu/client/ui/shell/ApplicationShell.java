@@ -43,18 +43,18 @@ import static org.jboss.elemento.Elements.*;
 @Shell("application")
 public class ApplicationShell
     extends AbstractShell<AppContext> {
-
+  
   private Layout layout;
-
+  
   public ApplicationShell() {
     super();
   }
-
+  
   @Override
   public void detachShell() {
     this.layout.remove();
   }
-
+  
   /**
    * The ShellPresenter has to implemented this method, because the framework
    * can not do this. (It does not know, what to use).
@@ -65,7 +65,7 @@ public class ApplicationShell
   public void attachShell() {
     layout = Layout.create()
                    .disableLeftPanel();
-
+    
     layout.getNavigationBar()
           .getTitle()
           .clearElement()
@@ -74,7 +74,7 @@ public class ApplicationShell
                              .textContent(Version.VERSION))
           .addClickListener(e -> DomGlobal.window.open("https://github.com/nalukit/nalu",
                                                        "_blank"));
-
+    
     layout.setLogo(img("./img/Nalu_64px.png").style("width: 48px; height:48px;"))
           .getNavigationBar()
           .setId(Selector.HEADER)
@@ -89,11 +89,11 @@ public class ApplicationShell
                                                            PopupPosition.BOTTOM)))
           .addClickListener(e -> DomGlobal.window.open("https://github.com/DominoKit/domino-ui",
                                                        "_blank"));
-
+    
     layout.showFooter()
           .fixFooter();
     Footer footer = layout.getFooter();
-
+    
     footer.appendChild(Row.create()
                           .setId(Selector.BUTTION_BAR)
                           .addCss("top"))
@@ -109,11 +109,11 @@ public class ApplicationShell
                           .appendChild(Column.span2()
                                              .appendChild(createAnchorElement("Issues",
                                                                               "https://github.com/nalukit/gwt-boot-starter-nalu/issues"))));
-
+    
     layout.getContentPanel()
           .setId(Selector.CONTENT);
     layout.show();
-
+    
     DomGlobal.document.body.appendChild(DominoElement.of(a().attr("href",
                                                                   "https://github.com/NaluKit/gwt-boot-starter-nalu")
                                                             .add(img("https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png").css("github-fork")
@@ -122,7 +122,7 @@ public class ApplicationShell
                                                      .hideOn(ScreenMedia.MEDIUM_AND_DOWN)
                                                      .element());
   }
-
+  
   private HTMLAnchorElement createAnchorElement(String label,
                                                 String url) {
     return Elements.a()
@@ -133,5 +133,5 @@ public class ApplicationShell
                          "_blank")
                    .element();
   }
-
+  
 }

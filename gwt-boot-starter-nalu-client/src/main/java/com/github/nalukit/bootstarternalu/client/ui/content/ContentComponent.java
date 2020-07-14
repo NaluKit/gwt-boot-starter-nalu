@@ -26,10 +26,10 @@ import org.jboss.elemento.Elements;
 public class ContentComponent
     extends AbstractComponent<IContentComponent.Controller, HTMLElement>
     implements IContentComponent {
-
+  
   public ContentComponent() {
   }
-
+  
   @Override
   public void render() {
     HTMLDivElement divElement = Elements.div()
@@ -45,7 +45,7 @@ public class ContentComponent
                                    .element());
     initElement(divElement);
   }
-
+  
   @Override
   public void showErrorDialog() {
     MessageDialog.createMessage("Error!",
@@ -53,5 +53,5 @@ public class ContentComponent
                  .error()
                  .open();
   }
-
+  
 }

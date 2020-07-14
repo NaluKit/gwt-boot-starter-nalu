@@ -18,9 +18,10 @@
 package com.github.nalukit.bootstarternalu.server.resource.impl;
 
 import com.github.nalukit.bootstarternalu.server.generator.GeneratorUtils;
-import com.github.nalukit.bootstarternalu.server.generator.SourceGenerator;
-import com.github.nalukit.bootstarternalu.server.generator.impl.common.ModuleDescriptorGenerator;
-import com.github.nalukit.bootstarternalu.server.generator.impl.maven.multi.MultiPomGenerator;
+import com.github.nalukit.bootstarternalu.server.generator.gwt.GwtSourceGenerator;
+import com.github.nalukit.bootstarternalu.server.generator.gwt.impl.common.ModuleGwtDescriptorGenerator;
+import com.github.nalukit.bootstarternalu.server.generator.gwt.impl.maven.multi.MultiPomGwtGenerator;
+import com.github.nalukit.bootstarternalu.shared.model.DataConstants;
 import com.github.nalukit.bootstarternalu.shared.model.GeneratorException;
 import com.github.nalukit.bootstarternalu.shared.model.NaluGeneraterParms;
 import com.github.nalukit.bootstarternalu.shared.transport.response.GenerateResponse;
@@ -34,11 +35,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Context;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -47,22 +44,24 @@ import java.util.zip.ZipOutputStream;
 
 @Path("/project")
 public class ProjectService {
-
+  
   private static final Logger logger = LoggerFactory.getLogger(ProjectService.class);
-
   @Context
   HttpServletRequest request;
-
+  
   @POST
   @Path("/generate")
   @Consumes("application/json")
   public GenerateResponse generate(NaluGeneraterParms model) {
-    HttpSession session = request.getSession(true);
+    HttpSession      session  = request.getSession(true);
     GenerateResponse response = new GenerateResponse();
     response.setStatus(new Status());
-    response = this.generateMultiMavenProject(model,
-                                              response);
-
+    if (DataConstants.J2CL_VERSION_1_0_0.equals(model.getTranspiler())) {
+    
+    } else {
+      response = this.generateGwtMultiMavenProject(model,
+                                                   response);
+    }
     logger.debug(">>" + model.getArtefactId() + "<< saving path to session");
     // save path to session
     session.setAttribute("PathToGenerateProjectZip",
@@ -70,9 +69,9 @@ public class ProjectService {
     logger.debug(">>" + model.getArtefactId() + "<< saved path to session");
     return response;
   }
-
-  public GenerateResponse generateMultiMavenProject(NaluGeneraterParms model,
-                                                    GenerateResponse response) {
+  
+  public GenerateResponse generateGwtMultiMavenProject(NaluGeneraterParms model,
+                                                       GenerateResponse response) {
     try {
       logger.debug("generation started for groupIds >>" + model.getGroupId() + "<< - >>" + model.getArtefactId() + "<<");
       // create folder in tempDirectory
@@ -91,7 +90,7 @@ public class ProjectService {
         deleteFolder(new File(projectRootFolder));
       }
       logger.debug(">>" + model.getArtefactId() + "<< project root directory with path >>" + projectRootFolder + "<< created");
-
+      
       String projectFolderClient = projectFolder + File.separator + GeneratorUtils.removeBadChracters(model.getArtefactId()) + "-client";
       logger.debug(">>" + model.getArtefactId() + "<< try to create project client directory with path >>" + projectFolderClient + "<<");
       // exists? -> delete
@@ -109,7 +108,7 @@ public class ProjectService {
                 .setTechnicalMessage("ERROR: creation of project folder (1) failed!");
         return response;
       }
-
+      
       String projectFolderShared = projectFolder + File.separator + GeneratorUtils.removeBadChracters(model.getArtefactId()) + "-shared";
       logger.debug(">>" + model.getArtefactId() + "<< try to create project shared directory with path >>" + projectFolderShared + "<<");
       // exists? -> delete
@@ -127,7 +126,7 @@ public class ProjectService {
                 .setTechnicalMessage("ERROR: creation of project folder (2) failed");
         return response;
       }
-
+      
       String projectFolderServer = projectFolder + File.separator + GeneratorUtils.removeBadChracters(model.getArtefactId()) + "-server";
       logger.debug(">>" + model.getArtefactId() + "<< try to create project server directory with path >>" + projectFolderServer + "<<");
       // exists? -> delete
@@ -162,14 +161,14 @@ public class ProjectService {
       // create Java sources (must run first, because this creates the project structre)
       try {
         logger.debug(">>" + model.getArtefactId() + "<< generating sources!");
-        SourceGenerator.builder()
-                       .naluGeneraterParms(model)
-                       .projectFolder(projectFolder)
-                       .projectFolderClient(projectFolderClient)
-                       .projectFolderShared(projectFolderShared)
-                       .projectFolderServer(projectFolderServer)
-                       .build()
-                       .generate();
+        GwtSourceGenerator.builder()
+                          .naluGeneraterParms(model)
+                          .projectFolder(projectFolder)
+                          .projectFolderClient(projectFolderClient)
+                          .projectFolderShared(projectFolderShared)
+                          .projectFolderServer(projectFolderServer)
+                          .build()
+                          .generate();
       } catch (GeneratorException e) {
         logger.error(">>" + model.getArtefactId() + "<< source generation failed!",
                      e);
@@ -182,14 +181,14 @@ public class ProjectService {
       // create POM
       try {
         logger.debug(">>" + model.getArtefactId() + "<< generating pom!");
-        MultiPomGenerator.builder()
-                         .naluGeneraterParms(model)
-                         .projectFolder(projectFolder)
-                         .projectFolderClient(projectFolderClient)
-                         .projectFolderShared(projectFolderShared)
-                         .projectFolderServer(projectFolderServer)
-                         .build()
-                         .generate();
+        MultiPomGwtGenerator.builder()
+                            .naluGeneraterParms(model)
+                            .projectFolder(projectFolder)
+                            .projectFolderClient(projectFolderClient)
+                            .projectFolderShared(projectFolderShared)
+                            .projectFolderServer(projectFolderServer)
+                            .build()
+                            .generate();
       } catch (GeneratorException e) {
         logger.error(">>" + model.getArtefactId() + "<< pom generation failed!",
                      e);
@@ -202,11 +201,11 @@ public class ProjectService {
       // create Module Descriptor
       try {
         logger.debug(">>" + model.getArtefactId() + "<< generating module dexcriptor!");
-        ModuleDescriptorGenerator.builder()
-                                 .naluGeneraterParms(model)
-                                 .projectFolder(projectFolderClient)
-                                 .build()
-                                 .generate();
+        ModuleGwtDescriptorGenerator.builder()
+                                    .naluGeneraterParms(model)
+                                    .projectFolder(projectFolderClient)
+                                    .build()
+                                    .generate();
       } catch (GeneratorException e) {
         logger.error(">>" + model.getArtefactId() + "<< module descriptor generation failed!",
                      e);
@@ -237,7 +236,7 @@ public class ProjectService {
       return response;
     }
   }
-
+  
   private void zipIt(String projectFolder) {
     List<String> fileList = new ArrayList<>();
     generateFileList(projectFolder,
@@ -246,12 +245,12 @@ public class ProjectService {
     byte[] buffer = new byte[1024];
     try {
       FileOutputStream fos = new FileOutputStream(projectFolder + ".zip");
-      ZipOutputStream zos = new ZipOutputStream(fos);
+      ZipOutputStream  zos = new ZipOutputStream(fos);
       for (String file : fileList) {
         ZipEntry zipEntry = new ZipEntry(file);
         zos.putNextEntry(zipEntry);
         FileInputStream in = new FileInputStream(projectFolder + File.separator + file);
-        int len;
+        int             len;
         while ((len = in.read(buffer)) > 0) {
           zos.write(buffer,
                     0,
@@ -269,7 +268,7 @@ public class ProjectService {
       e.printStackTrace();
     }
   }
-
+  
   private void generateFileList(String sourceFolder,
                                 List<String> fileList,
                                 File node) {
@@ -289,13 +288,13 @@ public class ProjectService {
       }
     }
   }
-
+  
   private String generateZipEntry(String sourceFolder,
                                   String file) {
     return file.substring(sourceFolder.length() + 1,
                           file.length());
   }
-
+  
   private void deleteFolder(File folder) {
     File[] files = folder.listFiles();
     if (files != null) { //some JVMs return null for empty dirs
@@ -310,6 +309,6 @@ public class ProjectService {
     }
     folder.delete();
   }
-
+  
 }
 

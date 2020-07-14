@@ -23,16 +23,16 @@ import elemental2.dom.HTMLElement;
 
 public interface IProjectCompositeComponent
     extends IsCompositeComponent<IProjectCompositeComponent.Controller, HTMLElement> {
-
+  
   void edit(NaluGeneraterParms naluGeneraterParms);
-
+  
   NaluGeneraterParms flush(NaluGeneraterParms naluGeneraterParms);
-
+  
   boolean isVald();
-
+  
   interface Controller
       extends IsCompositeComponent.Controller {
-
+    
   }
-
+  
 }

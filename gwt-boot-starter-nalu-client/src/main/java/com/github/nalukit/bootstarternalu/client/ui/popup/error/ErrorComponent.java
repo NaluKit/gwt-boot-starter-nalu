@@ -34,34 +34,33 @@ import java.util.Map;
 public class ErrorComponent
     extends AbstractErrorPopUpComponent<Controller>
     implements IErrorComponent {
-
-  private ModalDialog dialog;
-
+  
+  private ModalDialog                   dialog;
   private HTMLDivElement                route;
   private HTMLDivElement                message;
   private DominoElement<HTMLDivElement> content;
-
+  
   public ErrorComponent() {
   }
-
+  
   @Override
   public void render() {
     this.dialog = ModalDialog.create(">>To Be Set<<")
                              .large()
                              .setAutoClose(false);
-
+    
     Image errorIcon = new Image(64,
                                 64);
     errorIcon.setAttribute("src",
                            "img/bug-128.png");
-    this.route = DominoElement.div()
-                              .styler(style -> style.setMarginBottom("12px"))
-                              .element();
+    this.route   = DominoElement.div()
+                                .styler(style -> style.setMarginBottom("12px"))
+                                .element();
     this.message = DominoElement.div()
                                 .styler(style -> style.setMarginBottom("12px"))
                                 .element();
     this.content = DominoElement.div();
-
+    
     DominoElement<HTMLDivElement> messageElement = DominoElement.div()
                                                                 .styler(style -> style.setWidth("100%"))
                                                                 .appendChild(DominoElement.div()
@@ -96,19 +95,19 @@ public class ErrorComponent
                                                                                                                                         "normal");
                                                                                                                     }))
                                                                                           .appendChild(this.content));
-
+    
     FlexLayout flexLayout = FlexLayout.create()
                                       .style()
                                       .add("fill-height")
                                       .get()
                                       .setDirection(FlexDirection.LEFT_TO_RIGHT);
-
+    
     FlexItem flexItemLeft = FlexItem.create()
                                     .setAlignSelf(FlexAlign.START)
                                     .setOrder(1)
                                     .appendChild(errorIcon);
     flexLayout.appendChild(flexItemLeft);
-
+    
     FlexItem flexItemRight = FlexItem.create()
                                      .styler(style -> style.setMarginLeft("24px"))
                                      .setAlignSelf(FlexAlign.START)
@@ -116,9 +115,9 @@ public class ErrorComponent
                                      .setOrder(2)
                                      .appendChild(messageElement);
     flexLayout.appendChild(flexItemRight);
-
+    
     this.dialog.appendChild(flexLayout);
-
+    
     this.dialog.appendFooterChild(Button.create("OK")
                                         .large()
                                         .linkify()
@@ -129,12 +128,12 @@ public class ErrorComponent
                                               .doRouteHome();
                                         }));
   }
-
+  
   @Override
   public void clear() {
-
+  
   }
-
+  
   @Override
   public void edit(ErrorType errorEventType,
                    String route,
@@ -150,24 +149,24 @@ public class ErrorComponent
       this.dialog.getHeaderElement()
                  .setTextContent("Application Error");
     }
-    this.route.textContent = route;
+    this.route.textContent   = route;
     this.message.textContent = message;
     // verarbeite den DataStore
     dataStore.keySet()
              .forEach(d -> createContentItem(d,
                                              dataStore.get(d)));
   }
-
+  
   @Override
   public void hide() {
     this.dialog.close();
   }
-
+  
   @Override
   public void show() {
     this.dialog.open();
   }
-
+  
   private void createContentItem(String label,
                                  String value) {
     this.content.appendChild(DominoElement.div()
@@ -185,5 +184,5 @@ public class ErrorComponent
                                                               "normal");
                                           }));
   }
-
+  
 }

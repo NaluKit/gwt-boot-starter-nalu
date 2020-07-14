@@ -27,15 +27,15 @@ import com.github.nalukit.nalu.client.component.annotation.ErrorPopUpController;
 public class ErrorController
     extends AbstractErrorPopUpComponentController<AppContext, IErrorComponent>
     implements IErrorComponent.Controller {
-
+  
   public ErrorController() {
   }
-
+  
   @Override
   public void onBeforeShow() {
     this.component.clear();
   }
-
+  
   @Override
   protected void show() {
     this.component.edit(this.errorEventType,
@@ -44,7 +44,7 @@ public class ErrorController
                         this.dataStore);
     this.component.show();
   }
-
+  
   @Override
   public void doRouteHome() {
     if (this.dataStore.get(Constants.ERROR_PARAMETER_ROUTE) != null) {
@@ -53,5 +53,5 @@ public class ErrorController
       this.router.route(Routes.ROUTE_SET_UP);
     }
   }
-
+  
 }

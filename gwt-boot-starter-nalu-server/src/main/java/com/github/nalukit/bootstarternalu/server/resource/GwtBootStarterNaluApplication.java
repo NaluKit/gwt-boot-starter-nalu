@@ -11,7 +11,7 @@ import java.util.Set;
 
 public class GwtBootStarterNaluApplication
     extends Application {
-
+  
   @Override
   public Set<Class<?>> getClasses() {
     final Set<Class<?>> classes = new HashSet<>();
@@ -19,11 +19,11 @@ public class GwtBootStarterNaluApplication
     classes.add(LoggingResponseFilter.class);
     return classes;
   }
-
+  
   @Override
   public Map<String, Object> getProperties() {
     Map<String, Object> properties = new HashMap<>();
     return properties;
   }
-
+  
 }

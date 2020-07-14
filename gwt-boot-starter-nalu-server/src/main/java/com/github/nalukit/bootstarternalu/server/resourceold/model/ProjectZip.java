@@ -27,18 +27,18 @@ package com.github.nalukit.bootstarternalu.server.resourceold.model;
 //@Scope(value = "session",
 //       proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class ProjectZip {
-
+  
   private String pathToGenerateProjectZip;
-
+  
   public ProjectZip() {
   }
-
+  
   public String getPathToGenerateProjectZip() {
     return pathToGenerateProjectZip;
   }
-
+  
   public void setPathToGenerateProjectZip(String pathToGenerateProjectZip) {
     this.pathToGenerateProjectZip = pathToGenerateProjectZip;
   }
-
+  
 }

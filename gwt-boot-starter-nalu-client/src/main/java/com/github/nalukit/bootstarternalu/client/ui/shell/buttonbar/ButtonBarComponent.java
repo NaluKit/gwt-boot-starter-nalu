@@ -27,12 +27,12 @@ import org.dominokit.domino.ui.style.Color;
 public class ButtonBarComponent
     extends AbstractComponent<IButtonBarComponent.Controller, HTMLElement>
     implements IButtonBarComponent {
-
+  
   private Button generateButton;
-
+  
   public ButtonBarComponent() {
   }
-
+  
   @Override
   public void render() {
     this.generateButton = Button.create("GENERATE")
@@ -45,5 +45,5 @@ public class ButtonBarComponent
                       .appendChild(this.generateButton)
                       .element());
   }
-
+  
 }

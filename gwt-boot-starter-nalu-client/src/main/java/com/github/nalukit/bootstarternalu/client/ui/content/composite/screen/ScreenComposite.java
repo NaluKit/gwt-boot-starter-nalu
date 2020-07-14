@@ -27,14 +27,14 @@ import elemental2.dom.HTMLElement;
 public class ScreenComposite
     extends AbstractCompositeController<AppContext, IScreenCompositeComponent, HTMLElement>
     implements IScreenCompositeComponent.Controller {
-
+  
   public ScreenComposite() {
   }
-
+  
   public void edit() {
     this.component.edit(this.context.getNaluGeneraterParms());
   }
-
+  
   public boolean flush() {
     if (this.component.isValid()) {
       this.context.setNaluGeneraterParms(this.component.flush(this.context.getNaluGeneraterParms()));
@@ -43,5 +43,5 @@ public class ScreenComposite
       return false;
     }
   }
-
+  
 }

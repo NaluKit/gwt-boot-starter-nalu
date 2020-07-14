@@ -14,16 +14,16 @@ import java.util.stream.Stream;
 
 public class ClassNameValidator
     implements HasValidation.Validator {
-
+  
   private List<String> reservedKeyWords;
   private RegExp       regExp;
   private FormElement  element;
-
+  
   public ClassNameValidator(FormElement element) {
     this.element = element;
-
+    
     this.regExp = RegExp.compile("^[A-Za-z_$]+[a-zA-Z0-9_$]*$");
-
+    
     this.reservedKeyWords = new ArrayList<>();
     reservedKeyWords.add("abstract");
     reservedKeyWords.add("assert");
@@ -79,10 +79,10 @@ public class ClassNameValidator
     reservedKeyWords.add("volatile");
     reservedKeyWords.add("while");
   }
-
+  
   @Override
   public ValidationResult isValid() {
-    String value = (String) element.getValue();
+    String      value   = (String) element.getValue();
     MatchResult matcher = regExp.exec(value);
     if (Objects.isNull(matcher)) {
       return ValidationResult.invalid("This is not a valid class name");
@@ -96,5 +96,5 @@ public class ClassNameValidator
     }
     return ValidationResult.valid();
   }
-
+  
 }

@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class LoggingRequestFilter
     implements ContainerRequestFilter {
-
+  
   @Override
   public void filter(ContainerRequestContext containerRequestContext)
       throws IOException {
@@ -19,5 +19,5 @@ public class LoggingRequestFilter
                                               .getPath());
     System.out.println("=====================================================================================================================");
   }
-
+  
 }

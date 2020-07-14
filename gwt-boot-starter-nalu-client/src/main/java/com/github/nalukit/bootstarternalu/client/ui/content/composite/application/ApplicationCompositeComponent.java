@@ -33,45 +33,45 @@ import org.dominokit.domino.ui.style.Color;
 public class ApplicationCompositeComponent
     extends AbstractCompositeComponent<Controller, HTMLElement>
     implements IApplicationCompositeComponent {
-
+  
   private CheckBox       cbApplicationLoader;
   private CheckBox       cbDebugSupport;
   private CheckBox       cbLoginScreen;
   private CheckBox       cbHashUrl;
   private FieldsGrouping grouping;
-
+  
   public ApplicationCompositeComponent() {
   }
-
+  
   @Override
   public void render() {
     this.grouping = new FieldsGrouping();
-
+    
     this.cbApplicationLoader = CheckBox.create("Generate Application Loader class")
                                        .check()
                                        .setColor(Color.BLUE_GREY)
                                        .filledIn()
                                        .styler(style -> style.setMarginBottom("0px"))
                                        .groupBy(this.grouping);
-    this.cbDebugSupport = CheckBox.create("Generate Debug support (in development mode)")
-                                  .check()
-                                  .setColor(Color.BLUE_GREY)
-                                  .filledIn()
-                                  .styler(style -> style.setMarginBottom("0px"))
-                                  .groupBy(this.grouping);
-    this.cbLoginScreen = CheckBox.create("Generate Login screen and Login filter")
-                                 .check()
-                                 .setColor(Color.BLUE_GREY)
-                                 .filledIn()
-                                 .styler(style -> style.setMarginBottom("0px"))
-                                 .groupBy(this.grouping);
-    this.cbHashUrl = CheckBox.create("Use hash in URL")
-                             .check()
-                             .setColor(Color.BLUE_GREY)
-                             .filledIn()
-                             .styler(style -> style.setMarginBottom("0px"))
-                             .groupBy(this.grouping);
-
+    this.cbDebugSupport      = CheckBox.create("Generate Debug support (in development mode)")
+                                       .check()
+                                       .setColor(Color.BLUE_GREY)
+                                       .filledIn()
+                                       .styler(style -> style.setMarginBottom("0px"))
+                                       .groupBy(this.grouping);
+    this.cbLoginScreen       = CheckBox.create("Generate Login screen and Login filter")
+                                       .check()
+                                       .setColor(Color.BLUE_GREY)
+                                       .filledIn()
+                                       .styler(style -> style.setMarginBottom("0px"))
+                                       .groupBy(this.grouping);
+    this.cbHashUrl           = CheckBox.create("Use hash in URL")
+                                       .check()
+                                       .setColor(Color.BLUE_GREY)
+                                       .filledIn()
+                                       .styler(style -> style.setMarginBottom("0px"))
+                                       .groupBy(this.grouping);
+    
     HTMLDivElement element = Row.create()
                                 .appendChild(Column.span10()
                                                    .offset1()
@@ -95,7 +95,7 @@ public class ApplicationCompositeComponent
                                 .element();
     initElement(element);
   }
-
+  
   @Override
   public void edit(NaluGeneraterParms naluGeneraterParms) {
     this.cbApplicationLoader.setValue(naluGeneraterParms.isApplicationLoader());
@@ -103,7 +103,7 @@ public class ApplicationCompositeComponent
     this.cbLoginScreen.setValue(naluGeneraterParms.isLoginScreen());
     this.cbHashUrl.setValue(naluGeneraterParms.isHashUrl());
   }
-
+  
   @Override
   public NaluGeneraterParms flush(NaluGeneraterParms naluGeneraterParms) {
     naluGeneraterParms.setApplicationLoader(cbApplicationLoader.getValue());
@@ -112,11 +112,11 @@ public class ApplicationCompositeComponent
     naluGeneraterParms.setHashUrl(cbHashUrl.getValue());
     return naluGeneraterParms;
   }
-
+  
   @Override
   public boolean isVald() {
     return this.grouping.validate()
                         .isValid();
   }
-
+  
 }

@@ -24,19 +24,19 @@ import java.util.Map;
 
 public interface IErrorComponent
     extends IsErrorPopUpComponent<Controller> {
-
+  
   void clear();
-
+  
   void edit(ErrorType errorEventType,
             String route,
             String message,
             Map<String, String> dataStore);
-
+  
   interface Controller
       extends IsErrorPopUpComponent.Controller {
-
+    
     void doRouteHome();
-
+    
   }
-
+  
 }

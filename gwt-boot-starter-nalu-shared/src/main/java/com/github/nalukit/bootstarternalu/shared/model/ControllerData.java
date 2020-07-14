@@ -22,22 +22,18 @@ import java.util.List;
 import java.util.Objects;
 
 public class ControllerData {
-
-  private String id;
-
+  
+  private String       id;
   /* component name */
-  private String componentName;
+  private String       componentName;
   /* the route of the screen */
-  private String route;
-
-  private boolean confirmation;
-  private boolean showControllerAtStart;
-
-  private boolean deletable;
-  private boolean editable;
-
+  private String       route;
+  private boolean      confirmation;
+  private boolean      showControllerAtStart;
+  private boolean      deletable;
+  private boolean      editable;
   private List<String> parameters;
-
+  
   public ControllerData() {
     this(GUID.get(),
          "",
@@ -47,7 +43,7 @@ public class ControllerData {
          true,
          true);
   }
-
+  
   private ControllerData(String id,
                          String componentName,
                          String route,
@@ -55,17 +51,17 @@ public class ControllerData {
                          boolean confirmation,
                          boolean deletable,
                          boolean editable) {
-    this.id = id;
-    this.componentName = componentName;
-    this.route = route;
+    this.id                    = id;
+    this.componentName         = componentName;
+    this.route                 = route;
     this.showControllerAtStart = showControllerAtStart;
-    this.confirmation = confirmation;
-    this.deletable = deletable;
-    this.editable = editable;
-
+    this.confirmation          = confirmation;
+    this.deletable             = deletable;
+    this.editable              = editable;
+    
     this.parameters = new ArrayList<>();
   }
-
+  
   public ControllerData(String componentName,
                         String route,
                         boolean showControllerAtStart,
@@ -80,7 +76,7 @@ public class ControllerData {
          deletable,
          editable);
   }
-
+  
   public ControllerData copy() {
     return new ControllerData(GUID.get(),
                               componentName + " copy",
@@ -90,10 +86,10 @@ public class ControllerData {
                               true,
                               true);
   }
-
+  
   @Override
   public int hashCode() {
-
+    
     return Objects.hash(getId(),
                         getComponentName(),
                         getRoute(),
@@ -103,7 +99,7 @@ public class ControllerData {
                         isEditable(),
                         getParameters());
   }
-
+  
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -126,7 +122,7 @@ public class ControllerData {
            Objects.equals(getParameters(),
                           that.getParameters());
   }
-
+  
   public ControllerData clone() {
     return new ControllerData(id,
                               componentName,
@@ -136,71 +132,71 @@ public class ControllerData {
                               true,
                               true);
   }
-
+  
   public String getId() {
     return id;
   }
-
+  
   public void setId(String id) {
     this.id = id;
   }
-
+  
   public String getComponentName() {
     return componentName;
   }
-
+  
   public void setComponentName(String componentName) {
     this.componentName = componentName;
   }
-
+  
   public String getRoute() {
     return route;
   }
-
+  
   public void setRoute(String route) {
     this.route = route;
   }
-
+  
   public boolean isShowControllerAtStart() {
     return showControllerAtStart;
   }
-
+  
   public void setShowControllerAtStart(boolean showControllerAtStart) {
     this.showControllerAtStart = showControllerAtStart;
   }
-
+  
   public boolean isConfirmation() {
     return confirmation;
   }
-
+  
   public void setConfirmation(boolean confirmation) {
     this.confirmation = confirmation;
   }
-
+  
   public boolean isDeletable() {
     return deletable;
   }
-
+  
   public void setDeletable(boolean deletable) {
     this.deletable = deletable;
   }
-
+  
   public boolean isEditable() {
     return editable;
   }
-
+  
   public void setEditable(boolean editable) {
     this.editable = editable;
   }
-
+  
   public List<String> getParameters() {
     return parameters;
   }
-
+  
   public void setParameters(List<String> parameters) {
     this.parameters = parameters;
   }
-
+  
   @Override
   public String toString() {
     return "ControllerData{" +
@@ -225,5 +221,5 @@ public class ControllerData {
            parameters +
            '}';
   }
-
+  
 }

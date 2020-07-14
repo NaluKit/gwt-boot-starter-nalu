@@ -20,6 +20,7 @@ package com.github.nalukit.bootstarternalu.client.ui.content.composite.project;
 import com.github.nalukit.bootstarternalu.client.ui.content.composite.project.IProjectCompositeComponent.Controller;
 import com.github.nalukit.bootstarternalu.client.ui.content.composite.project.validation.ClassNameValidator;
 import com.github.nalukit.bootstarternalu.client.ui.content.composite.project.validation.PackageValidator;
+import com.github.nalukit.bootstarternalu.shared.model.DataConstants;
 import com.github.nalukit.bootstarternalu.shared.model.NaluGeneraterParms;
 import com.github.nalukit.bootstarternalu.shared.model.ServerImplementation;
 import com.github.nalukit.bootstarternalu.shared.model.WidgetLibrary;
@@ -39,20 +40,20 @@ import org.dominokit.domino.ui.icons.Icons;
 public class ProjectCompositeComponent
     extends AbstractCompositeComponent<Controller, HTMLElement>
     implements IProjectCompositeComponent {
-
+  
   private FieldsGrouping               grouping = FieldsGrouping.create();
   private TextBox                      groupIdTextBox;
   private TextBox                      artifactIdTextBox;
   private Select<String>               gwtVersionSelect;
   private Select<ServerImplementation> serverImplementationSelect;
   private Select<WidgetLibrary>        widgetSetSelect;
-
+  
   public ProjectCompositeComponent() {
   }
-
+  
   @Override
   public void render() {
-
+    
     groupIdTextBox = TextBox.create("Group ID")
                             .setPlaceholder("com.example")
                             .value("com.example")
@@ -60,7 +61,7 @@ public class ProjectCompositeComponent
                             .addLeftAddOn(Icons.ALL.inbox_mdi())
                             .groupBy(grouping);
     groupIdTextBox.addValidator(new PackageValidator(this.groupIdTextBox));
-
+    
     artifactIdTextBox = TextBox.create("Artifact ID")
                                .setPlaceholder("MyTestProject")
                                .value("MyTestProject")
@@ -68,14 +69,18 @@ public class ProjectCompositeComponent
                                .addLeftAddOn(Icons.ALL.archive_outline_mdi())
                                .groupBy(grouping);
     artifactIdTextBox.addValidator(new ClassNameValidator(this.artifactIdTextBox));
-
-    gwtVersionSelect = Select.<String>create("GWT Version").appendChild(SelectOption.create("2.8.2",
-                                                                                            "2.8.2"))
-                                                           .selectAt(0)
-                                                           .addLeftAddOn(Icons.ALL.code_tags_mdi())
-                                                           .setRequired(true)
-                                                           .groupBy(grouping);
-
+    
+    gwtVersionSelect = Select.<String>create("Transpiler").appendChild(SelectOption.create(DataConstants.GWT_VERSION_2_9_0,
+                                                                                           DataConstants.GWT_VERSION_2_9_0))
+                                                          .appendChild(SelectOption.create(DataConstants.GWT_VERSION_2_8_2,
+                                                                                           DataConstants.GWT_VERSION_2_8_2))
+                                                         .appendChild(SelectOption.create(DataConstants.J2CL_VERSION_1_0_0,
+                                                                                           DataConstants.J2CL_VERSION_1_0_0))
+                                                          .selectAt(0)
+                                                          .addLeftAddOn(Icons.ALL.code_tags_mdi())
+                                                          .setRequired(true)
+                                                          .groupBy(grouping);
+    
     serverImplementationSelect = Select.<ServerImplementation>create("Server Implementation").appendChild(SelectOption.create(ServerImplementation.GWT_MAVEN_PLUGIN,
                                                                                                                               ServerImplementation.GWT_MAVEN_PLUGIN.getText()))
                                                                                              .appendChild(SelectOption.create(ServerImplementation.SPRING_BOOT,
@@ -83,7 +88,7 @@ public class ProjectCompositeComponent
                                                                                              .selectAt(1)
                                                                                              .addLeftAddOn(Icons.ALL.server_mdi())
                                                                                              .groupBy(grouping);
-
+    
     widgetSetSelect = Select.<WidgetLibrary>create("Widget Set").appendChild(SelectOption.create(WidgetLibrary.DOMINO_UI,
                                                                                                  WidgetLibrary.DOMINO_UI.getText()))
                                                                 // TODO Elemento
@@ -96,10 +101,10 @@ public class ProjectCompositeComponent
                                                                 .selectAt(3)
                                                                 .addLeftAddOn(Icons.ALL.view_dashboard_outline_mdi())
                                                                 .groupBy(grouping);
-
+    
     this.grouping.setAutoValidation(true)
                  .setRequired(true);
-
+    
     HTMLDivElement element = Row.create()
                                 .appendChild(Column.span10()
                                                    .offset1()
@@ -125,31 +130,31 @@ public class ProjectCompositeComponent
                                 .element();
     initElement(element);
   }
-
+  
   @Override
   public void edit(NaluGeneraterParms naluGeneraterParms) {
     this.groupIdTextBox.setValue(naluGeneraterParms.getGroupId());
     this.artifactIdTextBox.setValue(naluGeneraterParms.getArtefactId());
-    this.gwtVersionSelect.setValue(naluGeneraterParms.getGwtVersion());
+    this.gwtVersionSelect.setValue(naluGeneraterParms.getTranspiler());
     this.serverImplementationSelect.setValue(naluGeneraterParms.getServerImplementation());
     this.widgetSetSelect.setValue(naluGeneraterParms.getWidgetLibrary());
-
+    
   }
-
+  
   @Override
   public NaluGeneraterParms flush(NaluGeneraterParms naluGeneraterParms) {
     naluGeneraterParms.setGroupId(this.groupIdTextBox.getValue());
     naluGeneraterParms.setArtefactId(this.artifactIdTextBox.getValue());
-    naluGeneraterParms.setGwtVersion(this.gwtVersionSelect.getValue());
+    naluGeneraterParms.setTranspiler(this.gwtVersionSelect.getValue());
     naluGeneraterParms.setServerImplementation(this.serverImplementationSelect.getValue());
     naluGeneraterParms.setWidgetLibrary(this.widgetSetSelect.getValue());
     return naluGeneraterParms;
   }
-
+  
   @Override
   public boolean isVald() {
     return this.grouping.validate()
                         .isValid();
   }
-
+  
 }

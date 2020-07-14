@@ -29,5 +29,5 @@ import com.github.nalukit.nalu.plugin.elemental2.client.DefaultElemental2Logger;
        logger = DefaultElemental2Logger.class)
 interface BootStarterNaluApplication
     extends IsApplication {
-
+  
 }

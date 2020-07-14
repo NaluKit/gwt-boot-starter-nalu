@@ -44,21 +44,21 @@ import static org.jboss.elemento.Elements.div;
 public class ScreenCompositeComponent
     extends AbstractCompositeComponent<Controller, HTMLElement>
     implements IScreenCompositeComponent {
-
+  
   private DataTable<ControllerData>          dataDataTable;
   private HTMLDivElement                     element = div().element();
   private LocalListDataStore<ControllerData> dataStore;
-
+  
   public ScreenCompositeComponent() {
   }
-
+  
   @Override
   public void render() {
-    Card card = Card.create("");
+    Card   card      = Card.create("");
     Button addButton = Button.createDefault(Icons.ALL.plus_mdi());
-
+    
     dataStore = new LocalListDataStore<>();
-
+    
     TableConfig<ControllerData> screenMetaDataTableConfig = new TableConfig<>();
     screenMetaDataTableConfig.addColumn(ColumnConfig.<ControllerData>create("name",
                                                                             "Component name").setWidth("250px")
@@ -132,7 +132,7 @@ public class ScreenCompositeComponent
                                                                                                                });
                                                                                       return textBox.element();
                                                                                     }))
-
+    
                              .addColumn(ColumnConfig.<ControllerData>create("name",
                                                                             "Start screen").setCellRenderer(cellInfo -> SwitchButton.create()
                                                                                                                                     .setOnTitle("Yes")
@@ -148,7 +148,7 @@ public class ScreenCompositeComponent
                                                                                                                                       dataDataTable.load();
                                                                                                                                     })
                                                                                                                                     .element()))
-
+    
                              .addColumn(ColumnConfig.<ControllerData>create("name",
                                                                             "Confirmation").setCellRenderer(cellInfo -> SwitchButton.create()
                                                                                                                                     .setOnTitle("Yes")
@@ -159,7 +159,7 @@ public class ScreenCompositeComponent
                                                                                                                                     .addChangeHandler(value -> cellInfo.getRecord()
                                                                                                                                                                        .setConfirmation(value))
                                                                                                                                     .element()))
-
+    
                              .addColumn(ColumnConfig.<ControllerData>create("remove").setShowTooltip(false)
                                                                                      .setCellRenderer(cellInfo -> Icons.ALL.delete_mdi()
                                                                                                                            .setColor(Color.BLUE_GREY)
@@ -167,11 +167,11 @@ public class ScreenCompositeComponent
                                                                                                                            .styler(style -> style.setCursor("pointer"))
                                                                                                                            .addClickListener(evt -> dataStore.removeRecord(cellInfo.getRecord()))
                                                                                                                            .element()));
-
+    
     dataDataTable = new DataTable<>(screenMetaDataTableConfig,
                                     dataStore);
     dataDataTable.condense();
-
+    
     card.getHeaderBar()
         .appendChild(addButton.setContent("ADD")
                               .setTooltip("Add screen")
@@ -179,7 +179,7 @@ public class ScreenCompositeComponent
                               .linkify()
                               .addClickListener(evt -> {
                                 String index = (dataStore.getRecords()
-                                                         .size() < 10 ? "0" : "") +
+                                                         .size() < 9 ? "0" : "") +
                                                (dataStore.getRecords()
                                                          .size() + 1);
                                 dataStore.addRecord(new ControllerData("Screen" + index,
@@ -189,7 +189,7 @@ public class ScreenCompositeComponent
                                                                        false,
                                                                        false));
                               }));
-
+    
     this.element.appendChild(Row.create()
                                 .appendChild(Column.span10()
                                                    .offset1()
@@ -199,13 +199,13 @@ public class ScreenCompositeComponent
     dataDataTable.load();
     initElement(element);
   }
-
+  
   @Override
   public void edit(NaluGeneraterParms naluGeneraterParms) {
     dataStore.setData(naluGeneraterParms.getControllers());
     dataDataTable.load();
   }
-
+  
   @Override
   public NaluGeneraterParms flush(NaluGeneraterParms naluGeneraterParms) {
     naluGeneraterParms.getControllers()
@@ -213,11 +213,11 @@ public class ScreenCompositeComponent
     naluGeneraterParms.setControllers(dataStore.getRecords());
     return naluGeneraterParms;
   }
-
+  
   @Override
   public boolean isValid() {
     return this.dataStore.getRecords()
                          .size() > 0;
   }
-
+  
 }

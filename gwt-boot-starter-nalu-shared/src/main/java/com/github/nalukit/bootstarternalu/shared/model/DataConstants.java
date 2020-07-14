@@ -18,9 +18,10 @@
 package com.github.nalukit.bootstarternalu.shared.model;
 
 public class DataConstants {
-
-  public final static String GWT_VERSION_2_8_2 = "2.8.2";
-
-  public final static String DEFAULT_GWT_VERSION = GWT_VERSION_2_8_2;
-
+  
+  public final static String GWT_VERSION_2_8_2   = "GWT - 2.8.2";
+  public final static String GWT_VERSION_2_9_0   = "GWT - 2.9.0";
+  public final static String J2CL_VERSION_1_0_0   = "J2CL - 1.0.0";
+  public final static String DEFAULT_GWT_VERSION = GWT_VERSION_2_9_0;
+  
 }

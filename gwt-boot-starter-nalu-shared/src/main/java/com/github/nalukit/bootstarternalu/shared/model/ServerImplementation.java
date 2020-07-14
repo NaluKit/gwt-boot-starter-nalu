@@ -18,16 +18,14 @@
 package com.github.nalukit.bootstarternalu.shared.model;
 
 public enum ServerImplementation {
-
   GWT_MAVEN_PLUGIN("use standard GWT-Maven-Plugin as server implementation"),
   SPRING_BOOT("use Spring Boot as server implementation (experimental)");
-
   private String text;
-
+  
   ServerImplementation(String text) {
     this.text = text;
   }
-
+  
   public String getText() {
     return text;
   }

@@ -32,13 +32,13 @@ import elemental2.dom.HTMLElement;
 public class ButtonBarController
     extends AbstractComponentController<AppContext, IButtonBarComponent, HTMLElement>
     implements IButtonBarComponent.Controller {
-
+  
   public ButtonBarController() {
   }
-
+  
   @Override
   public void doGenerate() {
     this.eventBus.fireEvent(new FlushProjectEvent());
   }
-
+  
 }

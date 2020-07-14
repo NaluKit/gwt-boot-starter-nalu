@@ -5,12 +5,12 @@ import elemental2.dom.HTMLElement;
 
 public interface IButtonBarComponent
     extends IsComponent<IButtonBarComponent.Controller, HTMLElement> {
-
+  
   interface Controller
       extends IsComponent.Controller {
-
+    
     void doGenerate();
-
+    
   }
-
+  
 }

@@ -27,9 +27,9 @@ import javax.ws.rs.Path;
 @RequestFactory(serviceRoot = "service")
 @Path("/project")
 public interface ProjectService {
-
+  
   @POST
   @Path("/generate")
   String generate(@RequestBody NaluGeneraterParms model);
-
+  
 }
