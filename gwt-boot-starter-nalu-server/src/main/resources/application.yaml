@@ -1,0 +1,32 @@
+server:
+  port: 8080
+  forward-headers-strategy: framework
+
+spring:
+  application:
+    name: app
+  devtools:
+    restart:
+      additional-exclude: launcherDir/**
+  jackson:
+    date-format: yyyy-MM-dd'T'HH:mm:ss.SSSZ
+    serialization:
+      write_dates_as_timestamps: false
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+  web:
+    resources:
+      static-locations: classpath:/launcherDir/,classpath:/public/
+
+debug: false
+
+logging:
+  level:
+    #ROOT: DEBUG
+    org.springframework.web: ERROR
+    com.github.nalukitbootstarternalu: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"

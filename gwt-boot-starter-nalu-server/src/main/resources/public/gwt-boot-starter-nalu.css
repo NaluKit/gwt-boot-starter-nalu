@@ -1,0 +1,85 @@
+.header-title {
+    line-height: 120px;
+    margin-top: 10px;
+    color: #FFF;
+    text-align: right;
+}
+
+.sub-title {
+    line-height: 120px;
+    margin-top: 16px;
+    color: #cecece;
+}
+
+[class*="theme-"] .navbar {
+    background-color: rgb(40, 57, 73);
+}
+
+.footer {
+    height: 128px;
+}
+
+.footer .top {
+    background-color: rgb(93, 93, 93);
+    padding-top: 15px;
+    height: 64px;
+    padding-right: 10%;
+    padding-left: 10%;
+}
+
+.footer .bottom {
+    background-color: rgb(40, 57, 73);
+    min-height: 64px;
+    padding-top: 20px;
+    padding-right: 10%;
+    padding-left: 10%;
+}
+
+.footer .grid-col {
+    text-align: center;
+}
+
+.footer .grid-col a {
+    color: #FFFFFF;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 10px;
+    left: 5px;
+}
+
+.gitter-open-chat-button {
+    background-color: #5d5d5d !important;
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
+}
+
+.version {
+    display: block;
+    font-size: 12px;
+    color: #bfbfbf;
+}
+
+.powered-by {
+    color: #fff;
+    position: absolute;
+    right: 140px;
+    top: 10px;
+}
+
+.powered-by img {
+    width: 32px;
+    height: 32px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.github-fork {
+    position: fixed;
+    top: -10px;
+    right: -10px;
+    border: 0;
+    z-index: 99;
+}

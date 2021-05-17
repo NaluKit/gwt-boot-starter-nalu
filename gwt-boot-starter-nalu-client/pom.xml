@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.github.nalukit</groupId>
+    <artifactId>gwt-boot-starter-nalu</artifactId>
+    <version>2.4.1</version>
+  </parent>
+
+  <artifactId>gwt-boot-starter-nalu-client</artifactId>
+  <packaging>gwt-app</packaging>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-user</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-dev</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>gwt-boot-starter-nalu-shared</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>gwt-boot-starter-nalu-shared</artifactId>
+      <version>${project.version}</version>
+      <classifier>sources</classifier>
+    </dependency>
+
+    <dependency>
+      <groupId>org.gwtproject.editor</groupId>
+      <artifactId>gwt-editor</artifactId>
+      <version>${gwt-editor.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.gwtproject.editor</groupId>
+      <artifactId>gwt-editor-processor</artifactId>
+      <version>${gwt-editor.version}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.github.nalukit</groupId>
+      <artifactId>nalu</artifactId>
+      <version>${nalu.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.github.nalukit</groupId>
+      <artifactId>nalu-processor</artifactId>
+      <version>${nalu.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.github.nalukit</groupId>
+      <artifactId>nalu-plugin-elemental2</artifactId>
+      <version>${nalu.version}</version>
+    </dependency>
+
+    <!-- Domino -->
+    <dependency>
+      <groupId>org.dominokit</groupId>
+      <artifactId>domino-ui</artifactId>
+      <version>${domino.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.dominokit</groupId>
+      <artifactId>domino-ui</artifactId>
+      <version>${domino.version}</version>
+      <classifier>sources</classifier>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>net.ltgt.gwt.maven</groupId>
+        <artifactId>gwt-maven-plugin</artifactId>
+        <configuration>
+          <moduleName>com.github.nalukit.gwtbootstarternalu.App</moduleName>
+          <moduleShortName>app</moduleShortName>
+          <jvmArgs>
+            <jvmArg>-Xms1024m</jvmArg>
+            <jvmArg>-Xmx16384m</jvmArg>
+          </jvmArgs>
+          <localWorkers>5</localWorkers>
+          <logLevel>ERROR</logLevel>
+          <!--          <style>OBF</style>-->
+          <style>PRETTY</style>
+          <failOnError>true</failOnError>
+          <codeserverArgs>
+            <arg>-strict</arg>
+          </codeserverArgs>
+          <devmodeArgs>
+            <arg>-strict</arg>
+          </devmodeArgs>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
