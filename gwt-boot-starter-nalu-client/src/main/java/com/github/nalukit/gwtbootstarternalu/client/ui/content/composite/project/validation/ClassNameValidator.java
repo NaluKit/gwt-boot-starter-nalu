@@ -22,7 +22,7 @@ public class ClassNameValidator
   public ClassNameValidator(FormElement element) {
     this.element = element;
 
-    this.regExp = RegExp.compile("^[A-Za-z_$]+[a-zA-Z0-9_$]*$");
+    this.regExp = RegExp.compile("^[A-Za-z_$]+[a-zA-Z0-9_\\-$]*$");
 
     this.reservedKeyWords = new ArrayList<>();
     reservedKeyWords.add("abstract");

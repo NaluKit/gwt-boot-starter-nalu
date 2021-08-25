@@ -1,75 +1,85 @@
 package com.github.nalukit.gwtbootstarternalu.client;
 
 import com.github.nalukit.gwtbootstarternalu.shared.model.*;
-import com.github.nalukit.nalu.client.context.IsContext;
+import com.github.nalukit.nalu.client.context.AbstractModuleContext;
+import com.github.nalukit.nalu.client.context.IsModuleContext;
 
 public class AppContext
-    implements IsContext {
+    extends AbstractModuleContext
+    implements IsModuleContext {
 
-  private String version;
-
-  private NaluGeneraterParms naluGeneraterParms;
+  private final static String NALU_GENERATOR_PARMS = "NALU_GENERATOR_PARMS";
+  private final static String VERSION              = "VERSION";
 
   public AppContext() {
-    this.version = Version.VERSION;
+    super.getApplicationContext()
+         .put(AppContext.NALU_GENERATOR_PARMS,
+              Version.VERSION);
 
-    this.naluGeneraterParms = new NaluGeneraterParms();
-    this.naluGeneraterParms.setGroupId("com.example");
-    this.naluGeneraterParms.setArtefactId("MyTestProject");
-    this.naluGeneraterParms.setApplicationLoader(true);
-    this.naluGeneraterParms.setDebug(true);
-    this.naluGeneraterParms.setLoginScreen(true);
-    this.naluGeneraterParms.setHashUrl(true);
-    this.naluGeneraterParms.setGwtVersion(DataConstants.GWT_VERSION_2_9_0);
-    this.naluGeneraterParms.setServerImplementation(ServerImplementation.GWT_MAVEN_PLUGIN);
-    this.naluGeneraterParms.setWidgetLibrary(WidgetLibrary.DOMINO_UI);
-    this.naluGeneraterParms.getControllers()
-                           .add(new ControllerData("Screen01",
-                                                   "screen01",
-                                                   true,
-                                                   false,
-                                                   true,
-                                                   true));
-    this.naluGeneraterParms.getControllers()
-                           .add(new ControllerData("Screen02",
-                                                   "screen02",
-                                                   false,
-                                                   false,
-                                                   true,
-                                                   true));
-    this.naluGeneraterParms.getControllers()
-                           .add(new ControllerData("Screen03",
-                                                   "screen03",
-                                                   false,
-                                                   true,
-                                                   true,
-                                                   true));
-    this.naluGeneraterParms.getControllers()
-                           .add(new ControllerData("Screen04",
-                                                   "screen04",
-                                                   false,
-                                                   false,
-                                                   true,
-                                                   true));
-    this.naluGeneraterParms.getControllers()
-                           .add(new ControllerData("Screen05",
-                                                   "screen05",
-                                                   false,
-                                                   false,
-                                                   true,
-                                                   true));
-  }
+    NaluGeneraterParms naluGeneraterParms = new NaluGeneraterParms();
+    naluGeneraterParms.setGroupId("com.example");
+    naluGeneraterParms.setArtefactId("my-test-project");
+    naluGeneraterParms.setApplicationLoader(true);
+    naluGeneraterParms.setDebug(true);
+    naluGeneraterParms.setLoginScreen(true);
+    naluGeneraterParms.setHashUrl(true);
+    naluGeneraterParms.setGwtVersion(DataConstants.GWT_VERSION_2_9_0);
+    naluGeneraterParms.setServerImplementation(ServerImplementation.SPRING_BOOT);
+    naluGeneraterParms.setWidgetLibrary(WidgetLibrary.DOMINO_UI);
+    naluGeneraterParms.getControllers()
+                      .add(new ControllerData("Screen01",
+                                              "screen01",
+                                              true,
+                                              false,
+                                              true,
+                                              true));
+    naluGeneraterParms.getControllers()
+                      .add(new ControllerData("Screen02",
+                                              "screen02",
+                                              false,
+                                              false,
+                                              true,
+                                              true));
+    naluGeneraterParms.getControllers()
+                      .add(new ControllerData("Screen03",
+                                              "screen03",
+                                              false,
+                                              true,
+                                              true,
+                                              true));
+    naluGeneraterParms.getControllers()
+                      .add(new ControllerData("Screen04",
+                                              "screen04",
+                                              false,
+                                              false,
+                                              true,
+                                              true));
+    naluGeneraterParms.getControllers()
+                      .add(new ControllerData("Screen05",
+                                              "screen05",
+                                              false,
+                                              false,
+                                              true,
+                                              true));
 
-  public String getVersion() {
-    return version;
+    this.setNaluGeneraterParms(naluGeneraterParms);
   }
 
   public NaluGeneraterParms getNaluGeneraterParms() {
-    return naluGeneraterParms;
+    return (NaluGeneraterParms) super.getApplicationContext()
+                                     .get(AppContext.NALU_GENERATOR_PARMS);
   }
 
   public void setNaluGeneraterParms(NaluGeneraterParms naluGeneraterParms) {
-    this.naluGeneraterParms = naluGeneraterParms;
+    super.getApplicationContext()
+         .put(AppContext.NALU_GENERATOR_PARMS,
+              naluGeneraterParms);
+  }
+
+  public String getVersion() {
+    return (String) super.getApplicationContext()
+                         .get(AppContext.VERSION);
+
   }
 
 }

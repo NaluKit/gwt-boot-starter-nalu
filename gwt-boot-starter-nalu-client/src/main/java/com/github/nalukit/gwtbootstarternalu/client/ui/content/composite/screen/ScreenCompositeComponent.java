@@ -20,6 +20,7 @@ package com.github.nalukit.gwtbootstarternalu.client.ui.content.composite.screen
 import com.github.nalukit.gwtbootstarternalu.shared.model.ControllerData;
 import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
 import com.github.nalukit.nalu.client.component.AbstractCompositeComponent;
+import com.google.gwt.core.client.GWT;
 import elemental2.dom.HTMLDivElement;
 import elemental2.dom.HTMLElement;
 import jsinterop.base.Js;
@@ -206,6 +207,7 @@ public class ScreenCompositeComponent
 
   @Override
   public void edit(NaluGeneraterParms naluGeneraterParms) {
+    GWT.debugger();
     dataStore.setData(naluGeneraterParms.getControllers());
     dataDataTable.load();
   }

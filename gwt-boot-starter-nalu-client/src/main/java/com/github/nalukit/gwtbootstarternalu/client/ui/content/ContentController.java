@@ -35,10 +35,19 @@ import org.dominokit.domino.ui.notifications.Notification;
 
 import java.util.Optional;
 
-@Controller(route = Routes.ROUTE_SET_UP, selector = Slots.CONTENT, componentInterface = IContentComponent.class, component = ContentComponent.class)
-@Composites({ @Composite(name = "ApplicationMetaData", compositeController = ApplicationComposite.class, selector = "applicationSettings"),
-              @Composite(name = "ProjectMetaData", compositeController = ProjectComposite.class, selector = "projectSettings"),
-              @Composite(name = "ScreenMetaData", compositeController = ScreenComposite.class, selector = "screenSettings") })
+@Controller(route = Routes.ROUTE_SET_UP,
+            selector = Slots.CONTENT,
+            componentInterface = IContentComponent.class,
+            component = ContentComponent.class)
+@Composites({ @Composite(name = "ApplicationMetaData",
+                         compositeController = ApplicationComposite.class,
+                         selector = "applicationSettings"),
+              @Composite(name = "ProjectMetaData",
+                         compositeController = ProjectComposite.class,
+                         selector = "projectSettings"),
+              @Composite(name = "ScreenMetaData",
+                         compositeController = ScreenComposite.class,
+                         selector = "screenSettings") })
 public class ContentController
     extends AbstractComponentController<AppContext, IContentComponent, HTMLElement>
     implements IContentComponent.Controller {

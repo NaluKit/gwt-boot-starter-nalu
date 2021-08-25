@@ -20,7 +20,7 @@ package com.github.nalukit.gwtbootstarternalu.shared.model;
 public enum ServerImplementation {
 
   GWT_MAVEN_PLUGIN("use standard GWT-Maven-Plugin as server implementation"),
-  SPRING_BOOT("use Spring Boot as server implementation (experimental)");
+  SPRING_BOOT("use Spring Boot as server implementation");
 
   private String text;
 

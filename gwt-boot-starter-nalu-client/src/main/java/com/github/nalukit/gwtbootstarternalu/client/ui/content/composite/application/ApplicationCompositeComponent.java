@@ -28,13 +28,13 @@ import org.dominokit.domino.ui.grid.Column;
 import org.dominokit.domino.ui.grid.Row;
 import org.dominokit.domino.ui.header.BlockHeader;
 import org.dominokit.domino.ui.style.Color;
+import org.dominokit.domino.ui.utils.DominoElement;
 
 public class ApplicationCompositeComponent
     extends AbstractCompositeComponent<IApplicationCompositeComponent.Controller, HTMLElement>
     implements IApplicationCompositeComponent {
 
   private CheckBox       cbApplicationLoader;
-  private CheckBox       cbDebugSupport;
   private CheckBox       cbLoginScreen;
   private CheckBox       cbHashUrl;
   private FieldsGrouping grouping;
@@ -47,12 +47,6 @@ public class ApplicationCompositeComponent
     this.grouping = new FieldsGrouping();
 
     this.cbApplicationLoader = CheckBox.create("Generate Application Loader class")
-                                       .check()
-                                       .setColor(Color.BLUE_GREY)
-                                       .filledIn()
-                                       .styler(style -> style.setMarginBottom("0px"))
-                                       .groupBy(this.grouping);
-    this.cbDebugSupport      = CheckBox.create("Generate Debug support (in development mode)")
                                        .check()
                                        .setColor(Color.BLUE_GREY)
                                        .filledIn()
@@ -77,19 +71,11 @@ public class ApplicationCompositeComponent
                                                    .appendChild(BlockHeader.create("Application Meta Data"))
                                                    .appendChild(Card.create()
                                                                     .appendChild(Row.create()
-                                                                                    .appendChild(Column.span6()
-                                                                                                       .condenced()
-                                                                                                       .appendChild(this.cbApplicationLoader))
-                                                                                    .appendChild(Column.span6()
-                                                                                                       .condenced()
-                                                                                                       .appendChild(this.cbDebugSupport)))
+                                                                                    .span6(c -> c.appendChild(this.cbApplicationLoader))
+                                                                                    .span6(c -> c.appendChild(this.cbLoginScreen)))
                                                                     .appendChild(Row.create()
-                                                                                    .appendChild(Column.span6()
-                                                                                                       .condenced()
-                                                                                                       .appendChild(this.cbLoginScreen))
-                                                                                    .appendChild(Column.span6()
-                                                                                                       .condenced()
-                                                                                                       .appendChild(this.cbHashUrl))))
+                                                                                    .span6(c -> c.appendChild(this.cbHashUrl))
+                                                                                    .span6(c -> c.appendChild(DominoElement.div()))))
                                                    .style())
                                 .element();
     initElement(element);
@@ -98,7 +84,6 @@ public class ApplicationCompositeComponent
   @Override
   public void edit(NaluGeneraterParms naluGeneraterParms) {
     this.cbApplicationLoader.setValue(naluGeneraterParms.isApplicationLoader());
-    this.cbDebugSupport.setValue(naluGeneraterParms.isDebug());
     this.cbLoginScreen.setValue(naluGeneraterParms.isLoginScreen());
     this.cbHashUrl.setValue(naluGeneraterParms.isHashUrl());
   }
@@ -106,7 +91,6 @@ public class ApplicationCompositeComponent
   @Override
   public NaluGeneraterParms flush(NaluGeneraterParms naluGeneraterParms) {
     naluGeneraterParms.setApplicationLoader(cbApplicationLoader.getValue());
-    naluGeneraterParms.setDebug(cbDebugSupport.getValue());
     naluGeneraterParms.setLoginScreen(cbLoginScreen.getValue());
     naluGeneraterParms.setHashUrl(cbHashUrl.getValue());
     return naluGeneraterParms;

@@ -4,7 +4,10 @@ import com.github.nalukit.gwtbootstarternalu.client.ui.Routes;
 import com.github.nalukit.nalu.client.application.IsApplication;
 import com.github.nalukit.nalu.client.application.annotation.Application;
 
-@Application(startRoute = Routes.ROUTE_SET_UP, context = AppContext.class, history = false)
+@Application(startRoute = Routes.ROUTE_SET_UP,
+             context = AppContext.class,
+             history = false,
+             illegalRouteTarget = Routes.ROUTE_SET_UP)
 interface NaluBootStarterApplication
     extends IsApplication {
 

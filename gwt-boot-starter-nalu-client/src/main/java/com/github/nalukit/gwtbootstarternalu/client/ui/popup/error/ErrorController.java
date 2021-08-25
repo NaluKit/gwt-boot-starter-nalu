@@ -22,7 +22,8 @@ import com.github.nalukit.gwtbootstarternalu.client.ui.Routes;
 import com.github.nalukit.nalu.client.component.AbstractErrorPopUpComponentController;
 import com.github.nalukit.nalu.client.component.annotation.ErrorPopUpController;
 
-@ErrorPopUpController(component = ErrorComponent.class, componentInterface = IErrorComponent.class)
+@ErrorPopUpController(component = ErrorComponent.class,
+                      componentInterface = IErrorComponent.class)
 public class ErrorController
     extends AbstractErrorPopUpComponentController<AppContext, IErrorComponent>
     implements IErrorComponent.Controller {

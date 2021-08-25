@@ -25,7 +25,10 @@ import com.github.nalukit.nalu.client.component.AbstractComponentController;
 import com.github.nalukit.nalu.client.component.annotation.Controller;
 import elemental2.dom.HTMLElement;
 
-@Controller(route = Routes.ROUTE_SET_UP, selector = Slots.BUTTION_BAR, componentInterface = IButtonBarComponent.class, component = ButtonBarComponent.class)
+@Controller(route = Routes.ROUTE_SET_UP,
+            selector = Slots.BUTTION_BAR,
+            componentInterface = IButtonBarComponent.class,
+            component = ButtonBarComponent.class)
 public class ButtonBarController
     extends AbstractComponentController<AppContext, IButtonBarComponent, HTMLElement>
     implements IButtonBarComponent.Controller {

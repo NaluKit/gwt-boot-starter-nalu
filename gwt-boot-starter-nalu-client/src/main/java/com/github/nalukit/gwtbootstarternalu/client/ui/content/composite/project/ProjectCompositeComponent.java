@@ -19,6 +19,7 @@ package com.github.nalukit.gwtbootstarternalu.client.ui.content.composite.projec
 
 import com.github.nalukit.gwtbootstarternalu.client.ui.content.composite.project.validation.ClassNameValidator;
 import com.github.nalukit.gwtbootstarternalu.client.ui.content.composite.project.validation.PackageValidator;
+import com.github.nalukit.gwtbootstarternalu.shared.model.DataConstants;
 import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
 import com.github.nalukit.gwtbootstarternalu.shared.model.ServerImplementation;
 import com.github.nalukit.gwtbootstarternalu.shared.model.WidgetLibrary;
@@ -61,7 +62,7 @@ public class ProjectCompositeComponent
     groupIdTextBox.addValidator(new PackageValidator(this.groupIdTextBox));
 
     artifactIdTextBox = TextBox.create("Artifact ID")
-                               .setPlaceholder("MyTestProject")
+                               .setPlaceholder("my-test-project")
                                .value("MyTestProject")
                                .floating()
                                .addLeftAddOn(Icons.ALL.archive_outline_mdi())
@@ -69,8 +70,8 @@ public class ProjectCompositeComponent
     artifactIdTextBox.addValidator(new ClassNameValidator(this.artifactIdTextBox));
 
     gwtVersionSelect = Select.<String>create("GWT Version")
-                             .appendChild(SelectOption.create("2.8.2",
-                                                              "2.8.2"))
+                             .appendChild(SelectOption.create(DataConstants.GWT_VERSION_2_9_0,
+                                                              DataConstants.GWT_VERSION_2_9_0))
                              .selectAt(0)
                              .addLeftAddOn(Icons.ALL.code_tags_mdi())
                              .setRequired(true)
@@ -88,13 +89,8 @@ public class ProjectCompositeComponent
     widgetSetSelect = Select.<WidgetLibrary>create("Widget Set")
                             .appendChild(SelectOption.create(WidgetLibrary.DOMINO_UI,
                                                              WidgetLibrary.DOMINO_UI.getText()))
-                            // TODO Elemento
-                            //                                                                .appendChild(SelectOption.create(WidgetLibrary.ELEMENTO,
-                            //                                                                                                 WidgetLibrary.ELEMENTO.getText()))
                             .appendChild(SelectOption.create(WidgetLibrary.GWT,
                                                              WidgetLibrary.GWT.getText()))
-                            .appendChild(SelectOption.create(WidgetLibrary.GXT,
-                                                             WidgetLibrary.GXT.getText()))
                             .selectAt(3)
                             .addLeftAddOn(Icons.ALL.view_dashboard_outline_mdi())
                             .groupBy(grouping);
@@ -109,18 +105,13 @@ public class ProjectCompositeComponent
                                                    .appendChild(Card.create()
                                                                     .styler(style -> style.setPaddingTop("20px"))
                                                                     .appendChild(Row.create()
-                                                                                    .appendChild(Column.span6()
-                                                                                                       .appendChild(groupIdTextBox))
-                                                                                    .appendChild(Column.span6()
-                                                                                                       .appendChild(artifactIdTextBox)))
+                                                                                    .span6(c -> c.appendChild(groupIdTextBox))
+                                                                                    .span6(c -> c.appendChild(artifactIdTextBox)))
                                                                     .appendChild(Row.create()
-                                                                                    .appendChild(Column.span6()
-                                                                                                       .appendChild(gwtVersionSelect))
-                                                                                    .appendChild(Column.span6()
-                                                                                                       .appendChild(widgetSetSelect)))
+                                                                                    .span6(c -> c.appendChild(gwtVersionSelect))
+                                                                                    .span6(c -> c.appendChild(widgetSetSelect)))
                                                                     .appendChild(Row.create()
-                                                                                    .appendChild(Column.span12()
-                                                                                                       .appendChild(serverImplementationSelect)))))
+                                                                                    .span12(c -> c.appendChild(serverImplementationSelect)))))
                                 .element();
     initElement(element);
   }

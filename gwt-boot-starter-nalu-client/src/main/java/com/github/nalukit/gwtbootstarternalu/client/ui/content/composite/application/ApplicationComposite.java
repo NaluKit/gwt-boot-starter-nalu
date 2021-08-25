@@ -22,7 +22,8 @@ import com.github.nalukit.nalu.client.component.AbstractCompositeController;
 import com.github.nalukit.nalu.client.component.annotation.CompositeController;
 import elemental2.dom.HTMLElement;
 
-@CompositeController(componentInterface = IApplicationCompositeComponent.class, component = ApplicationCompositeComponent.class)
+@CompositeController(componentInterface = IApplicationCompositeComponent.class,
+                     component = ApplicationCompositeComponent.class)
 public class ApplicationComposite
     extends AbstractCompositeController<AppContext, IApplicationCompositeComponent, HTMLElement>
     implements IApplicationCompositeComponent.Controller {

@@ -4,13 +4,13 @@ Change directory to your generated project and issue the following commands:
 
 * run in one terminal window:
 
-    - mvn clean verify
+    - mvn clean package
 
     - mvn gwt:codeserver -pl *-client -am
 
 * in another terminal window:
 
-    - mvn jetty:run -pl *-server -am -Denv=dev
+    - mvn spring-boot:run -P env-dev
 
 To start the application, call:
 
