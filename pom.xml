@@ -19,7 +19,7 @@
     <gwt-editor.version>1.0.0-RC1</gwt-editor.version>
 
     <!-- nalu version -->
-    <nalu.version>2.6.0</nalu.version>
+    <nalu.version>HEAD-SNAPSHOT</nalu.version>
 
     <spring-boot.version>2.5.4</spring-boot.version>
 

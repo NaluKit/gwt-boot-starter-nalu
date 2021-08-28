@@ -12,6 +12,11 @@
   <artifactId>gwt-boot-starter-nalu-server</artifactId>
   <packaging>war</packaging>
 
+  <properties>
+    <guava.version>30.1.1-jre</guava.version>
+    <javapoet.version>1.13.0</javapoet.version>
+  </properties>
+
   <dependencies>
     <dependency>
       <groupId>${project.groupId}</groupId>
@@ -37,6 +42,19 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-devtools</artifactId>
       <optional>true</optional>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>${guava.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.squareup</groupId>
+      <artifactId>javapoet</artifactId>
+      <version>${javapoet.version}</version>
     </dependency>
   </dependencies>
 
