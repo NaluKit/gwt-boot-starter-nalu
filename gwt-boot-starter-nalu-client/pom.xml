@@ -92,6 +92,11 @@
           <devmodeArgs>
             <arg>-strict</arg>
           </devmodeArgs>
+          <workDir>${basedir}/target/gwt/workDir</workDir>
+          <compilerArgs>
+            <arg>-gen</arg>
+            <arg>${basedir}/target/gwt/gen</arg>
+          </compilerArgs>
         </configuration>
       </plugin>
     </plugins>
