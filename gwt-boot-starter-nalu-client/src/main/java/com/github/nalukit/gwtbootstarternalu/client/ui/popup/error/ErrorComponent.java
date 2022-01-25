@@ -70,35 +70,35 @@ public class ErrorComponent
                                                                                                                     .setTextContent("Route:")
                                                                                                                     .styler(style -> {
                                                                                                                       style.setMarginBottom("6px");
-                                                                                                                      style.setProperty("font-weight",
-                                                                                                                                        "bold");
+                                                                                                                      style.setCssProperty("font-weight",
+                                                                                                                                           "bold");
                                                                                                                     }))
                                                                                           .appendChild(DominoElement.div()
                                                                                                                     .appendChild(this.route)
                                                                                                                     .styler(style -> {
                                                                                                                       style.setMarginBottom("24px");
-                                                                                                                      style.setProperty("font-weight",
-                                                                                                                                        "normal");
+                                                                                                                      style.setCssProperty("font-weight",
+                                                                                                                                           "normal");
                                                                                                                     }))
                                                                                           .appendChild(DominoElement.div()
                                                                                                                     .setTextContent("Message:")
                                                                                                                     .styler(style -> {
                                                                                                                       style.setMarginBottom("6px");
-                                                                                                                      style.setProperty("font-weight",
-                                                                                                                                        "bold");
+                                                                                                                      style.setCssProperty("font-weight",
+                                                                                                                                           "bold");
                                                                                                                     }))
                                                                                           .appendChild(DominoElement.div()
                                                                                                                     .appendChild(this.message)
                                                                                                                     .styler(style -> {
                                                                                                                       style.setMarginBottom("24px");
-                                                                                                                      style.setProperty("font-weight",
-                                                                                                                                        "normal");
+                                                                                                                      style.setCssProperty("font-weight",
+                                                                                                                                           "normal");
                                                                                                                     }))
                                                                                           .appendChild(this.content));
 
     FlexLayout flexLayout = FlexLayout.create()
                                       .style()
-                                      .add("fill-height")
+                                      .addCss("fill-height")
                                       .get()
                                       .setDirection(FlexDirection.LEFT_TO_RIGHT);
 
@@ -173,15 +173,15 @@ public class ErrorComponent
                                           .setTextContent(label)
                                           .styler(style -> {
                                             style.setMarginBottom("6px");
-                                            style.setProperty("font-weight",
-                                                              "bold");
+                                            style.setCssProperty("font-weight",
+                                                                 "bold");
                                           }))
                 .appendChild(DominoElement.div()
                                           .setTextContent(value)
                                           .styler(style -> {
                                             style.setMarginBottom("24px");
-                                            style.setProperty("font-weight",
-                                                              "normal");
+                                            style.setCssProperty("font-weight",
+                                                                 "normal");
                                           }));
   }
 

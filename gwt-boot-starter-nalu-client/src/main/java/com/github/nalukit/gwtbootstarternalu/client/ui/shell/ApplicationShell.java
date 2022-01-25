@@ -17,7 +17,6 @@
 package com.github.nalukit.gwtbootstarternalu.client.ui.shell;
 
 import com.github.nalukit.gwtbootstarternalu.client.AppContext;
-import com.github.nalukit.gwtbootstarternalu.client.Version;
 import com.github.nalukit.gwtbootstarternalu.client.ui.Routes;
 import com.github.nalukit.gwtbootstarternalu.client.ui.Slots;
 import com.github.nalukit.nalu.client.component.AbstractShell;
@@ -72,7 +71,7 @@ public class ApplicationShell
           .clearElement()
           .appendChild(TextNode.of("Nalu Initializer"))
           .appendChild(span().css("version")
-                             .textContent(Version.VERSION))
+                             .textContent(this.context.getApplicationVersion()))
           .addClickListener(e -> DomGlobal.window.open("https://github.com/nalukit/nalu",
                                                        "_blank"));
 
@@ -95,7 +94,7 @@ public class ApplicationShell
           .fixFooter();
     Footer footer = layout.getFooter();
 
-    footer.appendChild(Row.create()
+    footer.appendChild(DominoElement.div()
                           .setId(Slots.BUTTION_BAR)
                           .addCss("top"))
           .appendChild(Row.create()
@@ -114,14 +113,6 @@ public class ApplicationShell
     layout.getContentPanel()
           .setId(Slots.CONTENT);
     layout.show();
-
-    DomGlobal.document.body.appendChild(DominoElement.of(a().attr("href",
-                                                                  "https://github.com/NaluKit/gwt-boot-starter-nalu")
-                                                            .add(img("https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png").css("github-fork")
-                                                                                                                                            .attr("alt",
-                                                                                                                                                  "Fork me on GitHub")))
-                                                     .hideOn(ScreenMedia.MEDIUM_AND_DOWN)
-                                                     .element());
   }
 
   private HTMLAnchorElement createAnchorElement(String label,

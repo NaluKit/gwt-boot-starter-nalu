@@ -3,6 +3,7 @@
 *.class
 
 # gwt caches and compiled units #
+war/gwt_bree/
 gwt-unitCache/
 
 # boilerplate generated classes #
@@ -91,8 +92,6 @@ Temporary Items
 # IntelliJ project files
 .idea
 out
-*.iml
-
 gen### Eclipse template
 
 .metadata
@@ -191,6 +190,7 @@ appengine-generated/
 .idea/modules.xml
 .idea/*.iml
 .idea/modules
+*.iml
 
 # CMake
 cmake-build-*/
@@ -203,10 +203,6 @@ cmake-build-*/
 
 # IntelliJ
 out/
-
-# Eclipse
-.project
-.classpath
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
@@ -225,10 +221,5 @@ fabric.properties
 
 # Editor-based Rest Client
 .idea/httpRequests
-/nalu-plugin-elemental2/nalu-plugin-elemental2.iml
-/nalu-processor/nalu-processor.iml
-/nalu/nalu.iml
-
-*/dependency-reduced-pom.xml
-
-
+target
+*.info

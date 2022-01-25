@@ -21,7 +21,9 @@ import com.github.nalukit.nalu.client.component.AbstractComponent;
 import elemental2.dom.HTMLElement;
 import org.dominokit.domino.ui.button.Button;
 import org.dominokit.domino.ui.button.ButtonSize;
-import org.dominokit.domino.ui.grid.Column;
+import org.dominokit.domino.ui.grid.flex.FlexItem;
+import org.dominokit.domino.ui.grid.flex.FlexJustifyContent;
+import org.dominokit.domino.ui.grid.flex.FlexLayout;
 import org.dominokit.domino.ui.style.Color;
 
 public class ButtonBarComponent
@@ -40,10 +42,11 @@ public class ButtonBarComponent
                                 .block()
                                 .setSize(ButtonSize.LARGE)
                                 .addClickListener(e -> getController().doGenerate());
-    initElement(Column.span2()
-                      .offset5()
-                      .appendChild(this.generateButton)
-                      .element());
+    initElement(FlexLayout.create()
+                          .setJustifyContent(FlexJustifyContent.CENTER)
+                          .appendChild(FlexItem.create()
+                                               .appendChild(this.generateButton))
+                          .element());
   }
 
 }

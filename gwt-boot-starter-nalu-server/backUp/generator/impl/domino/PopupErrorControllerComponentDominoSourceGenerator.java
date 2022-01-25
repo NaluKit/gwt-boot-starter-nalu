@@ -16,20 +16,11 @@
 
 package com.github.nalukit.gwtbootstarternalu.server.service.generator.impl.domino;
 
-import com.github.nalukit.bootstarternalu.server.generator.impl.AbstractPopupErrorControllerComponentSourceGenerator;
-import com.github.nalukit.bootstarternalu.shared.model.ControllerData;
-import com.github.nalukit.bootstarternalu.shared.model.NaluGeneraterParms;
+import com.github.nalukit.gwtbootstarternalu.server.service.generator.impl.AbstractPopupErrorControllerComponentSourceGenerator;
 import com.github.nalukit.nalu.client.event.model.ErrorInfo.ErrorType;
 import com.squareup.javapoet.*;
 import elemental2.dom.HTMLDivElement;
 import elemental2.dom.Image;
-import org.dominokit.domino.ui.button.Button;
-import org.dominokit.domino.ui.grid.flex.FlexAlign;
-import org.dominokit.domino.ui.grid.flex.FlexDirection;
-import org.dominokit.domino.ui.grid.flex.FlexItem;
-import org.dominokit.domino.ui.grid.flex.FlexLayout;
-import org.dominokit.domino.ui.modals.ModalDialog;
-import org.dominokit.domino.ui.utils.DominoElement;
 
 import javax.lang.model.element.Modifier;
 import java.io.File;

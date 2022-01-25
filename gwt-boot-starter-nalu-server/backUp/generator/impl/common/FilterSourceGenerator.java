@@ -16,11 +16,11 @@
 
 package com.github.nalukit.gwtbootstarternalu.server.service.generator.impl.common;
 
-import com.github.nalukit.bootstarternalu.server.generator.GeneratorConstants;
-import com.github.nalukit.bootstarternalu.server.generator.GeneratorUtils;
-import com.github.nalukit.bootstarternalu.server.generator.impl.AbstractSourceGenerator;
-import com.github.nalukit.bootstarternalu.shared.model.GeneratorException;
-import com.github.nalukit.bootstarternalu.shared.model.NaluGeneraterParms;
+import com.github.nalukit.gwtbootstarternalu.server.service.generator.GeneratorConstants;
+import com.github.nalukit.gwtbootstarternalu.server.service.generator.GeneratorUtils;
+import com.github.nalukit.gwtbootstarternalu.server.service.generator.impl.AbstractSourceGenerator;
+import com.github.nalukit.gwtbootstarternalu.shared.model.GeneratorException;
+import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
 import com.github.nalukit.nalu.client.filter.AbstractFilter;
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.CodeBlock;

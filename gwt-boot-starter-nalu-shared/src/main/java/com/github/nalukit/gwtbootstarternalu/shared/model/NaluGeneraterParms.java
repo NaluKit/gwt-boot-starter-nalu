@@ -31,7 +31,6 @@ public class NaluGeneraterParms {
   private boolean              applicationLoader;
   private boolean              debug;
   private boolean              loginScreen;
-  private boolean              hashUrl;
   private WidgetLibrary        widgetLibrary;
   private ServerImplementation serverImplementation;
   private List<ControllerData> controllers;
@@ -86,14 +85,6 @@ public class NaluGeneraterParms {
 
   public void setLoginScreen(boolean loginScreen) {
     this.loginScreen = loginScreen;
-  }
-
-  public boolean isHashUrl() {
-    return hashUrl;
-  }
-
-  public void setHashUrl(boolean hashUrl) {
-    this.hashUrl = hashUrl;
   }
 
   public WidgetLibrary getWidgetLibrary() {

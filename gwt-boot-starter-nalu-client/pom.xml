@@ -6,7 +6,7 @@
   <parent>
     <groupId>com.github.nalukit</groupId>
     <artifactId>gwt-boot-starter-nalu</artifactId>
-    <version>2.4.1</version>
+    <version>HEAD-SNAPSHOT</version>
   </parent>
 
   <artifactId>gwt-boot-starter-nalu-client</artifactId>
@@ -37,43 +37,35 @@
     <dependency>
       <groupId>org.gwtproject.editor</groupId>
       <artifactId>gwt-editor</artifactId>
-      <version>${gwt-editor.version}</version>
     </dependency>
     <dependency>
       <groupId>org.gwtproject.editor</groupId>
       <artifactId>gwt-editor-processor</artifactId>
-      <version>${gwt-editor.version}</version>
       <scope>provided</scope>
     </dependency>
 
     <dependency>
       <groupId>com.github.nalukit</groupId>
       <artifactId>nalu</artifactId>
-      <version>${nalu.version}</version>
     </dependency>
     <dependency>
       <groupId>com.github.nalukit</groupId>
       <artifactId>nalu-processor</artifactId>
-      <version>${nalu.version}</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>com.github.nalukit</groupId>
       <artifactId>nalu-plugin-elemental2</artifactId>
-      <version>${nalu.version}</version>
     </dependency>
 
     <!-- Domino -->
     <dependency>
       <groupId>org.dominokit</groupId>
       <artifactId>domino-ui</artifactId>
-      <version>${domino.version}</version>
     </dependency>
     <dependency>
       <groupId>org.dominokit</groupId>
       <artifactId>domino-ui</artifactId>
-      <version>${domino.version}</version>
-      <classifier>sources</classifier>
     </dependency>
   </dependencies>
 

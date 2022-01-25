@@ -6,24 +6,19 @@
   <parent>
     <groupId>com.github.nalukit</groupId>
     <artifactId>gwt-boot-starter-nalu</artifactId>
-    <version>2.4.1</version>
+    <version>HEAD-SNAPSHOT</version>
   </parent>
 
   <artifactId>gwt-boot-starter-nalu-server</artifactId>
   <packaging>war</packaging>
 
   <properties>
-    <guava.version>30.1.1-jre</guava.version>
+    <guava.version>31.0.1-jre</guava.version>
     <javapoet.version>1.13.0</javapoet.version>
+    <servlet-api.version>4.0.1</servlet-api.version>
   </properties>
 
   <dependencies>
-    <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>gwt-boot-starter-nalu-shared</artifactId>
-      <version>${project.version}</version>
-    </dependency>
-
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
@@ -32,16 +27,37 @@
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-starter-logging</artifactId>
         </exclusion>
+        <exclusion>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>org.apache.logging.log4j</artifactId>
+        </exclusion>
       </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-log4j2</artifactId>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-devtools</artifactId>
       <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-tomcat</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <scope>provided</scope>
     </dependency>
 
     <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
@@ -55,6 +71,21 @@
       <groupId>com.squareup</groupId>
       <artifactId>javapoet</artifactId>
       <version>${javapoet.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.github.nalukit</groupId>
+      <artifactId>nalu</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.github.nalukit</groupId>
+      <artifactId>nalu-plugin-elemental2</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>gwt-boot-starter-nalu-shared</artifactId>
+      <version>${project.version}</version>
     </dependency>
   </dependencies>
 

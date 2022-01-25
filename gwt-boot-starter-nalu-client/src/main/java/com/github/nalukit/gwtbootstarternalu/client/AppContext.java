@@ -1,6 +1,10 @@
 package com.github.nalukit.gwtbootstarternalu.client;
 
-import com.github.nalukit.gwtbootstarternalu.shared.model.*;
+import com.github.nalukit.gwtbootstarternalu.shared.model.ControllerData;
+import com.github.nalukit.gwtbootstarternalu.shared.model.DataConstants;
+import com.github.nalukit.gwtbootstarternalu.shared.model.NaluGeneraterParms;
+import com.github.nalukit.gwtbootstarternalu.shared.model.ServerImplementation;
+import com.github.nalukit.gwtbootstarternalu.shared.model.WidgetLibrary;
 import com.github.nalukit.nalu.client.context.AbstractModuleContext;
 import com.github.nalukit.nalu.client.context.IsModuleContext;
 
@@ -9,20 +13,14 @@ public class AppContext
     implements IsModuleContext {
 
   private final static String NALU_GENERATOR_PARMS = "NALU_GENERATOR_PARMS";
-  private final static String VERSION              = "VERSION";
 
   public AppContext() {
-    super.getApplicationContext()
-         .put(AppContext.NALU_GENERATOR_PARMS,
-              Version.VERSION);
-
     NaluGeneraterParms naluGeneraterParms = new NaluGeneraterParms();
     naluGeneraterParms.setGroupId("com.example");
     naluGeneraterParms.setArtefactId("my-test-project");
     naluGeneraterParms.setApplicationLoader(true);
     naluGeneraterParms.setDebug(true);
     naluGeneraterParms.setLoginScreen(true);
-    naluGeneraterParms.setHashUrl(true);
     naluGeneraterParms.setGwtVersion(DataConstants.GWT_VERSION_2_9_0);
     naluGeneraterParms.setServerImplementation(ServerImplementation.SPRING_BOOT);
     naluGeneraterParms.setWidgetLibrary(WidgetLibrary.DOMINO_UI);
@@ -74,12 +72,6 @@ public class AppContext
     super.getApplicationContext()
          .put(AppContext.NALU_GENERATOR_PARMS,
               naluGeneraterParms);
-  }
-
-  public String getVersion() {
-    return (String) super.getApplicationContext()
-                         .get(AppContext.VERSION);
-
   }
 
 }

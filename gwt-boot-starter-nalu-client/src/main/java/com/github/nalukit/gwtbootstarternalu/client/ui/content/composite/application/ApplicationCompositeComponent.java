@@ -36,7 +36,6 @@ public class ApplicationCompositeComponent
 
   private CheckBox       cbApplicationLoader;
   private CheckBox       cbLoginScreen;
-  private CheckBox       cbHashUrl;
   private FieldsGrouping grouping;
 
   public ApplicationCompositeComponent() {
@@ -58,12 +57,6 @@ public class ApplicationCompositeComponent
                                        .filledIn()
                                        .styler(style -> style.setMarginBottom("0px"))
                                        .groupBy(this.grouping);
-    this.cbHashUrl           = CheckBox.create("Use hash in URL")
-                                       .check()
-                                       .setColor(Color.BLUE_GREY)
-                                       .filledIn()
-                                       .styler(style -> style.setMarginBottom("0px"))
-                                       .groupBy(this.grouping);
 
     HTMLDivElement element = Row.create()
                                 .appendChild(Column.span10()
@@ -72,10 +65,7 @@ public class ApplicationCompositeComponent
                                                    .appendChild(Card.create()
                                                                     .appendChild(Row.create()
                                                                                     .span6(c -> c.appendChild(this.cbApplicationLoader))
-                                                                                    .span6(c -> c.appendChild(this.cbLoginScreen)))
-                                                                    .appendChild(Row.create()
-                                                                                    .span6(c -> c.appendChild(this.cbHashUrl))
-                                                                                    .span6(c -> c.appendChild(DominoElement.div()))))
+                                                                                    .span6(c -> c.appendChild(this.cbLoginScreen))))
                                                    .style())
                                 .element();
     initElement(element);
@@ -85,14 +75,12 @@ public class ApplicationCompositeComponent
   public void edit(NaluGeneraterParms naluGeneraterParms) {
     this.cbApplicationLoader.setValue(naluGeneraterParms.isApplicationLoader());
     this.cbLoginScreen.setValue(naluGeneraterParms.isLoginScreen());
-    this.cbHashUrl.setValue(naluGeneraterParms.isHashUrl());
   }
 
   @Override
   public NaluGeneraterParms flush(NaluGeneraterParms naluGeneraterParms) {
     naluGeneraterParms.setApplicationLoader(cbApplicationLoader.getValue());
     naluGeneraterParms.setLoginScreen(cbLoginScreen.getValue());
-    naluGeneraterParms.setHashUrl(cbHashUrl.getValue());
     return naluGeneraterParms;
   }
 
