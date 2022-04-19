@@ -66,6 +66,7 @@
     <dependency>
       <groupId>org.dominokit</groupId>
       <artifactId>domino-ui</artifactId>
+      <classifier>sources</classifier>
     </dependency>
   </dependencies>
 

@@ -67,170 +67,169 @@ public class ProjectResource
 
   private GenerateResponse generateMultiMavenProject(NaluGeneraterParms model,
                                                     GenerateResponse response) {
-//    try {
-//      LOGGER.debug("generation started for groupIds >>" + model.getGroupId() + "<< - >>" + model.getArtefactId() + "<<");
-//      // create folder in tempDirectory
-//      String tmpDirPath = System.getProperty("java.io.tmpdir");
-//      if (!tmpDirPath.endsWith(File.separator)) {
-//        tmpDirPath = tmpDirPath + File.separator;
-//      }
-//      LOGGER.debug(">>" + model.getArtefactId() + "<< -> java.io.tempdir >>" + tmpDirPath + "<<");
-//      // create archive-Folder
-//      String projectRootFolder = tmpDirPath + "nalu-boot-starter-project-" + GeneratorUtils.removeBadChracters(model.getArtefactId());
-//      LOGGER.debug(">>" + model.getArtefactId() + "<< -> project root directory >>" + projectRootFolder + "<<");
-//      String projectFolder = projectRootFolder + File.separator + model.getArtefactId();
-//      LOGGER.debug(">>" + model.getArtefactId() + "<< try to create project root directory with path >>" + projectRootFolder + "<<");
-//      // exists? -> delete
-//      if ((new File(projectRootFolder)).exists()) {
-//        deleteFolder(new File(projectRootFolder));
-//      }
-//      LOGGER.debug(">>" + model.getArtefactId() + "<< project root directory with path >>" + projectRootFolder + "<< created");
-//
-//      String projectFolderClient = projectFolder + File.separator + GeneratorUtils.removeBadChracters(model.getArtefactId()) + "-client";
-//      LOGGER.debug(">>" + model.getArtefactId() + "<< try to create project client directory with path >>" + projectFolderClient + "<<");
-//      // exists? -> delete
-//      if ((new File(projectFolderClient)).exists()) {
-//        deleteFolder(new File(projectFolderClient));
-//      }
-//      LOGGER.debug(">>" + model.getArtefactId() + "<< project root client with path >>" + projectFolderClient + "<< created");
-//      // create ...
-//      File projectClientFolderFile = new File(projectFolderClient);
-//      if (!projectClientFolderFile.mkdirs()) {
-//        LOGGER.error(">>" + model.getArtefactId() + "<< creation of project folder (1) failed! >>" + projectFolderClient + "<< ");
-//        response.getStatus()
-//                .setReturnCode(Status.TECHNICAL_SERVER_ERROR);
-//        response.getStatus()
-//                .setTechnicalMessage("ERROR: creation of project folder (1) failed!");
-//        return response;
-//      }
-//
-//      String projectFolderShared = projectFolder + File.separator + GeneratorUtils.removeBadChracters(model.getArtefactId()) + "-shared";
-//      LOGGER.debug(">>" + model.getArtefactId() + "<< try to create project shared directory with path >>" + projectFolderShared + "<<");
-//      // exists? -> delete
-//      if ((new File(projectFolderShared)).exists()) {
-//        deleteFolder(new File(projectFolderShared));
-//      }
-//      LOGGER.debug(">>" + model.getArtefactId() + "<< project root shared with path >>" + projectFolderShared + "<< created");
-//      // create ...
-//      File projectSharedFolderFile = new File(projectFolderShared);
-//      if (!projectSharedFolderFile.mkdirs()) {
-//        LOGGER.error(">>" + model.getArtefactId() + "<< creation of project folder (2) failed! >>" + projectFolderShared + "<< ");
-//        response.getStatus()
-//                .setReturnCode(Status.TECHNICAL_SERVER_ERROR);
-//        response.getStatus()
-//                .setTechnicalMessage("ERROR: creation of project folder (2) failed");
-//        return response;
-//      }
-//
-//      String projectFolderServer = projectFolder + File.separator + GeneratorUtils.removeBadChracters(model.getArtefactId()) + "-server";
-//      LOGGER.debug(">>" + model.getArtefactId() + "<< try to create project server directory with path >>" + projectFolderServer + "<<");
-//      // exists? -> delete
-//      if ((new File(projectFolderServer)).exists()) {
-//        deleteFolder(new File(projectFolderServer));
-//      }
-//      LOGGER.debug(">>" + model.getArtefactId() + "<< project root server with path >>" + projectFolderServer + "<< created");
-//      // create ...
-//      File projectServerFolderFile = new File(projectFolderServer);
-//      if (!projectServerFolderFile.mkdirs()) {
-//        LOGGER.error(">>" + model.getArtefactId() + "<< creation of project folder (3) failed! >>" + projectFolderServer + "<< ");
-//        response.getStatus()
-//                .setReturnCode(Status.TECHNICAL_SERVER_ERROR);
-//        response.getStatus()
-//                .setTechnicalMessage("ERROR: creation of project folder (3) failed");
-//        return response;
-//      }
-////      //
-////      //      // create ...
-////      //      File projectRootFolderFile = new File(projectRootFolder);
-////      //      if (!projectRootFolderFile.mkdirs()) {
-////      //        LOGGER.error(">>" + model.getArtefactId() + "<< creation of project folder (1) failed! >>" + projectRootFolder + "<< ");
-////      //        return new ResponseEntity<>("ERROR: creation of project folder (1) failed!",
-////      //                                    HttpStatus.INTERNAL_SERVER_ERROR);
-////      //      }
-////      //      File projectFolderFile = new File(projectFolder);
-////      //      if (!projectFolderFile.mkdirs()) {
-////      //        LOGGER.error(">>" + model.getArtefactId() + "<< creation of project folder (1) failed! >>" + projectRootFolder + "<< ");
-////      //        return new ResponseEntity<>("ERROR: creation of project folder (2) failed!",
-////      //                                    HttpStatus.INTERNAL_SERVER_ERROR);
-////      //      }
-////      // create Java sources (must run first, because this creates the project structre)
-//      try {
-//        LOGGER.debug(">>" + model.getArtefactId() + "<< generating sources!");
-//        SourceGenerator.builder()
-//                       .naluGeneraterParms(model)
-//                       .projectFolder(projectFolder)
-//                       .projectFolderClient(projectFolderClient)
-//                       .projectFolderShared(projectFolderShared)
-//                       .projectFolderServer(projectFolderServer)
-//                       .build()
-//                       .generate();
-//      } catch (GeneratorException e) {
-//        LOGGER.error(">>" + model.getArtefactId() + "<< source generation failed!",
-//                     e);
-//        response.getStatus()
-//                .setReturnCode(Status.TECHNICAL_SERVER_ERROR);
-//        response.getStatus()
-//                .setTechnicalMessage(e.getMessage());
-//        return response;
-//      }
-//      // create POM
-//      try {
-//        LOGGER.debug(">>" + model.getArtefactId() + "<< generating pom!");
-//        MultiPomGenerator.builder()
-//                         .naluGeneraterParms(model)
-//                         .projectFolder(projectFolder)
-//                         .projectFolderClient(projectFolderClient)
-//                         .projectFolderShared(projectFolderShared)
-//                         .projectFolderServer(projectFolderServer)
-//                         .build()
-//                         .generate();
-//      } catch (GeneratorException e) {
-//        LOGGER.error(">>" + model.getArtefactId() + "<< pom generation failed!",
-//                     e);
-//        response.getStatus()
-//                .setReturnCode(Status.TECHNICAL_SERVER_ERROR);
-//        response.getStatus()
-//                .setTechnicalMessage(e.getMessage());
-//        return response;
-//      }
-//      // create Module Descriptor
-//      try {
-//        LOGGER.debug(">>" + model.getArtefactId() + "<< generating module dexcriptor!");
-//        ModuleDescriptorGenerator.builder()
-//                                 .naluGeneraterParms(model)
-//                                 .projectFolder(projectFolderClient)
-//                                 .build()
-//                                 .generate();
-//      } catch (GeneratorException e) {
-//        LOGGER.error(">>" + model.getArtefactId() + "<< module descriptor generation failed!",
-//                     e);
-//        response.getStatus()
-//                .setReturnCode(Status.TECHNICAL_SERVER_ERROR);
-//        response.getStatus()
-//                .setTechnicalMessage(e.getMessage());
-//        return response;
-//      }
-//      // zip the content
-//      LOGGER.debug(">>" + model.getArtefactId() + "<< creating zip");
-//      this.zipIt(projectRootFolder);
-//      LOGGER.debug(">>" + model.getArtefactId() + "<< zip created");
-//      // delete tmp folder
-//      LOGGER.debug(">>" + model.getArtefactId() + "<< delete temp folders");
-//      deleteFolder(new File(projectRootFolder));
-//      LOGGER.debug(">>" + model.getArtefactId() + "<< temp folders deleted");
-//      response.getStatus()
-//              .setReturnCode(Status.OK);
-//      response.setDownloadUrl(projectRootFolder + ".zip");
-//      return response;
-//    } catch (Exception e) {
-//      LOGGER.error(">>" + model.getArtefactId() + "<< -> exception: " + e);
-//      response.getStatus()
-//              .setReturnCode(Status.TECHNICAL_SERVER_ERROR);
-//      response.getStatus()
-//              .setTechnicalMessage(e.getMessage());
-//      return response;
-//    }
-    return null;
+    try {
+      LOGGER.debug("generation started for groupIds >>" + model.getGroupId() + "<< - >>" + model.getArtefactId() + "<<");
+      // create folder in tempDirectory
+      String tmpDirPath = System.getProperty("java.io.tmpdir");
+      if (!tmpDirPath.endsWith(File.separator)) {
+        tmpDirPath = tmpDirPath + File.separator;
+      }
+      LOGGER.debug(">>" + model.getArtefactId() + "<< -> java.io.tempdir >>" + tmpDirPath + "<<");
+      // create archive-Folder
+      String projectRootFolder = tmpDirPath + "nalu-boot-starter-project-" + GeneratorUtils.removeBadChracters(model.getArtefactId());
+      LOGGER.debug(">>" + model.getArtefactId() + "<< -> project root directory >>" + projectRootFolder + "<<");
+      String projectFolder = projectRootFolder + File.separator + model.getArtefactId();
+      LOGGER.debug(">>" + model.getArtefactId() + "<< try to create project root directory with path >>" + projectRootFolder + "<<");
+      // exists? -> delete
+      if ((new File(projectRootFolder)).exists()) {
+        deleteFolder(new File(projectRootFolder));
+      }
+      LOGGER.debug(">>" + model.getArtefactId() + "<< project root directory with path >>" + projectRootFolder + "<< created");
+
+      String projectFolderClient = projectFolder + File.separator + GeneratorUtils.removeBadChracters(model.getArtefactId()) + "-client";
+      LOGGER.debug(">>" + model.getArtefactId() + "<< try to create project client directory with path >>" + projectFolderClient + "<<");
+      // exists? -> delete
+      if ((new File(projectFolderClient)).exists()) {
+        deleteFolder(new File(projectFolderClient));
+      }
+      LOGGER.debug(">>" + model.getArtefactId() + "<< project root client with path >>" + projectFolderClient + "<< created");
+      // create ...
+      File projectClientFolderFile = new File(projectFolderClient);
+      if (!projectClientFolderFile.mkdirs()) {
+        LOGGER.error(">>" + model.getArtefactId() + "<< creation of project folder (1) failed! >>" + projectFolderClient + "<< ");
+        response.getStatus()
+                .setReturnCode(Status.TECHNICAL_SERVER_ERROR);
+        response.getStatus()
+                .setTechnicalMessage("ERROR: creation of project folder (1) failed!");
+        return response;
+      }
+
+      String projectFolderShared = projectFolder + File.separator + GeneratorUtils.removeBadChracters(model.getArtefactId()) + "-shared";
+      LOGGER.debug(">>" + model.getArtefactId() + "<< try to create project shared directory with path >>" + projectFolderShared + "<<");
+      // exists? -> delete
+      if ((new File(projectFolderShared)).exists()) {
+        deleteFolder(new File(projectFolderShared));
+      }
+      LOGGER.debug(">>" + model.getArtefactId() + "<< project root shared with path >>" + projectFolderShared + "<< created");
+      // create ...
+      File projectSharedFolderFile = new File(projectFolderShared);
+      if (!projectSharedFolderFile.mkdirs()) {
+        LOGGER.error(">>" + model.getArtefactId() + "<< creation of project folder (2) failed! >>" + projectFolderShared + "<< ");
+        response.getStatus()
+                .setReturnCode(Status.TECHNICAL_SERVER_ERROR);
+        response.getStatus()
+                .setTechnicalMessage("ERROR: creation of project folder (2) failed");
+        return response;
+      }
+
+      String projectFolderServer = projectFolder + File.separator + GeneratorUtils.removeBadChracters(model.getArtefactId()) + "-server";
+      LOGGER.debug(">>" + model.getArtefactId() + "<< try to create project server directory with path >>" + projectFolderServer + "<<");
+      // exists? -> delete
+      if ((new File(projectFolderServer)).exists()) {
+        deleteFolder(new File(projectFolderServer));
+      }
+      LOGGER.debug(">>" + model.getArtefactId() + "<< project root server with path >>" + projectFolderServer + "<< created");
+      // create ...
+      File projectServerFolderFile = new File(projectFolderServer);
+      if (!projectServerFolderFile.mkdirs()) {
+        LOGGER.error(">>" + model.getArtefactId() + "<< creation of project folder (3) failed! >>" + projectFolderServer + "<< ");
+        response.getStatus()
+                .setReturnCode(Status.TECHNICAL_SERVER_ERROR);
+        response.getStatus()
+                .setTechnicalMessage("ERROR: creation of project folder (3) failed");
+        return response;
+      }
+//      //
+//      //      // create ...
+//      //      File projectRootFolderFile = new File(projectRootFolder);
+//      //      if (!projectRootFolderFile.mkdirs()) {
+//      //        LOGGER.error(">>" + model.getArtefactId() + "<< creation of project folder (1) failed! >>" + projectRootFolder + "<< ");
+//      //        return new ResponseEntity<>("ERROR: creation of project folder (1) failed!",
+//      //                                    HttpStatus.INTERNAL_SERVER_ERROR);
+//      //      }
+//      //      File projectFolderFile = new File(projectFolder);
+//      //      if (!projectFolderFile.mkdirs()) {
+//      //        LOGGER.error(">>" + model.getArtefactId() + "<< creation of project folder (1) failed! >>" + projectRootFolder + "<< ");
+//      //        return new ResponseEntity<>("ERROR: creation of project folder (2) failed!",
+//      //                                    HttpStatus.INTERNAL_SERVER_ERROR);
+//      //      }
+//      // create Java sources (must run first, because this creates the project structre)
+      try {
+        LOGGER.debug(">>" + model.getArtefactId() + "<< generating sources!");
+        SourceGenerator.builder()
+                       .naluGeneraterParms(model)
+                       .projectFolder(projectFolder)
+                       .projectFolderClient(projectFolderClient)
+                       .projectFolderShared(projectFolderShared)
+                       .projectFolderServer(projectFolderServer)
+                       .build()
+                       .generate();
+      } catch (GeneratorException e) {
+        LOGGER.error(">>" + model.getArtefactId() + "<< source generation failed!",
+                     e);
+        response.getStatus()
+                .setReturnCode(Status.TECHNICAL_SERVER_ERROR);
+        response.getStatus()
+                .setTechnicalMessage(e.getMessage());
+        return response;
+      }
+      // create POM
+      try {
+        LOGGER.debug(">>" + model.getArtefactId() + "<< generating pom!");
+        MultiPomGenerator.builder()
+                         .naluGeneraterParms(model)
+                         .projectFolder(projectFolder)
+                         .projectFolderClient(projectFolderClient)
+                         .projectFolderShared(projectFolderShared)
+                         .projectFolderServer(projectFolderServer)
+                         .build()
+                         .generate();
+      } catch (GeneratorException e) {
+        LOGGER.error(">>" + model.getArtefactId() + "<< pom generation failed!",
+                     e);
+        response.getStatus()
+                .setReturnCode(Status.TECHNICAL_SERVER_ERROR);
+        response.getStatus()
+                .setTechnicalMessage(e.getMessage());
+        return response;
+      }
+      // create Module Descriptor
+      try {
+        LOGGER.debug(">>" + model.getArtefactId() + "<< generating module dexcriptor!");
+        ModuleDescriptorGenerator.builder()
+                                 .naluGeneraterParms(model)
+                                 .projectFolder(projectFolderClient)
+                                 .build()
+                                 .generate();
+      } catch (GeneratorException e) {
+        LOGGER.error(">>" + model.getArtefactId() + "<< module descriptor generation failed!",
+                     e);
+        response.getStatus()
+                .setReturnCode(Status.TECHNICAL_SERVER_ERROR);
+        response.getStatus()
+                .setTechnicalMessage(e.getMessage());
+        return response;
+      }
+      // zip the content
+      LOGGER.debug(">>" + model.getArtefactId() + "<< creating zip");
+      this.zipIt(projectRootFolder);
+      LOGGER.debug(">>" + model.getArtefactId() + "<< zip created");
+      // delete tmp folder
+      LOGGER.debug(">>" + model.getArtefactId() + "<< delete temp folders");
+      deleteFolder(new File(projectRootFolder));
+      LOGGER.debug(">>" + model.getArtefactId() + "<< temp folders deleted");
+      response.getStatus()
+              .setReturnCode(Status.OK);
+      response.setDownloadUrl(projectRootFolder + ".zip");
+      return response;
+    } catch (Exception e) {
+      LOGGER.error(">>" + model.getArtefactId() + "<< -> exception: " + e);
+      response.getStatus()
+              .setReturnCode(Status.TECHNICAL_SERVER_ERROR);
+      response.getStatus()
+              .setTechnicalMessage(e.getMessage());
+      return response;
+    }
   }
 
   private void zipIt(String projectFolder) {

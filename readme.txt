@@ -4,11 +4,11 @@ Change directory to your generated project and issue the following commands:
 
 * run in one terminal window:
 
-    - mvn clean package
+    - mvn clean compile
 
     - mvn gwt:codeserver -pl *-client -am
 
-* in another terminal window:
+* in another terminal window (right after the url appears in the first terminal window):
 
     - mvn spring-boot:run -P env-dev
 
