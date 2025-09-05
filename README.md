@@ -31,7 +31,7 @@ transform GWT 2.x code to work with GWT 3!**
 
 In this area the Group Id, the Artifact Id and GWT version of the project is defined.
 
-![Project Meta Data](https://github.com/nalukit/gwt-boot-starter-nalu/blob/master/etc/images/ProjectMetaData.png?raw=true)
+![Project Meta Data](https://github.com/nalukit/gwt-boot-starter-nalu/blob/main/etc/images/ProjectMetaData.png?raw=true)
 
 #### Group Id
 
@@ -70,7 +70,7 @@ The project generator supports a single Maven project and a multi module Maven p
 
 In this area the features of Nalu for generated the project are defined.
 
-![Project Meta Data](https://github.com/nalukit/gwt-boot-starter-nalu/blob/master/etc/images/ApplicationMetaData.png?raw=true)
+![Project Meta Data](https://github.com/nalukit/gwt-boot-starter-nalu/blob/main/etc/images/ApplicationMetaData.png?raw=true)
 
 #### Application Loader
 If checked, a application loader will be added to the project source code.
@@ -95,7 +95,7 @@ If checked, the code needed to tell Nalu to use a hash inside the URL is generat
 In this area the screens are defined. A screen in Nalu is a combination of a controller and a component. There are five
 predefined screens called Screen01, Screen02, Screen03, Screen04 and Screen05. The generator needs at least one screen to generate a fully working project.
 
-![Project Meta Data](https://github.com/nalukit/gwt-boot-starter-nalu/blob/master/etc/images/ScreenMetaData.png?raw=true)
+![Project Meta Data](https://github.com/nalukit/gwt-boot-starter-nalu/blob/main/etc/images/ScreenMetaData.png?raw=true)
 
 * To add a new screen, press the ADD button on the top right side of the Screen Meta Data Card.
 
