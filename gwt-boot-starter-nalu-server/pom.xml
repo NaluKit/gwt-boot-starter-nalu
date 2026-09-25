@@ -43,7 +43,7 @@
         <!-- nalu version -->
         <nalu.version>2.0.1-SNAPSHOT</nalu.version>
         <!--    <eis2.version>1.1.0</eis2.version>-->
-        <freemarker.version>2.3.9</freemarker.version>
+        <freemarker.version>2.3.35</freemarker.version>
         <!--    <javax.activation.version>1.1</javax.activation.version>-->
         <!--    <jackson.mapper.asl.version>1.9.13</jackson.mapper.asl.version>-->
         <jersey.version>2.28</jersey.version>
